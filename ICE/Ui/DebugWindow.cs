@@ -41,10 +41,11 @@ internal class DebugWindow : Window
         ["Table: Special Missions"] = () => Table_TimeWeather.Draw(),
         ["Table: Mission Text"] = () => Table_MissionText.Draw(),
         ["Table: Recipies"] = () => Table_MoonRecipies.Draw(),
+        ["Table: Fish Info"] = () => Table_FishInfo.Draw(),
 
         // UI Elements
-        ["Ui: Fishing Hole Editor"] = () => Ui_FishingEditor.Draw(),
-        ["Ui: Fishing Preset Editor"] = () => Ui_FishingMissionEditor.Draw(),
+        ["Ui: Fishing Hole Editor"] = () => Ui_Fish_HoleEditor.Draw(),
+        ["Ui: Fishing Preset Editor"] = () => Ui_FishPresets.Draw(),
         ["Ui: Gather Editor"] = () => Ui_GatherRoute_Editor.Draw(),
         ["Ui: Log Viewer"] = () => helpSelect_Logs.Draw_Debug(),
 

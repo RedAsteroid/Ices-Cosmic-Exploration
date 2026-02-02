@@ -105,21 +105,20 @@ namespace ICE.Scheduler.Tasks
                 return true;
             }
 
-            var presetList = GatheringUtil.FishingPreset[missionId];
-            var presets = presetList.FishingPreset.ToList();
+            var presetList = CosmicHelper.SheetMissionDict[missionId].Fish_Presets;
 
-            if (presets.Count == 0)
+            if (presetList.Count == 0)
                 return;
 
-            IceLogging.Debug($"Current Fish Preset Count for [{missionId}]: {presets.Count}");
+            IceLogging.Debug($"Current Fish Preset Count for [{missionId}]: {presetList.Count}");
 
             // Import first preset immediately
-            P.AutoHook.CreateAndSelectAnonymousPreset(presets[0]);
+            P.AutoHook.CreateAndSelectAnonymousPreset(presetList[0]);
 
             // Queue remaining presets with delays
-            for (int i = 1; i < presets.Count; i++)
+            for (int i = 1; i < presetList.Count; i++)
             {
-                var preset = presets[i]; // Capture for closure
+                var preset = presetList[i]; // Capture for closure
 
                 P.TaskManager.EnqueueDelay(100);
                 P.TaskManager.Enqueue(() => ImportOtherPresets(preset));

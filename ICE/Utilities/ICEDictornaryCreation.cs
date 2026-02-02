@@ -430,6 +430,37 @@ public sealed partial class ICE
                 }
             }
 
+            var fish_varietyAmount = 0;
+            var fish_AmountRequired = 0;
+ 
+            if (jobs.Contains(18))
+            {
+                // Some things to note while I'm trying to document this shit...
+                // TODO sheet -> Unknown 9 = Required variety of fish?
+                // It might... be worth just doing a scan of all the fish kinds -> seeing if we meet that requirement
+
+                // Unknown 17 -> Amount required to complete mission within x time
+                // usually... for things like x12->20+ fish 
+
+                // The requiredItem[0] - 2 still is good for things that require a specific amount of a certain fish (it'll give the id for it)
+
+                // Score requirements still might exist for those, but might be good to just filter those out after checking for base requirements...
+                // This might break shit LOL
+
+                var todo = entry.MissionToDo[0];
+
+                if (todo.Value.Unknown9 != 0)
+                {
+                    // Variety fish amount has been found, assigning
+                    fish_varietyAmount = todo.Value.Unknown9;
+                }
+                else if (todo.Value.Unknown17 != 0)
+                {
+                    // Amount of fish is required to complete the mission
+                    fish_AmountRequired = todo.Value.Unknown17;
+                }
+            }
+
             // Col 3 -> Cosmocredits - Unknown 0
             // Col 4 -> Lunar Credits - Unknown 1
             // Col 7 ->  Lv. 1 Type - Unknown 12
@@ -508,6 +539,9 @@ public sealed partial class ICE
                     MarkerId = marker.RowId,
 
                     Gathering_Min = gathering_Min,
+
+                    Fish_AmountRequired = fish_AmountRequired,
+                    Fish_VarietyAmount = fish_varietyAmount,
 
                     Crafts_Main = crafts_Main,
                     Crafts_Pre = crafts_Pre,
@@ -679,14 +713,26 @@ public sealed partial class ICE
             }
         }
 
+        foreach (var fishPreset in GatheringUtil.FishingPreset)
+        {
+            if (CosmicHelper.SheetMissionDict.TryGetValue(fishPreset.Key, out var mission))
+            {
+                mission.Fish_Presets = fishPreset.Value;
+            }
+            else
+            {
+                IceLogging.Error($"Coulnd't find ID: {fishPreset.Key}");
+            }
+        }
+
         // Just a safety check for fishing missions. 
         // If a mission has a preset, and it's not on by default/on the off chance someone turned it off and didn't input a preset name, will auto enable
         foreach (var mission in C.MissionConfig)
         {
             var id = mission.Key;
-            if (GatheringUtil.FishingPreset.TryGetValue(id, out var fishProfile))
+            if (CosmicHelper.SheetMissionDict.TryGetValue(id, out var missionInfo))
             {
-                if (fishProfile.FishingPreset.Count > 0)
+                if (missionInfo.Fish_Presets.Count > 0)
                 {
                     // we have a fishing preset here. Time to check to see if we need to enable it (if it doesn't have a custom profile)
                     if (!mission.Value.Use_BuildinPreset && mission.Value.AutoHookPresetName == string.Empty)

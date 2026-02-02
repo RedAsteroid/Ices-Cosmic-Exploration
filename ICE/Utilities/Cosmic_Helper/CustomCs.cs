@@ -21,7 +21,7 @@ unsafe struct WKSManagerCustom
         None,
         Bronze,
         Silver,
-        Goild
+        Gold
     }
 
 
@@ -46,14 +46,5 @@ unsafe struct WKSManagerCustom
         var currentScore = *(ushort*)(basePtr + 0xC20);
 
         return currentScore;
-    }
-
-    public MissionRank ReturnRank()
-    {
-        var wks = WKSManager.Instance();
-        var basePtr = (byte*)wks;
-        var rank = *(MissionRank*)(basePtr + 0xC24);
-
-        return rank;
     }
 }

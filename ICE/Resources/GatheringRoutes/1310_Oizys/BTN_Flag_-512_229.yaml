@@ -5,5 +5,83 @@ flag:
   x: -512
   y: 229
 author: Puni.sh Community
-date_modified: 2026-01-28T20:15:42.9132263Z
-nodes: []
+date_modified: 2026-02-02T14:36:20.3200027Z
+nodes:
+- node_id: 35652
+  position:
+    x: -556.4637
+    y: 18.85795
+    z: 240.0574
+  land_zone:
+    x: -557.38245
+    y: 18.187063
+    z: 238.84549
+  radius_start: 0
+  radius_end: 360
+  min_distance: 1
+  max_distance: 5
+- node_id: 35653
+  position:
+    x: -557.345
+    y: 18.94832
+    z: 249.7686
+  land_zone:
+    x: -557.78156
+    y: 18.2694
+    z: 248.69757
+  radius_start: 0
+  radius_end: 360
+  min_distance: 1
+  max_distance: 5
+- node_id: 35654
+  position:
+    x: -550.5465
+    y: 18.60668
+    z: 245.7133
+  land_zone:
+    x: -550.8923
+    y: 17.647615
+    z: 244.18295
+  radius_start: 0
+  radius_end: 360
+  min_distance: 1
+  max_distance: 5
+- node_id: 35650
+  position:
+    x: -476.2216
+    y: 18.69198
+    z: 199.5147
+  land_zone:
+    x: -476.8699
+    y: 17.796556
+    z: 198.75691
+  radius_start: 0
+  radius_end: 360
+  min_distance: 1
+  max_distance: 5
+- node_id: 35649
+  position:
+    x: -466.4834
+    y: 19.46653
+    z: 191.0335
+  land_zone:
+    x: -467.5188
+    y: 18.630352
+    z: 190.17076
+  radius_start: 0
+  radius_end: 360
+  min_distance: 1
+  max_distance: 5
+- node_id: 35651
+  position:
+    x: -478.7917
+    y: 19.38891
+    z: 184.8513
+  land_zone:
+    x: -479.01587
+    y: 18.622618
+    z: 185.53403
+  radius_start: 0
+  radius_end: 360
+  min_distance: 1
+  max_distance: 5

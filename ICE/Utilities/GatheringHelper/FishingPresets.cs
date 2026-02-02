@@ -8,2422 +8,500 @@ namespace ICE.Utilities.GatheringHelper;
 
 public static partial class GatheringUtil
 {
-    public class FishingTools
+    public static Dictionary<uint, List<string>> FishingPreset = new()
     {
-        public List<string> FishingPreset = new List<string>();
-        public int AmountRequired = 0;
-        public bool UniqueFish = false;
-        public Dictionary<string, List<uint>> Baits = new();
-        public Dictionary<string, List<uint>> RequiredFish = new();
-    }
-
-    public static Dictionary<uint, FishingTools> FishingPreset = new()
-    {
-        #region Sinus 
-
-        #region D Rank
-
-        // Export for Mission [451] -  Lunch Emergency
-        [451] = new FishingTools()
+        [451] = new()
         {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1WW2/bOgz+K4WebcD321uWk3YFsraoO+yh2INi07EQR/IkuV1Okf9+INtK7FzadSiGPZw3gSI/fqRIii9o0kg2xUKKabFEyQuaUbyoYFJVKJG8AQOpyzmhsL/M9dV1jhInig10xwnjRG5QYhvoWsx+ZlWTQ74XK/1th/WFsaxUYO3BUacWJ4gMdFU/lBxEyaocJbZljZBfh24x4nBkYb1JZlo26zOBebblvcFIg7CqgkzqSDzbsodqztssGM8JrjRAYHsjAK9XuySinG1ADBz5Bwx9f8Qw0DnHK0hLUshPmLQ8lUBoQSpxthIo8fssBtEx7hA17lHvsCRAMxjwCQ7tgnHGHG3Kyb8wxbKrBO310No5yLfbWz+UuCJ4JS7xE+MKYCTQ4bjGWH4PGXsCjhJbJUn79EYedMI+keUVXreRTeiyAi40qnrNHCVuaHlHdEdQ0XZroNlPyfGos3Y1pjL/wNJnXF9T2RBJGL3ChOp8mLaB5g2HLyAEXgJKEDLQTcsJ3TAKqEfY1IASlZgTeHMm5G/j3XEQcJohMtGZ+85je7/nk9aQSY6racM5UPlBUR6gflisJ9keRXzSe6t1yXgGbVs941o/divMlbRtFD/2QqOvrFSyWnU2octUQt2O0H2UffVN+McEN4Q7jumZrBeYyEtSVeKV+/uGittGI3yl5EcDihkKQ7DBCrBpFzgyvSKMTLywPdPGiygMi9CNXAdtDTQnQt4WiqVAyeNLy1elYDdIuvyci3LKxJrJ8uKuqbGCu2F8javPjK0UgJ5K3wCv9m2nbgWM3qQXdYny7FCNNW2cSs7o8j3mljswn8MSaI755t0I/7BmUe24jzScIN4p7PmdVRlxOKH1wEl9zlPoO+5O5ZyvkdIr3no9VeeTQgKf4mZZyjlZq6/I7i4OG6BdOhre/XXqMBjq3fj14+Pf+ZWPVm0IekjpSrmHHw3hkKcSy0b9f2oFOSyfX6uSXy6G/9/8j765HllT1lA5tDPQLa02XwV8K4HesHYXnTxhUqle1Q06GG2F5dt+DK6Z+Vlhei7OzYUV+Wbgge1CkPlBZKHtdz3b+iX3cSfoxtvjCxrOuXeP8rP5vM6BSpLhSiVRwXcKk7WKe6jWDtfDxcUdb42R8tTwAmeQVmpc7aay/8aC5m8N9Nfs92mNORRN9RnTXLNQa5t/iseoUPqEuaMt3hptH7//hM+4VpLWUfsowy+2/1PVsRPv1U61zKBAXScLncCLzdh3semFhWXGGc5Mv7AdJw6K3HGitkA73J7io+fb3y/mDc3Ki9ka+BJothl/6rGH3cz3MhMWbmx6ee6YkYVD0/Icxw78RQAFRtv/AHsSQGtJDgAA",
-            },
-            AmountRequired = 5,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-                ["Astacus Lamentorum"] = new List<uint>()
-                {
-                    45693,
-                    45705,
-                    45715,
-                    45727,
-                    45744,
-                    45826,
-                    45847,
-                },
-                ["Lunar Blue Guppy"] = new List<uint>()
-                {
-                    45695,
-                },
-                ["Lunar Tilapia"] = new List<uint>()
-                {
-                    45694,
-                },
-            },
+            "AH4_H4sIAAAAAAAACu1WW2/bOgz+K4WebcD321uWk3YFsraoO+yh2INi07EQR/IkuV1Okf9+INtK7FzadSiGPZw3gSI/fqRIii9o0kg2xUKKabFEyQuaUbyoYFJVKJG8AQOpyzmhsL/M9dV1jhInig10xwnjRG5QYhvoWsx+ZlWTQ74XK/1th/WFsaxUYO3BUacWJ4gMdFU/lBxEyaocJbZljZBfh24x4nBkYb1JZlo26zOBebblvcFIg7CqgkzqSDzbsodqztssGM8JrjRAYHsjAK9XuySinG1ADBz5Bwx9f8Qw0DnHK0hLUshPmLQ8lUBoQSpxthIo8fssBtEx7hA17lHvsCRAMxjwCQ7tgnHGHG3Kyb8wxbKrBO310No5yLfbWz+UuCJ4JS7xE+MKYCTQ4bjGWH4PGXsCjhJbJUn79EYedMI+keUVXreRTeiyAi40qnrNHCVuaHlHdEdQ0XZroNlPyfGos3Y1pjL/wNJnXF9T2RBJGL3ChOp8mLaB5g2HLyAEXgJKEDLQTcsJ3TAKqEfY1IASlZgTeHMm5G/j3XEQcJohMtGZ+85je7/nk9aQSY6racM5UPlBUR6gflisJ9keRXzSe6t1yXgGbVs941o/divMlbRtFD/2QqOvrFSyWnU2octUQt2O0H2UffVN+McEN4Q7jumZrBeYyEtSVeKV+/uGittGI3yl5EcDihkKQ7DBCrBpFzgyvSKMTLywPdPGiygMi9CNXAdtDTQnQt4WiqVAyeNLy1elYDdIuvyci3LKxJrJ8uKuqbGCu2F8javPjK0UgJ5K3wCv9m2nbgWM3qQXdYny7FCNNW2cSs7o8j3mljswn8MSaI755t0I/7BmUe24jzScIN4p7PmdVRlxOKH1wEl9zlPoO+5O5ZyvkdIr3no9VeeTQgKf4mZZyjlZq6/I7i4OG6BdOhre/XXqMBjq3fj14+Pf+ZWPVm0IekjpSrmHHw3hkKcSy0b9f2oFOSyfX6uSXy6G/9/8j765HllT1lA5tDPQLa02XwV8K4HesHYXnTxhUqle1Q06GG2F5dt+DK6Z+Vlhei7OzYUV+Wbgge1CkPlBZKHtdz3b+iX3cSfoxtvjCxrOuXeP8rP5vM6BSpLhSiVRwXcKk7WKe6jWDtfDxcUdb42R8tTwAmeQVmpc7aay/8aC5m8N9Nfs92mNORRN9RnTXLNQa5t/iseoUPqEuaMt3hptH7//hM+4VpLWUfsowy+2/1PVsRPv1U61zKBAXScLncCLzdh3semFhWXGGc5Mv7AdJw6K3HGitkA73J7io+fb3y/mDc3Ki9ka+BJothl/6rGH3cz3MhMWbmx6ee6YkYVD0/Icxw78RQAFRtv/AHsSQGtJDgAA",
         },
-        // Export for Mission [452] -  Large Aquatic Specimens
-        [452] = new FishingTools()
+        [452] = new()
         {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACs1VyW7jMAz9lYJnG7BjSV5uaZAWBdJOMemcih4Um46FOpYryV2myL8P5NiTOMsEKHqYm0CRj49PJPUJ48bICddGT/IlJJ8wrfiixHFZQmJUgw7Yy5mocHuZ9Vc3GSSjKHbgXgmphPmAxHfgRk/f07LJMNuarf96g3UrZVpYsPYwsqcWh0UOXNcPhUJdyDKDxPe8AfK/oVuMOBxEeGfJTIpm1TMgvkfOUOijZFlianYC/V230fm0UmWClyck9UeMDUQlXdiV0MX0A/VOYrrHmNIBY9aLzp9xXojcXHLR8rYG3RvmhqfPGhLayciiQ9xd1LhDvedGYJXiDh+2H8eGCo76UCV+44SbTSsc6ysWHYCN9p4j6MAeCl4K/qyv+KtUFm9g6KsLnKH9J6byFRUkvtXsBAUySNjLeSmW13zV1j2uliUq3Sexb59BEoQeOWA/gIrWawem70bxweD9JWDf5UHO33h9U5lGGCGray6qXmrXd2DWKLxFrfkSIQFw4K7lBHeyQugQPmqExOp0BG8mtfky3r1CjccZggsn7jcZ2/stn3mNqVG8nDRKYWW+qco91G+r9Sjbg4qPZm+9rqRKsR26N173j90aM2ttx4jGJHS6zpobWdu5F9VybrBuN+y2yq77xup7ituFa9n+qsRLgxYXqMc9jj5zfQyIS7IodKOYEjeOWB57NOIhD2DtwExo8yO3OTQkj0+9oVv7W4MtCpLHT9gcug1CWcxOF3CLJa/SQpaCD+qwi9kKNc4NqglvloWZiZXddPbTyLAyIuWlnVybaOMwXsmmGri1yu9PbTBcqJHN1Kicpzgv7QMeXV6ExvTM7qJrB/6br3DbUF9uo/kbr61lYlVtBd1trK6d7HFj3roda/CdtguoH1MSLVxklLskCIgbpTFzozjnfkTRj1gK66c+XUfxkdDR08WMqyVejF8abkR6YWdSrLDSw7728yBE3ycuC3zqkiyP3cWChG4cxKM4CkLEjMH6D56DAd8pCQAA",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
+            "AH4_H4sIAAAAAAAACs1VyW7jMAz9lYJnG7BjSV5uaZAWBdJOMemcih4Um46FOpYryV2myL8P5NiTOMsEKHqYm0CRj49PJPUJ48bICddGT/IlJJ8wrfiixHFZQmJUgw7Yy5mocHuZ9Vc3GSSjKHbgXgmphPmAxHfgRk/f07LJMNuarf96g3UrZVpYsPYwsqcWh0UOXNcPhUJdyDKDxPe8AfK/oVuMOBxEeGfJTIpm1TMgvkfOUOijZFlianYC/V230fm0UmWClyck9UeMDUQlXdiV0MX0A/VOYrrHmNIBY9aLzp9xXojcXHLR8rYG3RvmhqfPGhLayciiQ9xd1LhDvedGYJXiDh+2H8eGCo76UCV+44SbTSsc6ysWHYCN9p4j6MAeCl4K/qyv+KtUFm9g6KsLnKH9J6byFRUkvtXsBAUySNjLeSmW13zV1j2uliUq3Sexb59BEoQeOWA/gIrWawem70bxweD9JWDf5UHO33h9U5lGGCGray6qXmrXd2DWKLxFrfkSIQFw4K7lBHeyQugQPmqExOp0BG8mtfky3r1CjccZggsn7jcZ2/stn3mNqVG8nDRKYWW+qco91G+r9Sjbg4qPZm+9rqRKsR26N173j90aM2ttx4jGJHS6zpobWdu5F9VybrBuN+y2yq77xup7ituFa9n+qsRLgxYXqMc9jj5zfQyIS7IodKOYEjeOWB57NOIhD2DtwExo8yO3OTQkj0+9oVv7W4MtCpLHT9gcug1CWcxOF3CLJa/SQpaCD+qwi9kKNc4NqglvloWZiZXddPbTyLAyIuWlnVybaOMwXsmmGri1yu9PbTBcqJHN1Kicpzgv7QMeXV6ExvTM7qJrB/6br3DbUF9uo/kbr61lYlVtBd1trK6d7HFj3roda/CdtguoH1MSLVxklLskCIgbpTFzozjnfkTRj1gK66c+XUfxkdDR08WMqyVejF8abkR6YWdSrLDSw7728yBE3ycuC3zqkiyP3cWChG4cxKM4CkLEjMH6D56DAd8pCQAA",
         },
-        // Export for Mission [453] -  Western Water Inspection
-        [453] = new FishingTools()
+        [453] = new()
         {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACtVXWW/bOBD+KwGfJUAHRR1vrtdJDbjZoMoiD0EfKGlkE5FFlaSaZgP/9wV12JKP2CmCRfsmDznffDOcy69oUis+pVLJab5E0SualTQpYFIUKFKiBgPpwwUrYXeY9UfzDEVOEBroTjAumHpBkW2guZz9TIs6g2wn1vc3LdYXztOVBms+HP3V4JDAQDfV/UqAXPEiQ5FtWSPkt6EbjNAfaVhnyUxX9bpngG0Ln6HQa/GigFSdiAi2LXuo5ZxnwUXGaHECz3YIGcUYd2rXTK5mLyAHDnh7DnjeyAHSvwF9gnjFcvWJssYNLZC9IFY0fZIo8rqokuAQd4gadqh3VDEoUxjwIft6ZBxQp1cV7F+YUtVmxrE0I8EBmLP3Om4Hdr+iBaNP8pr+4ELjjQS9d64xln+FlP8AgSJbx+wEBTwy2IfzE1ve0HXj96RcFiBkb0S/fYYi17fwAfsRVLDZGGj2Uwk6qsMtAf0u9zx+ptW8VDVTjJc3lJV9qE3bQItawBeQki4BRQgZ6LbhhG55CahDeKkARTpOR/AWXKpfxrsTIOE4Q2SiE+etxeZ8xyeuIFWCFtNaCCjVB3m5h/phvh5le+DxUevNrWsuUmiK7plW/WM3wkxLmzLyQuwbXWbFile67lm5jBVUTcPdedll30R8jHNDuIbtPyX7XoPGRbYT+mEOxIQMchNnATETQqmZ5zS1Ej/zIAjRxkALJtXfubYhUfT42ljTDmybROvdKY5TLtdcra7u6opquFsu1rT4zPmTBug7zgPQ5reWS1Db2slpIaEv5u5wGOhO1HqPbV93sh4zVoKXg1I8r265A/UFLKHMqHj5AF4N8F+8Topzno4UHRJu9XbenLxyCeMjyveCVe/k5XuOu9U8xWx06f3cOnVdL5NcgZjSerlSC7bWA89uD/YLqVl1atFOVP0xmBVtG/fCwxXhjfGu95K+2fU5+xW+10xAFiuqaj1l9eJzYSJflq+XKb87W/+HpLxY83fJ1Xfo/rkpPOj6JHQTF/LAzP3QM7FFAjOAIDHtxA3tAFPL9gFtvvVtv9v1H7eCtvM/vqLxCPD1xnx6BCS0UFczKEbDyn4rNPMMSsVSWuh4aDvthcma1+XoWjOA9lczd7w1B9pSLXKaQlzoJr2dXN6ZjdTbGOi3+b+zWxN+eTmIn2mlJVMdxiaCw3WhWxL0ZyveXTuWqoO0wiE4TmgFpuc7nolzTM0QAs90KUlyy3bClJAmrVrcjuIj9txvVw8gFYjy6oEqEFfzUupdi/FyvK5kWZBjz8VmRiA0sZdgM0l8MJ2U4twlYDkBQZv/APBzqN0PDwAA",
-            },
-            AmountRequired = 2,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-                ["Cobalt Eel"] = new List<uint>()
-                {
-                    45701,
-                },
-            },
+            "AH4_H4sIAAAAAAAACtVXWW/bOBD+KwGfJUAHRR1vrtdJDbjZoMoiD0EfKGlkE5FFlaSaZgP/9wV12JKP2CmCRfsmDznffDOcy69oUis+pVLJab5E0SualTQpYFIUKFKiBgPpwwUrYXeY9UfzDEVOEBroTjAumHpBkW2guZz9TIs6g2wn1vc3LdYXztOVBms+HP3V4JDAQDfV/UqAXPEiQ5FtWSPkt6EbjNAfaVhnyUxX9bpngG0Ln6HQa/GigFSdiAi2LXuo5ZxnwUXGaHECz3YIGcUYd2rXTK5mLyAHDnh7DnjeyAHSvwF9gnjFcvWJssYNLZC9IFY0fZIo8rqokuAQd4gadqh3VDEoUxjwIft6ZBxQp1cV7F+YUtVmxrE0I8EBmLP3Om4Hdr+iBaNP8pr+4ELjjQS9d64xln+FlP8AgSJbx+wEBTwy2IfzE1ve0HXj96RcFiBkb0S/fYYi17fwAfsRVLDZGGj2Uwk6qsMtAf0u9zx+ptW8VDVTjJc3lJV9qE3bQItawBeQki4BRQgZ6LbhhG55CahDeKkARTpOR/AWXKpfxrsTIOE4Q2SiE+etxeZ8xyeuIFWCFtNaCCjVB3m5h/phvh5le+DxUevNrWsuUmiK7plW/WM3wkxLmzLyQuwbXWbFile67lm5jBVUTcPdedll30R8jHNDuIbtPyX7XoPGRbYT+mEOxIQMchNnATETQqmZ5zS1Ej/zIAjRxkALJtXfubYhUfT42ljTDmybROvdKY5TLtdcra7u6opquFsu1rT4zPmTBug7zgPQ5reWS1Db2slpIaEv5u5wGOhO1HqPbV93sh4zVoKXg1I8r265A/UFLKHMqHj5AF4N8F+8Topzno4UHRJu9XbenLxyCeMjyveCVe/k5XuOu9U8xWx06f3cOnVdL5NcgZjSerlSC7bWA89uD/YLqVl1atFOVP0xmBVtG/fCwxXhjfGu95K+2fU5+xW+10xAFiuqaj1l9eJzYSJflq+XKb87W/+HpLxY83fJ1Xfo/rkpPOj6JHQTF/LAzP3QM7FFAjOAIDHtxA3tAFPL9gFtvvVtv9v1H7eCtvM/vqLxCPD1xnx6BCS0UFczKEbDyn4rNPMMSsVSWuh4aDvthcma1+XoWjOA9lczd7w1B9pSLXKaQlzoJr2dXN6ZjdTbGOi3+b+zWxN+eTmIn2mlJVMdxiaCw3WhWxL0ZyveXTuWqoO0wiE4TmgFpuc7nolzTM0QAs90KUlyy3bClJAmrVrcjuIj9txvVw8gFYjy6oEqEFfzUupdi/FyvK5kWZBjz8VmRiA0sZdgM0l8MJ2U4twlYDkBQZv/APBzqN0PDwAA",
         },
-        // Export for Mission [454] -  Aquatic Foodstuffs
-        [454] = new FishingTools()
+        [454] = new()
         {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1WS2+jMBD+K5XPIEEwz1uaTbqV0m60SbWHqgcHhmCFYGqbttkq/31lwEnIo49Vtae9wcz4m2/G489+Rf1KsgERUgzSBYpe0bAg8xz6eY4iySswkHKOaQE7Z6Jd1wmKekFooAmnjFO5RpFtoGsxfInzKoFkZ1bxmwbrhrE4U2D1R0991TheYKCrcpZxEBnLExTZltVBfhu6xgj9zgrrXTKDrFqdKQzbFn6HkQZheQ6x1JVg27L3w3rvs2A8oSTXAJ6NOwC4DRtRkQ3XIPYSuQcMXbfD0NM9J0uYZjSVl4TWPJVBaMNUkngpUOS2XfSCY9x91LBFnRBJoYhhj493uM7rdqynl3L6GwZENpNwaqy84Aisd9B+pwWbZSSnZClG5Ilxhdcx6Ooco2v/CTF7Ao4iW/XsDAXcSajbeUkXV2RV190vFjlwoZOovU5Q5PgWPmLfgQo2GwMNXyQnnXO3JaD2Zcamz6S8LmRFJWXFFaGFbrVpG2hccbgBIcgCUISQgW5rTuiWFYBahHUJKFJ9OoE3ZkL+Nd6Eg4DTDJGJzvibjLV/x2daQiw5yQcV51DIL6ryAPXLaj3J9qjik9nrqBHjMdSH7pmUerNrY6Ks9TFyQ+wb7WRNJSvVuafFYiqhrAV2V2U7fX3+NcXtw9Vs7wr6WIHCRcTziOv5junPA8fEcWiZ8zl4ZooDSKzQn3tOD20MNKZC/khVDoGi+9c6mypgKxJNdec4DphYMZldTKqSKLhbxlck/87YUgFoxfkFZLk7NMoroNPR1tSUiW1fSZZePJWcFYvPLLecveVjWECREL7+NMI3Vs3zLfdORM8LtwE7fmdDOhxORM04Lc9l8t2esw05l6sT9Ea2Nk5NaT+VwAekWmRyTFfqmrEbx+H41g+Kijf3mPrYU+hGPN3w+OZ94xJVt7+WGD0pP+GxohySqSSyUnebel4cjs/HpuTDw/B/z//pnt/txClxHYC565lJgmMT23FszsMYTIKDNPEtwEGI0eZBq1P7BL3fGhqBUv+NHLZidI9d/HDRf6yIpPHFiLFEyCpNRVcZXce3wtDxTPDBMbELthmAG5i+5Qahb4ep56Ro8wdsUj8tagsAAA==",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
+            "AH4_H4sIAAAAAAAACu1WS2+jMBD+K5XPIEEwz1uaTbqV0m60SbWHqgcHhmCFYGqbttkq/31lwEnIo49Vtae9wcz4m2/G489+Rf1KsgERUgzSBYpe0bAg8xz6eY4iySswkHKOaQE7Z6Jd1wmKekFooAmnjFO5RpFtoGsxfInzKoFkZ1bxmwbrhrE4U2D1R0991TheYKCrcpZxEBnLExTZltVBfhu6xgj9zgrrXTKDrFqdKQzbFn6HkQZheQ6x1JVg27L3w3rvs2A8oSTXAJ6NOwC4DRtRkQ3XIPYSuQcMXbfD0NM9J0uYZjSVl4TWPJVBaMNUkngpUOS2XfSCY9x91LBFnRBJoYhhj493uM7rdqynl3L6GwZENpNwaqy84Aisd9B+pwWbZSSnZClG5Ilxhdcx6Ooco2v/CTF7Ao4iW/XsDAXcSajbeUkXV2RV190vFjlwoZOovU5Q5PgWPmLfgQo2GwMNXyQnnXO3JaD2Zcamz6S8LmRFJWXFFaGFbrVpG2hccbgBIcgCUISQgW5rTuiWFYBahHUJKFJ9OoE3ZkL+Nd6Eg4DTDJGJzvibjLV/x2daQiw5yQcV51DIL6ryAPXLaj3J9qjik9nrqBHjMdSH7pmUerNrY6Ks9TFyQ+wb7WRNJSvVuafFYiqhrAV2V2U7fX3+NcXtw9Vs7wr6WIHCRcTziOv5junPA8fEcWiZ8zl4ZooDSKzQn3tOD20MNKZC/khVDoGi+9c6mypgKxJNdec4DphYMZldTKqSKLhbxlck/87YUgFoxfkFZLk7NMoroNPR1tSUiW1fSZZePJWcFYvPLLecveVjWECREL7+NMI3Vs3zLfdORM8LtwE7fmdDOhxORM04Lc9l8t2esw05l6sT9Ea2Nk5NaT+VwAekWmRyTFfqmrEbx+H41g+Kijf3mPrYU+hGPN3w+OZ94xJVt7+WGD0pP+GxohySqSSyUnebel4cjs/HpuTDw/B/z//pnt/txClxHYC565lJgmMT23FszsMYTIKDNPEtwEGI0eZBq1P7BL3fGhqBUv+NHLZidI9d/HDRf6yIpPHFiLFEyCpNRVcZXce3wtDxTPDBMbELthmAG5i+5Qahb4ep56Ro8wdsUj8tagsAAA==",
         },
-        // Export for Mission [455] -  Weeping Pool Ecological Survey
-        [455] = new FishingTools()
+        [455] = new()
         {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1Xy27bOhD9FYNrERBlinrsHN8kDeCkQZ2LLoIuKGlkE5FFl6TSpoH//YJ62JZjJXGRRYHenTCcOTwzPByOntGkMnLKtdHTfIHiZ3Re8qSASVGg2KgKHGQXZ6KE3WLWLV1lKPbCyEG3SkglzBOKiYOu9PnPtKgyyHZm679psK6lTJcWrP7w7FeNw0IHXa7vlgr0UhYZionr9pBfh64xoqAX4b5JZrqsVgOJUeLSNxh1ILIoIDXDOGQ/ynublFSZ4MUAHiO0h0fbqAuhl+dPoLuCUuL6B/x9v8efdSfCH2C+FLk546LOwhp0Z5gbnj5oFPttjVn4EncfNWpRb7kRUKawx4cdxrF+Pb0uVIlfMOWm0ckx0bHwBZh3cDjjFuxuyQvBH/QFf5TK4vUMXXZjp2//Aql8BIViYms2QIH2NuzKeSYWl3xV5z0pFwUo3W1ijz5D8Thw6Qv2Pahws3HQ+U+jeO9WbgnYc7mT8x98fVWaShghy0suyq7UmDhoVim4Bq35AlCMkINuak7oRpaAWoSnNaDY1ukI3kxq89t4two0HGeIMBpYb3as13d85mtIjeLFtFIKSvNBWR6gfliuR9m+yPjo7rXXhVQp1JfuB193h10bM2utr5Ef0dBplTU3cm3vvSgXcwPruv3usmzVN1Efk9w+XM3231J8r8DiIkKTPKeMY0qDANM0yHFCPMDEJVEYuAxcH9DGQTOhzefc7qFRfP9c72YT2DaJJrshjtdSlqMzXhQW60aqFS8+Sflgo7t28xX4w+7G2FUNvXK2piZHSgLbr7rguVGyXJwS7o73wmewgDLj6ulkhH9klRRb7j0Pj0Vbhx2/1mXbF3Je6EPs/cgetfcH3ymxHuIV+N5463Iis17s6dzacCv/SW5ATXm1WJqZWNn3izQLh/einmMq1TyQ9mOv9Tdd2Y9ePvivPNZ26Oh6V6fCL/C9EgqyueGmso+mnWoOpfmeFAeF+b7gYVmeEH9UlO9W3J+h1RNk+HdKeK+Jh6HnjnkYYsgJYErzAEfczTELKAkzjwU0jNDmW9fF20H+fmtoGvn9M+p3dBaNhzv6RBueVno04ysojVTVqvcGkddKdJVBaUTKC1sXu1/jMFnJquy51e/K4cQ17g/Dod2pUjlPYV7YZn18mPcj/42509846I/5x9kNA789Athga5naqtYF3R8K2lHAfjbmndsxBe+pzXU9PwpSin02DjClSYhDyD3sURZ5bsgZhDnaOIdqCtxgOIFZVXI1+gQrIbNK/6+kv0NJOaM0zL0AJ4RRTHnm4SjPCQ48whI3JB7Jk7pvNbgtxXvq+99GXwHWolyMbqUsRuepLOTC6mA0r9QjPPWHXOp6fsL8CKchpJj6xMVJ4CeYkjQgLE8SD1K0+Q9F3lgEUxEAAA==",
-            },
-            AmountRequired = 2,
-            UniqueFish = true,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-                ["Astacus Lamentorum"] = new List<uint>()
-                {
-                    45693,
-                    45705,
-                    45715,
-                    45727,
-                    45744,
-                    45826,
-                    45847,
-                },
-                ["Lunar Hemiodus"] = new List<uint>()
-                {
-                    45707,
-                },
-                ["Lunar Peacock Bass"] = new List<uint>()
-                {
-                    45706,
-                },
-            },
+            "AH4_H4sIAAAAAAAACu1Xy27bOhD9FYNrERBlinrsHN8kDeCkQZ2LLoIuKGlkE5FFl6TSpoH//YJ62JZjJXGRRYHenTCcOTwzPByOntGkMnLKtdHTfIHiZ3Re8qSASVGg2KgKHGQXZ6KE3WLWLV1lKPbCyEG3SkglzBOKiYOu9PnPtKgyyHZm679psK6lTJcWrP7w7FeNw0IHXa7vlgr0UhYZionr9pBfh64xoqAX4b5JZrqsVgOJUeLSNxh1ILIoIDXDOGQ/ynublFSZ4MUAHiO0h0fbqAuhl+dPoLuCUuL6B/x9v8efdSfCH2C+FLk546LOwhp0Z5gbnj5oFPttjVn4EncfNWpRb7kRUKawx4cdxrF+Pb0uVIlfMOWm0ckx0bHwBZh3cDjjFuxuyQvBH/QFf5TK4vUMXXZjp2//Aql8BIViYms2QIH2NuzKeSYWl3xV5z0pFwUo3W1ijz5D8Thw6Qv2Pahws3HQ+U+jeO9WbgnYc7mT8x98fVWaShghy0suyq7UmDhoVim4Bq35AlCMkINuak7oRpaAWoSnNaDY1ukI3kxq89t4two0HGeIMBpYb3as13d85mtIjeLFtFIKSvNBWR6gfliuR9m+yPjo7rXXhVQp1JfuB193h10bM2utr5Ef0dBplTU3cm3vvSgXcwPruv3usmzVN1Efk9w+XM3231J8r8DiIkKTPKeMY0qDANM0yHFCPMDEJVEYuAxcH9DGQTOhzefc7qFRfP9c72YT2DaJJrshjtdSlqMzXhQW60aqFS8+Sflgo7t28xX4w+7G2FUNvXK2piZHSgLbr7rguVGyXJwS7o73wmewgDLj6ulkhH9klRRb7j0Pj0Vbhx2/1mXbF3Je6EPs/cgetfcH3ymxHuIV+N5463Iis17s6dzacCv/SW5ATXm1WJqZWNn3izQLh/einmMq1TyQ9mOv9Tdd2Y9ePvivPNZ26Oh6V6fCL/C9EgqyueGmso+mnWoOpfmeFAeF+b7gYVmeEH9UlO9W3J+h1RNk+HdKeK+Jh6HnjnkYYsgJYErzAEfczTELKAkzjwU0jNDmW9fF20H+fmtoGvn9M+p3dBaNhzv6RBueVno04ysojVTVqvcGkddKdJVBaUTKC1sXu1/jMFnJquy51e/K4cQ17g/Dod2pUjlPYV7YZn18mPcj/42509846I/5x9kNA789Athga5naqtYF3R8K2lHAfjbmndsxBe+pzXU9PwpSin02DjClSYhDyD3sURZ5bsgZhDnaOIdqCtxgOIFZVXI1+gQrIbNK/6+kv0NJOaM0zL0AJ4RRTHnm4SjPCQ48whI3JB7Jk7pvNbgtxXvq+99GXwHWolyMbqUsRuepLOTC6mA0r9QjPPWHXOp6fsL8CKchpJj6xMVJ4CeYkjQgLE8SD1K0+Q9F3lgEUxEAAA==",
         },
-        // Export for Mission [456] -  Assorted Alchemical Materials
-        [456] = new FishingTools()
+        [456] = new()
         {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACq2US0/jMBDHvwqacyIlqfO8haogpMKiLXtCHAZn0liEOGs7PBb1u6+cJrQpZZFW3JwZz2/+83DeIO+MnKM2el6uIXuDRYP3NeV1DZlRHTlgnUvR0M5ZjK6LArIgSR24VkIqYV4h8x240IsXXncFFTuzvb/Zsi6l5JWF9YfAnnpOlDhw3t5UinQl6wIy3/Mm5H+je0YaTyK8L8XMq+5xVMB8j30hYYySdU3c7AX6+9eCr9NKVQisP2mpH0TRpKlsCDsTulq8kt5LHB4oDsOJ4mhsOj7QqhKlOUXR67YGPRpWBvmDhiwc2hglH7n71HSgXqMR1PDPVoP5XnSIiaYNDUaSEn9ojma7GaOIw+jgYByzIfqmwlrggz7DJ6ksYGIYq5s5U/tP4vKJFGS+7dmx1Y4SuxF7Ccd2nor1OT72defNuialxyR29gVks9hjH9RPUMlm48DixSicPLx3AXYuN3L1jO1FYzphhGzOUTRje1zfgWWn6JK0xjVBBuDAVa8JrmRDMBBeW4LM9ukIbym1+W/etSJNxxWCC5/4txl7/07PqiVuFNbzTilqzDdVeUD9tlqPqv1Q8dHs/a0zqTj1j+4Z23HYvbGw1v7dhClLnGGzVka29t2LZr0y1PZ/2F2Vw/bl6nuKy/dwvdpfjfjdkeVCQkGByGK3LIi7zPfIRc65W5TePc4CVnpeABsHlkKbH6XNoSG7vRsNw29/Z7BFbb+3CgaNtyyM7k5yraUyVJzkNa/oUXCsTy7RkBJY66kuxLjgjKHre7PQZUFMbpqWsRvxMKYojsKUlbD5C4vnvqjpBgAA",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
+            "AH4_H4sIAAAAAAAACq2US0/jMBDHvwqacyIlqfO8haogpMKiLXtCHAZn0liEOGs7PBb1u6+cJrQpZZFW3JwZz2/+83DeIO+MnKM2el6uIXuDRYP3NeV1DZlRHTlgnUvR0M5ZjK6LArIgSR24VkIqYV4h8x240IsXXncFFTuzvb/Zsi6l5JWF9YfAnnpOlDhw3t5UinQl6wIy3/Mm5H+je0YaTyK8L8XMq+5xVMB8j30hYYySdU3c7AX6+9eCr9NKVQisP2mpH0TRpKlsCDsTulq8kt5LHB4oDsOJ4mhsOj7QqhKlOUXR67YGPRpWBvmDhiwc2hglH7n71HSgXqMR1PDPVoP5XnSIiaYNDUaSEn9ojma7GaOIw+jgYByzIfqmwlrggz7DJ6ksYGIYq5s5U/tP4vKJFGS+7dmx1Y4SuxF7Ccd2nor1OT72defNuialxyR29gVks9hjH9RPUMlm48DixSicPLx3AXYuN3L1jO1FYzphhGzOUTRje1zfgWWn6JK0xjVBBuDAVa8JrmRDMBBeW4LM9ukIbym1+W/etSJNxxWCC5/4txl7/07PqiVuFNbzTilqzDdVeUD9tlqPqv1Q8dHs/a0zqTj1j+4Z23HYvbGw1v7dhClLnGGzVka29t2LZr0y1PZ/2F2Vw/bl6nuKy/dwvdpfjfjdkeVCQkGByGK3LIi7zPfIRc65W5TePc4CVnpeABsHlkKbH6XNoSG7vRsNw29/Z7BFbb+3CgaNtyyM7k5yraUyVJzkNa/oUXCsTy7RkBJY66kuxLjgjKHre7PQZUFMbpqWsRvxMKYojsKUlbD5C4vnvqjpBgAA",
         },
-
-        #endregion
-
-        #region C Rank
-
-        // Export for Mission [457] -  Big Fish
-        [457] = new FishingTools()
+        [457] = new()
         {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACq2VTW+jMBCG/0o1Z5AwAfNxS6O0qpR2q033VPXgmCFYpZi1TT+2yn9f2YEmpMlWWvUGM/Yz7zsewztMOyNnTBs9K9eQv8O8Yasap3UNuVEdemCTC9HgLlkMqasC8jDNPLhVQiph3iAnHlzp+SuvuwKLXdiu32xZ11LyysLcQ2ifHIemHly2d5VCXcm6gJwEwYj8b7RjZMloR/ClmFnVPZ0wFpEg+kLRAJF1jdwMTiISkP1l4dcqpCoEq08IISGlox5H/bYLoav5G+q9wvGB4jgeKabDGbBHXFaiNOdMON02oIfA0jD+qCGP+67S9DN3n5r11FtmBDb81KREJKCHGDpuaDiQlPiDM2a2gzKIONwdHhzHpN99V7FasEd9wZ6lsoBRYHA38cbxn8jlMyrIie3ZsUmnqZ2IvYJDO8/F+pI9Od/TZl2j0kMRe/YF5JMkiD6pH6HSzcaD+atRbHQPPwTYc7mTyxfWXjWmE0bI5pKJZmiPTzxYdAqvUWu2RsgBPLhxmuBGNgg94a1FyG2fjvAWUpv/5t0q1HhcIfhwIr+t6PI7PcsWuVGsnnVKYWO+yeUB9du8HlX7yfHR6m7VhVQc3aV7Ye1w2C5Y2Ki7N3EWZV4/WUsjW3vvRbNeGmzdB3fnsp++qfoec9M9nFP7qxG/O7RcyFZpUWLMfeQ48SNGAz9LS+6XhFPELKF0xWDjwUJo86O0NTTk9w9DoP8L7ALW1PZ9q6DXeB/FycPZuVifuQUjCUmxymJWcp+SlPlREJd+ltGJzwMSJiQiCeMFbP4C1oBtKeMGAAA=",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
+            "AH4_H4sIAAAAAAAACq2VTW+jMBCG/0o1Z5AwAfNxS6O0qpR2q033VPXgmCFYpZi1TT+2yn9f2YEmpMlWWvUGM/Yz7zsewztMOyNnTBs9K9eQv8O8Yasap3UNuVEdemCTC9HgLlkMqasC8jDNPLhVQiph3iAnHlzp+SuvuwKLXdiu32xZ11LyysLcQ2ifHIemHly2d5VCXcm6gJwEwYj8b7RjZMloR/ClmFnVPZ0wFpEg+kLRAJF1jdwMTiISkP1l4dcqpCoEq08IISGlox5H/bYLoav5G+q9wvGB4jgeKabDGbBHXFaiNOdMON02oIfA0jD+qCGP+67S9DN3n5r11FtmBDb81KREJKCHGDpuaDiQlPiDM2a2gzKIONwdHhzHpN99V7FasEd9wZ6lsoBRYHA38cbxn8jlMyrIie3ZsUmnqZ2IvYJDO8/F+pI9Od/TZl2j0kMRe/YF5JMkiD6pH6HSzcaD+atRbHQPPwTYc7mTyxfWXjWmE0bI5pKJZmiPTzxYdAqvUWu2RsgBPLhxmuBGNgg94a1FyG2fjvAWUpv/5t0q1HhcIfhwIr+t6PI7PcsWuVGsnnVKYWO+yeUB9du8HlX7yfHR6m7VhVQc3aV7Ye1w2C5Y2Ki7N3EWZV4/WUsjW3vvRbNeGmzdB3fnsp++qfoec9M9nFP7qxG/O7RcyFZpUWLMfeQ48SNGAz9LS+6XhFPELKF0xWDjwUJo86O0NTTk9w9DoP8L7ALW1PZ9q6DXeB/FycPZuVifuQUjCUmxymJWcp+SlPlREJd+ltGJzwMSJiQiCeMFbP4C1oBtKeMGAAA=",
         },
-        // Export for Mission [458] -  Environmental Inspection
-        [458] = new FishingTools()
+        [458] = new()
         {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACq1Uy27bMBD8lWDPEiDJ1PPmGE5gwEmDOj0FOdDUxiKikCpJ5dHC/16QFmvLcRqgyI3a5c7OzC71G6a9kTOqjZ49bKD6DXNB1y1O2xYqo3oMwCaXXOA+WfvUooYqKcoAbhSXips3qOIAFnr+ytq+xnoftve3O6wrKVljwdwhsSeHkxUBXHa3jULdyLaGKo6iEfK/oR1GmY8qok/JzJr+6QNhJI7IJ4w8iGxbZMYrIXEUH15LPmchVc1p+wGROMmykcdkKLvgupm/oT5onB4xTtMR48zPgD7iquEP5pxyx9sGtA+sDGWPGqp0cDUr3uMeopYD6g01HAXDAz7ZcV02djDxpYr/whk1u83wXY+rkyP/J0P1bUNbTh/1BX2WygKMAl7OJBjHvyOTz6igiq1Jp1Y7K+wKHDT0/p3zzSV9ckKnYtOi0r6JHXYN1SSPyDv2I6hiuw1g/moUHT28vwTsIG7l6oV2C2F6brgUl5QLb08YB7DsFV6h1nSDUAEEcO04wbUUCAPCW4dQWZ9O4C2lNv+Nd6NQ42mGEMIH+V1Hl9/zWXXIjKLtrFcKhfkilUeoX6b1JNt3ik92d7cupGLoXtkL7fywXbC2Ufdu0pKUwbBZKyM7+9C52KwMdu4Pu1c5bN9UfY246QGcY/tD8J89WlyICMNJktchYZMiJDUpwzWp8zBLWUlKlqU5EtgGsOTafHuwPTRUd/c+MPz29wErave9YzBwvCNpcX82F89cSfGEwtD2bCG09ZNLcUQpy5KkjpIwTdk6JJTmIS3qJIyifJ2QtCjjNIXtH76wCNnkBgAA",
-            },
-            AmountRequired = 2,
-            UniqueFish = true,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-                ["Lunar Eel"] = new List<uint>()
-                {
-                    45718,
-                },
-                ["Weepingeye"] = new List<uint>()
-                {
-                    45717,
-                },
-            },
+            "AH4_H4sIAAAAAAAACq1Uy27bMBD8lWDPEiDJ1PPmGE5gwEmDOj0FOdDUxiKikCpJ5dHC/16QFmvLcRqgyI3a5c7OzC71G6a9kTOqjZ49bKD6DXNB1y1O2xYqo3oMwCaXXOA+WfvUooYqKcoAbhSXips3qOIAFnr+ytq+xnoftve3O6wrKVljwdwhsSeHkxUBXHa3jULdyLaGKo6iEfK/oR1GmY8qok/JzJr+6QNhJI7IJ4w8iGxbZMYrIXEUH15LPmchVc1p+wGROMmykcdkKLvgupm/oT5onB4xTtMR48zPgD7iquEP5pxyx9sGtA+sDGWPGqp0cDUr3uMeopYD6g01HAXDAz7ZcV02djDxpYr/whk1u83wXY+rkyP/J0P1bUNbTh/1BX2WygKMAl7OJBjHvyOTz6igiq1Jp1Y7K+wKHDT0/p3zzSV9ckKnYtOi0r6JHXYN1SSPyDv2I6hiuw1g/moUHT28vwTsIG7l6oV2C2F6brgUl5QLb08YB7DsFV6h1nSDUAEEcO04wbUUCAPCW4dQWZ9O4C2lNv+Nd6NQ42mGEMIH+V1Hl9/zWXXIjKLtrFcKhfkilUeoX6b1JNt3ik92d7cupGLoXtkL7fywXbC2Ufdu0pKUwbBZKyM7+9C52KwMdu4Pu1c5bN9UfY246QGcY/tD8J89WlyICMNJktchYZMiJDUpwzWp8zBLWUlKlqU5EtgGsOTafHuwPTRUd/c+MPz29wErave9YzBwvCNpcX82F89cSfGEwtD2bCG09ZNLcUQpy5KkjpIwTdk6JJTmIS3qJIyifJ2QtCjjNIXtH76wCNnkBgAA",
         },
-        // Export for Mission [459] -  Polarized Dyes
-        [459] = new FishingTools()
+        [459] = new()
         {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACs1VTW/bMAz9KwXPNuBvW76lWVoUSLtg7k5FD4pMx0IdK5PkfqzIfx/k2IudJgtQ9LCbQJGPj08k9Q6TRospVVpNixWk7zCr6bLCSVVBqmWDFpjLOa9xf5n3Vzc5pF5CLFhILiTXb5C6Ftyo2Surmhzzvdn4b3dYt0Kw0oC1B8+cWpwoseB6c19KVKWockhdxxkh/xu6xSDxKMI5S2ZaNuueQeA6wRkKfZSoKmR6EOgO3bzzaYXMOa1OSOp6UTQSNejCrrgqZ2+oBonDA8ZhOGIc9aLTJ8xKXuhLylvexqB6Q6Ype1KQhp2MUfIRd4hKOtQF1Rxrdqo1AteJDmGisaBejyT5b5xSveuMnsRhtHfwHH4XfV/SitMndUWfhTQAI0NfnW+N7T+QiWeUkLpGs2OtHSWmIwYJezkv+eqartu6J/WqQqn6JObtc0j92Ak+sB9BJdutBbNXLelo8P4SMO9yL7IXurmpdcM1F/U15XUvj+1aMG8k3qJSdIWQAlhw13KCO1EjdAhvG4TU6HQEby6U/jTeQqLC4wzBhhP3u4zt/Z5PtkGmJa2mjZRY6y+q8gD1y2o9yvZDxUezt15XQjJsh+6FbvrHbo25sbZzE5KAWF1nZVpszNzzepVp3LQbdl9l130T+TXFDeFatj9r/qtBgwtB7niOF3u27zvEDkhR2Mug8O04cl0nIiSkSQhbC+Zc6e+FyaEgfXjsDd3a3xtMUZA+vMPu0G20MPa80wXMm5rKiwnqEmUlGjWuxqxnI9ek0CintFmVes7XZt+ZryPHWnNGKzO/Jt3OYbIWTT1wO7bGQnI4yv54yyYmcSMLyjCrzKv2xZDwzAYLtxb8Nx/ivq0+3UzZC90Yy9So2go6bK+uqcxxZ967HWvzQfNRwljuF77tIFnawTIkNmHL2Ma4cAjmSeh5EWwf+3QdxYcgJI8XC1FR873kF9/M3znCdf3YcZfMscmycO3AQ2ZTc0K3YAGhJIkdCts/1YWfqiYJAAA=",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
+            "AH4_H4sIAAAAAAAACs1VTW/bMAz9KwXPNuBvW76lWVoUSLtg7k5FD4pMx0IdK5PkfqzIfx/k2IudJgtQ9LCbQJGPj08k9Q6TRospVVpNixWk7zCr6bLCSVVBqmWDFpjLOa9xf5n3Vzc5pF5CLFhILiTXb5C6Ftyo2Surmhzzvdn4b3dYt0Kw0oC1B8+cWpwoseB6c19KVKWockhdxxkh/xu6xSDxKMI5S2ZaNuueQeA6wRkKfZSoKmR6EOgO3bzzaYXMOa1OSOp6UTQSNejCrrgqZ2+oBonDA8ZhOGIc9aLTJ8xKXuhLylvexqB6Q6Ype1KQhp2MUfIRd4hKOtQF1Rxrdqo1AteJDmGisaBejyT5b5xSveuMnsRhtHfwHH4XfV/SitMndUWfhTQAI0NfnW+N7T+QiWeUkLpGs2OtHSWmIwYJezkv+eqartu6J/WqQqn6JObtc0j92Ak+sB9BJdutBbNXLelo8P4SMO9yL7IXurmpdcM1F/U15XUvj+1aMG8k3qJSdIWQAlhw13KCO1EjdAhvG4TU6HQEby6U/jTeQqLC4wzBhhP3u4zt/Z5PtkGmJa2mjZRY6y+q8gD1y2o9yvZDxUezt15XQjJsh+6FbvrHbo25sbZzE5KAWF1nZVpszNzzepVp3LQbdl9l130T+TXFDeFatj9r/qtBgwtB7niOF3u27zvEDkhR2Mug8O04cl0nIiSkSQhbC+Zc6e+FyaEgfXjsDd3a3xtMUZA+vMPu0G20MPa80wXMm5rKiwnqEmUlGjWuxqxnI9ek0CintFmVes7XZt+ZryPHWnNGKzO/Jt3OYbIWTT1wO7bGQnI4yv54yyYmcSMLyjCrzKv2xZDwzAYLtxb8Nx/ivq0+3UzZC90Yy9So2go6bK+uqcxxZ967HWvzQfNRwljuF77tIFnawTIkNmHL2Ma4cAjmSeh5EWwf+3QdxYcgJI8XC1FR873kF9/M3znCdf3YcZfMscmycO3AQ2ZTc0K3YAGhJIkdCts/1YWfqiYJAAA=",
         },
-        // Export for Mission [460] -  Southeast Well Ecological Survey
-        [460] = new FishingTools()
+        [460] = new()
         {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1XTW/bOBD9KwbPJkBJpCT65nqTbAA3G1RZ9BD0QEkjmzAtuhSVNhv4vy+oD9ty7KQtclhsczOGM2/eDJ+G4yc0ra2eicpWs2KBJk/oohSpgqlSaGJNDWPkDueyhP1h3h9d52jix3yMbo3URtpHNPHG6Lq6+J6pOod8b3b+2xbro9bZ0oE1P3z3q8EJ4zG62twtDVRLrXI08QgZIL8M3WDwaBBBXiUzW9brM4VRj9BXGPUgWinIbF8J9Yh36Oa/zkKbXAp1hojnh+Ggx7QLu5TV8uIRqoPE7IgxYwPGYX8HYgXJUhb2g5ANb2eoekNiRbaq0IR1XQ3j57iHqLxDvRVWQpnBAZ/wOC4cdtDvQ438B2bCtsrosx5H+0f9D7rou6VQUqyqS/GgjQMYGPpygvHQ/gky/QAGTTzXpFPSDmMngYOEff8+yMWVWDeFTsuFAlP1Sdxl52gSRIQ+Yz+AirfbMbr4bo0YfHg7Au4i7nTyTWyuS1tLK3V5JWTZtwd7YzSvDXyEqhILQBOExuim4YRudAmoQ3jcAJq4Pp3Am+vK/jLerYEKTjNEGJ05bzM253s+yQYya4Sa1cZAad+oyiPUN6v1JNtnFZ/M3nhdapNB85V9E5v+shtj7qzNd8M45eNOWYnVG/ehy3KRWNg0E3ZfZae+qXmb4g7hGrZ/l/JrDQ4XZX4UMJ6HGLI4wJSFAeZ5FGAKkEWe8H0CBdqO0VxW9q/C5ajQ5P6pyeYK2BHk/DzDqVKjNvSY5o02a6H+1HrlgPpR8xnEav/xuNMKBp3tTC0O9SI3q/rgxBpdLn4mnAQH4XNYQJkL8/jTCH/oOlU77gMPP+Q7hz2/sy4DDie87ozcnMsUMT/YuZzLNXB6IVvn59Q6LSyYmagXSzuXa/e+eO3BsYybzaI27QPmfhxM6naIMn78BLtRffY1dWtAP2p6pXyCr7U0kCdW2No9am7POJbPj6nkh8Xwfudveucv7nHb4ZDKCASZIJjRHDD1WI7TwhO4EB7nURiS1I/R9ks/pbpd9H5naAfV/RM6nFiURcQ/P7MSK8zoVkGmB0PLe6k11zmUVmZCuX64PK3DdK3rcuDWvAbHm0Qw3Opil6k2hcggUW7ynN5nGWev7FNsO0b/mfV8/8j98tPmgp1l5rraNPTwseueOPezNe/dTin3QGUiCoFEoYcpcIppFBKcBmGI4zwVcZB5jPgUbcfPVOTT8wXcynK11roczWS2VDJ/19LvoSWacipCiLAXpRRTiAOckpzglDDwGWSU+v5JLbHzBczrUphRotWwjHcV/W9VlKY8ogUNcAE8xpSTDHMoCE4z4kVRWpDAg5MqCl9416R6ADNKbG0WoMt3Kf0eUooCj9GQAy5yn2FKfI5FzAX2RZiywksjylizQrW4HcV7GpIvo0TXdgmisqPPoNToItNKL5wSRkltHuBx+I8yZpDmMWWYRoGPKS0o5pxGOBMQFoIEnHkF2v4LFSMleKMUAAA=",
-            },
-            AmountRequired = 2,
-            UniqueFish = true,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-                ["Lunar Sole"] = new List<uint>()
-                {
-                    45725,
-                },
-                ["Pinkmoon Cichlid"] = new List<uint>()
-                {
-                    45724,
-                },
-                ["Silver Sturgeon"] = new List<uint>()
-                {
-                    45726,
-                },
-                ["Star Pleco"] = new List<uint>()
-                {
-                    45702,
-                    45711,
-                    45723,
-                    45769,
-                    45820,
-                    45841,
-                    45913,
-                },
-            },
+            "AH4_H4sIAAAAAAAACu1XTW/bOBD9KwbPJkBJpCT65nqTbAA3G1RZ9BD0QEkjmzAtuhSVNhv4vy+oD9ty7KQtclhsczOGM2/eDJ+G4yc0ra2eicpWs2KBJk/oohSpgqlSaGJNDWPkDueyhP1h3h9d52jix3yMbo3URtpHNPHG6Lq6+J6pOod8b3b+2xbro9bZ0oE1P3z3q8EJ4zG62twtDVRLrXI08QgZIL8M3WDwaBBBXiUzW9brM4VRj9BXGPUgWinIbF8J9Yh36Oa/zkKbXAp1hojnh+Ggx7QLu5TV8uIRqoPE7IgxYwPGYX8HYgXJUhb2g5ANb2eoekNiRbaq0IR1XQ3j57iHqLxDvRVWQpnBAZ/wOC4cdtDvQ438B2bCtsrosx5H+0f9D7rou6VQUqyqS/GgjQMYGPpygvHQ/gky/QAGTTzXpFPSDmMngYOEff8+yMWVWDeFTsuFAlP1Sdxl52gSRIQ+Yz+AirfbMbr4bo0YfHg7Au4i7nTyTWyuS1tLK3V5JWTZtwd7YzSvDXyEqhILQBOExuim4YRudAmoQ3jcAJq4Pp3Am+vK/jLerYEKTjNEGJ05bzM253s+yQYya4Sa1cZAad+oyiPUN6v1JNtnFZ/M3nhdapNB85V9E5v+shtj7qzNd8M45eNOWYnVG/ehy3KRWNg0E3ZfZae+qXmb4g7hGrZ/l/JrDQ4XZX4UMJ6HGLI4wJSFAeZ5FGAKkEWe8H0CBdqO0VxW9q/C5ajQ5P6pyeYK2BHk/DzDqVKjNvSY5o02a6H+1HrlgPpR8xnEav/xuNMKBp3tTC0O9SI3q/rgxBpdLn4mnAQH4XNYQJkL8/jTCH/oOlU77gMPP+Q7hz2/sy4DDie87ozcnMsUMT/YuZzLNXB6IVvn59Q6LSyYmagXSzuXa/e+eO3BsYybzaI27QPmfhxM6naIMn78BLtRffY1dWtAP2p6pXyCr7U0kCdW2No9am7POJbPj6nkh8Xwfudveucv7nHb4ZDKCASZIJjRHDD1WI7TwhO4EB7nURiS1I/R9ks/pbpd9H5naAfV/RM6nFiURcQ/P7MSK8zoVkGmB0PLe6k11zmUVmZCuX64PK3DdK3rcuDWvAbHm0Qw3Opil6k2hcggUW7ynN5nGWev7FNsO0b/mfV8/8j98tPmgp1l5rraNPTwseueOPezNe/dTin3QGUiCoFEoYcpcIppFBKcBmGI4zwVcZB5jPgUbcfPVOTT8wXcynK11roczWS2VDJ/19LvoSWacipCiLAXpRRTiAOckpzglDDwGWSU+v5JLbHzBczrUphRotWwjHcV/W9VlKY8ogUNcAE8xpSTDHMoCE4z4kVRWpDAg5MqCl9416R6ADNKbG0WoMt3Kf0eUooCj9GQAy5yn2FKfI5FzAX2RZiywksjylizQrW4HcV7GpIvo0TXdgmisqPPoNToItNKL5wSRkltHuBx+I8yZpDmMWWYRoGPKS0o5pxGOBMQFoIEnHkF2v4LFSMleKMUAAA=",
         },
-        // Export for Mission [461] -  Fish Sauce Ingredients
-        [461] = new FishingTools()
+        [461] = new()
         {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACq2V226jMBCGX6Waa5CAcL5Lo7SKlHarpXtV9cIxQ7BKbdY2PWyVd1+Z4CbksJVWvYMZ+5v/H4/hA6adFjOitJpVa8g/YM7JqsFp00CuZYcOmOSScdwlS5talJAHaebAnWRCMv0Oue/AQs3faNOVWO7CZv1my7oRgtYG1j8E5qnnxKkD1+19LVHVoikh9z1vRP43umdkyWiH96WYWd09nzEW+l74hSILEU2DVFsnoe/5+8uCr1UIWTLSnBHiB3E86nE4bLtiqp6/o9orHB0ojqKR4tieAXnComaVviSs120CygYKTeiTgjwauhqnx9x9ajZQ74hmyOm5SQl9Lz7ExOOGBpYk2R+cEb0dFCvicHdwcByTYfd9TRpGntQVeRHSAEYB627ijOM/kYoXlJD7pmenJj1OzUTsFbTtvGTra/Lc+57ydYNS2SLm7EvIJ4kXHqkfodLNxoH5m5ZkdA8/BZhzuRfFK2kXXHdMM8GvCeO2Pa7vwLKTeINKkTVCDuDAba8JbgVHGAjvLUJu+nSCtxRK/zfvTqLC0wrBhTP5bcU+v9NTtEi1JM2skxK5/iaXB9Rv83pS7ZHjk9X7VVdCUuwv3Stp7WH3wdJE+3sTZWYit5NVaNGae8/4utDY9h/cncth+qbye8xN93C92l+c/e7QcGFSeVXmU88lXhy7IU0SNw2j2M3CsEySSUnJagUbB5ZM6R+VqaEgf3i0geEvsAsYU9v3rYJB40MY+48XJnlRkI7ixYKvJZYMuVZjQbSqsjRMYtdfpUaQ57mkXFEXJ9kKsywKkqCCzV+y46n58QYAAA==",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
+            "AH4_H4sIAAAAAAAACq2V226jMBCGX6Waa5CAcL5Lo7SKlHarpXtV9cIxQ7BKbdY2PWyVd1+Z4CbksJVWvYMZ+5v/H4/hA6adFjOitJpVa8g/YM7JqsFp00CuZYcOmOSScdwlS5talJAHaebAnWRCMv0Oue/AQs3faNOVWO7CZv1my7oRgtYG1j8E5qnnxKkD1+19LVHVoikh9z1vRP43umdkyWiH96WYWd09nzEW+l74hSILEU2DVFsnoe/5+8uCr1UIWTLSnBHiB3E86nE4bLtiqp6/o9orHB0ojqKR4tieAXnComaVviSs120CygYKTeiTgjwauhqnx9x9ajZQ74hmyOm5SQl9Lz7ExOOGBpYk2R+cEb0dFCvicHdwcByTYfd9TRpGntQVeRHSAEYB627ijOM/kYoXlJD7pmenJj1OzUTsFbTtvGTra/Lc+57ydYNS2SLm7EvIJ4kXHqkfodLNxoH5m5ZkdA8/BZhzuRfFK2kXXHdMM8GvCeO2Pa7vwLKTeINKkTVCDuDAba8JbgVHGAjvLUJu+nSCtxRK/zfvTqLC0wrBhTP5bcU+v9NTtEi1JM2skxK5/iaXB9Rv83pS7ZHjk9X7VVdCUuwv3Stp7WH3wdJE+3sTZWYit5NVaNGae8/4utDY9h/cncth+qbye8xN93C92l+c/e7QcGFSeVXmU88lXhy7IU0SNw2j2M3CsEySSUnJagUbB5ZM6R+VqaEgf3i0geEvsAsYU9v3rYJB40MY+48XJnlRkI7ixYKvJZYMuVZjQbSqsjRMYtdfpUaQ57mkXFEXJ9kKsywKkqCCzV+y46n58QYAAA==",
         },
-        // Export for Mission [462] -  Aquatic Samples
-        [462] = new FishingTools()
+        [462] = new()
         {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACq2V227iMBCGX6Wa60TK0TncUQRVJdqtNt2rqhcmGYjVNE5tp4etePeVTbwQCltpxV2YyXzz/+Mx+YRJr/iUSiWnqzXknzBr6bLBSdNArkSPDujkgrW4S1Y2dV1BHqSZA3eCccHUB+S+A9dy9l42fYXVLqzf32xZN5yXtYaZh0A/GQ5JHbjq7muBsuZNBbnveSPyv9GGkSWjCu9bMdO6f7YKIt+LvpFgq3jTYKlOTCTyPX+/KvheBRcVo80Jnh8QMppxNJTNmaxnHyj3DMQHBuJ4ZIDYM6BPWNRspS4pMzZ0QNpAoWj5JCGPh6mS9Ct3n5oN1DuqGLblqU2JfI8cYsh4voElCfYbp1RtF8WKOKwODk4nHKrva9ow+iTn9JULDRgFrLvQGcd/YslfUUDu65kd23SS6gXZa2jHecnWV/TZ+J606waFtE302VeQh4kXfVE/QqWbjQOzdyXo6B7+FaDP5Z4Xb7S7blXPFOPtFWWtHY/rO7DoBd6glHSNkAM4cGs0wS1vEQbCR4eQ6zkd4S24VP/NuxMo8bhCcOFEftvR5Hd6ig5LJWgz7YXAVp3J5QH1bF6Pqv3i+Gh389acixLNpXujnT1sE6x01NybOIsyZ9isQvFO33vWrguFnfnD3bkctm8izmNusoczan+17KVHzQVMcOl7fuDSNArdKExDl8ar0iVelSUr4q1ISmDjwIJJ9WOle0jIHx5tYPgK7ALa1Pb3VsGg8SEiwePF5KWnipUXBX3uGpRjJcuAkNJLEpemaexGAfHdNIsjN4y9qkwSEnppAps/ch9WWuoGAAA=",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
+            "AH4_H4sIAAAAAAAACq2V227iMBCGX6Wa60TK0TncUQRVJdqtNt2rqhcmGYjVNE5tp4etePeVTbwQCltpxV2YyXzz/+Mx+YRJr/iUSiWnqzXknzBr6bLBSdNArkSPDujkgrW4S1Y2dV1BHqSZA3eCccHUB+S+A9dy9l42fYXVLqzf32xZN5yXtYaZh0A/GQ5JHbjq7muBsuZNBbnveSPyv9GGkSWjCu9bMdO6f7YKIt+LvpFgq3jTYKlOTCTyPX+/KvheBRcVo80Jnh8QMppxNJTNmaxnHyj3DMQHBuJ4ZIDYM6BPWNRspS4pMzZ0QNpAoWj5JCGPh6mS9Ct3n5oN1DuqGLblqU2JfI8cYsh4voElCfYbp1RtF8WKOKwODk4nHKrva9ow+iTn9JULDRgFrLvQGcd/YslfUUDu65kd23SS6gXZa2jHecnWV/TZ+J606waFtE302VeQh4kXfVE/QqWbjQOzdyXo6B7+FaDP5Z4Xb7S7blXPFOPtFWWtHY/rO7DoBd6glHSNkAM4cGs0wS1vEQbCR4eQ6zkd4S24VP/NuxMo8bhCcOFEftvR5Hd6ig5LJWgz7YXAVp3J5QH1bF6Pqv3i+Gh389acixLNpXujnT1sE6x01NybOIsyZ9isQvFO33vWrguFnfnD3bkctm8izmNusoczan+17KVHzQVMcOl7fuDSNArdKExDl8ar0iVelSUr4q1ISmDjwIJJ9WOle0jIHx5tYPgK7ALa1Pb3VsGg8SEiwePF5KWnipUXBX3uGpRjJcuAkNJLEpemaexGAfHdNIsjN4y9qkwSEnppAps/ch9WWuoGAAA=",
         },
-        // Export for Mission [463] -  Northwestern Water Inspection
-        [463] = new FishingTools()
+        [463] = new()
         {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1WTW/jNhD9KwbPIqAPSiJ187pJGsBJgzpFD0EOFDm0iciiS1GbTQP/9wVlq7b8sQEWCZAWvRFDzpv3ho8jvaJx68yEN66ZqDkqXtFFzcsKxlWFCmdbCJDfnOoadpuy37qWqIgpC9Cd1cZq94KKKEDXzcU3UbUS5C7sz683WDfGiIUH6xaxX3U4GQ3Q1ep+YaFZmEqiIgrDAfKPoTsMlg8ywjfJTBbt8owwEoXkDUY9iKkqEK5XQqIw2j8Wv83CWKl5dYZIFGfZoMdkm3apm8XFCzR7hdMDxmk6YJz1d8CfYLbQyn3huuPtA00fmDkunhpUpNuuZvQYdx+VbVHvuNNQC9jjkx3mZcMOxn2q1X/DhLuNM/qqh9nxQf+Tbfb9gleaPzWX/KuxHmAQ6OUkwTD+OwjzFSwqIt+kU9bOqLfAXsG+f1/0/IovO6Hjel6Bbfoi/rIlKpI8JEfsB1B0vQ7QxTdn+eDh/UPAX8S9mT3z1XXtWu20qa+4rvv24ChA09bCDTQNnwMqEArQbccJ3Zoa0BbhZQWo8H06gTc1jftpvDsLDZxmiDA6s7+p2O3v+MxWIJzl1aS1Fmr3TioPUN9N60m2R4pPVu9OXRoroHtlz3zVX3YXlD7avZuUERZsnTVzZuUfuq7nMwerbsLuVG7dN7bvI24frmP7R63/asHjIhpKzvIUcM7KFBPKBC4jLnHEhYpVzGjJKVoHaKob95vyNRpUPDz2ge3Y3wW8KFQ8vKLNYjsy0jxJzwu4gYrXYmEqzQc6/CT2jRorB3bC2/nCTfXSjzb/0ZBQOy145V+uL7Q5MF6ath4c6zp/+GqT4QSlvlJrFRcwq/wFnv52pCx9Y3al6wB9mk/hzlA/bSOf7CMT39WuofvG2trJLzfh3bFTBt+zXUxyKWNCMC1VikmaAKYsjbHMkzSJRZYoFqN1cGyj/LyAaVtzO/pFN6JtPo+P/o3G6W/9+Ku1ryg8fxUT0yzNs7FL9IEeoiUFkAxwJEWICSkTXBJGsIhYSAVLGU3oSQ9l54n/alYrkNjUoylwpXzip3HS/xPpIydSpLIyJILhMgkTTECEmJNI4YxESkS5THhWnnQTPS9gZipuR5cVt/C5rPSfHUr+D+tHQ0mL0cTyGkaX1ctHzqac0TQMlcKciByTPCoxDSHCiSQqVAkvOc3R+rEvt2X4QLLkcXRrrFs8Q+PA1qM/uQM7uq4b/+upTT38e0uAKCVFhlUKISZKAuZRSTGTZc5YQhSLQrT+Dk+y1dQPEAAA",
-            },
-            AmountRequired = 4,
-            UniqueFish = true,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-                ["Hopped-on Leaffish"] = new List<uint>()
-                {
-                    45736,
-                },
-                ["Lunar Discus"] = new List<uint>()
-                {
-                    45737,
-                },
-                ["Melancholia"] = new List<uint>()
-                {
-                    45696,
-                    45708,
-                    45735,
-                    45754,
-                    45778,
-                    45853,
-                    45938,
-                },
-                ["Solar Flarefish"] = new List<uint>()
-                {
-                    45738,
-                },
-            },
+            "AH4_H4sIAAAAAAAACu1WTW/jNhD9KwbPIqAPSiJ187pJGsBJgzpFD0EOFDm0iciiS1GbTQP/9wVlq7b8sQEWCZAWvRFDzpv3ho8jvaJx68yEN66ZqDkqXtFFzcsKxlWFCmdbCJDfnOoadpuy37qWqIgpC9Cd1cZq94KKKEDXzcU3UbUS5C7sz683WDfGiIUH6xaxX3U4GQ3Q1ep+YaFZmEqiIgrDAfKPoTsMlg8ywjfJTBbt8owwEoXkDUY9iKkqEK5XQqIw2j8Wv83CWKl5dYZIFGfZoMdkm3apm8XFCzR7hdMDxmk6YJz1d8CfYLbQyn3huuPtA00fmDkunhpUpNuuZvQYdx+VbVHvuNNQC9jjkx3mZcMOxn2q1X/DhLuNM/qqh9nxQf+Tbfb9gleaPzWX/KuxHmAQ6OUkwTD+OwjzFSwqIt+kU9bOqLfAXsG+f1/0/IovO6Hjel6Bbfoi/rIlKpI8JEfsB1B0vQ7QxTdn+eDh/UPAX8S9mT3z1XXtWu20qa+4rvv24ChA09bCDTQNnwMqEArQbccJ3Zoa0BbhZQWo8H06gTc1jftpvDsLDZxmiDA6s7+p2O3v+MxWIJzl1aS1Fmr3TioPUN9N60m2R4pPVu9OXRoroHtlz3zVX3YXlD7avZuUERZsnTVzZuUfuq7nMwerbsLuVG7dN7bvI24frmP7R63/asHjIhpKzvIUcM7KFBPKBC4jLnHEhYpVzGjJKVoHaKob95vyNRpUPDz2ge3Y3wW8KFQ8vKLNYjsy0jxJzwu4gYrXYmEqzQc6/CT2jRorB3bC2/nCTfXSjzb/0ZBQOy145V+uL7Q5MF6ath4c6zp/+GqT4QSlvlJrFRcwq/wFnv52pCx9Y3al6wB9mk/hzlA/bSOf7CMT39WuofvG2trJLzfh3bFTBt+zXUxyKWNCMC1VikmaAKYsjbHMkzSJRZYoFqN1cGyj/LyAaVtzO/pFN6JtPo+P/o3G6W/9+Ku1ryg8fxUT0yzNs7FL9IEeoiUFkAxwJEWICSkTXBJGsIhYSAVLGU3oSQ9l54n/alYrkNjUoylwpXzip3HS/xPpIydSpLIyJILhMgkTTECEmJNI4YxESkS5THhWnnQTPS9gZipuR5cVt/C5rPSfHUr+D+tHQ0mL0cTyGkaX1ctHzqac0TQMlcKciByTPCoxDSHCiSQqVAkvOc3R+rEvt2X4QLLkcXRrrFs8Q+PA1qM/uQM7uq4b/+upTT38e0uAKCVFhlUKISZKAuZRSTGTZc5YQhSLQrT+Dk+y1dQPEAAA",
         },
-
-        #endregion
-
-        #region B Rank
-
-        // Export for Mission [464] -  Hollow Harbor Water Inspection
-        [464] = new FishingTools()
+        [464] = new()
         {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACt1Xy27bOhD9FYNrCZAo6rlzffMC3DSoU2QRdEFLI5uwLLoklTQN/O8FJdGWFCVxiywuujOGM2fOjOblZzStFJ9RqeQsX6HkGZ2VdFnAtChQokQFFtKPc1bC8TEzT1cZSnAUW+hGMC6YekKJa6ErefYzLaoMsqNY6+8brM+cp2sNVv/A+leNE0QWutjdrgXINS8ylLiO00N+G7rGiMOehfMumdm62r4SGHEd8g4jA8KLAlJlIiGu43bV8PssuMgYLQxA4JIeAGnVzplcnz2B7DjyBwx9v8cwMDmnG1isWa4+UVbz1AJpBAtF041Eid9mMYhe4nZR4xb1hioGZQodPsHQLuhnDBtTwX7BjKqmEozXoTUe5NtrrW/XtGB0I8/pAxcaoCcw4XhWX/4VUv4AAiWuTpLxSXoeTMI+sdUF3daRTctVAUIaVP01M5R4oUNe0O1BRfu9hc5+KkF7nXWoMZ35W754pLurUlVMMV5eUFaafNiuheaVgM8gJV0BShCy0HXNCV3zElCL8LQDlOjEjODNuVR/jXcjQMI4Q2SjV94bj/X7kc9iB6kStJhVQkCpPijKAeqHxTrK9kXEo95rrXMuUqjb6pHuzMeuhZmW1o3ixz622spaKL7Tnc3K1ULBrh6hxyjb6puKjwmuC1ez/VayHxVoXBQtU0zS2LNDP4ptEuPAjkiI7dSPlsEShz72AO0tNGdSfcm1D4mS++famw7gQDCOX2c4LYpJYzqkec3FlhaXnG80kJktd0A3x+bRrxJ6mW1FDQ5xQz2cjPFCCV7WvddqHVowp4UE62RUx+ugzmEFZUbF00cBf5PwH69afaPYSEz4X8ri6W4N5TRV7AGuMigVS/XGGEHFgc5BY/9uBl61PCXKEeNbwXZH2n0FXUEHlRfMxpTGSPT1dPdMcwViRqvVWs3ZVi84t3kYtlV9ylSi2aD6R2dVjFwAXujHw0X45k2hzxAzCU0hf4UfFROQLRRVlV6y+s4ZVvcfFfHJRdlT7NfT6QVzWmX8EyVgvjn5w2/emaFu6EXg4MgOI5rbBOe+TbEPdhws89Qn4GZA0P67GaLtLXx/EDRz9P4ZdQcq8UPivT5SbwSTW6pYOqmNunPVfSs9hymic6J9NQrTLa/KjtrYaezHw9vH6x+ekXZciZymsCj09DORvGio4Y3n7y30v/mLcNzDf719F490pyUzndU6od193G5h/bMRH9XGqrdTaUvPz1yXeDbJ48AmnhvYUeqAHcWOkwVujP3YryutwW0p3pOAfJ9c8qLgj5NLKpZcTO6oAjG5KqU+aRgv+1cBdhy8DD3Hdr1oaZMUMptiTG28JLlHAxrnNED73xGOGoBIDgAA",
-            },
-            AmountRequired = 3,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-                ["Prismatic Fish"] = new List<uint>()
-                {
-                    45743,
-                },
-            },
+            "AH4_H4sIAAAAAAAACt1Xy27bOhD9FYNrCZAo6rlzffMC3DSoU2QRdEFLI5uwLLoklTQN/O8FJdGWFCVxiywuujOGM2fOjOblZzStFJ9RqeQsX6HkGZ2VdFnAtChQokQFFtKPc1bC8TEzT1cZSnAUW+hGMC6YekKJa6ErefYzLaoMsqNY6+8brM+cp2sNVv/A+leNE0QWutjdrgXINS8ylLiO00N+G7rGiMOehfMumdm62r4SGHEd8g4jA8KLAlJlIiGu43bV8PssuMgYLQxA4JIeAGnVzplcnz2B7DjyBwx9v8cwMDmnG1isWa4+UVbz1AJpBAtF041Eid9mMYhe4nZR4xb1hioGZQodPsHQLuhnDBtTwX7BjKqmEozXoTUe5NtrrW/XtGB0I8/pAxcaoCcw4XhWX/4VUv4AAiWuTpLxSXoeTMI+sdUF3daRTctVAUIaVP01M5R4oUNe0O1BRfu9hc5+KkF7nXWoMZ35W754pLurUlVMMV5eUFaafNiuheaVgM8gJV0BShCy0HXNCV3zElCL8LQDlOjEjODNuVR/jXcjQMI4Q2SjV94bj/X7kc9iB6kStJhVQkCpPijKAeqHxTrK9kXEo95rrXMuUqjb6pHuzMeuhZmW1o3ixz622spaKL7Tnc3K1ULBrh6hxyjb6puKjwmuC1ez/VayHxVoXBQtU0zS2LNDP4ptEuPAjkiI7dSPlsEShz72AO0tNGdSfcm1D4mS++famw7gQDCOX2c4LYpJYzqkec3FlhaXnG80kJktd0A3x+bRrxJ6mW1FDQ5xQz2cjPFCCV7WvddqHVowp4UE62RUx+ugzmEFZUbF00cBf5PwH69afaPYSEz4X8ri6W4N5TRV7AGuMigVS/XGGEHFgc5BY/9uBl61PCXKEeNbwXZH2n0FXUEHlRfMxpTGSPT1dPdMcwViRqvVWs3ZVi84t3kYtlV9ylSi2aD6R2dVjFwAXujHw0X45k2hzxAzCU0hf4UfFROQLRRVlV6y+s4ZVvcfFfHJRdlT7NfT6QVzWmX8EyVgvjn5w2/emaFu6EXg4MgOI5rbBOe+TbEPdhws89Qn4GZA0P67GaLtLXx/EDRz9P4ZdQcq8UPivT5SbwSTW6pYOqmNunPVfSs9hymic6J9NQrTLa/KjtrYaezHw9vH6x+ekXZciZymsCj09DORvGio4Y3n7y30v/mLcNzDf719F490pyUzndU6od193G5h/bMRH9XGqrdTaUvPz1yXeDbJ48AmnhvYUeqAHcWOkwVujP3YryutwW0p3pOAfJ9c8qLgj5NLKpZcTO6oAjG5KqU+aRgv+1cBdhy8DD3Hdr1oaZMUMptiTG28JLlHAxrnNED73xGOGoBIDgAA",
         },
-        // Export for Mission [465] -  Preserved Foodstuffs
-        [465] = new FishingTools()
+        [465] = new()
         {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACs1VTU/jMBD9K2jOiZTvOLmVqkVIhUVb9oQ4TJNJYxHirO3Asqj/feU02Tal3UqIw96s8fjNe+Pn8TtMWi2mqLSaFmtI32FW46qiSVVBqmVLFpjNBa9pt5kPW9c5pB5LLLiTXEiu3yB1LbhWs19Z1eaU78Imf7PFuhEiKw1Yt/DMqsOJmAVXzX0pSZWiyiF1HWeE/G/oDiOJRyecs2SmZft8QljgOsEZRgOIqCrK9KAkcB13P807z0LInGN1gojrRdGox0F/bM5VOXsjtVc4PGAchiPG0XAH+ETLkhf6EnnH2wTUEFhqzJ4UpGHf1Yh9xN1HTXrUO9Sc6uyUUwLXiQ5honFDvQFJ8t80Rb01ykDi8LR3cB1+f/q+xIrjk5rji5AGYBQY1PnWOP6dMvFCElLX9OyY0yNmHLFXcGjnJV9f4XOne1KvK5JqKGLuPofUj53gA/sRFNtsLJj90hJH7/AvAXMv92L5is11rVuuuaivkNdDe2zXgkUr6YaUwjVBCmDBbccJbkVN0CO8NQSp6dMRvIVQ+tN4d5IUHWcINpzY31bs9nd8lg1lWmI1baWkWn+RygPUL9N6lO0HxUerd1lzITPqHt0rNsNld8HcRLt3EyahZ/XOWmrRmHfP6/VSU9MN3J3K3n0T+TXi9uE6tj9q/rMlgwt54FFY+JEdx5FjBxnLbOZHhb2Ks8TJMUDPd2FjwYIr/a0wNRSkD49DoP8FdgEjCtKHd9gu+okWxgE7LWDR1igvpoIqzLDW5UiMmc6mW5NCk5xiuy71gj+bcWc+kpxqzTOszPM11bYJk2fR1ntpx6ZYmBy+ZH88ZJkp3MoCM1pW5lIHLUl4ZoCFGwv+m+9x56pPe2n5io2JTE1Xu4buu6v3lFluw7u0Yy7f857rMgfJITtZFY4dOC6zMY58G1mx8rzc8YMkgc3jUK6n+BBE4eNFF5IvlF/MhciVbotCjZ29YlGMOfPsmLmJHTBiNovj0PYwCoIQCzdOXNj8AX/IXB46CQAA",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
+            "AH4_H4sIAAAAAAAACs1VTU/jMBD9K2jOiZTvOLmVqkVIhUVb9oQ4TJNJYxHirO3Asqj/feU02Tal3UqIw96s8fjNe+Pn8TtMWi2mqLSaFmtI32FW46qiSVVBqmVLFpjNBa9pt5kPW9c5pB5LLLiTXEiu3yB1LbhWs19Z1eaU78Imf7PFuhEiKw1Yt/DMqsOJmAVXzX0pSZWiyiF1HWeE/G/oDiOJRyecs2SmZft8QljgOsEZRgOIqCrK9KAkcB13P807z0LInGN1gojrRdGox0F/bM5VOXsjtVc4PGAchiPG0XAH+ETLkhf6EnnH2wTUEFhqzJ4UpGHf1Yh9xN1HTXrUO9Sc6uyUUwLXiQ5honFDvQFJ8t80Rb01ykDi8LR3cB1+f/q+xIrjk5rji5AGYBQY1PnWOP6dMvFCElLX9OyY0yNmHLFXcGjnJV9f4XOne1KvK5JqKGLuPofUj53gA/sRFNtsLJj90hJH7/AvAXMv92L5is11rVuuuaivkNdDe2zXgkUr6YaUwjVBCmDBbccJbkVN0CO8NQSp6dMRvIVQ+tN4d5IUHWcINpzY31bs9nd8lg1lWmI1baWkWn+RygPUL9N6lO0HxUerd1lzITPqHt0rNsNld8HcRLt3EyahZ/XOWmrRmHfP6/VSU9MN3J3K3n0T+TXi9uE6tj9q/rMlgwt54FFY+JEdx5FjBxnLbOZHhb2Ks8TJMUDPd2FjwYIr/a0wNRSkD49DoP8FdgEjCtKHd9gu+okWxgE7LWDR1igvpoIqzLDW5UiMmc6mW5NCk5xiuy71gj+bcWc+kpxqzTOszPM11bYJk2fR1ntpx6ZYmBy+ZH88ZJkp3MoCM1pW5lIHLUl4ZoCFGwv+m+9x56pPe2n5io2JTE1Xu4buu6v3lFluw7u0Yy7f857rMgfJITtZFY4dOC6zMY58G1mx8rzc8YMkgc3jUK6n+BBE4eNFF5IvlF/MhciVbotCjZ29YlGMOfPsmLmJHTBiNovj0PYwCoIQCzdOXNj8AX/IXB46CQAA",
         },
-        // Export for Mission [466] -  Hollow Harbor Ecological Survey
-        [466] = new FishingTools()
+        [466] = new()
         {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1YTW/bOBD9KwbPJkBKpCT65nqTNoDbBnUWewh6GJGULUQWXYpqmy383wvqI5E/lGAXwW53kZs8HL55M3yaofUDzWtnFlC5apGt0ewHuighLfS8KNDM2VpPkV9c5qV+XFT90pVCsyARU3Rtc2Nzd49mdIquqovvsqiVVo9m779vsd4bIzcerHkI/FODEyVT9HZ3s7G62phCoRkl5AD5aegGQ8QHO8izZBabejuSGKOEPcOoBzFFoaXrM2GU0KFb8DwLY1UOxQgRGkTRQY1Zt+0yrzYX97oaBOZHjDk/YBz1ZwB3erXJM/cG8oa3N1S9YeVA3lVoxruqRskp7hBVdKjX4HJdSj3gEx3viw4rGPRbbf6nXoBrldFHPd4dHNU/7HbfbKDI4a66hK/GeoADQ59OOD20f9LSfNUWzagv0jlpR4mXwCBgX783+fotbJtE5+W60Lbqg/jDVmgWxoSdsD+ASvb7Kbr47ix0L56v/I1ZfYPdVenq3OWmfAt52dcD0yla1la/11UFa41mCE3Rh4YE+mBKjaYtwv1Oo5kvzBm8panc38a7trrS5xkijEbW24jN+iOf1U5LZ6FY1Nbq0r1QlkeoL5brWbYnGZ+N3ni1Alk5s/Pva16uV07vmkb5yL0T0dy+DOUhXMPh9zL/UmuPi3QaEqYyhdNQUcxUHOEkJRSnEDIiYsXjiKD9FC3zyn3MfIwKzW5befoEHggKMc5wXhSTdusxzQ/GbqF4Z8ydB+o7xh8amt/e7rNo3BmNfWfpfVbOmnJ9xouEA6+lXutSgb0fc/zN1GlxPmAQiQeHkWhDl/FQrdeNzXdjkWIehA8uY7EOnJ6I1vl5ic0zp+0C6vXGLfOt7+20XTjWXjPVa9sOD/8w6JJtA+PidPw9Mcn8CO7f+v54P+kvdW61WjlwtR8ofsa/nvn/6cwHnQWAUBryAPMskZjRgGIhOMFhRnmgSMZikGj/uW8t3T3w9sHQdpfbH2jYZhiP+ROtcFmXYCcLSM02hYNmQ5+qzpXSpcslFL4kPlTrMN+aujxw8wTE8SAPDy9ViY9U2wykXhWwe2Qu+DP3F76fol/mOuwHR3sdbG9Aj9NpmBEbP4uFqba5nNyAhdLVBaAB6MIXthVmZ/nkx1VnbgMOJ1g3t/xjax4AnFH2QIWEJ2EoSYhZFmSYgWQY0izDJKBSBkpKEodoPz1RGSPjmb03plznRfEqsFeBIQiDlLIIcJoSgZmigJMEAhyJOOVZRrUm4pzAeDCe2ccdFJML/Sqwf0BgfPwYLj3Vb+C0ncyt21hT1Fb/OyrL4iBmIosxZTHFjGUaAyQaa65lyOMgCnh6VmXhc8PyOrdga1m/au1Va63WIuABCwXghCuCmUwoTiPFsYjCFEiapIE+PzLF0yPTGnk3WUCp7n8drZ370Pcfk96p1P7yx4LVicZeRkmKZJrFIsFCCoZZHAksJM2w5kwIJZJMd38BWtyO4i2Los+Td6YozLfJO7CpsZMLaQqz9kKYrGr7VXsJDb9iJCEkioZYUQmYaQhwEpMQhwFnStMAlGJo/xM2YS3m3hYAAA==",
-            },
-            AmountRequired = 3,
-            UniqueFish = true,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-                ["Lunar Cabomba"] = new List<uint>()
-                {
-                    45751,
-                },
-                ["Lunar Pirarucu"] = new List<uint>()
-                {
-                    45753,
-                },
-                ["Moongill"] = new List<uint>()
-                {
-                    45740,
-                    45750,
-                    45790,
-                    45800,
-                    45878,
-                    45930,
-                },
-                ["Moonrock Candy"] = new List<uint>()
-                {
-                    45739,
-                    45749,
-                    45789,
-                    45799,
-                    45871,
-                    45877,
-                    45929,
-                },
-                ["Opal Eel"] = new List<uint>()
-                {
-                    45752,
-                },
-            },
+            "AH4_H4sIAAAAAAAACu1YTW/bOBD9KwbPJkBKpCT65nqTNoDbBnUWewh6GJGULUQWXYpqmy383wvqI5E/lGAXwW53kZs8HL55M3yaofUDzWtnFlC5apGt0ewHuighLfS8KNDM2VpPkV9c5qV+XFT90pVCsyARU3Rtc2Nzd49mdIquqovvsqiVVo9m779vsd4bIzcerHkI/FODEyVT9HZ3s7G62phCoRkl5AD5aegGQ8QHO8izZBabejuSGKOEPcOoBzFFoaXrM2GU0KFb8DwLY1UOxQgRGkTRQY1Zt+0yrzYX97oaBOZHjDk/YBz1ZwB3erXJM/cG8oa3N1S9YeVA3lVoxruqRskp7hBVdKjX4HJdSj3gEx3viw4rGPRbbf6nXoBrldFHPd4dHNU/7HbfbKDI4a66hK/GeoADQ59OOD20f9LSfNUWzagv0jlpR4mXwCBgX783+fotbJtE5+W60Lbqg/jDVmgWxoSdsD+ASvb7Kbr47ix0L56v/I1ZfYPdVenq3OWmfAt52dcD0yla1la/11UFa41mCE3Rh4YE+mBKjaYtwv1Oo5kvzBm8panc38a7trrS5xkijEbW24jN+iOf1U5LZ6FY1Nbq0r1QlkeoL5brWbYnGZ+N3ni1Alk5s/Pva16uV07vmkb5yL0T0dy+DOUhXMPh9zL/UmuPi3QaEqYyhdNQUcxUHOEkJRSnEDIiYsXjiKD9FC3zyn3MfIwKzW5befoEHggKMc5wXhSTdusxzQ/GbqF4Z8ydB+o7xh8amt/e7rNo3BmNfWfpfVbOmnJ9xouEA6+lXutSgb0fc/zN1GlxPmAQiQeHkWhDl/FQrdeNzXdjkWIehA8uY7EOnJ6I1vl5ic0zp+0C6vXGLfOt7+20XTjWXjPVa9sOD/8w6JJtA+PidPw9Mcn8CO7f+v54P+kvdW61WjlwtR8ofsa/nvn/6cwHnQWAUBryAPMskZjRgGIhOMFhRnmgSMZikGj/uW8t3T3w9sHQdpfbH2jYZhiP+ROtcFmXYCcLSM02hYNmQ5+qzpXSpcslFL4kPlTrMN+aujxw8wTE8SAPDy9ViY9U2wykXhWwe2Qu+DP3F76fol/mOuwHR3sdbG9Aj9NpmBEbP4uFqba5nNyAhdLVBaAB6MIXthVmZ/nkx1VnbgMOJ1g3t/xjax4AnFH2QIWEJ2EoSYhZFmSYgWQY0izDJKBSBkpKEodoPz1RGSPjmb03plznRfEqsFeBIQiDlLIIcJoSgZmigJMEAhyJOOVZRrUm4pzAeDCe2ccdFJML/Sqwf0BgfPwYLj3Vb+C0ncyt21hT1Fb/OyrL4iBmIosxZTHFjGUaAyQaa65lyOMgCnh6VmXhc8PyOrdga1m/au1Va63WIuABCwXghCuCmUwoTiPFsYjCFEiapIE+PzLF0yPTGnk3WUCp7n8drZ370Pcfk96p1P7yx4LVicZeRkmKZJrFIsFCCoZZHAksJM2w5kwIJZJMd38BWtyO4i2Los+Td6YozLfJO7CpsZMLaQqz9kKYrGr7VXsJDb9iJCEkioZYUQmYaQhwEpMQhwFnStMAlGJo/xM2YS3m3hYAAA==",
         },
-        // Export for Mission [467] -  Absolute Specimen
-        [467] = new FishingTools()
+        [467] = new()
         {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1XS2/bOBD+KwbPJiBRpCT65niTbAAnDeos9hD0QIkjm4gsuhSVNhv4vy+oh235ERdBDkWRmzyc+ebBjzPjVzSurJ6I0paTbI5Gr+iyEEkO4zxHI2sqGCJ3OFUFbA9ld3Qj0YjEfIjujdJG2Rc08ofoprz8meaVBLkVO/11g3WrdbpwYPUHcV81ThgP0fXqYWGgXOhcopHveT3kt6FrDB71LLyzwUwW1fJEYtT36JmIOhCd55Da0zj+rhU5H5Q2Uon8BJ5PwrBXctqaXalycfkCZVdR6ntsLwHGegmE3ZWIJ5gtVGYvhKrTcIKyE8ysSJ9KNGJtkcP4EHcXlbeo98IqKFLYiSfctwv7BSWdqVH/wUTYhijHWBfGB2Bk73aCFuxhIXIlnsor8ayNw+sJuuyCYV/+FVL9DAaNfFezEyHQnsOunBdqfi2Wdd7jYp6DKTsn7u4lGgWRRw+i70HF6/UQXf60RvSe5SYAdy8PevZDrG4KWymrdHEtVNGVGvtDNK0M3EJZijmgEUJDdFfHhO50AahFeFkBGrk6HcGb6tK+G+/eQAnHI0QYnThvPNbn23hmK0itEfmkMgYK+0FZ7qF+WK5Hoz3I+Kj3WutKmxTqR/dDrLrLroXSSetnxDgLhi2zZlav3LtXxXxmYVX3322WLfvG5mOS24Wro/2nUN8rcLiIxiTJZCpxlGQcU8ESLEjs4YCHkERMCj/jaD1EU1XaL5nzUaLR42vtzSWwaRJNdqdinFaFMIOpMM/Cod1psxT531o/Ofuu4fwLov7t5CXYzdPJRF5C95bbw906t6ImeepHrpF1mDNrdDH/AFQv2EGdwhwKKczL9on/IsJfukry/UwbDRLyjcJB2IcqvRiOaD0YtTrlKWIk2Kic8tVTesNbq+coPc4smImo5gs7VUs3k/zmYJ/r9XJSmWbouY+ddn6kZwcR44dD/Y2B7BaLrj11NPsK3ytlQM6ssJWbi25zOcG9X+PSeW58UuBdFHjvne80tszzAiJlggNOBaaCSJyk1MNZ5ntBmskw4xKtv3Wdrd1uHzeCprk9vqJ+l4tYfK7LXah0oUyvI/tvFedGQmFVKnJXEeepURgvdVX01Oouu79/BP3VMHaeKpOJFGa5a0Xb9nxm7WLrIfptdvztLHz3BHTGTjJxZawruDsT0QiNk1LnlYWBG+tqCQVBjVWjt7U7xt4+05I4kx6mWSIxZczHCWMEe4HPIIn8iMYJWg8PmES90xndal3MVZ5/suh3ZxF+H2kYAy6In2AWiRTTLCA45jHFIXAphKScU+8YaRg5ncCXlcgHl/BJmj+VNFEig9QHgTkkHNM0oZjLFDAECYkJDwkXRzvN+c38XhlhqrT6pM4fSp2QxyEjjGAmEsA0iCPMU8GxECBIFmZ+GPF6HWpw2xAfaRh9GxwMygEeXGkt+/8kgcQipUGKI8kIpjT0cML9GGckC4UMEkZJiNb/Aw5f6V25FAAA",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
+            "AH4_H4sIAAAAAAAACu1XS2/bOBD+KwbPJiBRpCT65niTbAAnDeos9hD0QIkjm4gsuhSVNhv4vy+oh235ERdBDkWRmzyc+ebBjzPjVzSurJ6I0paTbI5Gr+iyEEkO4zxHI2sqGCJ3OFUFbA9ld3Qj0YjEfIjujdJG2Rc08ofoprz8meaVBLkVO/11g3WrdbpwYPUHcV81ThgP0fXqYWGgXOhcopHveT3kt6FrDB71LLyzwUwW1fJEYtT36JmIOhCd55Da0zj+rhU5H5Q2Uon8BJ5PwrBXctqaXalycfkCZVdR6ntsLwHGegmE3ZWIJ5gtVGYvhKrTcIKyE8ysSJ9KNGJtkcP4EHcXlbeo98IqKFLYiSfctwv7BSWdqVH/wUTYhijHWBfGB2Bk73aCFuxhIXIlnsor8ayNw+sJuuyCYV/+FVL9DAaNfFezEyHQnsOunBdqfi2Wdd7jYp6DKTsn7u4lGgWRRw+i70HF6/UQXf60RvSe5SYAdy8PevZDrG4KWymrdHEtVNGVGvtDNK0M3EJZijmgEUJDdFfHhO50AahFeFkBGrk6HcGb6tK+G+/eQAnHI0QYnThvPNbn23hmK0itEfmkMgYK+0FZ7qF+WK5Hoz3I+Kj3WutKmxTqR/dDrLrLroXSSetnxDgLhi2zZlav3LtXxXxmYVX3322WLfvG5mOS24Wro/2nUN8rcLiIxiTJZCpxlGQcU8ESLEjs4YCHkERMCj/jaD1EU1XaL5nzUaLR42vtzSWwaRJNdqdinFaFMIOpMM/Cod1psxT531o/Ofuu4fwLov7t5CXYzdPJRF5C95bbw906t6ImeepHrpF1mDNrdDH/AFQv2EGdwhwKKczL9on/IsJfukry/UwbDRLyjcJB2IcqvRiOaD0YtTrlKWIk2Kic8tVTesNbq+coPc4smImo5gs7VUs3k/zmYJ/r9XJSmWbouY+ddn6kZwcR44dD/Y2B7BaLrj11NPsK3ytlQM6ssJWbi25zOcG9X+PSeW58UuBdFHjvne80tszzAiJlggNOBaaCSJyk1MNZ5ntBmskw4xKtv3Wdrd1uHzeCprk9vqJ+l4tYfK7LXah0oUyvI/tvFedGQmFVKnJXEeepURgvdVX01Oouu79/BP3VMHaeKpOJFGa5a0Xb9nxm7WLrIfptdvztLHz3BHTGTjJxZawruDsT0QiNk1LnlYWBG+tqCQVBjVWjt7U7xt4+05I4kx6mWSIxZczHCWMEe4HPIIn8iMYJWg8PmES90xndal3MVZ5/suh3ZxF+H2kYAy6In2AWiRTTLCA45jHFIXAphKScU+8YaRg5ncCXlcgHl/BJmj+VNFEig9QHgTkkHNM0oZjLFDAECYkJDwkXRzvN+c38XhlhqrT6pM4fSp2QxyEjjGAmEsA0iCPMU8GxECBIFmZ+GPF6HWpw2xAfaRh9GxwMygEeXGkt+/8kgcQipUGKI8kIpjT0cML9GGckC4UMEkZJiNb/Aw5f6V25FAAA",
         },
-        // Export for Mission [468] -  Aetherochemical Creatures
-        [468] = new FishingTools()
+        [468] = new()
         {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1WS2/jOAz+K4HONmDZsvy4ZbKdboFMt2iy2EMxB9miY6GOlZHl6XSL/PeB/EjsNG52ih7msDebIj9+pCiSL2hea7lgla4W2QbFL+iqZEkB86JAsVY1WMgcLkUJx0PeH91wFLthZKE7JaQS+hnF2EI31dWPtKg58KPY6O9brC9SprkBaz5c89Xg0NBC17t1rqDKZcFRjB1nhPw2dIMRBSML5yKZRV5vewYEO+QChd5KFgWkeiIjBDt4aOVeZiEVF6yYwMMupaMck87ss6jyq2eoBgH4JwH4/igA2t8Be4RVLjL9iYkmDCOoesFKs/SxQrHfZZWGr3GHqFGHese0gDKdqhSCHXoKQ8f5dXskJf6FBdNtofQkTq3dk9vxOut1zgrBHqvP7LtUBmAk6KPzrLH8HlL5HRSKscnZuUqnoSmQgcM+nZ/E5pptm7jn5aYAVfVOzN1zFHuBQ16xH0GF+72Frn5oxbp3aC5iLVdPbHdT6lpoIctrJso+Hza20LJW8AWqim0AxQhZ6LYhgW5lCchqEZ53gGKTmDN4S1npd+PdKajgPENko4nz1mNzfuSz2kGqFSsWtVJQ6g+K8gT1w2I9y/ZVxGe9N1ptgay03JnnK8rNSsOu6ZtH7l0RzdXHUB7CNRz+LsW3GgwuiigjLAqx7WZOZpOUhnbIA88mqUOJw1lKI472FlqKSv+VGR8Vih/a8jQBHAhG0TTDeVHMWtNTmrdSbVnxp5SPBqhvIP8Aa/6NvAJ9eIsZKyro32Z3aALsX2knauEJDkxj6jFXWslyMOEumzvewHwJGyg5U8+/jPCHrJPiNKRWw6XRQeHIb1JlxOGM1lqJ3ZSnwHe9g8qUr5HSG946PVPE80yDWrB6k+ul2JphgtuD0+pu1ohatdPKfAz68Jlm6wV+9HoavzFJzQrQt5m+nu7hWy0U8JVmujYDzewYE0V2oWj+c238XwLvKoH33vmglTkh8bMA+7abRoFNiJPYjETETljmpwSo40YE7b/2vazbQx8OgradPbygYV8jfkC96c52z55my7pkaraWtWllZlEeNjn8VpJuOJRapKwwmTEeW4X5VtblQO3cLuVHp/uEN171QuO4VhlLYVWYDtXHE/kX1ih/b6HfZkk/DsV3j8LVE9sZycJktUnocDh2I9F8tuKj2rkaHtSbRzDHicvthPHAJl7m2QmPsE29gCYOdqmDw6beWtyO4gOh4dfZHHQOSqY5bM39zxYKmG6exsgF+OCRhGc2D2lkE8apHeHEs33m0IBgL8Suj/Y/AaLaHNTFDQAA",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
+            "AH4_H4sIAAAAAAAACu1WS2/jOAz+K4HONmDZsvy4ZbKdboFMt2iy2EMxB9miY6GOlZHl6XSL/PeB/EjsNG52ih7msDebIj9+pCiSL2hea7lgla4W2QbFL+iqZEkB86JAsVY1WMgcLkUJx0PeH91wFLthZKE7JaQS+hnF2EI31dWPtKg58KPY6O9brC9SprkBaz5c89Xg0NBC17t1rqDKZcFRjB1nhPw2dIMRBSML5yKZRV5vewYEO+QChd5KFgWkeiIjBDt4aOVeZiEVF6yYwMMupaMck87ss6jyq2eoBgH4JwH4/igA2t8Be4RVLjL9iYkmDCOoesFKs/SxQrHfZZWGr3GHqFGHese0gDKdqhSCHXoKQ8f5dXskJf6FBdNtofQkTq3dk9vxOut1zgrBHqvP7LtUBmAk6KPzrLH8HlL5HRSKscnZuUqnoSmQgcM+nZ/E5pptm7jn5aYAVfVOzN1zFHuBQ16xH0GF+72Frn5oxbp3aC5iLVdPbHdT6lpoIctrJso+Hza20LJW8AWqim0AxQhZ6LYhgW5lCchqEZ53gGKTmDN4S1npd+PdKajgPENko4nz1mNzfuSz2kGqFSsWtVJQ6g+K8gT1w2I9y/ZVxGe9N1ptgay03JnnK8rNSsOu6ZtH7l0RzdXHUB7CNRz+LsW3GgwuiigjLAqx7WZOZpOUhnbIA88mqUOJw1lKI472FlqKSv+VGR8Vih/a8jQBHAhG0TTDeVHMWtNTmrdSbVnxp5SPBqhvIP8Aa/6NvAJ9eIsZKyro32Z3aALsX2knauEJDkxj6jFXWslyMOEumzvewHwJGyg5U8+/jPCHrJPiNKRWw6XRQeHIb1JlxOGM1lqJ3ZSnwHe9g8qUr5HSG946PVPE80yDWrB6k+ul2JphgtuD0+pu1ohatdPKfAz68Jlm6wV+9HoavzFJzQrQt5m+nu7hWy0U8JVmujYDzewYE0V2oWj+c238XwLvKoH33vmglTkh8bMA+7abRoFNiJPYjETETljmpwSo40YE7b/2vazbQx8OgradPbygYV8jfkC96c52z55my7pkaraWtWllZlEeNjn8VpJuOJRapKwwmTEeW4X5VtblQO3cLuVHp/uEN171QuO4VhlLYVWYDtXHE/kX1ih/b6HfZkk/DsV3j8LVE9sZycJktUnocDh2I9F8tuKj2rkaHtSbRzDHicvthPHAJl7m2QmPsE29gCYOdqmDw6beWtyO4gOh4dfZHHQOSqY5bM39zxYKmG6exsgF+OCRhGc2D2lkE8apHeHEs33m0IBgL8Suj/Y/AaLaHNTFDQAA",
         },
-        // Export for Mission [469] -  Westward Ecological Survey
-        [469] = new FishingTools()
+        [469] = new()
         {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1YTW/bOBD9KwbP5kKkSEryLfGm3QBuN6iz6CEoFhQ5soXIoktRabOF//uCkhVb/ojTIFi03dxkcubNm9HTcOhv6Kx2ZiwrV42zGRp9QxelTAs4Kwo0craGIfKbk7yEzabuti41GtE4GaIrmxubu3s0IkN0WV18VUWtQW+Wvf2qxXpnjJp7sOaB+qcGR8RD9HZ5PbdQzU2h0YgEQQ/5cegGI4l6HsFJMuN5vTiSGCMBO8GoAzFFAcp1mTASkG0zepqFsTqXxREihArRqzFbu73Jq/nFPVRbgfkOY857jEX3DuQtTOd55s5l3vD2C1W3MHVS3VZoxNdVFfE+7jZqska9ki6HUsEWH7HrJ/oVpJ2rzf+BsXStMrqou950p/7h2vt6Lotc3lZv5J2xHqC30KUTDvvrH0CZO7BoRHyRDklbxF4CWwG7+p3ns7dy0SR6Vs4KsFUXxL9sjUZhFLA99j2oeLUaoouvzsr1h+crf22mX+TysnR17nJTvpV52dUDkyGa1BbeQVXJGaARQkP0viGB3psS0LBFuF8CGvnCHMCbmMo9G+/KQgWHGSKMjuy3EZv9DZ/pEpSzshjX1kLpXijLHdQXy/Ug272MD0ZvrFqBTJ1Z+u81L2dTB8umUW64r0V0Zl+G8jZcw+GvMv9cg8dFJGWpjpXCQgcKM84FliJNsQKZZZQTQuMErYZoklfuz8zHqNDoppWnT+Dh4+YJp8c5jk21MIW0d9KDvTd2IYs/jLn17l2f+Aiy+d1+en63Auf5dx/heqlNkpHIN5rOeeqsKWff4x6EW+4TmEGppb3/boTfTZ0WD9x7FlQkDwYbfkdNehwOWF3bfHksUsRp+GByLFbP6JFoazuv0bPMgR3LejZ3k3zhDwfSbuyKtxkLatuePv5hq822HZAn++fnI0ehP8O7ttEp5QN8rnMLeuqkq/2J5IeEXfk8TSVPFsPrO/9P3/lWa4pVymSgAsx1EGOWZClOmUhxTCnlGRNEJhSthod7UXi8F03qUtrB5GnN6FVNP7OaXjvI/7qDKEGIikiG4yiWmKWaYklJhGUaJ4KmImaUoNWnbrpZX0VvHhbapnLzDfW7SyTEqe5ybk35DwyuClCmN5uRx0p0qaF0uZKFr4uP1xqcLUxd9syaHrd7oQj7l7vYR6ptJhVMCz/DHL7W8oSfuFbx1RD9MLd0P461t9Q2h83Q/KxJtIMb+wo3xd0enNEIydKUf98wkWDyafARKvdFWj24UKYwM/+mBtPa3sE9aqFa5w3YIc1v6TNkLBEsI5iGhGMWQIolpwJLHUcqUFEWBX743tdffPJ0q8tZ5p1etffzau+43H4jzxOcJDLJ0oDhJAwVZpD5pyTAOhRKMCCh4uKg4NjxpM6LGhbGlIOJkepVcC8puH2Bfff/ACdFhp+npEiRWBEVYkF0hFmoOE7TOMKJppApIDqg9KCS+COtC+QyL2c/mpB+3Vb19EvSvoy6lQ9bsmljvYzAqEoSGQcJjsMgxIwmHCdacawh1EGU6YiS8KDAouNJTZ209n4wdXk5s9If2q8S+xWbUxqliQ5khMM4AcyopjgNCcGcCtBK8igI02bub3HXFP2Ud2LG2/53gtNMk1RjoQAwi4IYS64YJjTmQUYlialGq38BoSs69lEbAAA=",
-            },
-            AmountRequired = 4,
-            UniqueFish = true,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-                ["Bluemoon Loach"] = new List<uint>()
-                {
-                    45699,
-                    45719,
-                    45731,
-                    45764,
-                    45784,
-                    45810,
-                    45918,
-                    45935,
-                },
-                ["Leaping Loach"] = new List<uint>()
-                {
-                    45765,
-                },
-                ["Lunar Bronze Pleco"] = new List<uint>()
-                {
-                    45766,
-                },
-                ["Lunar Lungfish"] = new List<uint>()
-                {
-                    45768,
-                },
-                ["Starry Stingray"] = new List<uint>()
-                {
-                    45767,
-                },
-            },
+            "AH4_H4sIAAAAAAAACu1YTW/bOBD9KwbP5kKkSEryLfGm3QBuN6iz6CEoFhQ5soXIoktRabOF//uCkhVb/ojTIFi03dxkcubNm9HTcOhv6Kx2ZiwrV42zGRp9QxelTAs4Kwo0craGIfKbk7yEzabuti41GtE4GaIrmxubu3s0IkN0WV18VUWtQW+Wvf2qxXpnjJp7sOaB+qcGR8RD9HZ5PbdQzU2h0YgEQQ/5cegGI4l6HsFJMuN5vTiSGCMBO8GoAzFFAcp1mTASkG0zepqFsTqXxREihArRqzFbu73Jq/nFPVRbgfkOY857jEX3DuQtTOd55s5l3vD2C1W3MHVS3VZoxNdVFfE+7jZqska9ki6HUsEWH7HrJ/oVpJ2rzf+BsXStMrqou950p/7h2vt6Lotc3lZv5J2xHqC30KUTDvvrH0CZO7BoRHyRDklbxF4CWwG7+p3ns7dy0SR6Vs4KsFUXxL9sjUZhFLA99j2oeLUaoouvzsr1h+crf22mX+TysnR17nJTvpV52dUDkyGa1BbeQVXJGaARQkP0viGB3psS0LBFuF8CGvnCHMCbmMo9G+/KQgWHGSKMjuy3EZv9DZ/pEpSzshjX1kLpXijLHdQXy/Ug272MD0ZvrFqBTJ1Z+u81L2dTB8umUW64r0V0Zl+G8jZcw+GvMv9cg8dFJGWpjpXCQgcKM84FliJNsQKZZZQTQuMErYZoklfuz8zHqNDoppWnT+Dh4+YJp8c5jk21MIW0d9KDvTd2IYs/jLn17l2f+Aiy+d1+en63Auf5dx/heqlNkpHIN5rOeeqsKWff4x6EW+4TmEGppb3/boTfTZ0WD9x7FlQkDwYbfkdNehwOWF3bfHksUsRp+GByLFbP6JFoazuv0bPMgR3LejZ3k3zhDwfSbuyKtxkLatuePv5hq822HZAn++fnI0ehP8O7ttEp5QN8rnMLeuqkq/2J5IeEXfk8TSVPFsPrO/9P3/lWa4pVymSgAsx1EGOWZClOmUhxTCnlGRNEJhSthod7UXi8F03qUtrB5GnN6FVNP7OaXjvI/7qDKEGIikiG4yiWmKWaYklJhGUaJ4KmImaUoNWnbrpZX0VvHhbapnLzDfW7SyTEqe5ybk35DwyuClCmN5uRx0p0qaF0uZKFr4uP1xqcLUxd9syaHrd7oQj7l7vYR6ptJhVMCz/DHL7W8oSfuFbx1RD9MLd0P461t9Q2h83Q/KxJtIMb+wo3xd0enNEIydKUf98wkWDyafARKvdFWj24UKYwM/+mBtPa3sE9aqFa5w3YIc1v6TNkLBEsI5iGhGMWQIolpwJLHUcqUFEWBX743tdffPJ0q8tZ5p1etffzau+43H4jzxOcJDLJ0oDhJAwVZpD5pyTAOhRKMCCh4uKg4NjxpM6LGhbGlIOJkepVcC8puH2Bfff/ACdFhp+npEiRWBEVYkF0hFmoOE7TOMKJppApIDqg9KCS+COtC+QyL2c/mpB+3Vb19EvSvoy6lQ9bsmljvYzAqEoSGQcJjsMgxIwmHCdacawh1EGU6YiS8KDAouNJTZ209n4wdXk5s9If2q8S+xWbUxqliQ5khMM4AcyopjgNCcGcCtBK8igI02bub3HXFP2Ud2LG2/53gtNMk1RjoQAwi4IYS64YJjTmQUYlialGq38BoSs69lEbAAA=",
         },
-        // Export for Mission [470] -  Supper Emergency
-        [470] = new FishingTools()
+        [470] = new()
         {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1W227bOBD9FYPPEqArJerN9SbZAE42qFPsQ9CHETWyiciSS1Jts4H/vaAutuRL0hQB9oJ9k4czZ86MD4fzTKa1rmagtJrlS5I8k4sS0gKnRUESLWu0iDmcixL3h1l/dJ2RxIuZRe6kqKTQTyRxLXKtLr7zos4w25uN/7bFuqkqvjJgzYdnvhocGlvkanO/kqhWVZGRxHWcEfLL0A0Gi0YRzqtkZqt6faawwHWCVxj1IFVRINd9JYHruEM373UWlcwEFGeIuB6lox4HXdilUKuLJ1SDxOEB4zAcMab9fwCPuFiJXH8A0fA2BtUbFhr4oyJJ2HWVxse4Q1TWod6BFlhyHPChh3F03EGvD5XiL5yBbpXRZz2M9g7673fR9ysoBDyqS/haSQMwMvTl+NbY/hF59RUlSVzTpFPSprGRwCBh378PYnkF66bQabksUKo+ifmzM5L4kRMcsR9BxdutRS6+awndxTOdv68W32BzXepaaFGVVyDKvh+2a5F5LfEGlYIlkoQQi9w2JMhtVSKxWoSnDZLENOYE3rxS+pfx7iQqPM2Q2OTMeZuxOd/zWWyQawnFrJYSS/1OVR6gvlutJ9keVXwye+PVCmShq425r6JcLjRumkG5596JaCrfh/IQruHwqRRfajS4BMKQ5a6X2z7Q0A5YFtsMXdeGgKNH48D30CNbi8yF0n/kJociyUMrT1PA7nKHLAzPc7w0sv8GGuVkKvVKVkUt0eDeVnINxe9V9WiQ+pHxJ0Lzu72F5lShNqX097EztfUGbmRmTh+80LIql28Jd/xB+ByXWGYgnwxC57ibBjkUCq23Af9W1WmxK2nk4VG2c9jTPutyitrQ65PCeyk2LbOeUms5SH9Y0BgsCj1DvI084vWG2BcId37mIkxzjXIG9XKl52JtXiC3PTi8Ic3uUcv2iTMfg1nejtmQHT/SL7y3ZlHoZ1OvwY/4pRYSs4UGXZtnz2wih8L8Of29VWZ/k2xOKuSnpPAv/c8H84+DH4DvODbFNLODGMEGLwPbj5DxPA4Y8xjZfu4HYLetPuwM7Qx8eCbjYRhFzvlhOK9LkJMrCUpNZiA3o+HtvtSg6wxLLTgUpismW+swXVd1OXJrBvLhxuGPt7/YZKplDhwXhRlh+0n+yqIVbi3yj9nb98/mLz+WJthYZqaNTQeHz2f3aJrP1rx3OyXYgbiCEF2f5mBzCDw74Dm1GdDYdmiYug5jwMKUbK1j8bxQwA1wWaUS+ErU60kjJaH+V9B/VEEs4pQzmtop454dpLlvQx47NlDq5L7P3MiHZjy1uB3FhyByPk8W9WaDcnKxRrnEkj+NFz+fUSfzqWdHGYvtIHJzOw0Daruh5+VOipRHnGx/APkQ6LAREAAA",
-            },
-            AmountRequired = 13,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-                ["Ataxite"] = new List<uint>()
-                {
-                    45772,
-                },
-                ["Lunar Grass Carp"] = new List<uint>()
-                {
-                    45712,
-                    45770,
-                    45821,
-                    45842,
-                    45914,
-                },
-                ["Macrobrachium Lunaris"] = new List<uint>()
-                {
-                    45771,
-                },
-                ["Star Pleco"] = new List<uint>()
-                {
-                    45702,
-                    45711,
-                    45723,
-                    45769,
-                    45820,
-                    45841,
-                    45913,
-                },
-            },
+            "AH4_H4sIAAAAAAAACu1W227bOBD9FYPPEqArJerN9SbZAE42qFPsQ9CHETWyiciSS1Jts4H/vaAutuRL0hQB9oJ9k4czZ86MD4fzTKa1rmagtJrlS5I8k4sS0gKnRUESLWu0iDmcixL3h1l/dJ2RxIuZRe6kqKTQTyRxLXKtLr7zos4w25uN/7bFuqkqvjJgzYdnvhocGlvkanO/kqhWVZGRxHWcEfLL0A0Gi0YRzqtkZqt6faawwHWCVxj1IFVRINd9JYHruEM373UWlcwEFGeIuB6lox4HXdilUKuLJ1SDxOEB4zAcMab9fwCPuFiJXH8A0fA2BtUbFhr4oyJJ2HWVxse4Q1TWod6BFlhyHPChh3F03EGvD5XiL5yBbpXRZz2M9g7673fR9ysoBDyqS/haSQMwMvTl+NbY/hF59RUlSVzTpFPSprGRwCBh378PYnkF66bQabksUKo+ifmzM5L4kRMcsR9BxdutRS6+awndxTOdv68W32BzXepaaFGVVyDKvh+2a5F5LfEGlYIlkoQQi9w2JMhtVSKxWoSnDZLENOYE3rxS+pfx7iQqPM2Q2OTMeZuxOd/zWWyQawnFrJYSS/1OVR6gvlutJ9keVXwye+PVCmShq425r6JcLjRumkG5596JaCrfh/IQruHwqRRfajS4BMKQ5a6X2z7Q0A5YFtsMXdeGgKNH48D30CNbi8yF0n/kJociyUMrT1PA7nKHLAzPc7w0sv8GGuVkKvVKVkUt0eDeVnINxe9V9WiQ+pHxJ0Lzu72F5lShNqX097EztfUGbmRmTh+80LIql28Jd/xB+ByXWGYgnwxC57ibBjkUCq23Af9W1WmxK2nk4VG2c9jTPutyitrQ65PCeyk2LbOeUms5SH9Y0BgsCj1DvI084vWG2BcId37mIkxzjXIG9XKl52JtXiC3PTi8Ic3uUcv2iTMfg1nejtmQHT/SL7y3ZlHoZ1OvwY/4pRYSs4UGXZtnz2wih8L8Of29VWZ/k2xOKuSnpPAv/c8H84+DH4DvODbFNLODGMEGLwPbj5DxPA4Y8xjZfu4HYLetPuwM7Qx8eCbjYRhFzvlhOK9LkJMrCUpNZiA3o+HtvtSg6wxLLTgUpismW+swXVd1OXJrBvLhxuGPt7/YZKplDhwXhRlh+0n+yqIVbi3yj9nb98/mLz+WJthYZqaNTQeHz2f3aJrP1rx3OyXYgbiCEF2f5mBzCDw74Dm1GdDYdmiYug5jwMKUbK1j8bxQwA1wWaUS+ErU60kjJaH+V9B/VEEs4pQzmtop454dpLlvQx47NlDq5L7P3MiHZjy1uB3FhyByPk8W9WaDcnKxRrnEkj+NFz+fUSfzqWdHGYvtIHJzOw0Daruh5+VOipRHnGx/APkQ6LAREAAA",
         },
-        // Export for Mission [471] -  Alchemical Resources
-        [471] = new FishingTools()
+        [471] = new()
         {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1WS2+jMBD+K5XPIJn345Zm026ktFuVrHqoenBgACsEp7bptrvKf1+ZRwJJaKWqhz3sDcYz33wzHr7hD5pUkk2JkGKaZij8g2YlWRUwKQoUSl6BhtThgpZwOEy6o3mCQtMPNHTHKeNUvqHQ0NBczF7jokogOZiV/67BumEszhVY/WCqpxrH9TV0vV3mHETOigSFBsYD5Peha4zAG0TgD8lM82rTMbANbH9AoYtiRQGxHOmIbWCjH2V+zILxhJJiBM8wXXfQY7sNu6Iin72B6BXgHBXgOIMC3O4OyBqinKbyktC6DGUQnSGSJF4LFDptV13/FLePGrSod0RSKOOxSbEN7B7DuMP+mh0Sp79hSmQzKB2J42jz6HasNnqZk4KStbgiL4wrgIGhq87ShvZ7iNkLcBQaqmfnJt311YD0EnbtvKTZNdnUdU/KrAAuuiTq7hMUWh62T9gPoPzdTkOzV8lJ+x2qi1iy6BfZzktZUUlZeU1o2fVDNzS0qDjcgBAkAxQipKHbmgS6ZSUgrUF42wIKVWPO4C2YkJ/Gu+Mg4DxDpKOR8yZjfX7gE20hlpwU04pzKOUXVXmE+mW1nmV7UvHZ7LVXMyCRZFv1+dIyiyRsa908cG+HaMK/hnIfrubws6TPFShclPoe+IZDdC/Brm5bgaOvAnOl4wTAsoMgwaaHdhpaUCF/pCqHQOFjM56qgL32OIHjjnO8LCq4eGB8o7BuGd+Q4jtjaxXdqcYDkPpd2RX1uhTb8JS6dD6R5KzMznhhq+e1gAzKhPC3McdvrFoV5xOabrB3GMnWdxlP1XgtOd2OZfIc09q7jOUaOL2TrfVTczVJJfApqbJcLuhG6bvRHBwPXL3ZK94sEPXQk8Yz+md5TnC6IN9Zbmord19+d9v38FxRDkkkiazUjlFr//8I/IsjMP/knffUBQKMSexg3fXSVLeJ4+u+7xM9cFM/DZzAsGxAu6dOXtpfw8e9oVEY9d7oWasmj7ZnPF1MijiHDY1JcXEPglU8BjEUN4x9w0/TWI9d39Ztw0r0lWWmumfFCeDYJwHEaPcXOhT6MwQLAAA=",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
+            "AH4_H4sIAAAAAAAACu1WS2+jMBD+K5XPIJn345Zm026ktFuVrHqoenBgACsEp7bptrvKf1+ZRwJJaKWqhz3sDcYz33wzHr7hD5pUkk2JkGKaZij8g2YlWRUwKQoUSl6BhtThgpZwOEy6o3mCQtMPNHTHKeNUvqHQ0NBczF7jokogOZiV/67BumEszhVY/WCqpxrH9TV0vV3mHETOigSFBsYD5Peha4zAG0TgD8lM82rTMbANbH9AoYtiRQGxHOmIbWCjH2V+zILxhJJiBM8wXXfQY7sNu6Iin72B6BXgHBXgOIMC3O4OyBqinKbyktC6DGUQnSGSJF4LFDptV13/FLePGrSod0RSKOOxSbEN7B7DuMP+mh0Sp79hSmQzKB2J42jz6HasNnqZk4KStbgiL4wrgIGhq87ShvZ7iNkLcBQaqmfnJt311YD0EnbtvKTZNdnUdU/KrAAuuiTq7hMUWh62T9gPoPzdTkOzV8lJ+x2qi1iy6BfZzktZUUlZeU1o2fVDNzS0qDjcgBAkAxQipKHbmgS6ZSUgrUF42wIKVWPO4C2YkJ/Gu+Mg4DxDpKOR8yZjfX7gE20hlpwU04pzKOUXVXmE+mW1nmV7UvHZ7LVXMyCRZFv1+dIyiyRsa908cG+HaMK/hnIfrubws6TPFShclPoe+IZDdC/Brm5bgaOvAnOl4wTAsoMgwaaHdhpaUCF/pCqHQOFjM56qgL32OIHjjnO8LCq4eGB8o7BuGd+Q4jtjaxXdqcYDkPpd2RX1uhTb8JS6dD6R5KzMznhhq+e1gAzKhPC3McdvrFoV5xOabrB3GMnWdxlP1XgtOd2OZfIc09q7jOUaOL2TrfVTczVJJfApqbJcLuhG6bvRHBwPXL3ZK94sEPXQk8Yz+md5TnC6IN9Zbmord19+d9v38FxRDkkkiazUjlFr//8I/IsjMP/knffUBQKMSexg3fXSVLeJ4+u+7xM9cFM/DZzAsGxAu6dOXtpfw8e9oVEY9d7oWasmj7ZnPF1MijiHDY1JcXEPglU8BjEUN4x9w0/TWI9d39Ztw0r0lWWmumfFCeDYJwHEaPcXOhT6MwQLAAA=",
+        },
+        [472] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1XTW/bOBD9KwbPEiBKlCjp5njTbAA3DeoUOQQ9UNLIIkKLLkWl9Qb+7wX1EUv+iIMgi+1hb/Rw5vHN6HGGfkbTWssZq3Q1y5cofkaXJUsETIVAsVY1WMhsznkJu82s37rOUOyGkYVuFZeK6w2KsYWuq8tfqagzyHZm479tsT5LmRYGrFm4ZtXgBKGFrtZ3hYKqkCJDMXacEfLr0A1GREcRzlkys6JenUiMYIecYdSDSCEg1X0mBDt46OaeZyFVxpk4QQS7QTCqMenCPvGquNxANTjY32Ps+yPGQf8N2CMsCp7rC8Yb3sZQ9YaFZuljhWK/q2oQHuIOUaMO9ZZpDmUKAz7BflwwrqDbhyr+D8yYbpXRn7of7e7V3+ui7womOHusPrEnqQzAyNCn41lj+1dI5RMoFGNTpGPSDkIjgcGBff0u+PKKrZpEp+VSgKr6Q8zHzlDsUYccsB9BhduthS5/acW6i2cqfycXP9n6utQ111yWV4yXfT1sbKF5reAzVBVbAooRstBNQwLdyBKQ1SJs1oBiU5gjeHNZ6Xfj3Sqo4DhDZKMT++2Jzf6Oz2INqVZMzGqloNQflOUe6oflepTtQcZHT2+8WoEstFyb+8rL5ULDummUO+6diKbqYygP4RoO30r+owaDi3IaMuL5jg2UODYJKbGjhCS2yyAKM8ogcxjaWmjOK/0lN2dUKH5o5WkSeCEYRacZToWYtKH7NG+kWjHxt5SPBqjvGPfAmt/GXoF+uYs5ExX0d7PbNAn2t7QztfAEU9OJesyFVrJcfgCq4w1Q57CEMmNqs2vWb0T4S9aJ2M+09XCD6MXhgPahy4jDEa9vFdwpvm6Z9ZRay5lCj8Go7xribeTZcr4SOyL8pRSb+wLKG6mnqeZPsBAnCteDmLszzTWoGauXhZ7zlRlauN3Yv1TNc6VW7VQ0i0H7P9LjPepHh2P+lYltnhp9d+tl/BV+1FxBttBM12ZwmrfMCW2/TavntfffSuyomt4km7P6+Hcl8N5vPuigNMfYITiyo8TLbYKJZ0ep59vgUYgCBxInx2j7vW+h3Xv34cXQdtGHZzRsp8SnoXu6oc7rkqnJvRR5boKGXRW/Vp7rDErNUyZMTcxZrcN0Jety5GYYRPsvFm/8egzNSbXKWdrd2ePvZj/yz7zb/K2F/pi/Absp/O7Za4KNZWaq2hR0OI27GWyWrXnndky9A6WBGxLPdTLbcz0zqwPfDnEGNqWR77oOjpLQzOpDJXmnE7gVTPOyXk0ueFpw9edI6X/tlB+pHS8LApr4ge0zj9okibAdUurYDGOfhRl1c482XarF7Sg+EOp+n0zjyY1UuvjJVDa5TKWQS/PhJ4taPcFm/J5kKbh5kiQ2oYlnEydgduTl1CZOxCiDJMEQoO1v5TMqZmgQAAA=",
+        },
+        [473] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1XTW/bOBD9KwbPJqAPUh++ud40G8DNBnGKPQQ9jMiRTUSWHIrqNlv4vy8oWbFkyzEaGNgecpPJ4Zs3w8eZ8U8yrUwxg9KUs3RJJj/JVQ5JhtMsIxOjKxwTuzlXOe43Zbt1I8nEi+IxudOq0Mq8kIk7Jjfl1Q+RVRLlftnabxusL0UhVhas/vDsV40TRGNyvXlYaSxXRSbJxHWcHvLb0DVGHPZOOGfJzFbV+kRgzHXYGUYtSJFlKMxpHLd7yjtPqtBSQXYCL3BZD4/tTn1W5erqBcs2ocx1+AF/znv8g/ZG4AkXK5WaT6DqKOxC2S4sDIinkkz4LsdBdIzbRY13qHdgFOYCO3yCw3NBP59ee1Srf3EGptHJkOiC6AjMO7gcfwf2sIJMwVP5Gb4X2uL1Ftro/HF//R5F8R01mbg2ZycosJ7DNp2f1PIa1nXc03yZoS5bJ/bqJZn4ocOO2Pegou12TK5+GA27V2kv4qFY/AObm9xUyqgivwaVt7ml7pjMK41fsCxhiWRCyJjc1iTIbZEjGTcILxskE5uYAbx5UZp3491pLHGYIaHkxH7jsd7f81lsUBgN2azSGnNzoSgPUC8W6yDbo4gHvddWjUAWptjY56vy5cLgpq6ie+47EU31ZSh34WoOX3P1XKHFJZ7vYcJlTFNHJpQ5EdA4ki4FBoHjSJFI4ZDtmMxVaf5KrY+STB4bedoAXgnG8WmG0ywbNUcPad4Weg3Zn0XxZIHaAvI3Qv3brpdoXt9iClmJ7dvcbdoA21e6W2rgmRvawtRiLowu8k6/O3/c8TvH57jEXIJ+uQCvGviPokqyw0gbCy+IXw32tE+aDFHrWj1otTnlKeSe/2pyylfP6A1vOzur7WlqUM+gWq7MXK1tj3GbjUPR17NGpZsmZj865XmgBvshj4979Bv91c4JbfVpZXaPz5XSKBcGTGX7nB1ETmjvjJZ+VTIfEvg1Cbz3zjsVDnjgcB461HNjjzLhJRSCxKMIvkQv9RkGAdl+a0vcblh9fF1oqtzjT9Itd4yHUXi64M2rHPRoKkDiWgkFea/wuW9l6EZibpSAzKbFumsMpuuiyntmlkR8OFT4/Xkvsp4qnYLARWbrUcs+5mdmKb4dk99mbt93xnf3Q3vYrsxsGusMdjvkri/az2Z5bzak2I66uIhd9CSnPECfMpcjjSSTNE3AZdIHJ0gDsh0fqyc6HcDiSW02Kl+OFgb0xZUz9IflQ0j/u5BciSC5K2ji8oSyKAUaecKjoRPFcSSDNAIYEpLN2Ntl6B4UrKH8fUrQsAI/hHQZIQkGDveTkMrQTvSYSprEUUJj6frM4RHErjNYkfiHkD6E9HUvJAeYK9xI0JQnjDLOJE2kQMqZkBIAHPSwHpwa3B3FRxb630bTyegeNI6mzxUYJUb2/7BaY27F03GR+kzEYRRT4bsxZT5ENEZgNOZJysETvogCsv0PwsUE2bMUAAA=",
+        },
+        [474] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1WTW/bOBD9KwbPIiBRJPVxc7xJNoCbDeos9hAUC1oa2URk0qWottnA/72gZMWSYidNN4cFtjeJnHnzZvg4w0c0ra2eicpWs2KF0kd0rsSyhGlZotSaGjzkNudSwWEz77aucpSSOPHQjZHaSPuA0sBDV9X5t6ysc8gPy85+12J90DpbO7Dmg7ivBofHHrrc3q4NVGtd5igNfH+A/DJ0g5FEAw//VTKzdb05kRgNfPoKow5ElyVktsuEBn7QNyOvs9Aml6I8QSQgnA9qTPduF7Janz9A1QvMRowZGzDm3RmIe1isZWHPhGx4u4WqW1hYkd1XKGX7qvL4OW4fNdmj3ggrQWXQ48PHfnxYQdK5GvkPzIRtldFFHXuTUf3DvfftWpRS3FcX4os2DmCw0KUTesP1j5DpL2BQGrgiHZM2j50EegG7+p3J1aXYNIlO1aoEU3VB3GHnKA0jnz5jP4CKdzsPnX+zRuwvnqv8rV58FdsrZWtppVaXQqquHjjw0Lw28AGqSqwApQh56Lohga61AuS1CA9bQKkrzBG8ua7sT+PdGKjgOEOE0Yn9NmKzf+Cz2EJmjShntTGg7DtlOUJ9t1yPsn2W8dHojVUrkIXVW3dfpVotLGybRnngvhfR1LwP5T5cw+FPJT/X4HARZ4wUueA4XDLAlLMAizApcB6GOWOEFcJfop2H5rKyfxQuRoXSu1aeLoEngklymuG0LCet65jmtTYbUf6u9b0D6jrGXyCa//YSut0KrMuku477pRaHBpFrOZ3zwhqtVm9x98Oe+xxWoHJhHt6M8Juul+UT94EF4cmTwYHfSZMBhyNWt0ZuT0WKGAmfTE7FGhi9EG1v59Q6LSyYmahXazuXGzcmgnZjLOPmgVCbdg65j17DbXshS8bz48XR7KZ510A6pXyEz7U0kC+ssLWbTe65MJbPj6nkh8Xw68z/1ZnTN555r0nRwI+zgvk4AcEx5STHy4RHOBNJkfMkiCgFtPvUdan9k/LuaaFtVHePqN+xKIuS8HTPujRC5ZOZ0V+VFbKcnIG1YtC/gpeqdJWDsjITpSuNC9kaTDe6VgMzRyQZvw3C4TstdpFqU4gMFqVrQl0Gzy7S+EnEdh76z7ywDwPup8eac3YrM1fGpoL9QYdSJJRWf9/RiGLyaTJNJxda55Wti2JyvgGzApU9oBamdTwAHdN1T4MkDimhhOKlz5aYMiGwoDzHge8HLAiLhFE3KJ9rjJxOcV4rYSYLWVkwVSbKYb6/9PV/0ldWQESWUYJpVHBMA1LgmMUx5nkIWcziZSDCpse1uPskGibhC0x6EYQPBAj3cZAUMaYkITgu8gzTxKehEDynPkO7783hftMDEAAA",
+            "AH4_H4sIAAAAAAAACuVW227bOBD9FYPPEqALdX1zXCdrwE2DOsE+BMWCkkY2EVl0SSppNvC/FxTFWnJkpy2CYoF9k4YzZ86Mjmb4gqaNZDMipJiVa5S+oHlNsgqmVYVSyRuwkDpc0hoOh4U5WhQo9eLEQjecMk7lM0pdCy3E/FteNQUUB7Py32usj4zlGwXWPnjqqcUJYwtd7W43HMSGVQVKXccZIJ+HbjGSaBDhvElmtmm2hgF2HfwGBRPFqgpy2Qt0+27e22kZLyipFMC0qtjTp0fgOdktZqazI412vTActBp3YJdUbObPIHp0gqM6gmBQR2g+BXmA1YaW8oLQthplEMawkiR/ECgNuuaG8WvcPmrSod4QSaHOoccnPI4Lh331TCin/8KMSC0Qk/U42jv6Kn4XfbshFSUP4pI8Mq4ABgZTjm8N7Z8hZ4/AUeqqJo0pPIyVMHoJTf8u6PqKbNtCp/W6Ai5MEiWBAqV+5OBX7AdQ8X5vofk3yUn3/6nO37LVE9ktatlQSVl9RWht+mG7Flo2HD6CEGQNKEXIQtctCXTNakCWRnjeAUpVY0bwlkzI38a74SBgnCGy0YlznbE9P/BZ7SCXnFSzhnOo5TtVeYT6brWOsn1V8Wj21ksLZCXZTv2vtF6vJOzaeXng3oloyt+Hch+u5XBX068NKFwUxlFQYkjswssdGxO/sOMwSOzY8fwMHMfL8xDtLbSkQn4qVQ6B0nstT1XAD4JJcprhtKomOvSY5jXjW1L9xdiDAjIT428g7bv+CdWpAKkqMb9jZ9I42I3UyDHBK8lZvf6VcMfvhS9hDXVB+PMvI9wJ+MCazt84aospaBDmhYq2djiQPukyIDbidSfgltPdML22jKePAk/R1i6nCAyczlDo/JSup6UEPiPNeiOXdKsWiqsPjgXf3igarjeWeuiNZj01g+T1Jj6zVNX6N6PGaOozfG0oh2IliWzUFlP3i2Oh/Zyeflo2Y45/Tgj/u2/eG2fEiUnuYdd2wfFtXGaJTRw/t0PPD0McRGWWEbT/YuZZdwe9/2HQI+3+BfVnGw6ixD893a44qYvJjLOnWhJaTS5ASjKYdO65Li0KqCXNSaVao1Jqh+mWNfXATRFJjm8R/vBGF6tMDS9JDqtKjStTQRK8cXkK9hb6z1zJD6vwtxegClaWmWqjluMT2em1KMx47G9JpZ6a1f/c4wjb/pfJNJ1cMlYI2ZTlZL4FvoY6f0Z9nB72iNR7snQyz49wFtpeWICNYw/bSeZHth/FblwmcRBh3MpS43Z1tUy8M0x6GXwnLLw8xrbjuo6NS8+1YycEG2cZZDGOiyQp0P470FuRLucNAAA=",
+            "AH4_H4sIAAAAAAAACu1WTW/jNhD9KwbPEiDqW7o5rpMG8KbBOkUPwaKgxJFNRCa9FLVZN/B/LyiJtqTYzibIoYfeJHLmzZvh4wxf0LRWYkYqVc2KFUpf0JyTrIRpWaJUyRospDcXjMNxk5qtW4pSN04sdC+ZkEztUIotdFvNf+ZlTYEel7X9vsX6IkS+1mDNh6u/GpwwttDN9mEtoVqLkqIUO84A+TJ0g5FEAw/nTTKzdb0xDHzs+G9QMF6iLCFXPUfcN3PfDiskZaQ8U1LshuGgqH7nds2q9XwHVS9wMGIcBAPGoSk6eYLlmhXqirCGt16ozMJSkfypQmnQlTGMX+P2UZMO9Z4oBjw/Jw0fO+EYJhwW1DVIkv0DM6JaZRgSY293dBxe5/2wJiUjT9U1+SGkBhgsmOw8a7j+FXLxAyRKsa7ZKWmHsVZEL6Ap5xVb3ZBNk/eUr0qQlQmiz56i1Isc/xX7AVS831to/lNJ0l08fRAPYvlMtrdc1UwxwW8I46YeNrbQopbwBaqKrAClCFnoriGB7gQHZLUIuy2gVBfmBN5CVOrDePcSKjjNENnozH4bsdk/8lluIVeSlLNaSuDqk7IcoX5arifZvsr4ZPTGqhXIUomtvr6Mr5YKtk2jPHLvRDSVn0O5D9dw+JOz7zVoXBRg8LIk8mzAsW/71MV25tDM9r0cO4EX5zTHaG+hBavUH4WOUaH0sZWnTuBAMEnOM5yW5aR1HdO8E3JDyt+FeNJApoH8BaT5by+h3q1A6UzMdeyWWhwfR7oDGeelkoKv3uPueD33BayAUyJ370b4TdRZeeA+sHDD5GBw5HfWZMDhhNWDZNtzkaLA9Q4m52INjC5E6+y0WqeFAjkj9WqtFmyjpwZuN8Yybh4ItWzHkv7oNdwTXdWLgmQ8XS5Oaj3cTT8xwvkK32smgS4VUbWeXPr1MFbTr4nml7XxvwQ+JAFz5v47z7zXs6IsiUIfgx0mmWP7NA/tmOaO7ReQkTx2aZAEaP/NNK3uhfl4WGj71uML6jcwP4gS73wLu5GE08lMimeuCCsnV6AUGbQzfKlKtxS4YjkpdWl0yNZguhE175mdejUFyfjl4A0fdbEOXMuC5LAsdYsyCb26V+MHU7C30H/m/X0cfx8eetpZr8x0VVt1PpNtOworU9T+ZEQpIlzwvx/9yLfdb5NpOrkWglaqLorJfANyBTzfoT5OD/uE8nsqjYPIDQta2A4GsH0n9OwYZ7GdYew4XoQzkkWNSlvcLq+GCb7ApBcBUzcMo8Sz84T4tu+GgR1TiOwwK7LMw15BIET7fwGbARl41A0AAA==",
+        },
+        [475] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1Wz3ObOhD+Vzw6oxnAIBA31y9NM+OmnpI3PWR6ENJia0LAFSKtm/H//kb8iMGGZJrx4R16g9Xq07erT7v7jBaVLpas1OUy3aDoGV3lLMlgkWUo0qoCC5nFlczhuCi6pRuBIjekFlorWSip9yhyLHRTXv3iWSVAHM3G/9BgfS4KvjVg9YdrvmocElroene3VVBui0ygyLHtAfLr0DUGDQY77DfJLLfVY8fAc2zvDQrdriLLgOuJjHiO7fR3uW+zKJSQLJvAc1xCBjn22m0fZbm92kPZC8A/CcD3BwGQ7g7YA8RbmeoPTNZhGEPZGWLN+EOJIr/NKgnPcfuotEVdMy0h59DjQ073kWFC3W6rkr9hyXSjjDGZkfAMzD25nXkLdrdlmWQP5Uf2VCiDNzB00c2tof0r8OIJFIock7MJCt7gwC6dH+Tmmj3WcS/yTQaq7A4xdy9QNA9s74z9ACo8HCx09Usr1r5DcxF3RfyT7W5yXUkti/yaybzLLXYstKoUfIayZBtAEUIWuq1JoNsiB2Q1CPsdoMgkZgRvVZT63XhrBSWMM0QYTaw3J9brRz7xDrhWLFtWSkGuLxTlCerFYh1lexbx6Om1VyOQWBc783xlvok17Oq6eeTeimihLkO5D1dz+DeXPyowuChMGCSu42JGHYI9QjycCCpwEgYpCX2HOMRGBwutZKm/pOaMEkX3jTxNAC8EKZ1muMiyWbP1lOZtoR5Z9qkoHgxQV0C+Aav/jb0E/fIWU5aV0L3NdtEE2L3S1tTAe44bhCYTLWisVZH3Wtyf7l/BBnLB1P4CzGwT+z9FlWSnsTYeLqEvDkfeky5j1Pped0rupk4KfHf+4jJ11sDpldNaP6PuRapBLVm12eqVfDRdxmkWTmVfzxeVatqY+egV6JEqPA98et6mX2mxZjbo6k8ntK/wo5IKRKyZrkynM8PHhPq6OwvoqJjGbvY1yfyVwJ9J4L133qtxvkd95kCKgaeAPRAEMxI6mNkkDEM6Fy4AOnzvilw7oN6/GJo6d/+M+gXP8wMaTpe8a5YxriWffWK/h9XZeS07NwJyLTnLTErMUY3D4rGo8p7b2NTp09MJYz4c/kwxiyuVMg5xZkpTFwj13xis/IOF/jdj+7FNvrs5ms3GsjRZrRPab5dtkzSfjfnoNibentACzgn3Q4KBhSn23LmDQ09wHIJtBzwkNrVTdLDOhUSmA1gX2X5XlbOFKiGXXF5cS+8Wz7gI/2ppfREteTbzIaAUz5PEw14gXBwyEeBAMMLTRKQupXXRanBbivde4H+fLaLZWgGXJcy+MQ1qFlfqCfbDyc9PuO3ZJMXC8R3sCRcwJWmARZKEnm/TOU84OvwHPvCR4iEQAAA=",
+        },
+        [476] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1XS2/bOBD+K1pe9iIt9KApyTfHTbIB7GxQZ9FD0MNIGtmEZdGhqKZp4P++oB62JD+6LXLooTd5OPzmm+G8/EYmpRJTKFQxTZdk/Eauc4gynGQZGStZokn04YzneDhM2qO7hIzdIDTJg+RCcvVKxo5J7orrr3FWJpgcxFp/V2PNhYhXGqz6cPVXhcMCk9xuH1cSi5XIEjJ2bLuHfBm6wgj93g37u2Smq3LTMqCOTQcUwgGF9pbIMozVmYhQx3a6t9zvsxAy4ZCdwXNcxnoxps21G16srl+x6DgwGjgwGvUcYO0bwBoXK56qK+CVG1pQtIKFgnhdkPGoiSoLjnG7qGGD+gCKYx5jhw8b3mP9gLrtVcm/4RRUnRmn0owFR2Du4HW8BuxxBRmHdXEDX4TUeD1B651n9uUfMRZfUJKxo2N2hgLtGWzDecWXt7Cp/J7kywxl0RpxTfKJq9Uig20LdQLZ82165FzPUrDbmeT6q5LQlKl+p0exeIHtXa5KrrjIb4HnbegtxySzUuIciwKWSMaEmOS+4kjuRY7ErBFet0jGOm4n8GaiUD+N9yCxwNMMiUXOnNcWq/MDn8UWYyUhm5ZSYq7eycsB6rv5epLtkccnrVdadf4slNjq6ub5cqFwW7XVA/cmxybyfSh34SoO/+b8uUSNS9wgDilz0IoS8C3qpKkV2RFaHnVSN0KWQJyQnUlmvFD/pNpGQcZPdXpqB/YEw/A8w0mWGfXVIc17ITeQ/S3EWgO1/eUTQvW7riR9WqDSnrQ1Nee5lj7yja5nl/5lm2QOX7uyQMt09+/rOt5e3tN3Kv3GVM2POq4f6FA2rBZKiryqzUZtX+gpZMW+8E/QHcDaXgd1hkvME5Cv7wX8QZRRtg9hT8Nl4V7hyJtjlVPUulqPkm/PWfJHrrdXOWerp3TBWqOni2aSKpRTKJcrNeMbPduc+mBYTdVWU8p6eOqPzlg42aFH4XAGXlwv9EbStrU2fz/ic8klJgsFqtTzVa88w6QevJkfXkqx/50yv1Pgx1KgfXP6g2/eaZ3M9cMo9Bwr9m3Pon7KLGCQWm4Uh9SLvdDBiOw+t72zWYuf9oK6fT69kW4fpaPA9oaddGJsYJnzlMeYKyPluRFJhHiFhaFWaLyAQvlnYRSlTCHGPw6N9wPItTGV4iVXwDPjCpWCXg92LsX0LsFc8RgyHUhNsFaYbESZ99Q07XC433j9zVR30kVNsF6WWn+Pym649Y12Jvll/lMchvRPj2Z9WUumOoxVBLvDuhnR+rMWH9RO5XhvlEOAkAYWiwAsSmNmRaPAsTwKDvMg8Dw6IjtzmG/+pck9FyKXIl4bU8iT118ndU79K/udSeY7ZVISIfgRhFaMmFp0FPlW4HuRxZI0cRl1HYS46mw1bkPxifrsszEZGzc8R+tWQoLG5LkExWPjQYoYi4LnS2OuuxWHTC+DHZtBFMXMZp4VQZJYlNrUimLGLJuxMB2FqR3YCdn9BzzfoCjPEAAA",
+        },
+        [477] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1WS2/jNhD+KwZPLSAWEkU9b16vNxvASYM43W0R7IEiRzYRWXIoaps08H8vqEcs+YkNcijQvVHDmW++GQ1n5gWNK11MWKnLSbpA8Qua5izJYJxlKNaqAguZy5nMYXspuqtLgWISRha6UbJQUj+j2LHQZTl94lklQGzFRn/TYF0VBV8asPpAzKnG8UMLXazvlgrKZZEJFDu2PUA+DV1jRMHAwj5LZrKsVh0D6tj0DIXOqsgy4Lpn6PTVyHm3hRKSZUdS6hDfHySVtmafZLmcPkPZc+ztMPa8AWO/Szp7gPlSpvoDkzVvIyg7wVwz/lCi2GvT6If7uH3UqEW9YVpCzqHHx9+184cZJJ2pkv/AhOmmFA7VlR/ugZGd3+G2YHdLlkn2UH5i3wtl8AaCLjrXGspvgRffQaHYMTk7QoEOHHbp/CAXF2xVxz3OFxmosnNi/r1AsRvYdI/9ACrcbCw0fdKKtQ/P/Ii7Yv43W1/mupJaFvkFk3mXW+xYaFYpuIKyZAtAMUIWuq5JoOsiB2Q1CM9rQLFJzAG8WVHqN+PdKCjhMEOE0ZH7xmN9v+UzXwPXimWTSinI9TtFuYP6brEeZLsX8UHvtVZTIHNdrM3zlflirmFdN8ot97aIxup9KPfhag5/5PKxAoOLnDDhLhcRdsLExZQkAifMITixCfG4F0WCA9pYaCZL/XtqfJQovm/K0wTwSjCKjjMcZ9moMd2leV2oFcs+F8WDAeoayFdg9beRl6Bf32LKshK6t9lemgC7V9qKGnjqBKYxdZhzrYq8N9IOmF/J3Ejv5Mq0Adf+zbbQFXvqywIj23Fjuz03M1hALph6fgf+NfDHokqy3Yw0GsSPXhW24R1VOUStr3Wn5PqYp8Aj7qvKMV8DpRPeWj3zBsapBjVh1WKpZ3JlZpHTXOw+jnrtqFQz7Myh18YP9Go38KL96X1iEJuVoetSXTnewmMlFYi5Zroy89DsJEdq9EzN/WjJ/CyBHyuBt/7zXidMXZumzAmx7UYBpqEvcMQJwTbnwmcRScME0OZb1wrbvfX+VdB0w/sX1G+L1AvJicb4kamH0YSp9aAxOqcycykg15KzzKTDuGkUxquiygdqxnm0u3S4w30wNJ4qlTIO88z0oYO7F/Ui78zq5W0s9J/Z5LeD9M3j0xgbycRktU5of6C2Y9QcG/FW7VDh9sctDXwhfA97zE4wdX2BmU19zFMe+pQ5vhc5aGPtF1FwPIC5ZoorCepnEf0/iojzJCLgBtiHhGPKicCJlwps88T3vYjwJE3qTtXgthTvaRB8G03/jEczphYwGj9WTEs+MquqXEFejn75PB1/+Wt0e33x63BJJG4KwFOBwU4opgl4OPQiF4eR54aE0sj2Q7T5F4QLwRM9EAAA",
+        },
+        [478] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1WS2/bOBD+KwZPu4AE6EFJlG6q100DONkgyr4Q9EBJI5uILLok1TQN/N8X1MOWFNtpgxz2sDeKHH7zzfDTzDyjuFZ8TqWS82KFome0qGhaQlyWKFKiBgPpwyWr4HCY90eXOYocEhroRjAumHpCkW2gS7n4lpV1DvlhW9vvWqwrzrO1BmsWjl41OD4x0MX2bi1ArnmZo8i2rBHyeegGIwxGN6xXyczX9eZEYNi28ISRM2HUg/CyhEz1kWDbsodmzussuMgZLU8QsR3fH+UYd9c+MrlePIEcOPYmjD1vxNjv34A+QLJmhfpAWcNbb8h+I1E0e5Ao8rqs+uQl7hA17FBvqGJQZaeUgm3Ln8L444Q6PZJg32FOVSuUnoT/ynO43e27NS0ZfZAf6VcuNMBoo4/ONcb7t5DxryBQZOucHVO6T7QiBg77dH5gqwu6aeKOq1UJQvZO9NvnKHIDC79gP4Iiu52BFt+UoN1/qB/ijiePdHtZqZopxqsLyqo+H6ZtoGUt4AqkpCtAEUIGum5IoGteATJahKctoEgn5gjekkv1ZrwbARKOM0QmOnHeemzOD3ySLWRK0HJeCwGVeqcoJ6jvFutRti8iPuq9sWoFkii+1b8vq1aJgm1TNw/cOxHF4n0oD+EaDn9U7EsNGhdlaWDTkPqmR1PPxJRmJnED2wQo0iL3fS/NLbQz0JJJ9XuhfUgU3bfy1AHsCYbhaYZxWc7aq1Oa11xsaPmJ8wcN1BeQv4A23+1PqE8lKB1J/zt2Wy0OtgNdgfrLiRK8Wv3MdcsdXF/CCqqciqefRviN12m55z6ycPxwb3Dgd9JkxOGI1Z1g21OeAs9x9yanfI2Mznjr7LRa40KBmNN6tVZLttFdw24PpjJu5oVatG1JLwYF90hVdQMvnPbZ8Fzj1r2+rye9cG7hS80E5ImiqtadSw8TUzX9mGh+WBv/S+BNEjj15meHtd2oZnmZhVMny0zwiG9i2yNmaGWh6eOcZB7FjgUB2n3ui1Y3cN7vN9q6df+MhgUMe8TBp0vYsq6okI9c5LOk0qobVjL7XIIuc6gUy2ips6K9tQbxhtfVwOzYwOSF06HBHc9zRDuuRUEzSEpdnfpYQu+VWcnbGeg/M4kfOt+b+13ySLd6Z66z2iR02AG7vqeX7fbB7Jh+B1qjxHedwMOmC0Vu4gICMwxS3ySFR/wisFOaFo3WWtyO4j0OyOfZ4u9oFkvJhYJ8FpfZGjZaB7MrqkAwWsrZL58W8Z//zG6vL34dt2VCCmz7hWUWAVATh8Q2Cckcs3DSIsDEczKw0O5fW+14Ib4NAAA=",
+        },
+        [479] = new()
+        {
+        },
+        [480] = new()
+        {
+            "AH4_H4sIAAAAAAAACs1X247iOBD9FeTnZJWLc3HeGJbubQl6WwOjXak1DyapgEWIGduZabbFv4+cCySBpmHUI+2bKbtOnarUjVc0LBQfUankKF2i6BWNc7rIYJhlKFKiAAPpywnL4XiZNFcPCYqckBjoSTAumNqhyDbQgxy/xFmRQHIU6/f7CmvKebzSYOXB0acSxw8NdL+drwTIFc8SFNmW1UG+DF1ikKCjYb1LZrQqNg0DbFv4HQqNFs8yiFVL0W4/c943y0XCaPZGSG3H9ztBxbXaHZOr8Q5ky7DXY+x5HcZ+E3S6htmKpeoTZSVvLZCNYKZovJYo8uow+uEpbhuV1KhPVDHIY2jx8ft6fjeCTqMq2H8woqpKhcZqX9vpxd+ttecrmjG6lnf0OxcaoCNo3HGNrvwzxPw7CBTZOkjnctkPdQq0DDbx+8SW93RTOjrMlxkI2RjRHztBkRtY+IR9Byrc7w00flGC1pWmIz/nsx90+5CrginG83vK8iYepm2gSSFgClLSJaAIIQM9liTQI88BGRXCbgso0oE5gzfhUv0y3pMACecZIhO9cV9ZLO+PfGZbiJWg2agQAnL1QV72UD/M17NsTzw+a718VSXITPGtrleWL2cKtmVnPHKvk2goPoZyG67k8CVn3wrQuCiObd+3PWJalheaGDA1aRjHZhJQxyY49T0CaG+gCZPq71TbkCh6rtJTO3AgSMjbDIdZNqhU+zQfudjQ7C/O1xqo6Rj/AC1/V0WobyUo7UlTjrWowsF2oFtOozxTgufLW9Qtt6U+gSXkCRW7mxH+5MUiO3DXL+ZsA6LXSaYsP1zpuv/DMtCUvrRkrq1lHQuOTw4Gjv7VTw4GUppJuKDZce165S8S5oJtqzg0blSS3+Ns4Dk6npWJG93t6N7ucK2uy3OYKhAjWixXasI2ei7a1UW/bssVqBDV4NWH1oQ5M0bcwCP9+XlxF9HrS9NAm0r5DN8KJiCZKaoKPZv1ftQvn+uq5OpiuC7nr8vZ65Kz/eo04a5NmGsz4zelQPPN8Y3fvNWkrYUV4sTFJo7BNnHsBiYhbmim4Ftx6i88qpv016ZL1zv080FQNernV9Tu2NgLwgs9e8p5Lni8Hoxonuw6jdu+FJ6HBHLFYprpmGhb1YPhhhd555lmQPpLkdtdUENtqRApjWGW6e57diPGpwXVXw29vYH+N38tjoP+l8f77AfdaslIR7UMaHvg12NeHyvx8dm57G1lWuASTDycms7CJyamLjFpbKUm9iwvxC4mgReXmVbh1hSfcWh9HYz/jQZ3nCdSFWk6GG9ALCGPdeq0DNgJ8VxMXdPCVmLihQ1muCDYdCzb9lwSegkO0P4n1PWsUnkOAAA=",
+        },
+        [481] = new()
+        {
+        },
+        [482] = new()
+        {
+        },
+        [483] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1XTW/bOBD9KwbPJiBKpET65nrTrAEnG9RZ9BAUC0oa2URk0aGottnA/72gZMWSv9IGAXYXm5tMzrx5M3qaGT+hcWX1RJa2nGQLNHpCF4WMcxjnORpZU8EQucuZKmB3mbZX0xSNfC6G6MYobZR9RCMyRNPy4nuSVymku2Nnv2mwrrROlg6sfvDdU40T8iG6XN8uDZRLnadoRDyvh3weusYQUc/De5HMZFmtTiRGiUdfYNSC6DyHxLaZUOKRrpn/MgttUiXzE0SIH4a9GtOt20dVLi8eoewEZnuMGesxDtt3IO9hvlSZ/SBVzdsdlO3B3MrkvkQjtq1qyA9xu6hii3ojrYIigQ6fcN8v7FfQb12N+hsm0jbKaKPue/t79Q+23rdLmSt5X36UX7VxAL2DNp1g2D//BIn+CgaNiCvSMWmH3EmgE7Ct3we1uJSrOtFxscjBlG0Q97JTNAoijx6w70HxzWaILr5bI7cfnqv8rZ5/k+tpYStllS4upSraemAyRLPKwBWUpVwAGiE0RNc1CXStC0DDBuFxDWjkCnMEb6ZL+2q8GwMlHGeIMDpx30Ss73d85mtIrJH5pDIGCvtGWe6hvlmuR9keZHw0em3VCGRu9dp9r6pYzC2s60a5474V0di8DeUuXM3hz0I9VOBwUeZJ4UcEMAAnmPIgwZwHAeaMhZCxEDwKaDNEM1XaPzIXo0Sju0aeLoFngkKcZjjO80Hjuk/zWpuVzH/X+t4BtR3jM8j6d/MRutsSrMuk/Ry3Rw0OJZFrOa3z3BpdLH7F3Qs67jNYQJFK8/jLCL/pKs6fufcs/FA8G+z4nTTpcThidWvU+lSkiPnBs8mpWD2jM9G2dk6t48yCmchqsbQztXJjgjQX+zKuF4TKNHPIPXQa7pGuGkRMHA7WMzPSDfe2n7TC+QQPlTKQzq20lRtVbnvYV9PPieantfEugVdJ4LXvvNOzIkFTmQqOPS+IMI1ogmOPZ5iKzONcstijEdp8aZvWdsO8ez5o+tbdE+o2MMoit4ycamFXWhfflmrd62DkXGGmKRRWJTJ31XBRGoPxSldFz8zFFvvbQdDf1LiLVJlMJjDPXRs6vqMywV7YkdhmiP41K/du4r16zjlndzJxVa0L2p1823nnHpvjndkx3XY0BgEnkDGGSRbHmDIZ4lgQhlkALGIyECxO0GZ4oCF2ZgzOqkKawTzRZq108a6k/4eSJJOM0DDBEY1DTCHiWLAwxSISCQ88xhLqHVFS/XfnvJLGBaz2M/lHhfRfVE772lv1HyrJlcI//S7mFvJcmsFnbVboqI52oinbKHvSkoUu/rqjPMDky2A8GowfKmlVMpgWpfsjoXQxmL5OfYQIwZI0wYxkKaaMRTgGn2AGaeLL1PfiWB5V35k+dqPzx3VVDuZVnlVG9bf6dwG+CxD1BmmWCc4llmlGMU0yhmUoGY5JxgNCgfNM1Mtag7vNqabin6PS7bCCM0ZYgn1CE0wFz7DkAJiIKBUhAZ/GEdr8AA7htI3cFAAA",
+            "AH4_H4sIAAAAAAAACu1XTW/jNhD9KwbPJiCJ1OfN62ZTA04axCl6CBYFSY1sIrLoUNTupoH/e0HJiiVbdnaDHLZobjI58+bN8HGGfkaTyqgpK005zZYoeUYXBeM5TPIcJUZXMEZ2cy4L2G+m7dYsRYkXxWN0o6XS0jyhxB2jWXnxXeRVCul+2dpvG6wrpcTKgtUfnv2qcYJojC43dysN5UrlKUpcx+khn4euMeKw5+G8Sma6qtYnEqOuQ19h1IKoPAdh2kyo67hdM+91FkqnkuUniLheEPRqTHdun2W5uniCshPYP2Ds+z3GQXsG7AEWK5mZT0zWvO1C2S4sDBMPJUr8XVWD6Bi3ixrvUG+YkVAI6PAJDv2CfgW91lXLf2DKTKOMNuqht3dQf7LzvluxXLKH8jP7qrQF6C206ZBxf/0WhPoKGiWuLdKQtIPISqATsK3fJ7m8ZOs60UmxzEGXbRB72ClKSOjQI/Y9qGi7HaOL70az3cWzlb9Ti29sMytMJY1UxSWTRVsP7I7RvNJwBWXJloAShMbouiaBrlUBaNwgPG0AJbYwA3hzVZo3491oKGGYIcLoxH4Tsd7f81lsQBjN8mmlNRTmnbI8QH23XAfZHmU8GL22agSyMGpj76sslgsDm7pR7rnvRDTR70O5C1dz+LOQjxVYXETCkJOURthJBcMUgOHISTkOY9/lWRwR4jloO0ZzWZo/MhujRMl9I0+bwAvBOD7NcJLno8b1kOa10muW/67UgwVqO8ZfwOrfzSW0uyUYm0l7HXdLDQ51Q9tyWueF0apY/oy7Qzruc1hCkTL99NMIv6mK5y/cexZeEL8Y7PmdNOlxGLC603JzKlLoe+TF5FSsntGZaDs7q9ZJZkBPWbVcmblc2zHhNhuHMq4fCJVu5pD96DTcga5KQj8+HqxnZqQd7m0/aYVzC4+V1JAuDDOVHVX29XCoph8TzQ9r40MCb5LAW8+807PCIGNeCB6OiRthChHHUcZTzDlljGcBESFD2y9t09q9MO9fFpq+df+Mug2M+qF9jJxqYVdKFd9WctPrYO65wsxSKIwULLfVsFEag8laVUXPzMaOD18HpP9Si2ykSmdMwCK3bWj4jerH/itvJH87Rr/Mk3s/8d4856yzXZnaqtYF7U6+3byzn83y3mxItx2N+VQQwoIAE0o4pq5HcJSmgP1QpL4TCQHMRdvxkYb8M2NwXhVMjxZC6Y1UxYeS/h9Kin3iCN+JMSPgY8qcELMgDDAn4IjAc1nq8gElRU54OoFplRvQo4kuoZBC/jpS+i9qpz34Vv/HWrKloGdOQ5VrKUZzALFCg0ray6ZsoxyIixWq+PueRgR7X0aTZDR5rJiRYjQrSvtXQqpiNHub/nhEwU5M7BPuYZpRjiPKHRxHns8dQokb0EH9RWc6GVtDYZSu1qNbWCqjZNm/UB8i/BAh6oiQAfjC5Sn2WSgwFVmAY8h8HFBOmRMLEUZu/WRrcHc51VTcc1S6EzvmnHCPYCBRjCkXHo49AJwSIUSa8Yz6Htr+C4GLjjLiFAAA",
+        },
+        [484] = new()
+        {
+        },
+        [485] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1WTW/bOBD9KwbPEiDqW7q53iQ14KRBnUUPQQ9jaSQTYUSXpLrNFv7vC0qibfkjKYIc9yRqZvjmDTl85G8ybbWYgdJqVtUk/02uGlhxnHJOci1bdIhxLliDe2dpXfOS5H6aOeReMiGZfiE5dchcXf0qeFtiuTeb+G2PdStEsTZg3cA3ow4nTh1ys3lYS1RrwUuSU88bIb8O3WFkyWiG9yaZ2bp9vlBYSL3wDUYWRHCOhbaVhNSjh2H+2yyELBnwC0SoH8ejNQ6HaddMra9eUB0kjo4YR9GIcWz3AJ5wuWaV/gSs420MyhqWGoonRfJoWNU4PcU9RM0G1HvQDJsCD/jEx/Pi8Qr6dqpk/+IMdN8Z59osTk/A/KPtCAawhzVwBk/qGn4KafBGBltd4IztX7EQP1GSnJo1u0AhHCW0y/mJ1Tfw3NU9bWqOUtkkZu9LkgeJF56wH0Gl261Drn5pCcM5NBvxIJb/wGbe6JZpJpobYI1dW5c6ZNFKvEWloEaSE+KQu44EuRMNEqdHeNkgyc3CnMFbCKXfjXcvUeF5hsQlF/x9xs6/57PcYKEl8FkrJTb6g6o8Qv2wWs+yPan4bPYuqm+QpRYbc3xZUy81bjrd3HMfmmgqP4byIVzH4e+G/WjR4JKy8gB9im4R08INYVW4K0jRharK4sz30ioJyNYhC6b0l8rkUCR/7NvTFLAjmGWXGU45n/RTj2neCfkM/LMQTwbICsg3hO7f2BXq3VmsgCu0Z3NwmgLtKR1MPXxIEyNMFnOppWjqD0D1ggPUBdbYlCBf9rL1hwh/iXbFjyvtI/w42wWc0D4NGXE4E/Ug2eZSpiTyg13IpVyjoFeyDXGmt6eVRjmDtl7rBXs2dwztHcdN370uWtlfYmZwIM9nNDhIouz0Vn7lgjUvA6s+ts2+4o+WSSyXGnRr7jnz9LjQe3/WS2/3xv8t8K4WmL9zzw8UjhYxLYuocjNagBuuMHRTHzPX9yEokjgJE5qR7XcrccPz9HFn6FXO/PeaOmjaY5hG3yfTfHLNGnRrCSVOvoFGOblm3HxuzQ8DribzseSmUeAX2SpwKa4CN/So50IZlG4aVckqDMMyrYBs/wPTujovmgsAAA==",
+        },
+        [486] = new()
+        {
+        },
+        [487] = new()
+        {
+        },
+        [488] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1XbW+jRhD+K9Z+aiU4sbALLN98rpOL5KTROb1rFd2HBQZ7FQy+Zbkmjfzfq+XFBgyJekqlSr1veHb2mWdm583PaF6qfMELVSySDQqe0TLjYQrzNEWBkiUYSB+uRAanw7g9uopRYPvMQLdS5FKoJxRgA10Vy8coLWOIT2Ktf6ixrvM82mqw6sPWXxWO6xvocn+3lVBs8zRGAbasHvLL0BUG83o3rFfJLLblbsIxgi0yYOTSPqMWJE9TiFTrCcEW7qrZr7PIZSx4OkEE267bizFprl2IYrt8gqJjmA4Y0z5jt30D/gDrrUjUey4q3lpQtIK14tFDgQLaRNX1z3G7qKxBveVKQBZBh487vOf2I2i3V6X4CxZc1ZkxlmaufwZmDxLEacDutjwV/KG44N9yqfF6gtY7x+jLP0KUfwOJAqxjNkGB9Ay24XwvNpd8V/k9zzYpyKI1ot8+RoHjWeSMfQ/KPxwMtHxUkjd1qB/iLl//yfdXmSqFEnl2yUXWxtbEBlqVEq6hKPgGUICQgW4qEugmzwAZNcLTHlCgAzOCt8oL9d14txIKGGeITDRxXluszk981nuIlOTpopQSMvVGXg5Q38zXUbZnHo9ar7TqBFmrfK/LV2SbtYJ91TdP3Jskmsu3odyFqzj8lomvJWhcxGhCkxA7ZhRGxCQec02OOZi2w3CSELCSOEYHA61EoX5NtI0CBfd1emoHjgQZm2Y4T9NZfXVI8yaXO55+yPMHDdQ2kM/Aq991EerTApT2pC1HLboTO5CDMr0W2fFI1+c7y0DX/LEjsy0t021/7L6W9zHYO7cR92CwrWEaZrU7BNueryPfOLFWMs82b+BGTXngBv1nbtR8R/ygr/qxgg1kMZdPr7pyBvFLXobp8TV7KrbLjgqnSE2q9EiMaN1JsZ+y5FHbOapM2eopvWCt0dP1O08UyAUvN1u1Ejs9R3F9MCzsaoMqZT2o9UdnBNXTgbLhqvHi7qLXnbaltrXzEb6WQkK8VlyVenjrfWpYUINX8thovg60LGcqG8YUf7z5v/bmnbYdxZELmLmmSwg3SYKZGZLQMhm2fJvaLlg4RIcvbd9udu77o6Bu3ffPqNvDCfWpP93FF3nIUzWrbnT7OH4pNlcxZEpEPNUB0YZqhfkuL7OO2tj+TdlwZXL626xuMetSJjyCdapbUesGo69sivRgoP/M/5DT3P/uaa8va8lCR7UKaHf+N1Nff9bik9pY6nbSDEPoEtvxTDv2mUmAWSbziGd6DvMJtyNwsYUOxnkaudMOXPKUR0pEs4uUS0h+ZNP/Jpsii3oWppbpQxibhNHEDD2KTQ7EtbDj+B71qqZV4zYU74nvf5ktfw9mixweRaFEtpnp/VpAMbua/fRhOf/0x0xmm5/7m63HwaWcENPjPDIJptxkCaEmZlYcWzEAxC46/A13tRnrAREAAA==",
+        },
+        [489] = new()
+        {
+        },
+        [490] = new()
+        {
+        },
+        [491] = new()
+        {
+        },
+        [492] = new()
+        {
+        },
+        [493] = new()
+        {
+        },
+        [494] = new()
+        {
+        },
+        [495] = new()
+        {
+        },
+        [508] = new()
+        {
+            "AH4_H4sIAAAAAAAACtVXXXObOBT9Kx49ww7CAgNvjpukmbHTTHFmHzr7IOCCNcHIkUQaN+P/viM+bMB2s+142u6budI9OudIV1d+Q9NS8RmVSs7SDAVv6LqgUQ7TPEeBEiUYSA/OWQF68C4ruIAF5/EKBSnNJRhNQtJOv0tQYHu+gR4E44KpLQqwge7k9Wuclwkkh7Cev6vxG8Q3VP2wq6U0jusZ6HazXAmQK54nKMCW1UP+PnSF4U96Gda7ZGarcn1woieMYIsMGHkDRi0Iz3OI1Xkc3M2y3yfFRcJofgYP267bs5w0aTdMrq63IFtHCbacgQDH6Qlw2y2hTxCuWKquKKtk6IBsA6Gi8ZNEgdOY7HrHuF1Uv0F9oIpBEUOHjzvMc/uG2m2qYN9gRlV9UE6dOtc7AvO8Pti4AVuuaM7ok7yhL1xovF6gVTc2+vHPEPMXECjA2rMzFEhvwdbOK5bd0nWle1pkOQjZLqL3PkHBeGKRIXu7B+Xtdga6flWC9kp1T0Dvy5KHX+nmrlAlU4wXt5QVrdUmNtC8FLAAKWkGKEDIQPcVJ3TPC0ANwnYDKNA+ncCbc6l+Gu9BgITTDJGJzozXK1bjBz7hBmIlaD4rhYBCXUjlAPViWk+yPVJ8cvVq1g0XMVRF95Vu2s2uD1Go+EaXOCuyUMGmumoPgpqDNhWX0dGFq4g9Fuy5BI2LiGUR4sXETBIHTOLB2PTiyDNh4tru2Ce+gwnaGWjOpPqU6jUkCr68VatpAXuCvn+e4TTPR3XqkOY9F2uaf+T8SQO1l8zfQKtvHZeg9uXSa1zNYNfbJlTDEzzRl1eLGSrBi+wCqNa4gzqHDIqEiu2hrM8gLNkaxKDwF6zYD+kL8y/LQLqJnZqr4/35rp5+itwHXkb5eyb2Em3X3+e9a9TZzJ4ZZ5IX9LUr+UhCjfcoYSnYpjazdaCO/JCsiWNrQ+rMHxTWyz2S9iu2s6WgL4tpqkDMaJmt1JytdWPH9cDwFqlefaWoXw76R6cn1u3K8YdPoe++rfRzrL3U20L9DM8lE5CEiqpSvyb0e+9/Xr2XAP6TK+9E8h9VUf81/bdXw+Ohe44jgiMX2yaJ49QkjhWZUWRhM3U8O47tyCZWgnb/tO2z+bf0ZR+oO6j+rvt10y+vwsXIHD0IHoOUkIymzyVVLB4tQNFcjszRR6Av29FU0VemdO/vUMIxjhI7dkyM08gkvodNL0rATCI7Sid4TFPsod2/sM5WQT8OAAA=",
+        },
+        [509] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1Xy27bOhD9FYNrERD1lneub5oEcNIiTtELBF2MxJFNhBZdimqbW/jfL6hHLDl2ggZZdJGdRA7PnBkdzox+k1lt1BwqU82LFZn+JmclZBJnUpKp0TU6xG4uRIn7Td5vXXIy9ZLUIZ+1UFqYBzJlDrmszn7lsubI98vWftdiXSmVry1Y8+DZpwYnShxyvr1da6zWSnIyZa47Qn4eusFI49EJ90Uy83W9ORFYwNzgBUY9iJISc9NHEjCXDc28l1kozQXIE0SYF0WjHAfdsY+iWp89YDVwHB4wDsMR46j/BnCPy7UozAcQDW+7UPULSwP5fUWmYZfVKHmKO0RNO9TPYASWOQ74RIfnonEGvf6oFv/hHEyrjN7r4WnvIP9+d/p2DVLAffURfihtAUYLfTi+M16/wVz9QE2mzCbpmLSjxEpg4LDP3wexOodNE+isXEnUVe/EfmxOpn7sBk/Yj6CS3c4hZ7+Mhu7i2czfquVP2F6WphZGqPIcRNnngzKHLGqNV1hVsEIyJcQh1w0Jcq1KJE6L8LBFMrWJOYK3UJV5Nd5njRUeZ0goObHfemz293yWW8yNBjmvtcbSvFGUB6hvFutRtk8iPuq9sWoFsjRqa++rKFdLg9umUO65dyKa6behPIR7yvSn2GQgzEchZfXM/k1dVp/qHuFLKb7XaJkR8HI3izGiSRJwGiSY0yTjjMZJxsKwCNENM7JzyEJU5lNhWVZketcK3KbgsTyEqa0Gp6JcGpQS9GQJcqPKyY1CC3qt9AbkhVL3FqavOF8Rmne7XqF5vMsFyAr7u91t2hj7W94ttVkMWGwrWY+5NFqVg5b48nHXHxxf4ApLDvrhDXg1wP+oOpOHkbYWXpQ+GuxpnzQ5Rm1odavF9pSnOPT8R5NTvkZGz3jr7OzdmBUG9Rzq1dosxMY2JdZuHF6aZhypddv17MOgvB+p4X4cpk/b+DMd2Y4SffXqZXaD32uhkS8NmNo2RjurnNDeC1r6U8m8S+DPJPDab95XvbmqSzM855BPpXz4UuHXNZbXqhlaZz9ASCu1XmmD6pj5jCc8cGmWcKBB7iJNwWeUFVkYgMtYxDOy+9aXx24avntcaCvk3W9yUCo973SpvFDbrShXk0Vdrgp7bNgc2HPpveRYGpGDtDm13lqD2camYW92bDwO08MBxx8Pm4l1XOsCclxKW9seYwlfmOvCnUP+mt+E5RY0FrW8gJL3LOx4Fx7jMZJRlz9/9DPgjoaWV7d7e/hD76j5RsMe3jVt+9gu782OXahhcy94EOYMqB9lAQ2yKKNZCh5F3+NpkHos4TnZOU/l+UwAV0qVUpjJHPT2zaX5ai0e1/S7NP9aaSYQhVBARCPwGA0C5tEs81xaJGmY+Mj83IVj0mTp6QAWdQl6cgMCNlC9a/Ndm/R12vT9NItzcGnkezENWBJTKPKculnKIQbuR2HUdP0Wt6N4F7rpt8nZv9PJDRaiRD6xpXJyjnL8x5WnmRdzXtDCTXIaMDeh4GYZRT/i4Gd5HGeM7P4Hk8nM9cwTAAA=",
+        },
+        [510] = new()
+        {
+        },
+        [511] = new()
+        {
+        },
+        [542] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1WS2/bOBD+KwbPEqD36+a4bjaAkw2qLPYQ9DCiRjYRWnQpqm028H8vqEcs23IqFOml2BtNDb/vm4dn5oXMayUWUKlqUaxJ8kKWJWQc55yTRMkaDfJBlGoBJUV+KwTdkKQAXqFB9KMVK/HwKO+f3OQkcaL48tt7yYRk6pkktkFuquV3yusc88O1xtm3HN3LF9IcHH1q8IPIINe7h43EaiN4ThLbso6Q34ZuMOJwkkbrpyIXm3rbK/NsyxuTNoGoRxOcI1UDQHvKc+fnMoXMGfAeOLC9ScBe9/wjqzbLZ6wGwvwTT31/kqdBn1x4wnTDCnUFrPFXX1T9RaqAPlUk8bt0BdE53xS2uGO7B8WwpDjQH5ziBdMy5fSQkv2HC1BtifYqT1Gdifl3O9SHDXAGT9VH+CqkBj666MPiGsf3n5CKryhJYusk9Fq8Scx9Qq7Y+hq2TYTm5ZqjrHo2XV05SdzQ8s7cm0QR7fcGWX5XErpWo1P8INJvsLspVc0UE+U1sLIPpGkbZFVLvMWqgjWShBCD3DXiyJ0okRgtwvMOSaIjN4K3EpX6Zbx7iRWOKyQmufC9ZWy+H/SkO6RKAl/UUmKp3snLE9R383VU7ZnHo+yNVVs4qRI73TBYuU4V7ppWf9DeFddcvo/kIVyj4Z+SfalR4xInzj2gRWBCUQSmFwXUzLzMNuPIdQs7zGxqAdkbZMUq9XehOSqSPLblqR147RZ+HASXNS7VBpl8rmZXwLnGuxNyC/wvIZ40Qt97/kVofut7Lb9xx7ND3aN6m1RJUa5HrCx3YLXCNZY5yOdLhh9EnfFxQieIXw0usA1NLlO1Vg+S7S4xhb7jvppc4joyeoOts9O1NS8UygXU641asa2eHnb74bTomkWllu3Y0odB/2w7mh+fD+w3ZqneHvq/e5/eT/ilZhLzVIGq9cjS68n/Of+Tcj5oKRiFNMgCNP0YQ9PLPceMrNwyoXAj6loY+XFM9p/7ntKNxMfXi7atPL6Qk/7ihpf7y60Q5eyK16iA8aNmaJ9Hp9/Ex4PWBAFLxShwHSmtoDWYb0VdDmI7stjrNngSOVfvG4eARVpPLQugmHLYDfzzx/aiwYrg7w3yu/f9yXv9YVj98ohKv8FO3yx0VJuADodWN6r0sb0+mJ3XtOV4RyVoO7lruzGYDi1s07Ms38wgDkwAihm1ItvL3aYEW+hO5aPvOTNztpCsSf7n2TJnGcdZU4fHJQ40yCInNy0v9E0vs0MTHIxMN6RB7BdZSKlD9j8AhrHG/EAOAAA=",
+        },
+        [543] = new()
+        {
+        },
+        [544] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1WS2/jOAz+K4XONuD365Zm206B9IE6gzkUe1AsOhaqWBlJbidb5L8vZFuJnSYNdlAs9rA3m6Q+fqQoku9o0ig+xVLJablE2Tu6qvGCwYQxlCnRgIW0ckZr2CuJUd0SlHlJaqFHQbmgaoMy10K38upXwRoCZC/W9tsO647zotJg7Yenv1qcKLHQzXpeCZAVZwRlruOMkD+HbjHSeHTCOUtmWjWrE4EFrhOcYWRAOGNQKBNJ4Dru0Mw7z4ILQjEzAJEbjACC3uyayupqA3LgKDxgGIYjhpHJOX6BvKKlusS05akF0ghyhYsXibKwz2KUfMQdoqY96iNWFOoCBnyiw3PROGOeOSroXzDFqqsE4/XwtHeQb78/Pa8wo/hFXuNXLjTASGDC8a2x/AkK/goCZa5OkvEZjDyYhF3S5Q1etZFN6iUDIQ2qvk2CMj92gg90R1DJdmuhq19K4P5l6VTPef6G17e1aqiivL7BtDYJsF0LzRoBdyAlXgLKELLQfUsC3fMakNUhbNaAMp2JI3gzLtVv4z0KkHCcIbLRCX3nsdXv+eRrKJTAbNoIAbX6oigPUL8s1qNsP0R81Htr1RVIrvhaP1BaL3MF67YT7rn3RTQRX0N5CPeR6RtdLTBV15Qx+Yn+qanlQ2MQvtf0ZwOaGQrCNCj9yLNx5IV2EJDETtPYtf3S8RzPcZ3YSdDWQjMq1UOpWUqUPXcFrlOw6wdhGkWno7xSFVCxkReXmDGNd8/FCrNvnL9oBNNdfgBu/7Vcgtp16hIzCVbfuXulDs/08F7UJTBwY921DGauBK8H4+78cccfHJ/BEmqCxeYLeLXAf/BmwQ4j7Sy8KN0Z7GmfNDlGbWg1F3R9ylMcev7O5JSvkdEn3no7/SwmpQIxxc2yUjO60gPI7RSH76VdNRrRTTj9MWjlXdMN048z+ZPxqvcC06lMXT3Bz4YKILnCqtFTTy8eJ4rtTPH80xr5/87/nTs3HW7Km1oNz1nooWab7xJ+VFDf83YDnbxiyvRbNQ900AlxGHiR6yQ2JpDYASx8O40KYpeJ5xWJS4qSBGj7p2mF/Wr7vBN03fD5HR20xSA83RbvOK8ZXVbq4pFBwUdzwP0su7cEakULzHRKtbPOYLLSWRiadZ35IKf+eHNMtKdGlLiAnOnmteMenlnSwq2F/jM7fr7GAsqGfcM1MSz06hYe4zEqmz5hvtXe3S2Z82kFxcvu+gb7vTNaU357wOdveK0lrfv2qoZTux/T+rMT782OPathES88lyycxC7D0rGDwHXslMShDU6JiyQqMURuW8QdrinDRmEF5KKt3BGe74ZeUSbEToMitoPAj+3EA2yHZRxjl0DiFRht/wa46t9DWg4AAA==",
+        },
+        [965] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1XS3PiOBD+K5TO1pYf8vNGmEw2VSSTCqTmkJqDbDWgjbGILLOTTfHfp+RHsMHAkmWr9rA30+r+9HXrU6t5R8NCiRHNVT6azVH0jq4zGqcwTFMUKVmAgfTimGewXWTN0i1DkR2EBnqQXEiu3lBkGeg2v/6ZpAUDtjVr/02FdSdEstBg5Yetv0ocLzDQzWq6kJAvRMpQZJlmB/k4dIkR+p0I8ySZ0aJYNgyIZZITFJookaaQqFag1XazT28rJOM0PVBSy/a8cIeJ12XSJTqMxRpQNKNp3uzwleeL6zfIWxzdHUjX7UB6zfnQF5gs+ExdUV6mqA15Y5gomrzkKHLrinvBPm4bNaxRH6jikCXQ4uPtxnndYttNqOR/wYiqSjVPOXzL0rfvXC1uGWSKJzTVXk0BW+vDRPE1TFK6ahb79OsFe0zsnWN3aibTBU05fcm/0rWQmkzH0JTGMbr2R0jEGiSKLF3wAxRIZ8PmLK74/IYuy6INs3kKMm820RpjKHJ8k+yx70AFm42Brn8qSesLrk9xKiZ/0tVtpgquuMhuKM+ag8GWgcaFhDvIczoHFCFkoPuSBLoXGSCjQnhbAYp0YXrwxkKfxyfxHiTk0M8QYXRgvdqxXN/ymawgUZKmo0JKyNSFstxBvViuvWz3Mu7dvfSqBDJRYqXvPs/mEwWrsiFvudciGsrLUG7DlRyeMv5agMZFluuavhkyDJQwTDw/wIHlxNiyqGsHVhyaAGhjoDHP1beZ3iNH0XMlT53AR6PwvcA+zHEk8qWIKVeDK5qmGvBeyCVNfxfiRUM0fec70PK3tuegPm5h2TObW1kv6tSa+1mbqvyJ5et+1mBOlBRZ69E8HW46rfAxzCFjVL5dgFcJ/JTDF1HU/o1jZTmRfgfN9nSSVdw2xTueaa8pX1at7LeqRdad+RFee5m1sf5Ovj3BTzlMJV91s6osZ2Xlu7YuUhX5j/PqoJ2fWR2ub+twpkCOaDFfqDFf6ifXqhZ2r3E5iBWyetP1R+vBKZ+8BWT3QlWv3sfbeOTpc3w33J94jgwvesxqOm5zwR7hteAS2ERRVejBQM9xB27diVt07mXpOPbq/Jigz9Jp26tXe8dFdqZ2/iWRfPbM2109DNw4AQfbls8wIS7DMfN97Ppm7PhmkNiJgzY/mrZez/rPH4aqsz+/o26LJ05wuMVfccHEsvsSWcfqsjMXvqPKYbgURdZxQxFxw93xyemOxYHeqZAzmtSTZO/ITtzQPTFEuhsD/Wf++2xHgk8PAjpYW0a6qmVB26NBPRDoz8q8deuTbUtiZuIQhzKGLUpjTGaJiykzCXY8kgSm5dpAQrQx9iUUHk7gUeSwBp4Orvgfori4kvoFcb6w/ldSdkklMZI4zAkZpk4SYkK9EFPbBJwkZgBObM2I6ZfNqsKtKT6Hnou//BiMqZzD4K5QNFODUZEqvqYK2EBP4HwJWd6dd53AM2cktLA5Cz1MYkZwEDgMMwLWzKYBjS0bbX4BIHQuinARAAA=",
+        },
+        [966] = new()
+        {
+            "AH4_H4sIAAAAAAAACuVWTXObMBD9Kx6doQMYMHBzXDfNjJN6Ymd6yOSwwGI0wciVRJs04//eESDbYCdxO7n1Bvvx9u1qd6UXMq4km4CQYpKtSPRCpiXEBY6LgkSSV2gQpZzREvfKVKuuUhI5QWiQOaeMU/lMItsgV2L6lBRViulerOy3DdY1Y0muwOoPR33VOH5gkMvNMucoclakJLItq4P8NnSNEY46Hta7ZCZ5tdYMXNty36GgvVhRYCIPHO1DM+f9sIynFAoN4NtuB8Btzb5QkU+fURwE8noMPa/D0NdFhkdc5DSTF0BrnkogtGAhIXkUJPLasvnBMe4hatiizkFSLBM84OP3/fxuxRztyulvnIBsjv5UH/nBEZjTK/+wBVvmUFB4FF/gJ+MKryPQ2Q2NrvwWE/YTOYlsVbNXKLidgLqcF3R1Ces673G5KpALHUSddUqi4chyj9h3oILt1iDTJ8mhHTR1EEu2+AWbq1JWVFJWXgItdW1N2yCziuM1CgErJBEhBrmpSZAbViIxGoTnDZJIFeYE3owJ+c94c44CTzMkJnlF30Ss9Xs+iw0mkkMxqTjHUn5Qlj3UD8v1JNujjE9Gr62aBllItlHjS8vVQuKmXox77m0TjfnHUD6EqznclfRHhQqXpMMkCDKITc8BNF10R2YMkJh+HDgjL3Ac9CyyNciMCvktUzEEie6b9lQJ7GZ95AdvcJwwsWYyH8yrDSi4G8bXUHxl7FEB6MXxHaH+b4ZPaQVKlYEew1bUpOnaI7V5tPNCclbWo9Na7UY4g0KgcTaqNTxAneEKyxT480cB3wn8zKrWXhs2Ep2+0izpGnlvCV3D006lducnqxfC8VVBGrB3y/Gq5zkpn3Becrrp5rA3GHnOcGdyxOyU0SkSXTs1QuNMIp9AtcrljK7VVWY3iv5s1a+Uijd3pfo4uAWaBe2Fx7f7Gxe1elLorabb+BZ/VJRjupAgK3V/qjdLv7f/qoXPbsmO4XE3ndch57XCf33md/vNCVlooxvHpmWnjun6VmyGoWebmecFWeiFACMk2we9Ott37f1O0GxP9d/s6nZT3oe+b35+GEyzjCYUSzmYAV/hQN0odI3lYM5ZUnFcYyl7qzyGoZ2GmRkP3cx0A8sxwUpC007ARwwh8xyLbP8AGPlnTtMLAAA=",
+        },
+        [967] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1XS2/jOAz+K4HO9sAP2bF8SzOdboH0gUmKHoo5KDadaOtIGUnuTrbIfx/Ij8ZO3GRb5LBY7M2lyE8fmU8k+4pGhRZjqrQaZwsUv6JLTuc5jPIcxVoWYCFzOGEcdodpc3SdotiLiIXuJROS6Q2KXQtdq8tfSV6kkO7Mxn9bYd0IkSwNWPnhma8SJ4wsdLWeLSWopchTFLuO00E+Dl1ikGEnwjlJZrwsVg0D7Dr4BIUmSuQ5JLoV6LbdvNPXCpkymr9TUtcLw05RcR32janl5QZU6+Jgj3EQdBiHTdHpM0yXLNMXlJW8jUE1hqmmybNCcVCXMYwOcduopEa9p5oBT6DFJ9yPC7sV9JpQyf6GMdWVFJpb96O9vfr7dfRsSXNGn9U3+iKkAegYmnR8q2v/Dol4AYli1xSpT8thZCTQurCp3wVbXNFVmeiIL3KQqrnE/Ngpiv2hgw/Yd6Ci7dZCl7+0pPVLM5WfielfdH3NdcE0E/yKMt7Uw3YtNCkk3IBSdAEoRshCtyUJdCs4IKtC2KwBxaYwPXgTofSn8e4lKOhniGz0znl1Y3m+4zNdQ6IlzceFlMD1mbLcQz1brr1sDzLuvb30qgQy1WJt3ivji6mGddkZd9xrEY3keSi34UoOD5z9LMDgIjdzMpJ5nh1FJLAxxtiehzS0XY+mfhZELnUjtLXQhCl9l5k7FIqfKnmaBN4e9zCMjnAcC7USejm4L9bUwN0KuaL5H0I8G4CmUzwCLf82dgX67Q1mNFfQvMn60CTWvM7aVGWP3aHpQA3mVEvBW7PrdLjjt8InsACeUrk5A68S+EHBV1HU/o1jZTmRfgfNC02SVdwuxRvGjdeMrcpGNvziWOiO55vHJfBRotkLTPN36LUB/0nSPcEzydYHWdQOw8Dz31x2hI849ZHo+plHNMo0yDEtFks9YSszvdzqYP91lYtKIavxaD5ac6Ap0a3QVZWuU+CaJWYGV6XqGQf+MCCHG8GR4W7WkKYRNsr/Dj8LJiGdaqoLM2PNnvPOczgh74+quOPYK8BjSvuQdv4TIvnsb95qtpkf+VGauLYLnmNjwNiOEpzZAaUkdIMgwCRA2x9Nt6134ac3Q9Vwn15Rt/NijxzrvHOa68EF+1MUnSnhHivO2wMwFTE3VQ6jlSh4xw3FOCD7q43fXTMjc1MhM5rU7ad3r8UBCU4seMHWQv+afxB24/rTQ9oEG8vYVLUsaHts18PafFbmnVufdls6I5lPyByIPQwdYuPIi+y5k/h2NJ97eJgEfjQ0U/hAR77zfgIPXDOdQzp4FPJ5cCu+DHz/7Hrql8XH5fW/nvg59ZSRIE291LUDCFMbEzq3IxJSe+5kaUgJ9aIEl32rwq0pPpFwaH/9Mbhb0xxUAlwPxlIoxfhiYPZjtgI+mBbyBTbdnZTgMPR837Fd4s5tjN3MjgB828HhPPUhAZoGaPsbZo+nW50QAAA=",
+        },
+        [968] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1XS2/bOBD+KwHPImBREvW4OW6aDeCmQZygh6AHWhpZRGTRIalss4H/e0E9bMmW7XWQAnvYmzyc+fjNcF5+R+NSiwlTWk3SBYre0VXB5jmM8xxFWpZgIXM45QVsD5P26CZBEQlCC91JLiTXbyiyLXSjrn7FeZlAshUb/XWN9U2IODNg1QcxXxUODSx0vXrIJKhM5AmK7NGoh3wcusII/Z7F6CSZSVYuWwauPXJPUGitRJ5DrDuGdleNnL5WyISz/EBIbUJpuMOE+j0mbgP0lavs6g1Uh4q3Y+l5PUvaPgN7hlnGU33JeOWJEahWMNMsflYo8prA0mAft4saNqh3THMoYujwobt2tB9T0ppK/g9MmK6T41HB9yJ/+8F1dpNAoXnMcqPVxqlzPo41f4VZzlbt4VCa0mCPCdl5Xadh8pCxnLNn9ZW9CmnI9ARtaByrL7+HWLyCRJFtAn6Agtu7sH2LS764ZssqaONikYNU7SUmlRIUOf7I3WPfgwrWawtd/dKSNXVsXvFBzP5mq5tCl1xzUVwzXrQPg20LTUsJ30AptgAUIWSh24oEuhUFIKtGeFsBikxgBvCmwrzHB/HuJCgYZogwOnBe31idb/nMVhBryfJJKSUU+pO83EH9NF8H2e55PHh7pVUnyEyLlal9XixmGlZV391yb5JoLD+Hcheu4vBY8JcSDC6CgLlz4rsYHDvBLkldHBBK8QhIQmzi+CFJ0dpCU67099TcoVD0VKencWDTKHwakMMcJ0ItxZxxfXHJ8twA3gq5ZPlfQjwbiLbv/ABW/TZyBXpThSnL1aYxNIfGtbY+G1Htv2v7pp+1mDMtRdGZjafNR07HfAoLKBIm3z6BVwX8qOCLKBv9VrGWnHC/h0aocbK227q47cL38DLIomv3b3wbMH5U8CD5qu9BLTnLA98jJiC15Vk+9CzP96IxN1U4TjXICSsXmZ7ypRmldn2wW57VHlXKelabj84gqUZZBsWt0PU028y8IyPN8b1wf2E5snuYLantpG3h3MNLySUkM810aQa+WcMOVNOJ6ji3CHqKg/l7LFHPysmu1mCeHU+oM3PnDyXJR9+8062DuZ0woCl2wwCwawcxDryRgz1C05DFoTcKHbT+2bbrZlV/2gjqjv30jvqt23WOtO4ryNUqFxJkb8jYx0Kzs/K9o1phvBRl0VNDkeuFu5uR0994A3NTKVMWN0vi4NLteqF3Yj/01hb6z/x72U77D894Y2wkExPVKqDdqd/MevNZi7dqQ5nbyTKSsnA+imPsAyXYDcgcsyBIMfNtm9EkDEdOgtbWfhY5hx2YQiYvZixnS1YkfyCVhjPi/Mz6P5WKz0wl3yUhzImDWUBd7IbExiyFBNtJHFDPswPwkqph1bgNxaeQBvjLz4vLMn++uJPilSsuCvMVlxKWUOj+EkvdOaHpPMXETgLsxizBLGAutn1q+5D6MSUMrX8DJKztrSwRAAA=",
+        },
+        [969] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1XTW/bOBD9KwbPIkBJFPVxc5w0G8BNgzqLPQQ9UNLI5oYWXYpKmy383wvqw5YcO9kUwWKB5kaTM2/ejB5n6B9oWhs145WpZsUSJT/QRclTCVMpUWJ0DQ6yh3NRwv4w74+ucpR4UeygGy2UFuYRJa6DrqqL75msc8j329Z+22J9VCpbWbBm4dlVg8MiB11ublcaqpWSOUpcQkbIz0M3GHE48iAvkpmt6vWJxKhL6AuMehAlJWSmz4S6xB2aeS+zUDoXXJ4g4nqMjWpMO7cPolpdPEI1CBwcMA6CEWPWfwN+D4uVKMwZFw1vu1H1GwvDs/sKJUFXVRY9xR2ixh3qDTcCygwGfNihHxtX0OtdtfgHZty0yuijHnp7B/X3O+/bFZeC31cf+IPSFmC00afjO+P9z5CpB9AocW2RjkmbRVYCg4B9/c7E8pKvm0Sn5VKCrvog9mPnKPFDQp+wH0FF262DLr4bzbuLZyt/qxbf+OaqNLUwQpWXXJR9PbDroHmt4SNUFV8CShBy0HVDAl2rEpDTIjxuACW2MEfw5qoyv4x3o6GC4wwRRifO24jN+Z7PYgOZ0VzOaq2hNG+U5QHqm+V6lO2TjI9Gb6xagSyM2tj7KsrlwsCmaZR77p2IpvptKA/hGg5/luJrDRYXebHnh8RlmPmUYOqSDMdBlGPqR2HkQQ6uV6Ctg+aiMp8KG6NCyV0rT5vA7nKHLPJOc5ypaq1SLszkjEtpAa+VXnP5h1L3FqLvFX8Bb36318+eVmBsDv1F7LbaRKkb2mbTOy+MVuXyNe7EH7jPYQllzvWjRegMd22g4LIC53XA56pO5S6lkYXH4p3BnvZJk2PUhla3WmxORQoDz9+ZnIo1MnomWmdn5TstDOgZr5crMxdrOzfc9uBQ182LodbtYLKLQQdum2MQPx2tz0xJO977jtIL6DN8rYWGfGG4qe2wsu+HQ1X9O/G8ViPv3/y/+eaDrkXjDLI0DDBlPsM09V0cZVGM08iPaEEg9UiGtl/6ttW9Me92G23nuvuBxi2M+vR0C7sBruVksQIpR93Wfa42VzmURmRc2oLYQK3BdK3qcmSGEhrEh08Ef/xci2ykWhc8g4W0ref4QzWIgxceSsHWQf+bd/d+7P3ysLPOdmdmq9oUdDj+uqFnl+323uyYdAcyiyHzC5LnmEc8w7RICY5YluPC/k5JCDQO0NZ5KqPguUmYcmkmZ+JvVb/r6PfQkReFaeYDw0EYZ5i6QYG5FwCmfsjCEFyf+OFRHbHTCcz5evNN6fvJrM7qdQr6XUy/h5hyxiPmuQQTEseYxiHFKecepkB81yNxlNOgmX0tbkfxLmYxPv8y+bThEqoMSjOZaVVVolxOzkVltEhr+56aLGr9AI/jPwkpy30/8gn2wpBgyhjBPGYZ5nmUAuWcBWmKtj8BZj/ZPT0SAAA=",
+        },
+        [970] = new()
+        {
+            "AH4_H4sIAAAAAAAACrVWS0/jMBD+K8jnRHLej1spj0UqLKKgPSAObjxpLNK42A4Lu+p/XzmJadKWQldwS+bxzTfjmbH/olGt+JhIJcf5HKV/0WlFZiWMyhKlStRgIa2csArWSmpUFxSlbpxY6FowLph6RaljoQt5+pKVNQW6Fmv7VYt1yXlWaLDmw9VfDU4YW+h8eVsIkAUvKUodjAfI+6EbjCQaeOAPyYyLevFOYr6D/Q8YGRBelpApk4nvYKdv5n7MggvKSGkAQscfAPid2RmTxekryF6gYINhEAwYhqbm5BGmBcvVMWENTy2QRjBVJHuUKA26KobxNm4fNelQr4liUGXQ4xNu+oXDirnGVbA/MCaq7QQTddPb3ai313nfFqRk5FGekWcuNMBAYNLxrKH8BjL+DAKlji7SrlYOY33kvYCmfsdsfk4WTaKjal6CkCaIPlyKUi/C/hb7AVS8Wlno9EUJ0g2arvwtn/4my4tK1UwxXp0TVpl62I6FJrWAS5CSzAGlCFnoqiGBrngFyGoRXpeAUl2YHXgTLtV/410LkLCbIbLRO/o2YqNf85kuIVOClONaCKjUF2W5gfplue5ku5XxzuiNVdsgU8WXel5ZNZ8qWDaLcc29a6KR+BrKfbiGw13FnmrQuMihjhtjP7czbzaz/XyW2InvZTaJCc5CH+OIYLSy0IRJ9TPXMSRK79v21Am8DXcUxns4jrlccFUcXddLouGuuFiQ8gfnjxrAbIpfQJr/dvi0VoLSGZgx7ERtmr4T6VVjnKdK8Gp+iDv2eu4TmENFiXjVCJ3h2xLISSnBOgz4TsIJrzt7Y9hKTJ4DNzfU2bQG61zeNfkM3x3OdxJuBVsOWbWS3ayiwNXZtCbv8RoYHc6sc9dDMcoViDGp54WasIW+jZxWsTktzbujFu11pz96e33H8vaiINm+DfdcvfrNYNaW6dMbeKqZADpVRNX6RtSPks3m/VyPHtqKA8Pv7aK+1fd3xje1wEV35ttvtP1n3luNQY4joD62KdDE9sNwZscRzWzPhyCCbDbDToRWD2Y3dg/X+zdBux71f7uMu1V4n0TYPnk4Gj3VRLHs6IxzKlWd53K4mT1CvcgLYjvycWT7eQj2jGBiJ15CqZOT3PUoWv0DUL9M3KILAAA=",
+        },
+        [971] = new()
+        {
+            "AH4_H4sIAAAAAAAACrVWS2/jNhD+KwbPEkC9Kd28rpMG8KbBOkEPix5oamQTkUWHpLbrLvzfC0piLNnyulm4N2ke33wznBnyB5rWWsyo0mpWrFH2A80ruiphWpYo07IGBxnlgldwVOZW9ZCjzCepg54kF5LrPco8Bz2o+XdW1jnkR7GxP7RYn4VgGwPWfPjmq8GJiYPud88bCWojyhxlHsYD5J9DNxhpMvDAV8nMNvXWMgg9HF6hYL1EWQLTPUevb+ZfDytkzml5oaSxFw7wws7rjqvNfA+qFzc6IRxFA8KxrTl9heWGF/oT5Q1tI1BWsNSUvSqURV0VY3KO20dNO9QnqjlUDHp84lO/eFhA37pK/g/MqG47YaytYnIG5p+cRtCBPW9oyemruqPfhDR4A4HNLnCG8i/AxDeQKPNMzS5QCAcBbTk/8fU93TZ5T6t1CVLZIOboc5QFCQ7P2A+gyOHgoPl3LWk3d+YgnsXyb7p7qHTNNRfVPeWVra3rOWhRS/gMStE1oAwhBz02JNCjqAA5LcJ+BygzhRnBWwilfxnvSYKCcYbIRRf0bcRGf+Sz3AHTkpazWkqo9I2yPEG9Wa6jbM8yHo3eWLUNstRiZ8aXV+ulhl2zJ4/cuyaayttQ7sM1HF4q/laDwUUMxxQIJi6BELshDplLYuq78YpFBaRA4hCjg4MWXOk/ChNDoexr254mgfdZT2ISXOY4E2rL2WQmaQWTu3JvIB+F3NLydyFeDYhdHn8Cbf6NXIF+n8OClgrsXHZKk5yd0E7UViD0ErOULOZSS1H1brPr7jjouS9gDVVO5f4GvBrgFwW/ibqzt4at5Er6AzQ/Nkm2fscUL5r8lzRGnF8UPEu+G5JtJR8im0S+yb31vER3YPRxwp27ma5poUHOaL3e6AXfmlvOaxWnY9e8Z2rZXqPmo3dBjNwCQRKl58+Cn9zw5i1i959t9i/wVnMJ+VJTXZub1jx2LkzAlY7+aOMODEd77mbN1bcabZibdsb/1AIPv3jmvR2beAGOVkHqkoR5bljgxF0Rr3ALnxR+TMNVGAM6/GWXbPcg/vouaPes+W+3ut2pE3cyLwrOOFR6Mn2rqeZscidErnRdFGryJAWrJWyh0sOlH+UEk5xgl6Q5c8MEQjfFCXXTyC8S5gUUE4oO/wIYNEvHDAwAAA==",
+        },
+        [972] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1Wy27bOhD9FYNrCVcP6rlz1CQ3gJsGVYougi4oamQTkUWXpNK6gf+9oB62JNtJU2RxF3cnD2fOnBkfzvAZzWvFEyKVTIolip/RZUWyEuZliWIlajCQPlywCg6HeX90k6PYCSMD3QnGBVNbFNsGupGXP2lZ55AfzNp/12J95JyuNFjz4eivBscPDXS9uV8JkCte5ii2LWuE/DJ0gxEFowjrVTLJql73DLBt4Vco9FG8LIGqQaA9dHNeT8tFzkh5pqW24/ujpuIu7IrJ1eUW5CCxN2HseSPGft908gjpihXqgrCGtzbI3pAqQh8lir2ujX54jDtEjTrUO6IYVBQGfPxpnD/uoNOHCvYLEqJaKfRZp9HOpP9uF32/IiUjj/KKPHGhAUaGvhzXGNs/A+VPIFBs6yad0rIfagkMEvb9u2DLa7JuCp1XyxKE7JPoPztHsRtY+Ij9CCrc7Qx0+VMJ0t003fl7nv4gm5tK1UwxXl0TVvX9MG0DLWoBH0FKsgQUI2Sg24YEuuUVIKNF2G4AxboxJ/AWXKq/xrsTIOE0Q2SiM+dtxub8wCfdAFWClEktBFTqnaqcoL5brSfZHlV8Mnvj1QokVXyj7yurlqmCTTMZD9w7Ec3F+1AewjUcvlTsew0aF9nUDcPcC007ynITZ0BN4kFmgus7rusFAXUttDPQgkn1qdA5JIofWnnqAvaXO/BD9zzHhMs1o7NEkApmV+VWQ95ysSblv5w/apB+WnwF0vxuL6A+laB0Ff1V7ExtqdgO9Ljpg1MleNVcn85rf40LUkow/hjVcgeoC1hClROxfS/gD7zOyn2lIw/Hj/YOR9Ucu5yiNvS6F2xzLlPgOe7e5VyukdML2To/ret5oUAkpF6u1IKt9UKx24Op4Ju3Qy3ajaU/BqP5xPx1Ay+aLp4Xl7je+/3k6WX2Gb7XTECeKqJqvdT0w2KqvTdJ7I8l878E3iaB/j/Hb/zPB9PNyzMLE+qYReS7JiY0NAl2iZkRyPzCCR0vw2j3rR9v3ePzYW9oJ9zDMxqPOozx+VF3XRIpZ6liiq5AjAaz/VJ7bnKoFKOk1D3RuVqH+ZrX1cgNxdiLpq8Jd/yyC3WmWhSEQlrqYXTyKYmPL9T0TeXtDPSfeZMfNuRf78X0B9loS6K72jR0uCm7/ag/W/PB7ZR6B0qzfIeCS4np0cw1sVfkZgSQmyF1gFqQg0PsRmktbkfxIQocM/k2+wpSzS6AUF49AStnH5hUgmW1nlyztBZPsJ05/zjj1R1YXp4FtDAzBxcm9iPPjKIMmxYOaIY9j4AW928FpR30xA0AAA==",
+            "AH4_H4sIAAAAAAAACu1WS2/bOBD+KwbPIlaUqOfNcZM0hZsN4ix6CIoFJY1sIrLoklS2buD/vqAetuRHjAQ59NCbPJz55pvxxxm+oHGlxYQprSb5HMUv6LJkSQHjokCxlhVYyBxOeQm7w6w7uslQ7ISRhe4kF5LrNYqJhW7U5c+0qDLIdmbjv2mwvgqRLgxY/eGYrxrHDy10vXpYSFALUWQoJrY9QH4dusaIgkGEfZbMZFEtOwaU2PQMhS5KFAWkuhdI+m7O+bRCZpwVJ1pKHN8fNJW2YVdcLS7XoHqJvT3Gnjdg7HdNZ08wW/BcXzBe8zYG1RlmmqVPCsVe20Y/PMTto0Yt6h3THMoUenz8/Th/2EGnC5X8F0yYbqTQZd2Pdvb677bRDwtWcPakrtizkAZgYOjKca2h/R5S8QwSxcQ06ZiW/dBIoJew698Fn1+zZV3ouJwXIFWXxPzZGYrdwKYH7AdQ4WZjocufWrL2ppnOP4jZf2x1U+qKay7Ka8bLrh+YWGhaSfgKSrE5oBghC93WJNCtKAFZDcJ6BSg2jTmCNxVKvxvvToKC4wwRRifOm4z1+Y7PbAWplqyYVFJCqT+oyj3UD6v1KNuDio9mr70agcy0WJn7ysv5TMOqnow77q2IxvJjKPfhag7/lPxHBQYXMd8GGgU59kOWYErSAIdAfJy6oc/swA2YTdDGQlOu9N+5yaFQ/NjI0xSwvdyBH7qnOU6EWvJ0NJGshNFVsTaQt0IuWfFZiCcD0k2Lb8Dq38auQG/vYc4KBd29bA9Ncd0NbU1NBygJzBTqMGdairK3v86H224vfApzKDMm1x/Aqwb+JKqk2K+08XD8aOuwo33S5Ri1vteD5KtTmQLPcbcup3INnF7J1voZXY9zDXLCqvlCT/nSLBTSHOwLvn47VLLZWOajN5qPzF838KLDFfzKNjV7v5s8nczu4UfFJWQzzXRllpp5WJzQ3hktvVUyfyTwNgm89z/vTTeIPDchro994lJMU8hxaLshhiBIbDsNac4StPnejbf28fm4NTQT7vEFDUcdpd7pUXddMKVGX6Ao1rmJ6k9m8lp/bjIoNU9ZYZpikjUO46WoyoEbiqkX7T8n3OHTLjSZKpmzFGaFmUZH35LUi7wzjypvY6Hf5lG+W5HvXowm2Fgmpqt1Q/ursl2Q5rMx79yOybcnNULdzEndAHsBtTF1vAgnSehhxyVAfSePAmajjXUopeCclO55kogSM7n8fbT0RzydKrZKUd3F2tMTK0X572MUOHjyffQNlB5dAEtF+Qy8GH3iSkueVGZFjWaVfIb1yPnLeZ8EwQdKSQY4Cx0PUzPoEj/LMQuClHlpmDupW0+7Brct9C3USE2tl9L1aJoRSLAXJh6mNPQxs+0Ik9wNWJpnIYEIbf4H/Z4YxkgQAAA=",
+        },
+        [973] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1XS2/bOBD+KwHP0kLUg3rcXG+aDeCkQZ2gh6AHShpZRGTSJam22cD/vaAesSTbiVOkwB72Js/jm4/D4cz4Cc1qLeZUaTUvVih5QuecphXMqgolWtZgIaNcMA47Zd6rLnOUuFFsoRvJhGT6ESXYQpfq/GdW1TnkO7Gx37ZYV0JkpQFrPlzz1eCQyEIXm9tSgipFlaMEO84I+WXoBiMORx7Oq2TmZb3uGfjY8V+h0HuJqoJMDxzx0Mx9PayQOaPVkZRil5BRUv3O7SNT5fkjqEHgYMI4CEaMSZ90+gDLkhX6A2UNbyNQvWCpafagUBJ0aSTRPu4QNe5Qb6hmwDMY8CFTPzLOoNu7SvYvzKluS+FOwSdePX5hurzMgWuW0cpY9VkZ6GeZZt9hWdFNrzxUlCTaY+JO7tLrmNyWtGL0QX2k34U0ZEaCPjWeNZZ/hkx8B4kSbBJ+hII/CtjfxQe2uqDrJmkzvqpAqj6IKZwcJV7o+HvsR1DRdmuh859a0u7Vmlu8FcsfdHPJdc00E/yCMt5fjI0ttKglXIFSdAUoQchC1w0JdC04IKtFeNwASkxiDuAthLmP38S7kaDgMENkoyP6NmKj3/FZbiDTklbzWkrg+p1OOUF9t7MeZLt34oPRG6u2QJZabMzbZ3y11LBpuuyOe1dEM/k+lIdwDYc7zr7VYHBRlGPwPOzYEQ5D24/z3I4KktpOlsVRHgQYQ462FlowpT8VJoZCyX1bnuYAz40iJJF/nONcqLX4IeTaYF0LuabVP0I8GO++5XwB2vxuX57RKtCGfv8GO1F7Rh+Hpmf1zkstBV+96N60mxL4tdD7HWeC7XgD7AWsgOdUPhr4zvC5PRS0Us8d63XSDfCdgr9F3dn3hq2kT4LR3LI1yEkfumL8WYUSHP7VdsCu8X6GbwfjusTkqo2wy9SRo5wYOjKhj0Y5JWcHnO8U3Eq2GWemlfyhzISBa66kjXFSbo74vv3EnbtpBbNCg5zTelXqBVubeY5bxbRHNKtbLduFwXwMptmBkeWFQTyd+y/uUGbt6pt1/0A/w7eaSciXmura7BRmr5u+2tMe51uf2chw/4WcVuCnVefQar/iTi2YUyvjD5VAf+f+G+98MBBCir0iS2M7LVxq+1Hh2LEfujaOijANUyhSiNH2az8Rut3//lnQDoX7JzSeDr4fHZ8OVzSTIpU0K1m9PrspKXAOXI2nGn4pUZMd8wm1BrO1qPnIDCV+EE9XMW+8YkcmUi0LmnUz4uBO7+8/relCGmwt9J/5c7RbL357qTDORjI3WW0SOlwzuuXCfLbindmhOh7UXBrgIA9javskcmzfT8FO3ZjaDsmcIsvilMQx2lp7NRW8cIAFlPJsTuXm3YvocC28vab+LyL+nkXkp1nk5hTsgAaZ7TuuZ1NCfDsPvAAXcexiQprG1eJ2FO/j0LPnX88M8NkNVRrOLvlKQs6AazXelVOnCIhDiV24HrH9AAd2HHvEzmkepJi6EQ4I2v4CAURz04ERAAA=",
+        },
+        [974] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1WS2/bOBD+KwbPIlYSqefNddNsACcbVF7sIeiBkkY2EVl0SaptNvB/L6iHLfmRR5EWBXZv1HDmm29Gw5l5RNNaixlTWs2KJYof0UXF0hKmZYliLWuwkLmc8wr2l3l/dZWj2A0jC91KLiTXDyh2LHSlLr5lZZ1Dvhcb/W2LdS1EtjJgzcE1pwbHDy10uVmsJKiVKHMUO7Y9Qn4ausGIgpGF/SyZ2apenwmMOjZ9hlEPIsoSMt1HQh3bGaq5z7MQMues7AF8h44AaKf2gavVxQOogSPvgKHnjRj6fc7ZPSQrXuh3jDc8jUD1gkSz7F6h2Ouy6IfHuEPUqEO9ZZpDlcGAj39o548z5vamkv8LM6bbSui9Hlq7B/kmnfVixUrO7tUH9kVIAzAS9OEQayz/CJn4AhLFjknSqVL2Q/PLBw77/L3jy0u2bgKdVssSpOqdmJ+bo5gENj1iP4IKt1sLXXzTknUPzWR+IZKvbHNV6ZprLqpLxqs+H9ix0LyWcA1KsSWgGCEL3TQk0I2oAFktwsMGUGwScwJvLpT+YbxbCQpOM0QYnblvPTb3ez7JBjItWTmrpYRKv1GUB6hvFutJtkcRn/TeaLUFkmixMe+VV8tEw6ZpjHvuXRFN5dtQHsI1HP6u+OcaDC4q/BAcCFLs256NKQlzHLrUxUFk55CmeWEXKdpaaM6V/qswPhSK79ryNAHsHnfgh/Q8x5lQa/FVyLXBuhFyzco/hbg31n2b+AdY892+PHOrQBv6/RvsRG2M1AlMn+mNEy1F1bybTmv3fgtWKrBejGqTAeocllDlTD68FfB7UaflLtKRhutHO4WjaI5VXkLthPFC8s05AoHnkp3KOQojpdeT6MxN+U8LDXLG6uVKz/nazB2nvTh8F82GUct2sJnDoIOfaNMk8KLD+fTkqDfbQd+g+qL8CJ9rLiFPNNO1mX1m/Tis1FcV5IsL7BcWzK+tjJ9UAv0/p6/854MmmOVFTlKXYJu5gKkDBIehH2LP9woHSOSzwkHbT30X7FbUu52gbYR3j2jcEalHznfEy5IpNXnPVVarUfd2nkrOVQ6V5hkrTUaMp1ZhuhZ1NVJDMfWiw5WDjNe/0HiqZcEySErTuE4vusfP6XDx8rYW+m329v0Y/eHhaYyNZGay2iR0OE67IWqOrXivdqp2h8MWCkZd18YUQoopjSIcZhHFxHNdQsIQqB2grXVcR+5zdZRorrMVyP8r6T9SST5hxM2JWdYopmngY5alFKdeTosiLQIKYdOxWtyO4l0UUDz7NLmuS83xppYboWBi+E0WoPSE/EHG22FOnNRnXoTtgBRmOwQcsczDHlDHCSGloe+h7Xci65QCJhAAAA==",
+            "AH4_H4sIAAAAAAAACs1W227jNhD9lYDPYitRlETpzXGzaQAnDdYu+hAsCloa2URk0UtSm2QD/3tBXWzJl7gbpIu+ycOZM2fGc3tFo8rIMddGj/MFSl7RVcnnBYyKAiVGVeAg+zgRJewes+7pJkMJYbGD7pWQSpgXlHgOutFXz2lRZZDtxFZ/02DdSpkuLVj9QexXjRMyB12vZ0sFeimLDCWe6w6Q34auMeJoYOGeJTNeVquOAfVceoZCZyWLAlLTM/T6auS8W6kywYsTKfVIGA6SSluzT0Ivr15A9xwHe4yDYMA47JLOH2G6FLm55KLmbQW6E0wNTx81SoI2jSE7xO2jxi3qPTcCyhR6fMJ9u3CYQdKZKvEdxtw0pdB53bcme/n3W+vZkheCP+pP/JtUFmAg6MLxnaH8M6TyGyiUeDZJx2o5ZLYEeg67/F2KxTVf1YGOykUBSndO7J+docSPXHrAfgDFNhsHXT0bxdtOs5mfyekTX9+UphJGyPKai7LLB/YcNKkU3ILWfAEoQchBdzUJdCdLQE6D8LIGlNjEHMGbSG3ejXevQMNxhgijE++Nx/p9x2e6htQoXowrpaA0HxTlHuqHxXqU7UHER73XWk2BTI1c234V5WJqYF1Pxh33tohG6mMo9+FqDn+W4msFFhcFUZSxMOM4j4iHaR6lmAEPcU4Z5LHLvDCbo42DJkKbP3LrQ6PkoSlPG8C2uaOQ0dMcx1Kv5JNUK4t1J9WKF79L+WituzHxF/D6t5VrMNsGzHmhoWvI9tFG1bVmK2pCp15kx0+HOTVKlr3FdcT8lj9b6Uysmt7/xT2AdP0e5AQWUGZcvXwA1xr4N1nNi/3oGw0SxluFXSgnVf4NtSPGMyXWpwhEAfG3KqcoDJR+nERrbltilBtQY14tlmYiVnYXec3Dfq/UZ0elmmVnP3pT/cjo9qMgPtzebyxiezJ0Q6sr1M/wtRIKsqnhprL70N4kJ6r3TDX+aIH9xIL5uZXxH5XAe//z3mBMYy/1IAgw8XiMKcznOGaM4piEXuT7NAtchjZfusnY3q0PW0EzHB9e0XBK0iA4PSUvpZIXl8CzwTj33srMTQalESkvbDqsm0ZhtJJVOVBDCQ3i/RvEH96DzHqqVM5TmBZ2arWsgzg4c3oFGwf9b0733SJ99/q0xlYytmlsSvCJr5ulqrvJ0t+xKEG8lOXfD3FE8fjLxW1VGIHXlVpLDRcW6mIG2lz4v/qoD9ZzcKTGe/VIaJ6zkFNMYhpgGucEszgmmNEwDjxOIt/16npscNvgztEhNZ2em5yEc5KyCPtk7mGauSFmUZBifx66jDE355SjzT8n4EKjGQ4AAA==",
+            "AH4_H4sIAAAAAAAACs1WWW/bRhD+K8a+9IVseSyP5ZuiOq4B2TUiFX0wgmBEDqWFKa6yu4ztGvrvxfKQSB1WYrhB36jZmW++Gc31QkaVFmNQWo3zBUleyGUJ8wJHRUESLSu0iHmc8BJ3j1n3dJ2RxIuZRe4kF5LrZ5K4FrlWl09pUWWY7cRGf9Ng3QiRLg1Y/eGZrxonjC1ytZ4tJaqlKDKSuI4zQH4dusZg0cDCOUtmvKxWHQPqOvQMhc5KFAWmumfo9tW8826FzDgUJ1LqemE4SCptzT5ytbx8RtVzHOwxDoIB47BLOjzgdMlz/QF4zdsIVCeYakgfFEmCNo1hfIjbR2Ut6h1ojmWKPT7hvl04zKDXmUr+D45BN6XQed239vby77fWsyUUHB7UR/gmpAEYCLpwfGso/4Sp+IaSJK5J0rFaDmNTAj2HXf4+8MUVrOpAR+WiQKk6J+bPzkjiRw49YD+Aijcbi1w+aQltp5nMz8T0EdbXpa645qK8Al52+bBdi0wqiTeoFCyQJIRY5LYmQW5FicRqEJ7XSBKTmCN4E6H0m/HuJCo8zpDY5MR747F+3/GZrjHVEopxJSWW+p2i3EN9t1iPsj2I+Kj3WqspkKkWa9OvvFxMNa7rybjj3hbRSL4P5T5czeGvkn+t0OASAD+DDDw7YH5gU5a6NoM4tgP0QieNnCzOHbKxyIQr/WdufCiS3DflaQLYNncUxvQ0x7FQK/Eo5Mpg3Qq5guIPIR6MdTcm/kaofxu5Qr1twBwKhV1Dto8mqq41W1ETOnUjM346zKmWouwtrhPmM75CudfxN/C0fSKJS3+NDlw5fs/VBBdYZiCf3yGGGvh3Uc2L/aw0Gl7Itgq7EE+qfA+1I8YzydenCESB529VTlEYKP04idbctMoo1yjHUC2WesJXZke5zcN+D9XnSCWbJWg+etP+yEj3o4AdbvVXFrQ5Jbph1hXwJ/xacYnZVIOuzJ40t8qJqj5TpT9aYD+xYH5uZfxHJfDW/7w3MLM5Yog+2AhRZNPYndvMdzPbgdhxwjwIIz8nm8/dxGzv2futoBma9y9kOD1p8Mr0vFsCliX8oi5GUorHwbB3X8vPdYal5ikUJinGWaMwWomqHKiRhAZs/0Lxh9dibDxVMocUp4WZXUfPUxqw4MydFmws8r+583db98271hgbydhktanLR1g3G1h1uekvZLN3S1F+uWcRtcefL26qQnN7Xcm1UHhhoC5mqPSF95tP+mA9B0cKv1ekc4wYYy7YcUSpTd0gsBmEuc3SEOIMYsrCpkgb3Da4c3Tcmk7PjetGLIqA2pBTx6ZR6tgQ+Lnt+RDOKUMWs5hs/gURRS9ORg4AAA==",
+        },
+        [975] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1X227jNhD9lYDPYqELqYvfHNebBnDSIE7Qh2AfKGpkE5FFL0Vl4y787wV1iSVbjjeBCxTovtFDzuGc0Znh+Acal1pOWKGLSbpAox9omrM4g3GWoZFWJVjIbM5EDrvNpN26TtDIDSML3SkhldAbNHIsdF1MX3lWJpDszOb8tsa6kZIvDVi1cM2qwvFDC12tH5YKiqXMEjRybLuH/D50hREFPQ/7ZDCTZblqIyCOTU6E0HrJLAOuO45O95h7+lqpEsGyIyl1XN/vJZU0bl9EsZxuoOhcTPciprQXsd8mnT3DfClSfclEFbcxFK1hrhl/LtCINmn0w0PcLmrUoN4xLSDn0InH3/fz+xl0W1cl/oYJ07UUhnTlhwdg7t7n8BqwhyXLBHsuvrAXqQxez9Cy86y+/R64fAGFRo7J2ZEQSO/CNp2XYnHFVhXvcb7IQBXtJebbJ2jkBTY5iL4HFW63Fpq+asWawjMf4kHOv7P1da5LoYXMr5jI29xix0KzUsENFAVbABohZKHbKgh0K3NAVo2wWQMamcQM4M1koT+Nd6eggOEIEUZH9usbq/1dPPM1cK1YNimVglyfieUe6tm4DkZ7wHjw9upULZC5lmtTviJfzDWsq0a5i70R0VidJ+QuXBXDYy6+lWBwEUl5FDqRjRkHigmEHIep52JOIuIQCqFnE7S10EwU+s/U3FGg0VMtT0PgrdYDP6THY7ySkiv2PQNlwG6lWrHsDymfjXvbNv4CVv029gL0WwWmLCugrchm09Bqa7Mx1dyJE5h21GLOtZJ55yEbcL9hr8b6IFZV8fu/2QeQtteBnMEC8oSpzRlirYAfC/hdls359mBtOZGSHprrG+K13472G7W9hnYj8j5r5x24n6E84PxYwIMS6z6x2vIhYgF1TZ5qz3NQ6wF+nFzjbmp4nGpQE1YulnomVuYtdeqN/eKuxqZS1Y+1WXSeoYG3xgtodDh9vDNImJGn7bJtYd3Dt1IoSOaa6dK852amOlJtJ6rnowXROzio5VOi/Wkhdk8Niuu0ij6gjH9JAp/95p1O7ru2zyCKsEu5h0kQpDiKPR9Dyojj8dClxEbbr20rb+bupzdD3c2ffqB+Wyc0fKetb1Y5U3xZFr0HyHkvNdcJ5Fpwlpl8mHvqA+OVLPPOsYGiIDTaH6K8/nwbmotLlTIO88x03YYFjeiJ2ZFuLfSf+SuymwQ+/f4bZ2OZmKxWCe1OBM0cYJa1eXdsSLndecH1oojwFHvAEkzsIMZhkgbY8ziJvTSMeZygrXWoouA4gSlkxTqTCtTZVfRp2QzL75eKzqOiBBxKXYixz9wYk8RPcZz6KYYA4pTbYehye1BF0XEC13nGNhf3bPOrFf0/RMQhtd0wSXBqezYmASM4SsDHzA5sCi54Lq0fvBq3CfEpCiiefL3AF9MVqAXki83FZZk9X9wp+SIKIXOz4qWCFeS6/2fJDtLEJQnFYFMPE/BcHMVRgDnzwPXsgHqcou0/alDVR0UTAAA=",
+        },
+        [976] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1XTW/jNhD9KwbPYiFK1OfNcZM0QJIN1tnmEPRAUSObjSx6KSq7buD/XlAftmXLNjbIoUBzkznDN4/Dx5nxGxpXWk5YqctJNkPxG7osWJLDOM9RrFUFFjLGW1HA1ph2ppsUxU4YWehBCamEXqGYWOimvPzJ8yqFdLts/NcN1p2UfG7A6g/HfNU4fmih6+XjXEE5l3mKYmLbPeTT0DVGFPR22GfJTObVomNAiU3PUOh2yTwHro9khBKb7O5yzrOQKhUsP4JHHN/v5Zi2265EOb9cQblzAG/vAJ7XO4Df3QF7gelcZPqCifoYZqHsFqaa8ZcSxV6bVT88xN1FjVrUB6YFFBx2+Pj7+/x+Qp1uqxL/wITpRhnfSvhS5Ksnoec3KRRacJYbry4rO/Yx1+IVpjlbdsYhjfrhARNn72rdlsnjnOWCvZRX7FUqQ6a30KXGtfrrX4HLV1AoJibhRyjQXsDuLi7E7Jot6qSNi1kOquyCGOGkKHYDmx6w70GF67WFLn9qxdpHbG7xUU5/sOVNoSuhhSyumSi6i8HEQreVgjsoSzYDFCNkofuaBLqXBSCrQVgtAcUmMQN4t9LcxzvxHhSUMMwQYXTE3kSs7Vs+0yVwrVg+qZSCQn/QKfdQP+ysg2wPTjwYvfZqBDLVcmnevihmUw3LuuhuubciGquPobwLV3P4VojvFRhcxDPPy+w0wWGSMEx54uPIAxenAfPdkAfgJBlaW+hWlPpLZmKUKH5u5GkOsCkUgR+6xzlOZLkQfDRRrIDRVb4ykPdSLVj+h5QvBqSrPE/A6t/NAzTWErQ5RfcUzdKjWIDae6J3otiYUEzob3bja9JQp4USJwhNatpIU61kMTsb6+j+W5hBkTK1MhCt54ZTxvJyU8nOI9vmzn6XVZJvEtDzcPxo47DlfdRliNqu16MSy2ORAs9xNy7HYvWcTkRr/Yzcx5kGNWHVbK5vxcL0LNIY9t9BPa1UqmmK5mOnYtc9Yw7FvdRN29g0lxO9ww286HAsONHSzSzSlaxOn1/heyUUpFPNdGU6qxl29kW7d6tBNCi3obs/JapPkfyaSN5757tlkRCWhh7H4EYRpqFt44TSFBPPDYhLSORGPlr/1dXFdiB+3iw0pfH5DfVrJPVP1PGJTFiuRxfib1n16jk5lZy96eoNNQ7jhayKnhuKqRftDyFuf7g05W1aqYzxdh4bno69yDszinlrC/1n/iVsG+u726nZbFYmJqt1QncbbNtWzWezvHUb0u6OzigEwKPAx47rZZh6SYLDNAwwDV0WZjSlGfXR2jrU0Ylee7kAxfI0Yfzlw2U0rIZfV9WnjD5URsS2I5pBgombEEw938NhGmQ4oVHipg4AT7NBGTnHD3Ahi9XoSTGh55nZ9Sml/4WUuEMdn5EE0zThmFLi4SRLA5w4ruMAcYDbTedrcLveNcKjP4VWIhOQjq5MIn8wDWpUC64XIITQ9SmPMLNthmnkRZhxx8c2uLad+JQyJ0PrfwE9wWYb1hIAAA==",
+        },
+        [977] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1YTW/bOBD9KwHPYkFKlCjp5nrTNECaBnUWPRR7oMixzY0suhSVNlv4vy8oWbbl2G6zTYECm5tMDt988PFx6G9o1DgzFrWrx9MZyr+h80oUJYzKEuXONhAgP3mlK9hOqn7qUqE8TLMA3VhtrHYPKKcBuqzPv8qyUaC2w95+1WG9M0bOPVj7EfqvFidJA3SxvJ1bqOemVCinhAyQT0O3GBkfrCDfDWY8bxZHEmOUsO9E1IOYsgTp+kwYJXTXLPx+FMYqLcojgdAwSQY1Zutlb3Q9P3+AesdxvBdxHA8iTvo9EHcwmeupey10G7cfqPuBiRPyrkZ5vK5qkj7G3UXN1qg3wmmoJOzEk+yvS4YVDPulVv8DY+E6ZvRe91eHe/WP1qtv56LU4q5+I+6N9QCDgT6dKBiOfwBp7sGinPoiHaJ2knoK7Djs6/dazy7Eok10VM1KsHXvxG+2QnnECXsU/QAqXa0CdP7VWbE+eL7yt2byRSwvK9dop011IXTV1wPTAF01Ft5BXYsZoByhAF23QaBrUwEKOoSHJaDcF+YA3pWp3X/Gu7FQw+EIEUZH5juP7fw2nskSpLOiHDfWQuWeKcs91GfL9WC0jzI+6L216ggycWbpz6uuZhMHy1Yot7GvSTSyzxPyLlwbw5+V/tyAx0WMS8UjSnFcZClmnEssoqjAWRJTnlEZCg5oFaArXbv3U++jRvmnjp4+gc3h5knKjsc4NvXCfDF24bGujV2I8q0xd351LxMfQbS/u5PnZ2twPvz+DK6HuhwZ5V5n+sUTZ001O7n8fVU+fJxDNZJO38OkPApMoh3gK5hBpYR98Nhrw402TEVZQ/DDEbfAf5imKDfJDizCJNsYbBM6anIotF2rW6uXxzzxOIw2Jsd8DYxOeFvbeU6Ppg7sWDSzubvSC3+Z0G5in+xtG9HY7rbyHzuy3O/UtXGPN+uAMEc8zvZvpJOXve8PeknqafgBPjfagpo44Rp/2/kGZJ+bP0bBp/LphR9P40e/5+yJe74je7GMBAgiMctIjBkhCc5USLHiMZ0yTkAxilbBYZ2Lj+vchTHSii8l2J8Uulu9ALvH9Xe62kyhnLJXJEC+Yz1k68eH9ukr9tMa+qKUv9dJOCKGTz0YL2L4vxZDRbiaqizEvIgyzBgQLGLFMEiuJIQyZUSi1V99E7h+sX/aDHT6+OkbGgolS5LjQjkRlSpKUTuwg96VnqrNpYLKaSlKXxDvqDMYLUxTDcxQzuJs/8EVDR+/qffU2KmQ6/7i8LP/cWux/+yMVwH6bf7F2D4iNhsRZz7xH+rM/TqPMPYFbWu5+45Yvx78Zze8NTvE2h2GcZKGLCliTKkimMmpwlnBUiwpUxwoy1QUtdftPoNOXLVjU4jSnb3Wf5vmhULPSKGeBH0OByj1lCboV3EqjAgFTmIsKKWYhTLEBWEcq6igEEdExYIe5NSJZ+oNCFueTeZQli+U+rWq9DtQiMdRwjkhOKZTgllKQyyAJZhwxtJpxmUKvL34OtxeeM7w2Vs9m+Nal1qKs/PqXltTLaByojx7X9Rg74Xvpob/tMQqAloUKZbMPzkKpXBB0wxzEtEQwgRkqNDqX16LKAiCFwAA",
+        },
+        [978] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1Xy27rNhD9FYNrqdCLEqWd45ukAZw0uErQRdAFJY1sIrLoS1LpdQP/e0E9Ykm2Eyd1gS66o4czZx46Mxy/omml+IxKJWf5AkWv6LKkSQHTokCREhUYSF/OWQm7y6y7uslQ5JDQQPeCccHUBkW2gW7k5c+0qDLIdmKtv22wbjlPlxqsPjj6VOP4xEDX64elALnkRYYi27IGyO9D1xhhMLCwPgxmtqxWXQSebXkfhNBZ8aKAVPUM7b6a87FbLjJGiyMltR3fHxTVa82umFxebkD2HONRxBgPIva7otNniJcsVxeU1XFrgewEsaLps0QRbsvok33cPmrYot5TxaBMoRePP7bzhxV0OlPB/oIZVQ0VOq9ja2dUf7e1fljSgtFneUVfuNAAA0GXjmsM5d8h5S8gUGTrIh3isk80BXoOu/pdsMU1XdWJTstFAUJ2TvTHzlDkBpa3F/0Aimy3Brr8qQRtO01X/oHHf9L1Takqphgvrykru3qYtoHmlYBbkJIuAEUIGeiuDgLd8RKQ0SBs1oAiXZgDeHMu1Zfx7gVIOBwhMtGR+8Zjfb+LJ15DqgQtZpUQUKozZTlCPVuuB6Pdy/ig91qrIUis+Fr3KysXsYJ1PRl3sbckmorzhNyHq2N4LNmPCjQuwjh3cWaDSZI8NL0w8M0kdTOTpEFOg5yESYrR1kBzJtVvufYhUfTU0FMn8NbcgU/84zFecw6byZyKF6rR7rhY0eJXzp+1fTcofgda/256T99KUDqBrgtvWamlD2zV9OkvloFatSZzzw709OkAYyV4WXdTq/XW1TktJBjHPY1QLbeHOocFlBkVm3MBP0r4xqtWv1NsJF1J3tIezaUPK+L4uiAN2IflOGp5SsoHjB8lPAi2HibWSP55YgF2dPEauE+mNrD9fHKtuW7iaa5AzGi1WKo5W+nX024uxt1dL0qVaJ5nfei9QwceGzfA4fiVfXdj0UtON2a7xvoOPyomIIsVVZV+wfUWNe62TzXQyQ0xUNzn8mn8PI2Ifa19cp1KmFOZ8S9RoPvm3ie/eW+U536YYwy5SfzANr0wzEzqATFt8FNMiU2I56DtH90sbzftpzdBM86fXtFwrnvEOz7XbySXKRQgJzOe0EIN3iH7vQLdZFAqltJCV0V7axSmK16VPbUDreHhcLxLucO9lmjHlchpCnGhZ2+by35LjVdIvDXQf+YvyG4h+PIaoI21ZKarWhe0vxi064A+NuKd2iH+9riWhilNPMcyaYKp6dlBYiYJxmYQhNj1Uhy4WY62xj6XrOMJXAkuFWSTeAlFcXYifZk5hxn4P5Huz0IkANsijpua1HUy08u8wKSpRU0vJDTEvkUCnNRDq8FtQ7yYmJPH9RrEJOYZNQu2gslVwamafGNSCZZU+hmcxJV4gc1w4bUIAT+3c9PHgLUbywz1lIQkCEnoJolLMNr+DcJMSar6EAAA",
+        },
+        [979] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1XTW/bOBD9KwbP4kKUqM+b66bdLJI0qB30UOxhJI1sIrLoUlRaN/B/L6iP2HLkpCmy2AW2PsnD4eOb0ZsZ6p5May1nUOlqli9JfE/OSkgKnBYFibWq0SJm8UKUuF/M+qXzjMROGFnkWgmphN6SmFnkvDr7lhZ1htnebPx3LdallOnKgDUPjnlqcPzQIu83i5XCaiWLjMTMtgfIT0M3GFEw2GE/S2a2qtcnAuPM5keMgnDIyO5RZFFgqvtQOLPZoZ/zPA2pMgHFCSbM8f3omMowOcPlaSLvkMQ5FFV/wjtRrc62WB1w9I4gPe8o3/0Lg1ucr0Su34BoYjSGqjfMNaS3FYm97hX44WPgAazTwV6DFlimeMDIP97oDxm5/VYlvuMMdKujMVH64SMwZ5ixsMNarKAQcFu9gzupDNzA0EfnWkP7R0zlHSoSM5O0Ewz4gLzfHfhGLN/Dugl7Wi4LVFV/iNFJRmI3sPkj8gOocLezyNk3raArWvMiFnL+FTbnpa6FFrJ8D6LsU0uZRS5qhZdYVbBEEhNikauGBLmSJRKrRdhukMQmySN4F7LSv4x3rbDCcYaEkhPr7YnN+p7PfIOpVlDMaqWw1K8U5RHqq8U6yvZRxKOnN16tQOZabkz9inI517hpmuyeeyeiqXodyodwDYebUnyp0eASz/U8lvOMAmQ55V7EacQDoLbN7Ch0MnATRnYWuRCV/pCbMyoSf27laQJ4KPXAD4PTHC9hWWIB6g4M2JVUayj+lPLWbO+7xieE5r+xV6gfKrDpeX1FdosmrL42O1MbO2dBZMLvMOdayfJgCJ7YvhBrVEclfynKhyUSs+APbh/+fIt8KIvtpxWWV1JPUy3ucF78HKsLXGKZgdo+S+wAwQlMf7up8K2suw29Z2t5Jn8DOMc3fNp9+xy9dOcgjhGvmwoXSmyGZFvLi8gGnmM03e58Id3B3icId36mMKe5RjWDernSF2JtBiRrF44rtrlH1aodwebhYLaMDBA38KLj+8eTFxpzB+pbZ18tH/FLLRRmcw26NkPaXLJOlNAzJXHkZbunJDrmOKq5nxDXy1U0KpifUsa/LIFffecH7Tl33ZRlPlDX9YDyyA1okmJOnczJWeInEbOB7P7u+3N3Ef/8YGhb9Od7MuzVPAxP9+o3RY2TazgaKuypzJxnWGqRQmHSYY5pHaZrWZcDNxJzLzq+CbnDW6ppc/Na5ZB2DXX8Lu9F3tPXQebtLPKf+TTZT/dfnulms7HMTFabhB5O+W62m8fWvHcbE+6ByJwgSbjjAM0x55RHNqfgQ0pT5gK4XuZxOyU767GIotMBzNS20lAU4jtmk8VKya+Vlv+ApMaV8XKF/ZbUq0oqc30/iiKgLAo8yh3boxDZAfXDkCG4PAffHZWUfzoA47qd/IVFsc3Nrt/d6X8hJeSQo+9lFNwMKM/CgCa+jTTgmeuESRY6aDcjsMXth9iETmZYmm+wyVxmQAuxxslsBWWJxeStqLQSSW0uVpN5re5wO/wssj2GiZf4NEzBo5wzmyaR7VAv4CmzIbQ5OGT3A5FMMbFrEwAA",
+        },
+        [980] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1XS2/jNhD+KwbPImBKJCX65rhJGsCbBmsXPQQ90NLIJiJLWorabLrwfy+oRyzZst0GPuwhN3k4882DH2fGP9G0NNlMFqaYxWs0+YluU7lKYJokaGJ0CQ6yh3OVwv4wao8eIjRxA+GgJ60yrcwbmhAHPRS3P8KkjCDai63+rsb6kmXhxoJVH679qnB44KD7fLnRUGyyJEITMh73kM9DVxjC71mMLwYz25TbNgJKxvRCCK1VliQQmhMVoWRMulbu5SgyHSmZnMAjLue9GtPG7E4Vm9s3KDoJsIMEGOslwNs7kC+w2KjY3EhVpWEFRStYGBm+FGjCmqry4Bi3iyoa1CdpFKQhdOLhh3a8X1C3NdXqH5hJUzNjiGY8OAJzD27Ha8CWG5ko+VLcye+Ztng9QZud5/TlXyHMvoNGE2JrdiIE2nPYlvNGre/ltsp7mq4T0EXrxN59hCaeP6ZH0feggt3OQbc/jJbNO7QXscwWrzJ/SE2pjMrSe6nStraYOGheavgCRSHXgCYIOeixCgI9Zikgp0Z4ywFNbGEG8OZZYT6M96ShgOEIEUYnzmuP1fk+nkUOodEymZVaQ2qulOUB6tVyHYz2KONB75VWTZCFyXL7fFW6XhjIq765j70h0VRfJ+QuXBXDn6n6VoLFRb4LPATKsEelh6lPAQfxeIVZFHjCBUpdStHOQXNVmD9i66NAk+eanjaB97fuczsITsV4Z2n/Kg3o0VSbjc6SUoPFfcz0Via/Z9mLRWo7yF8gq99WXoB5f4yxTApoH2dzaDNsn2kjqstAiW87U4u5MDpLOyPusvnY65jPYQ1pJPXb/0b4LStXyWFKtYbLxbvCPr6TKr0YBrSWWuWnPPnM9d5VTvnqKZ3x1uhZFk9jA3omy/XGzNXWThNSHxzSu9ojSl2PK/vRacQD3dbzmTgex2dGqd0B2j7T8ukrfCuVhmhhpCntRLNLxgmSXSDNf+bGJwU+RIGP3nmnlwmX+j7QGEeEC0yFjLHwVgTHPADmi7HHPYJ2f7fNrFlEn98FdT97/on6jY3amE41trnawuhhm0MRmkz32jA5V56HCFKjQpnYmlhftcJ0m5VpR21ovWTicJXw+lteYB2XOpYhLBLbm5pMmGAXNii2c9Avs5/v5+GHp6A1tpKZrWpV0O5cbKah/azFe7Uh9naZFjHu+yLGMXcZpoz6WPJVgNkqXMWxBwKAo51zzKQzCSxeVJ6rdP0q365Oow/zZph/nzS6Do0CJoKxCCUWkQBMKXOxYB7HMad+4FMY08gbpJF3hkZlivNS5wlEo6XMoTD6+nz6bEu/JJ985kUrECGOSeBiuiKAJScB5hxi4hM3dGOvGoA1bhPizQh3lvLRnYIkGi2hMP1/CkCikPHAw5LHAlNCXCw8SrGMfcECP2CcuGj3L9Fyo3dREgAA",
+        },
+        [981] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1WTW/jNhD9KwbPEmBJFPVxc9xsGsDJBnGKPQQ9jKmRTUQRHZJKNw383wvqI5ZsOWmDHHrYGzUcvnkcPc7MK5lVRs5BGz3P1yR9JeclrAqcFQVJjarQIXZzIUrcb2bd1mVGUj9OHHKjhFTCvJDUc8ilPv/JiyrDbG+2/rsG60pKvrFg9cK3qxqHxQ652N5tFOqNLDKSetPpAPl96BojiQYnph+SmW+qx44B9ab0AwrdKVkUyE3voNd38z8OK1UmoDiRUs9nbJBU2h77JvTm/AV1L3B4wDgMB4xZl3R4wOVG5OYMRM3bGnRnWBrgD5qkYZtGFh/j9lGTFvUGjMCSY48POzzHhhn0u6NK/I1zMI0UxnTF4iMw/+B3BC3Y3QYKAQ/6GzxLZfEGhu52gTO03yKXz6hI6tmcnaBABwG7dJ6J9QU81veelesCle6C2H+fkTSIpvSI/QAq3u0ccv7TKGgfnv0Rd3L5F2wvS1MJI2R5AaLscut6DllUCq9Qa1gjSQlxyHVNglzLEonTILxskaQ2MSN4C6nNp/FuFGocZ0hccmK/iVjv7/kst8iNgmJeKYWl+aJbHqB+2V1H2R7deDR67dUIZGnk1j5fUa6XBrd1odxzb0U0U19DuQ9Xc/ijFE8VWlwSxAg0YFMXMVm51M+ZC5xSF/KYZ0kCQZ4xsnPIQmjzPbcxNEnvG3naC7y99YjF0WmOV7AusQD1DBbsWqpHKH6X8sEe78rGD4T629o1mrcXmEOhsXuR7aa9Vvc2W1Nzd+pFthx1mEujZNlrZCPHv5fFy48NltfSzLgRz7gsTmJPgx72AtdYZqBe3oUfQ/hNVqvi8L6Nh8+SN4c9+ZMuAw4jXndKbE9FikI/eHM5FWvg9E601s/qepYbVHOo1huzEI+2v3jNxqHg61GiUk0Ds4teaR6pv0EUJscd+Z3maseArvJ0YrvFp0oozJYGTGV7nJ0zTijwA0X9a238ksCnJPDZf96rblkeBQGj1EUWBS7F1dSFMOQuCzJOMYqTVc7I7s+uvLWz6P2boalw969kWOpoEp8udZcc1wVoPbkANSjL3nvJucywNIJDYTNiIzUOs0dZlQM3ktIwOZwlguGYF9tIlcqBt8VsdKSiYRJ+MFGFO4f8bwb0fX/8dFe0h61lbrNaJ7TfJ9vuaJeNee82pt2ezmIKCaerlZvEq8SlWYwu0Ahd7vN4ShmPYi8kO+dYR8k7LVPKUhtZ4uRKKvhyJY0L4r8L65eSyq9UUsKZxxIIXGQBdekKIxeCPHYzRoNkxXiENK4rVoPbUjybuJNb8YxqcgZalJMFqDVOZk8VGMEnt6hlpTjqg9EvgwCmEboBY5kVLXVXsR+71KecTSlHP/LJ7h/yrTMLExAAAA==",
+        },
+        [982] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1XS2/jNhD+KwZPLSACelDPm+PNpgGcbBBlsYegB1oaWYRl0UtS200D//eCetiSLdubIIei6E0mZz5+M/w4M35F00rxGZVKzrIlil7RdUkXBUyLAkVKVGAgvTlnJew3027rNkWRHYQGehCMC6ZeUGQZ6FZe/0yKKoV0v6zttw3WHedJrsHqD1t/1TheYKCbzVMuQOa8SFFkmeYA+Tx0jRH6Aw/zIplZXq07BsQyyQUKnRcvCkjUiYwQy7T6XvZlFlykjBYn8Czb8wY5Jq3bZybz6xeQvQDcgwBcdxCA190BXUGcs0xdUVaHoRdktxArmqwkitw2q15wjNtHDVvUB6oYlAn0+HiHft4woXbnKtjfMKOqUcZXCV/K4uUbU/ltCqViCS20VZeV3v40UewHxAXddJtjGvWCIyb2wdU6LZOnnBaMruRn+oMLTWaw0KXGMYbrj5DwHyBQZOmEn6BABgd2d3HFljd0XSdtWi4LELI7xDbQMAVnQnR8kxyFODgv2G4NdP1TCTp46TsUffNPPP6Lbm5LVTHFeHlDWdldJrYMNK8E3IGUdAkoQshA9zVxdM9LQC3CywZQpJM5gjfn+g7fifcgQMI4Q4TRif3mxHp/zyfeQKIELWaVEFCqD4ryAPXDYh1lexTx6Om11aM2mvGqVCAaD23f3XojuVjxja4mrFzGCjZ1Gd9H1spyKj4moD5czfBryb5XoHFRktLUz2wXBy44mPh2hhcudXDiOb5pOkniWT7aGmjOpPqS6TMkip5f69N0ALvS43vhGY6fqhKyJt7JVKhc8KISoIHvuVjT4g/OVxqqq2jfgNa/9boEtXs5GS3k7j22m/3stktNHojl60rZYcZK8LL3EC+7m07PfQ5LKFMqXj6AVw38iVeL4lKkA0fbC3d++2jqypxD2VTmXfEaPbqP8CsBjTg/CbY5ot0a+K7t7Ez2DM8YjZEY2umnMs0UiBmtlrmas7XuoFazcfiG6tmpEk2L1h+9/tHl6Z6rE6kaLfNueDyknBkw9GTUFcNO1Y/wvWIC0lhRVek+r0evE1K/IN23KvSy4s5J603a+U+I5L133iupBLLUJYGJvcBPMcnMBaY2DTGEmeVZXhpatoW2f3Y1tR3Pn3cLTVl9fkXD+urqceZUfX0QTK6pYsnkjgvKDhqCdS5DBwPfK2oMpmvdwfZmY3O3Gx5OQM5w/A30wZXIaNJOjG0wbuhemA7drYH+NX9c9p353f1YO+uVei6oE9rv0ChCVxM8iWmxAQViEudcwCSuyhWUk0eQvBIJyMlvOom/owat8d/jjSm9p8oMPDdwXBObabLAJCQmDjzbx07guIFDSOCYIdoax6qzT0d6w4s0K+gKJjEtU93fP1x279bZuF7/l91eOrLLzcPblVhn+V06DCCxKc1c7JOUYLLwbRx6HmDTyXzXSiCjVlBXxwa3De5XON3pQX1wlk984rmegwO6CDEJLQcvHMvCtkMzxw+ykIQUbf8BHyZpJZMRAAA=",
+        },
+        [983] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1WS2/jOAz+K4HOFtbv1y3NtN0CaacYd7GHYg60TSdCHSuV5Ha6Rf77Qn4kdpqk20EPA+zcBIr8+JGiSL6Saa34DKSSs2JB4ldyXkFa4rQsSaxEjQbRl3NW4e4y76+uchLbYWSQW8G4YOqFxJZBruT5j6ysc8x3Yq2/abGuOc+WGqw52PrU4PihQS7Xd0uBcsnLnMSWaY6QT0M3GFEwsjDfJTNb1quegWuZ7jsUeitelpipgaE1VLPfd8tFzqA8klLL9v1RUt3O7ILJ5fkLyoFjb4+x540Y+33S4QGTJSvUGbCGtxbIXpAoyB4kib0ujX74FneIGnWot6AYVhkO+Pj7dv44g3ZvKtg/OAPVlkLvdd/a3su/01nfLaFk8CAv4IkLDTAS9OE4xlj+DTP+hILElk7SoVr2Q10CA4d9/s7Y4hJWTaDTalGikL0T/dg5iZ3AdN+wH0GFm41Bzn8oAaOftiWgH+KOJ8+wvqpUzRTj1SWwqk8PtQwyrwVeo5SwQBITYpCbhhO54RWSDuFljSTWeTqAN+dS/TTerUCJhxkSSo7ctx6b+x2fZI2ZElDOaiGwUp8U5R7qp8V6kO2biA96b7QuuMiw+WXPsO4fuxHmWtr8Gy/yPKOrrETxtf7orFokCtdNS91F2VXfVHxOcEO4hu1fFXusUeOSKHfB8jOgkQ0OdUPLpAA2UCdzsLAz33eDlGwMMmdSfS20D0ni+9fGmw5g2xUCX8+IYxwv9H95BoViMhVqKXhZC9S4N1ysoPyT8weN1PeavxEedr9H30ocpbYTtfG6VqCbVW+cKMGrxUfMTWdgPscFVjmIF43QKW5/cQGlRONjwF94nZbbkEYath9tFXa0j6ocojbUuhNsfcxT4NnOVuWYr5HSCW+dnq7iaaFQzKBeLNWcrfTcsdqL/fJuVoxatINNHwYd/ECbdgIv2p9PJ2e9Xg/6jtTX0zd8rJnAPFGgaj379P6xX2T/rZY+WjK/S+BjJdC/ufvBNx/0MojyIgpNn5ppEVA3B4+CbyFNLddz0txE187I5nvfzLod9X4raPvZ/SsZNzbPPNHYknqNYpIoEGktpBr1YetUfq5yrBTLoNRJ0c5ahemK19VIrZkc+1uHM94AQ+2pFgVkmJS6Gx1cOfUEemf38jYG+WV2991A/OkxqI21ZKaz2iR0OBi7caiPrXindqh8B6XmWIUZ+kVBnSJKqZtHAQVApKmTeg64mR26AdkYb0spOB7AleQywxLlZLpCtXz5XU3/l2pKfbR8J/WoH7g2dQMrpGnhAYUwNNMgtyM7bxtXi9tRvI9Ch9rfJ2cTOrmuFVRqMn2sQbFsohdVtsJq8jWVKJ5Az0Q5sf+wx8ufG6AbpmZBLSfNqFtkGU2DIqN+YVmh56eFW6Rk8y8QmAvLPxAAAA==",
+            "AH4_H4sIAAAAAAAACu1WyW7jOBD9FYNnEaOVWm6OO8kEcBa0M+hD0BjQVMkmIosOSSXtCfzvA2qxJW9pN3LoAeYmkVWvHouPVfWOhqUWI6q0GmUzlLyjy4JOcxjmOUq0LMFCZnPMC9hupu3WTYoSN4ot9CC5kFyvUOJY6EZd/mB5mUK6XTb26xrrVgg2N2DVh2u+KhwSWeh6+TiXoOYiT1Hi2HYP+TR0hRGHPQ/7QzKjebloGfiO7X9AofUSeQ5Mdxydrpn7cVghU07zIyl1XEJ6SfUbtyuu5pcrUJ3AwQ7jIOgxJm3S6TNM5jzTF5RXvM2CahcmmrJnhZKgSSOJ9nG7qHGD+kA1h4JBhw/Z9SP9DLqtq+T/wIjqWgpt1F1vdyf/XuP9OKc5p8/qir4KaQB6C+1xPKu//hWYeAWJEsck6ZCWSWQk0AnY5u+Cz67pojrosJjlIFUbxFx2ihIvtP099j2oaL220OUPLWnz0kzmH8XkjS5vCl1yzUVxTXnR5gM7FhqXEm5BKToDlCBkobuKBLoTBSCrRlgtASUmMQfwxkLpX8Z7kKDgMEOE0ZH9OmK1v+UzWQLTkuajUkoo9Cedcgf10856kO3eiQ9Gr6xqgUy0WJr3yovZRMOyqoxb7o2IhvJzKHfhKg5/FfylBIOLbObYJHZSHDlejH2WupgGbIoDz6e258VTYAStLTTmSt9nJoZCyVMtT3OAzeMOSUSOc7wWAlaDMZWv1KDdCbmg+Z9CPBv/tlB8A1r912/P7CrQ5gDtK2yW6lP6TmgqTes80VIUs5Pu90W++jaHYsg0f4VJfhTY9jrAY5hBkVK5MtiN4aY6ZDRXYP004wr4iyin+eawPQuXxBuD7YGOmhyi1rV6lHx5LFIYuN7G5FisntGJaI2dUfUw0yBHtJzN9ZgvTDtx6o1duVeTQynrfmU+OoW5vak7ofcv60Bp9sIg3u1JJ/u7GQnaotTK8Cu8lFxCOtFUl6bfmZljV5s/J8Fz9fS/Ps7TR3vn/pl33i18oRekNmE48iKCfQhcTFOf4sBzfaBp6Dt+gNbf28rXzKVPm4W6+D29o34VDOzoeBW8YTDLqVKDq1z0S7ZzKjs3KRSaM5qblJhQtcFwIcqiZ4YSP4h35wyvP/NFJlIpM8qaR9Uw339Au+NVsLbQbzOemyJbT6t1Fdg2z25Hio/fxZWh+kY1yMFQ6rkUeSkBdZBHJru1Ot/osu6nqg3Xba8oQbQQxd9PceRh9/vgYoAHt6WmhR4MX0qqORuYcYAvoBjcTxXIV2rKjhq4f7ioi96JeOA9dLQbOTZ4fgoYYtfGfsYojlxmYx+mHnGcFDwSobW1r81THboS5heuWKl+H2keqPX/NaXuK/PsYW6yJ8kd/Zmh7hd0NJ2GmU2DGPvulGHfDTMcpQCYZdPIt4PMCyNS1cAat6FY6dw5Q+dOpfNu3IjRkKQxJlPiYD9yPEydOMJ+nJKMeDS2sxSt/wVNxQdRfhAAAA==",
+        },
+        [984] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1WS2/jNhD+KwbPIqAHRT1ujpukAbzJYp20h6AHShzbbGTRS1LZTQP/94J6xJKjxEkQoHvoTR7OfPPN+OMMH9G0MnLGtNGz5Qqlj+i0ZFkB06JAqVEVOMgezkUJ+0PeHV1wlPpx4qCvSkglzANKPQdd6NOfeVFx4Huz9d81WF+kzNcWrP7w7VeNQ2MHnW+v1wr0WhYcpZ7rDpBfh64xkmgQ4R4lM1tXm44B8VxyQME/oNBFyaKA3PQCvb6bfzytVFyw4oWWej6lg6aSNuxM6PXpA+he4vCAcRgOGNOu6ewOFmuxNCdM1LytQXeGhWH5nUZp2LaRxs9x+6hJi/qVGQFlDj0+9DCODjvod6FK/AMzZhopdFnpkf4HbfT1mhWC3ekzdi+VBRgYunICZ2j/Brm8B4VSzzZpTMs0thLoJez6dyJW52xTFzotVwUo3SWxfzZHaRC55Bn7AVS82zno9KdRrL1ptvPXcvGDbS9KUwkjZHnORNn1A3sOmlcKvoDWbAUoRchBlzUJdClLQE6D8LAFlNrGjODNpTYfxvuqQMM4Q4TRC+dNxvp8z2exhdwoVswqpaA0n1TlAeqn1TrK9lnFo9lrr0YgCyO39r6KcrUwsK0n4557K6Kp+hzKfbiaw00pvldgcZGfeQlPALAfAsfEpwQznnFMIHJ96lKXuznaOWgutLla2hwapbeNPG0BT5c7onH8MseZ1BuRT66ZYqWpCmYhL6XasOJ3Ke8sSDct/gRW/7Z2DebpHi5ZoaG7l+2hLa67oa2p6QDxIjuFOsyFUbLs7a/j4W7QC5/DCkrO1MO7EW40/Car1r9zbCxH6hyg+dRW08Tta3lv5KCMEa8bDddKbIdkG8u7yEahb2tvIt9JdxD7CuHWz16j6dKAmrFqtTZzsbH7y2sODu9X/VSpVLMg7UdvE4yM+yAKk8ON/+qbwT4zukHXqfobfK+EAr4wzFR2h9p3zAtSPyLdNyt0zHFUc28Q1/tVNCqYNynjP5bAR//z3jDNc88NgzzADBjBJGM5zsCOVWAkyfzcjxOCdn9107R9694+GZqBevuIhpM19IKXJ+vVlhWgcyjNZGFEudJrsR1sA++1Jl1wKI3IWWE7YzM2DtONrMqBG0pJmBw+YYLhczK2mSq1ZDksCjsY2wLCJDzycgt3DvplXv77Pfzh7WuDrWVm21h3sL+P2y1sPxvz3m1MtD2BJS5bEsJcHAeUYxJlHDPm5tgPA5otwedx5KKd81xArxQwkxkrzORE/C2rX1449H/hOB8RDneznEJIcOASign1chz7WYhJTMMAvCAKl1E9mRrcluLJBE/+EEaJpQA+ObON/MEMqInNNLnKNKh7ZtedHj4qKQ/CjHHAYcQyTJIoxlnGKc5iSLLQA4ggR7t/AescJCReEAAA",
+        },
+        [985] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1XS1PjOBD+Kymdoy1blmU7t5BlWKoCwxKoOVB7kK12osKxgiyzw1L571Pyg9jBgYXNVs1hbk6ru/V16+tHntG0NGrGC1PM0iWaPKPTnMcZTLMMTYwuYYzs4VzmsDsU7dG5QBMSRmN0paXS0jyhiTtG58Xp9yQrBYid2Opva18XSiUr66z6IPar8sPCMTrb3Kw0FCuVCTRxHafn+W3XlY8o6Fk474KZrcp1i4C6Dt2DQPw+hNZKZRkkpmPodtXI+9cqLSTPDqTUJYxFe0hY1EPSBzqN1SOgScqzor3hiyxWp09QdDD6ey79fnCsfR9+D4uVTM0Jl1WIVlC0goXhyX2BJn6TcRa+9tv1GjVer7iRkCfQwUP27Vg/2aQ11fIfmHFTs+a2gK959vRNmtW5gNzIhGdWq01g53yaGPkIi4xv2sMh/rLQYfvPvsc8r0Fys+KZ5PfFF/6otAXTE7Sp8cZ9+TUk6hE0mrg24Qcg0N6F7VucyOUZX1dJm+bLDHTRXmI5JtDECxz6Cn3PVbjdjtHpd6N5U+D2FW/U4m++Oc9NKY1U+RmXefsw2B2jeanhAoqCLwFNEBqjywoEulQ5oHHt4WkDaGITM+Bvrux7fNLflYYChhEijA6c1zdW5zs8iw0kRvNsVmoNuTlSlHtejxbrINpXEQ/eXmnVBFkYtbG1L/PlwsCmasg77A2Jpvo4kLvuKgy3uXwowfpF4IeMEJLiNE4ppjFzcEx8FzPgPHJch4SCo+0YzWVhvqb2jgJN7mp62gBeGkVQtb5DGC/4Moe4XFpXl0qvefaHUvfWuO0434BXv628APNSf1W3bOuxObRBtZXZiOrIqRvYTtb6XBit8s64fN/c8Trmc1hCLrh+OgKuyvFtAb+rstFvFWvJO+H3vBFmg6ztdiFeyNxq3ci1bWLE+c2rGkzTk6/hYRBZ19e/iXfA+LaAGy03/ahqyYeiCnxik1Rb/ue4et4+Hlljbut0mhrQM14uV2Yu13bYuvXBfgFXK1ip62luPzqjZmCeeIEf7W8yb+5Cdn1qO2lbPtfwUEoNYmG4Ke3At/vZgZp6p0Y+Wgo9xUEWv0XXD7GwqzXIrLcp9EFm/E8U+Oybd7o1p2nIPZJin5MEUwAfc5ECTgkIiCgPkzhA27/adt3s8Hcvgrpj3z2jfuv23fBw6/6zlMl9wXMxuuC54VpJ0Zs27ls52tv9nlGtMF2rMu+oDVQH9aP9jcnrb8KhvbjUKU+a5bEJx4/8dxZFfztGP83/m93Y//Swt8ZWMrNZrRLaHf/N0LeftXinNkThDt18oMwLicCBEBGmEU1xHFOGE0eQkEQBkJih7fg1ndjhAKbrtUpWWuUqU0tZmKNz6dPkGSbhLy4dh0sCQvBEwHGSsAjTIAlx5CYBZg4F4rFIBE48yKXgcABXKuN2ExCjU8h+HiL9Yk5+TObQFDjzXY5pQEJMacRwGHgRZm7gMU4SJ+GkGnq13wbiyQiPFjzbgAE9WqyUhtGc6yWMrqFQpU6g6P8REsIDh5EAs5hSTH1P4NhzfeyFMYeYEu5DgLY/AGpfSVeJEwAA",
+        },
+        [986] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1XyXLbOBD9FRXOZIYbuN0UxfG4SnZcljw5uOYAgk0JZZJQANBjxaV/nwIXi9Qap1yZHMYnGeh+eHh6jW69oHGl+IRIJSfZAsUv6KIkSQ7jPEexEhUYSG9OWQnbzbTbukpR7ISRgW4F44KpNYptA13Ji2eaVymk22Udv2mwrjmnSw1Wf3D0pxrHDw10uZovBcglz1MU25Y1QD4NXWNEwSDDOktmsqyKjoFnW94ZCl0Wz3Ogqpdo98Oc88dykTKSH5HUdnx/IKrXpn1mcnmxBtk7GO8wxnjA2O9EJ48wW7JMfSSs5q0XZLcwU4Q+ShTjVkY/3Mfto0Yt6i1RDEoKPT7+bp4/VNDpUgX7DhOiGit0p+5mOzv6u232fElyRh7lZ/LEhQYYLHTXcY3h+h1Q/gQCxbYW6ZCX/VBboHdgp99HtrgkRX3RcbnIQcjuEP1lpyh2A8vbYz+ACjcbA108K0HaStPKz/nsH7K6KlXFFOPlJWFlp4dpG2haCbgGKckCUIyQgW5qEuiGl4CMBmG9AhRrYQ7gTblUP413K0DCYYZoPDJHo0mVK/ZEFKSj2QooK6AczSrxBOuR84eDjiA0nJDZnVfv6nwlSD6phIBSvZMOO6jvpsZBtvWNTkT17t1YaKb4Slc0KxczBav67dxyb202Fu9DuQ9Xc7gv2bcKNC5ygsjyXADTCqLI9BI7MkNMwQwxOJmT4cwNQrQx0JRJ9SXTZ0gUPzQG1hd4Lf/Aj9zjHO8gHU24LHhBFguupIa84aIg+Z+cP2qQ7j35CqT+X69LUK+VmpFcQle57aa+XFfD7VKjgGcH+p3qMGdK8LLX4Q6kfynz9dcllDdcjaliTzDLj2Jbbg97CgsoUyLW70C6Br6X8IlXbXwX2Kyc0WaA5vhagSZve/9rVuqoOSv0Wxh9iAZ//laHMyL00X9EgQPJc8FWe1dqAwLsuK8hW/Yngg6R2IljBfBKXZNn3QQ+WAbSRTjOFIgJqRZLNWWF7o92s7FbnfUoVImmAesPvU5zoJ24AY52JwrdeY4OB3qM6Z7Jribu4FvFBKQzRVSle7Sek35NobwV9X3q5yj80Le2rb++Q6gH6+RUQbzJ1f+lfd9k1nsJk0oqXjTO6b8kv8DHvfZig5X6YWSZQeQmpmdn2AyzxDUjSijGNk2SLEObv7v+0v4+eHhdaFrMwwsa9hrsnOg1nzgvIB39xddkAWLQGe1TQl6lUCpGSa4l0mc1AeOCV+UgDMUe1m/lQBR3OHyH+qRKZIS2ldBSxxE+M+fijYF+m99J25nkpycRnaxXJlrGWsH+bPLD86QObhJbIOeI9bfmo7adEp8QM/Ss1PTCgJoJJWBG2AkDJwq9xCVoY+yb68QVZ4qI0USQROnB77fx1oHK/d9q9p7V9PC7Z6Rjb+jWSJBEWRpkjolDapleSEIzotQxie162MsSGnhR/Yo1uC3FM74ezuEEY+zjNDRdmlmmh7PITDIXm65P3cyynYgmGG3+BQH9j32zEQAA",
+        },
+        [987] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1XTXOjOBD9Ky6d0RQCBIib481kU+VkUoO35pDag4DGVgUjjxDZZFP+71sCY4O/MjvlQw7xSW41r183T63mDY1rLSe80tUkn6PoDV2XPClgXBQo0qoGC5nNqShht5l1W7cZipyQWehBCamEfkURsdBtdf2SFnUG2c5s/Nct1p2U6cKANQvHrBocP7TQzWq2UFAtZJGhiNj2APk8dIPBgsET9rtkJot6eSIxj9jeHiNKh4w6EFkUkOouE4/YpO/mvM9Cqkzw4gQR4vg+22PiD5kMiY4T+QwoynlRdRG+impx/QpVjyM9n5zfvS7+BPFC5PqKiyZFY6g6Q6x5+lShiG5egB8e4vZR2Qb1gWsBZXpKVB6x/X0Yf1h7t0NS4l+YcN1q6phA/fAAzNmTlrMBmy14IfhT9ZU/S2XwBoYuWdca2r9DKp9BoYiYEnYxvUGErpxXYn7Dl03e43JegKo6VCOTDEVuYHsHdAdQ4XptoesXrfjmyJoXMZPxP3x1W+paaCHLGy7K7l1jYqFpreAOqorPAUUIWei+IYHuZQnIahFeV4AiU9YjeFNZ6d/Ge1BQwXGGCKMT+23EZn/HJ15BqhUvJrVSUOoLZbmHerFcj7I9yPho9MarFUis5cocX1HOYw2rpsXuuG9ENFaXodyHazj8VYqfNRhcFBIW0iwJcAY0wR7zAxwG3MWu7UPo5ozaHkdrC01Fpb/lJkaFosdWniaBbe8JfOac5nhV1DCKNVdZXWmDdy/Vkhd/SvlkELrO8QN489/YK9Dbg990PWvTCDabJrOuJWxMbfoeCUxH6jBjrWTZuwVPPD4TS1B7neZOlNst052+ULv/cyx0x196Hq77xT4gY7s9MlOYQ5lx9XqBLBvgP2SdFPt1az0cn20ddkU46XKMWt9rpsTqVKSAOu7W5VSsgdOZaJ2fWIKs9R1/6QprDs0416AmvJ4v9FQszeVF2o3909RMOLVqb0ez6DX6IxeKG1B2MBmcGzXMdNK1tU7G3+FnLRRksea6NheoGX8+gLZ/SY2fsmv8Liayb2Xx+mMB5b3U41SLZ7jNoNQiNSNhW9hfleF7Ouy3c4cnxGYuZjYz7dyxccKpg3PCQ8ZYCmlO0Prvrp9vxvbHraFt6Y9vaNjbqeOf7u3jWknFR/ECimJwD5Fz5dxWw9TQRGodxktZlwM3FHmU7Q9P7nCuDU2kWuU8hbgwyj0+gFJG35kZ6dpCH+ZbZjcQ/PYYYB42lompalPQ/mCwGQfMsjXv3I6pvaezIMsCAi7DJCGAPU4oDlM3wJQmrsec3IXAQ2vrUEfh6QRul0Jz005H1+VccTN8X1pNx0Xx/8X1qaaLqsnzCac2pZgxj2HPdgGz0M+wnUIYBqlNUzs8qiZ2Rk2VrFIooBo9AFeXb0yfUvqQUiIUvNxxXOyHqY09CFIcMprhhCV2SHnmO7nXXIAtbneFjfD262RkaI1mUOnhlxJPeepBGmAv9UPsJZmPmeNwnHDuhyEnhFGG1v8BUQAx63wTAAA=",
+        },
+        [988] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1XyW7jOBD9FYNnsaGF1OKb40lnAjgL2gn6EMyBoko2J7LoUFQmmcD/PqCWWLLlbPAAA0z7JBdZr4pPr1ilFzQptZyyQhfTdIHGL+g0Z3EGkyxDY61KsJBZnIkctotJu3SeoLEbRha6VkIqoZ/R2LHQeXH6xLMygWRrNvs3NdaFlHxpwKoH1zxVOH5oobP1zVJBsZRZgsaObfeQ34auMKKg52G/m8x0Wa7aDIhjk3dSaL1klgHXHUenu819P6xUiWDZAUod1/d7pJLG7bsolqfPUHQC052MKe1l7Leks3uYL0WqT5io8jaGojXMNeP3BRrThkY/3MftokYN6jXTAnIOnXz8XT+/z6DbuirxN0yZrqXQRt31dnf49xrvmyXLBLsvvrNHqQxAz9Aex7P69h/A5SMoNHYMSUNa9kMjgU7Alr8TsThjq+qgk3yRgSraIOZlJ2jsBTbZy74HFW42Fjp90oo1lWaYv5Hzv9j6PNel0ELmZ0zkLR/YsdCsVHABRcEWgMYIWeiySgJdyhyQVSM8rwGNDTEDeDNZ6C/jXSsoYDhDhNGB9Tpitb7NZ74GrhXLpqVSkOsjnXIH9WhnHcx278SD0atdtUDmWq5NvYp8Mdewrm7Gbe6NiCbqOCl34aocbnPxUILBRTxNqJeEHIfE55iwOMaR6wc49AknwGMS8QRtLDQThb5KTYwCje9qeZoDvBZ34Efu4RxPshJGc81UUhba4F1KtWLZ71LeG4T2qvgJrPpfV59ZLUCbI7R1eCFyY70Rq6pSw2+2hS7YU8fmucbWuNZ8ECcwd1IbZK6VzBefCUP3w7j+QBjb64SZwQLyhKlnE6nZ+HqrpCwrwDqcwBDwbQG/ybLZ326sLS1vrwnuXF8754m+Ubv7C3YCur7hq4besvVB8OAT4B/haMD5toAbJdZ9JmrLsZkIqGu4r8GPz0UP/vNsNO7mNpmkGtSUlYulnomVaeNOvbB7zVQTW6nqOcE8dBriVZ49/1xCPuFaPMI82wpyoB96AY32R6I3phszh7WdoK38H/BQCgXJXDNdmiHDDHq718HHqvmzxdjbuF9HH6iGD2u6u2tfpx9S2yc08y+J46vvvNttPOICpRz7LHQwcW0Xx6EdYeZwSnwvYA4J0OaPtt00HwN3r4a649y9oH7roR453Hqu1iwTGkbnqzUUXEvV65XOWwydJ5BrwVlmaDHh6g2TlSzzzraB2iA02p33gv60GprApUoZb+qsOQyN6DtjLt1Y6D/zmbQdWr48qhhnY5kaVitCu8NLM7KYx9q83TYk4I7YEi+hQRpG2A5sFxOXhJgB9XHMaZzSiAEPYrSx9sXkHT7AVCYrmbNS/xLR/0NEHELHo8zBLKEMk8hOcBgQH7sJRCROfZ56ZFBEbxxgKmOW6dGJ+FOWR9fRAeF49D3hDAvwl46uj6IjloS27acuhpBRTNwoxGEYpTgOaUrBJSn1WNX5atwmxckIj04zWEGuWYaheChhNHkoGS8zXSoYmc9MsYK86H/UAQfb9r0Ee7YTYuLbKY5oHGDHi7lvO0kaexxt/gHTpl913hMAAA==",
+        },
+        [989] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1Y227jNhD9FYPP4kKUqOub42TToE4arBP0IegDJY1swrLopag0aeB/L6hLLNlyvAlcYLGNn+Th8HBmeHh4eUHjUokJK1QxSecofEEXOYsyGGcZCpUswUC6ccpz2DYmbdNVgkLLDwx0K7mQXD2jkBjoqrh4irMygWRr1v6bGutaiHihwaoPS39VOK5voMv13UJCsRBZgkJimj3kt6ErjMDr9TCPBjNZlKs2AkpMeiSEtpfIMojVgYpQYpJuL+t4FEImnGUH8IjlusFOYK7TC6wf9zgSj4DClGVFO8JXXiwunqHo5OrsQDp9SLedLraE2YKn6ozxKmNtKFrDTLF4WaDQaSbA9fdxu6hBg3rLFIc8hk487m6KVr/2VttV8n9gwlRNoiFGuv4emLUzkXYDdrdgGWfL4it7FFLj9QxtdrbRt3+DWDyCRCHRNTsQAu0N2JbzjM8v2arKe5zPM5BFO4imSYJC2zPpXvQ9KH+zMdDFk5KsWbJ6Iu7E7G+2vspVyRUX+SXjeVtbTAw0LSVcQ1GwOaAQIQPdVEGgG5EDMmqE5zWgUBdmAG8qCvVhvFsJBQxHiDA60F6PWLVv45mtIVaSZZNSSsjVibLcQT1ZroPR7mU8OHrlVRNkpsRaL1+ez2cK1pXEbmNvSDSWpwm5C1fFcJ/z7yVoXEQCK2LUcTC14xRTYgH2XdPFSWoB8b3IpHGMNgaa8kL9keoxChQ+1PTUCbyudc/VOn0oxvMyh7TOdzSWaiFFVkrQwDdCrlj2mxBLDdVKyJ/Aqv/aXoB6XY2V/LWrs2nUKbbrtDHVdaDE09LUYs6UFHlnOxzofs1zbb3jq0oIzC+mga7ZU8dmky9m90ftvUEtz++MOoU55AmTzydIx9Qze1/AuSgb/9axthypWg/NcnVt6n7byrxmuqN//cJYRBfmINyPpDzQ+b6AO8nX/cRqy7sS8xxL16nueYrUeoDvT67tzlcgSnXNnioW2V0WWQbSijBOFcgJK+cLNeUrvTOTumFXKqrjWynrrV9/dDa1gZ3L9pxg/xT0xglGH71azW6X5jf4XnIJyUwxVerTgT7bHVivR9bfEK3fWi89x0GqH+P0D/O06zXIveMkewdx+n4no8BH57y7L0S261kmxQ5xCKYuZdhPgwgTk7kBmD61TAttjF91I/iwWPzn8v8rKP3/Q9T1ZeFT1T9V/SdS9TSxE89lLo4j4mLquDYO0sDEUer7MYuSyItTtPmrPe43rzoPr4Za6B9eUF/xHTs4rPizMl9CPvqdq/4thbxVm6sEcsVjlumC6IFqh/FKlHnHbeihxgl2b9p2/xFEy/OslCmLYZZpsW3ScALnyAODszHQT/PStb0ufviSqDtry0RXtSpo99rYXBb1Z23eug1Rt0MzyoCQyPdwYEcephYk2CdOhG3qpyyNk5i6UXV42KXRGweHS5ElozOpix6xeHlyKn2YO8Mc/KTS7UmoZDq2w1KSYteiFFNmE+z7iYmjwHYS2zYj8L1KsWrcJsTxCI9uJS9WTPF4dFtm2eicF0ryqNSb32hWykd47r+ERMQn4CcedjxNWmYzHNCAYRKDQ20/ImDHaPMvpxhiq1wXAAA=",
+        },
+        [990] = new()
+        {
+            "AH4_H4sIAAAAAAAACt1XW2+jOhD+K5Gf4QiDub6x2banUtqtSo/2oToPBobEKsGpbdrmVPnvK0NIICGpturD6ryR8fibb8ZzyzuKa8WnVCo5LeYoekcXFU1LiMsSRUrUYCB9OGMV6MMfVbluflMxh06hvZF3P69zFNlBaKA7wbhgao0ibKBrefGWlXUO+V6s9TetgRvOs4W20HzY+qvB8QIDXa0eFgLkgpc5irBlDZDPQzcYoT+4YX1IZrqolx0Dgi3yAYXuFi9LyNQ+hoOIEGzh/i37YxZc5IyWJ/Cw7XnhATHPHRAb8o5T/gIoKmgpOwuXTC4u1iB7vroHkO4Q0uueiz5BsmCF+kZZ47EWyE6QKJo9SRS52wfwgmPcPmq4Rb2jikGVQY+Pd3jPG8be7q4K9h9MqWqTaCwjveAIzD54SGcL9rCgJaNP8pK+cKHxBoLOO8cYyu8h4y8gUIR1zE5QIAODXTi/sfkVXTZ+x9W8BCE7IzpNchQ5vkWO2A+ggs3GQBdvStBtHeuHeODJK11dV6pmivHqirKqi62JDTSrBdyAlFTXMkIGum1IoFteATJahPUKUKQDM4I341J9Gu9OgIRxhshEJ85bi835nk+ygkwJWk5rIaBSX+TlAeqX+TrK9sjjUeuNVpsgieIrXb6smicKVk2L3XPfJlEsvoZyH67h8E/FnmvQuIj6LnWClJhF6rkmASs0AwK+aRM/c1Mvx5jYaGOgGZPqR6FtSBQ9tumpHdjVuu+F7mmOlzrtX6kCMYmFWghe1gI07i0XS1r+zfmTRuo6yE+gze+2CvWpBKVd6epRix7YEsRBnd7Qt90RirD/l2U0Q+/nAqpbruJMsRe4zqFSLNO9eY+mo9VEj2BfN7SOSqIEr5qK3GrtLDat2DjPsYdqOT3UGcyhyqlYn/VyzJsDVNsPNgb6zuu03EVtoGJ74U7hyJdjlQGxEa0HwVanLPmu7exUTtkaKJ2x1umxJfBa3dC3LgC6dOJCgZjSer5QM7bUIwy3B4c11Sw7tWhnpP7odf+P82JkCDi+Gx4vFGeWAb3FdO2vS/N7eK6ZgDxRVNV60Oo16TD3fyspP06yMcX/b9p8WZJ89s17LVbP/oymYAa2b5kkJ8QMwbbMrKBpEVIXwiJAm3+7HrtdpR93grbNPr6jYb91CTndb7VLk8uSv4KQg9mAzwVnVwD6urbUKsRLXlc9tbH12A2986unblNJLQqaQVLqFrf1w9Vj4+xa524M9Mf8v9gP6U+P5uSVrrRkqqPaBLQ/rLcjWn+24r3aWO7288wP/JC4vmnTHExiZ44ZUAImhtRKc5r6roObPGtxtxTjiTmJn2uqWDa5KqmUk3uQvBYZTL4zqQRLa926JkktXmA9XB7CwgUcEsvEGfZMQsLMTHMnMz1w0hB7BfVxgDa/ADXdD5qkDgAA",
+        },
+        [991] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1XW2+rOBD+K5WfYYW5GMNbTrbtVkp7qpLVWanaBweGxCrBHGPaZqv895W5JEBCK1Vd7T7smxmPv/lmPDMe3tCsUmLOSlXO0zUK39BlzlYZzLIMhUpWYCC9ueA56M3vebarv5lcQ6fQnEi6z5sEhTYNDHQvuZBc7VCIDXRTXr7GWZVAchRr/X1j4FaIeKMt1Atbr2ocQg10XSw3EsqNyBIUYssaIL8PXWME/uCE9SGZ+abaHkMxcMzFljti5IwYdSAiyyBWnScutnBfzf6YhZAJZ9kEEWwTEoyYEG/AZEh0thLPgMKUZWVn4YqXm8sdlD2O3gjSG0KS7rrYE0QbnqpvjNcuakHZCSLF4qcShV57AYSe4vZRgxb1nikOeQw9PmR8jgyDbXdHJf8L5kw1SXQuIwk9AbNHN+e0YMsNyzh7Kq/Ys5AabyDovHOMofwBYvEMEoVYx2yCgjsw2IXzG19fs23t9yxfZyDLzohOE51jvuWesB9A0f3eQJevSrK2jvVFLEX0woqbXFVccZFfM553sTWxgRaVhFsoS6ZrGSED3dUk0J3IARkNwq4AFOrAnMFbiFJ9Gu9eQgnnGSITTew3Fuv9I5+ogFhJls0rKSFXX+TlCPXLfD3L9sTjs9ZrrSZBIiUKXb48X0cKirrFHrm3STSTX0O5D1dz+D3nPyvQuIjZsYVTFpjBiqWmS7FvBrAC0yKxZ1MKKzclaG+gBS/V91TbKFH42KSnduBQ6z4JnGmOD5BczEW5FVu2XgtVasg7Ibcs+02IJw3SNY8fwOpvLS9BHeqwbnxdXbab2rmuQltREwEX+7opdZiRkiLvvY4Tx5d8C3JU+Lc8P2yhMPjFMtAte+2JMNEy/eScO67lI31X6+uH+McG8juhZrHizxBlk65YTs+VBawhT5jcfejNGOFXUa2ycXgbDZsEB4VjrCZVBhzOaC0lL6Ys+Z7tHFSmbA2U3rHW6ulimqUK5JxV641a8K1+1HCzMa6yevypZPNq6kXvPZizPIZsphRsC9XFUuss9bzUYJ7c3E0CueKxfukn5ynH94Lx3PHuIKNnn65pdhXyAD8rLiGJFFOVfp71cDUum3+yPv7PyX8hJz+bPr0eH2CXuUkSmy6xHdNNAzApw8SkFraIl7iMpCu0/7Nr8u0s/3gQNH3+8Q0NG77n+dMNP3riRcHz9QvbDd4m/F5sDqWkA6INNQqzrajygRoKXS8YD1TOcNal2lIlUxa3zfX8D4EXeB+Mld7eQP+Z/5vjkPDp0SB6YYWWzHVU64D2h4V2RNDLRnxUO5e6vTTzGSQkSG3TdRLbdFPPMmnqMZM4fkBXXmLbgOs0a3Bbipd/XJgXo/Hg4opDllwsoVTDacWnYGGaWCZOKTVdGqzMgGBq2r67coAmfkIZ2v8NKN0q1xUPAAA=",
+        },
+        [992] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1XyW7jOBD9FYNncSBRu29uT5IJ4CyIE/QAwRwosmQTkSU3SaU7E/jfB9QSS7Ycd4I0MEDnZherXi18rCo9o0mpiylVWk3TBRo/o5OcJhlMsgyNtSzBQuZwJnLYHvL26JyjMYliC11LUUihn9DYsdC5OvnBspID34qN/qbGuigKtjRg1Q9iflU4QWShs/XtUoJaFhlHY8e2e8ivQ1cYcdizsI8GM12WqzYCz7G9IyG0VkWWAdMdQ6erRo67LSQXNDtQUocEQa+oXmN2KtTy5AlUx7G/E7Hv9yIO2qLTB5gvRaq/UFHFbQSqFcw1ZQ8Kjf2mjEG0j9tFjRvUa6oF5Aw68QS7dkG/gqQ1leJfmFJdU+FOwVWePX0VennOIdeC0cxotVXpnE+YFo8wz+i6PRwiZRDtRUJ27tJtIrld0kzQB3VKHwtpgukJ2tK4Vl9+A6x4BInGjin4gRC8nsP2Lr6IxRldVUWb5IsMpGqdGOJwNHZD29uLvgcVbTYWOvmhJW1erbnF22L+na7Pc10KLYr8jIq8vRjsWGhWSrgApegC0BghC11WQaDLIgdk1QhPa0BjU5gBvFlh7uOdeNcSFAxHiDA6cF57rM638czXwLSk2bSUEnL9QVnuoH5YroPR7mU86L3SujFK06LMNcjawui3PDstJANuvFevz49932o4NdfF2rQLkS/mGtZVY96m2/BuIj8myy5cFfZdLr6VYHCRHaYh9QjBKecR9lzuYgrUxzHELvGcgPoE0MZCM6H0VWp8KDS+rxltEnjpLWEQ+4djPDUv5TvVIEcTqZeyyEpZ4V4WckWzv4riwSC1Hesr0Oq/kSvQL+83pZl6aSnNYbfijagug+eEphO2mHMti7wzQwfML+gPI70Vq6p1BH/Ye5C224GcwQJyTuXTB8RaAd8p+LMoG/1WsZYcKUkPjQQm8dpum/ZLajvt8ELknayJbbLuV4JEe5XouviZMgwY3ym4lWLdT7aWvCnZ0CemdrXlr0q35+TtCTfm5tlPUg1ySsvFUs/Eyox7pz7Y7QfVZlfKep8wPzrDbmCiuaEf7y9Ir+w6Zitre3n7AG/gWykk8LmmujQrh1n7DrzKI6/srQ+npzjI+WPk/mlydrUGCXecWW9gxi+iwHvvvNP8SUgdL/QY9kPbxV7gJ5gSSHEQRCF3GXgOeGjzT9v9m0+D+xdBPQDun1F/EvhBcHgSXEuhVlQLNppmpdIge6PLea1CO7vnM6oVJiszgLdqA2/D8+Pdjc3tb+KRcVzKlLJmeW2S8c1Ue3VR9TcW+t98NG13iHdvDsbYSKq1pipod5doNgjzsxZv1YYI3CFbagcOiVIXO0HiY4+FBEece5g4TuQkSRrbPEUba59M3uEErhIluKD56KJUCrIPp9K7uTPMwU8qfQyVWOwmnhPFmMWpiz3bBhynlGOfM+6nEYuAxINUcl9JgD4+jaYFZJTRXC8/qfR7UCnisevEIcORH0XYAz/GlCch9pPEScGzqe06g1R65WPnLKNKjeaszNa6+JxvvwmTCIEgDn0bM5cy7FES4wSSFEd2SpzADcFLSbVM1bhNiCd/j/BoRuUCRjfiEeToBlRRSgaq/50OdsJZGLs4CNMAe3bk4NhNbGyHjFNCEk6CBG3+A5Xe9QswFgAA",
+        },
+        [993] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1X32+jOBD+VyI/YwmDAZO3bLbtVcp2q01PPam6BwNDsEpw1pju5qr87yfzI4H8lKo8nHR9I+Px52/Gn2cm72hSaTnlpS6n6QKN39FNwaMcJnmOxlpVYCGzOBMF7BaTbuk+QWOHhRZ6VEIqoddoTCx0X978jvMqgWRnNv6bBuublHFmwOoPx3zVOD6z0N3qKVNQZjJP0JjY9gD5PHSNEQaDHfZFMtOsWnYMKLHpBQrdLpnnEOsTGaHEJv1dzmUWUiWC5yfwiOP7gxzTdtutKLObNZS9ALy9ADxvEIDf3QF/hXkmUv2FizoMYyg7w1zz+LVEY6/Nqs8OcfuoYYv6yLWAIoYeH39/nz9MqNNtVeIfmHLdKOOYzHx2AObs3Y7bgj1lPBf8tbzlb1IZvIGhi861hvYfEMs3UGhMTM5OUKCDA7t0fhGLO76s454UixxU2R1i7j5BYzew6QH7ARTbbCx081sr3r5DcxFPcv6Lr+4LXQktZHHHRdHlFhMLzSoF36As+QLQGCELPdQk0IMsAFkNwnoFaGwScwRvJkv9YbxHBSUcZ4gwOrHenFiv7/jMVxBrxfNppRQU+kpR7qFeLdajbA8iPnp67dUIZK7lyjxfUSzmGlZ13dxxb0U0Udeh3IerOfxZiJ8VGFxEOUkDFno4jliAKY8dzDh3MQFOIxL6lHAfbSw0E6X+npozSjR+aeRpAti+9cAPvdMcb43sf3ENajRROlMyrxQY3Aepljz/Q8pXg9RVkGfg9W9jL0FvH2PK8xK6x9kumgi7Z9qamjRQEpjK1GHOtZJFr8Vd3u4ErLd/BgsoEq7WVyDWIH+VVZTvx9q4OH64ddgRP+lyjFvf60mJ1amTAs9xty6nzho4nTmt9TPynqQa1JRXi0zPxNK0GdIs7Ou+HjAq1fQx89Gr0N+LfP2cQfEg9STW4g3uEyi0iE2zbDJ7pFC7gRcedvIzXdiMD12J6qT4A35WQkEy11xXphma+eSEPi/obc/Ldi+oauD4KZKLIvnonffKoO07LktDF6eO42KauAEOY8/GSeB7rs9C7sQx2vzd1cF2hn3ZGppS+PKO9moicU/XxClflVUOo8kyAjUo4ORcdrYvwKTEHNU4TJayKnpuxwZTL9wfQtzhfGiq0rxSKY9hnpvq1Qbimdp+dvbyNhb6z0z2u0764f5pNhvL1GS1Tmi/o7Z91Hw25p3bMfH2hMaSgAZh7GObBhRTjwLmLnGxS/w48GnqJsxDG+tQSPaZANaxFnGms3V5dRl9WDfH9fcpo+vIKApZEjA7xLEbcUzdiOGIeSFmCbWZT4IU7PSojJzL9cgIQqbpZ0X6f0iJxzQmESc4ClIbU89nOLJdHzMScT90aEpSWre+Brel+AxcZ6BGN3+N8KhTzqOUeTn6KkqtRFSZaWo0r9QbrIf/OQLiRaHLAsyCyNRA5uGQEYKD2HGcxPGoE6Vo8y9+YvlkmxIAAA==",
+        },
+        [994] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1X227bOBD9FYOvKwa6ULSkN9dJswGcNIiT7QLFPoylkc1GEV2KSpsG/vcFdYkvkR0lSLH7UD/JI/LMmeHhzOiRjEotx1DoYpzOSfRITnKYZTjKMhJpVaJFjmWux5DHmJ1LGS9IlEJWoEXMponIcb0pabecJSRyg3D/3kslpBL6gUSORc6Kkx9xViaYrM0GZ1X7aHY+kurBNU8VPg8scrq8XigsFjJLSOTY9hbyYegKIxz24mi/SHK8KO/2JII5NtthOjRMe/htwWWWYazbyJljO322uy+zlioRkO0h7richzvMeeD3cb0d8Ggm77FZ1Xj+KIrFyQMWGzH5O658v1eSeCsTuMXpQqT6A4gqVcZQtIaphvi2IJHfHDwPnvvr4y1svF2CFpjHuMGf7+LxfofstpBK/MQx6FrsNwV+yrOHz0IvzhLMtYghM6vaA+q6cTx4RsLtqTSvIXG9gEzAbfER7qUyPLYMbRY9a9t+hbG8R0Uix5zZHmqsF5H2OD+I+SncVfkd5fMMVdE6N7JOSOQNbfYs2l4ugtXKIic/tIKm5BmBXMvpd1ie5boUWsj8FETeni11LDIpFZ5jUcAcSUSIRS4qcuRC5kisGuFhiSQyiezAm0hzdG/Eu1RYYDdDQsme97XH6v2az3SJsVaQjUulMNfvFOUO6rvF2sn2WcSd3qtVtXCmWi5NuRH5fKpxWbWcNfdGXCP1PpQ34SoON7n4VqLBJb7jpuAnCY1DP6XMS0M6sznQIcSB77IZInKysshEFPpTanwUJPpSy9ME8FRrhtz0rX0cj8sc0zrewUjphZJZqdAAX0h1B9mfUt4aqLaEfUao/ht7gfrp9jYXp/7fvDQhtve6MdV5YM7QlMYWc6qVzDfGiY7t5/DDWK/FnSkcrnNkP4O0vQ3ICc4xT0A9vAPXCvimwGNZNuvXw46xvJCSLTSXm8Drfeuwn0LbKYbnIt+I2uFHzCJmduhaa+w76+0jFm7+ggNk+iSsY/NNgddKLLfTUltelZah75os1zt/eWL4kbeVF3aQzutT02w3tWSUalRjKOcLPRF3ZtZw6he7RaYakEtVDznmYaN9Vr19gfmF1KNYi3t8avIHGrw39MPdUdI03L1Tnhlz237QXvsr/FYKhclUgy7NRGTm6D214IW7/drrurWw86a9dKV6C31zVad4X1bpK7Tzi0Sy78wPfo+stnqOl7AEXJfRGXo2ZXEQ05CDR7k9c/gMQ8fxhmT1T9t0mpnpy5Oh7jtfHslOA/L8/Q3oCrMy1pDrwSUsUX1HMV/ora7pHMrSzrj7SOoFoztZ5lvLSMT8cHcE9MyFWKckMJ5KlUKM08z0g+5PND/0uwbnjaHRX1nkV3+J9v7iXI8vbx5azGZjGZusVgndHGNIRExlTQYnf/8xoIMJqDkOppDpJWpUg+lCKhxcYSFLFWMx+AuUMOftkBq4hlpDdwl/U6QzL7XBS6iX8CFlPB3SWeg4FPw0TRyeQug5ZGU9FyHfH/RpBoUh9lXBV/j+/1Hfb7l1y42+TTocbM9FN6Qc3ZSyGdg0dNyQxuAGnuuFSRywTukcGKDXOr+SBb67dLrrz28l/cdKCj035QEENLH9kDIAlwbMHVKWpHESBMxN3aDqlDVuQ/E1VfLcfL9u+UyDEBzm+dT3YkYZTxI6A9Ongxhse8YZA4+s/gX/CdRvpBUAAA==",
+        },
+        [995] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1X227jNhD9FYOvNQvqLvrNcZM0gJNdxF6kQLAoKGlksZFFL0Vl4w387wV1sSX5FgR5KIq8yeTwzJnh4cz4FY0LJSYsV/kkXqDRK7rMWJDCOE3RSMkChkhvTnkGu82o2bqJ0Mj06RBdr+aJhDwRaYRGxhB9lVxIrtblj5v88iVMiwii3bI+v6mwb4UIEw1efpj6q8R1/T4uIR3k09AlBvU6J8hZMpOkWDYMbIPYZyg0p0SaQqiOZMg2SCcl5nkWQkacpUfwDNN1+zl3u8S6vMeBeAY0ilmaNx6ueJ5criFvxer0IB2nA+k218WeYJbwWF0wXkasF/JmYaZY+JSjkVNfgOvv47ZRaY36lSkOWQgtPm7/nNvNvdkclfwXTJiqRPQthy9Zun7gKrmJIFM8ZKm2ahLY2h+Hij/DLGWrZvOQvF1/j4nZU4FVM5knLOXsKb9iz0JqMp2FJjXWsLt+D6F4BolGhk74EQp2x6FfO7zgi2u2LJM2zhYpyLxxYg5RNwUnQrQ8Yu+F2PHnbTZDdPmiJOsUiS2Kvvm5mP1kq5tMFVxxkV0znjWXiY0hmhYSbiHP2QLQCKEhuiuJozuRAaoR1itAI53MA3hToe/wnXhfJeRwmCHC6Mh+5bHc3/GZrSBUkqWTQkrI1AdF2UP9sFgPst2L+KD30upeG01EkSmQ1Qlt39x6JbmZEitdTXi2mClYlRV/F1kty7H8mIDacCXDbxn/UYDGRY5txy6xXRw6BsF2QAmmoRNjg9DYjqkZWUGENkM05bn6EmsfORo9vpbedADb0uO51DzO8SItYDBTTEZFrjTenZBLlv4pxJNGaArZA7Dyt17PQW0fTFmEm2dYb7aTWi9V4duGpwtkgzlTUmSt93fk+JwvQfZe6C3Ptlu6gPxOhuiWvbTWTE+vlbUxgWy/NvaIEatFbAoLyCIm12e59RH+EEWQ9pNVWZgu3RrsIj9q0uFwwGou+eqYJ88xra3JMV8doxPeajv9LsaxAjlhxSJRU77U7dKoNvoPppyxCln1Y/3RahbNldwJVd3KtqifrOkO3R9eTgweemJqKl+j5Xv4UXAJ0UwxVeimrkeyIwI/I9g3q+dTJO8SyXvvvFU/qeG5tu1ZmEVugG0v8jDzIoIji1iWa8Qkjny0+d4U0Hpsf9wuVDX08RX1iql9opheSaGSWNu3q75xKjO9qe4VVQbjpW5TO7NDc7hD+2OO1Z1x9Vw1K2TMwrr01UE41DkzAjqbIfrP/JHZtd93N119WK+Uzb9S5E+2qlpx3iS13ZnRCLFMZH8/Uupg4/vgAZhKQA4u//ptgLf9cqAxB3PI1eBWDyNt2JarA+JvCTUOmAsuGNi2LB/bMYsxNWwD+65FzQiYGcQW2gz3hWgdT8JMRAwHurXfLFeQh0rIT0l+SvKtkmQGI8QyTBw4LsM2JSEOTOpj07H9yPGpz5z4oCRPJGG8BJWsNUH+jyg+XI2f8vv/yC9wY8cnHsE28y1sM2Jhaun+7RrEc0xCrCgoW3eFW4dZEjPfQKy8+Y5DO3Q96scxNn3f1A4ppiFQ7BoOBeIz6kce2vwLlC7AMF0UAAA=",
+            "AH4_H4sIAAAAAAAACu1XW0/rOBD+K5Vft0Zx7s5b6QKLBBxEilgJHa2cZNJapHGP47BwUP/7yrm0TXo7qlhpV+KtHc98c/HnmckHGpVKjFmhinE6RcEHushZlMEoy1CgZAlDpA9veA7rw6Q9uk5QYPp0iK4Wk5mEYiayBAVkiO4lF5Kr9+rPdXHxFmdlAslarO2XNfatEPFMg1c/TP2rwnX9Pq5hdJAPQ1cY1OtYGEeDGc/KeRuBTQz7SAitlcgyiNWeCtnE6JTEPB6FkAln2R48Yrpuv+ZuN7Bu3KNIvAIKUpYVrYdLXswu3qHYyNXpQTpOB9Jtr4u9QDjjqTpnvMpYC4pWECoWvxQocJoLcP1t3E1U2qDeM8Uhj2EjHrdv53Zrb7amkv+EMVM1iR4L+JZn709cza4TyBWPWaa12gLuYrDrbzkzexdtNc4mM5Zx9lJcslchtb+OoM3eGnblDxCLV5AoILqme0KwOw79xuE5n16xeVWXUT7NQBatE3OIulkeSNHyDHsrxY4/b7kcoos3JVmnD6xQ9OVORPg3W1znquSKi/yK8by9L0yG6KaUcAtFwaaAAoSG6K4KHN2JHFCD8L4AFOhi7sC7EfqaTsS7l1DA7ggRRnvOa4/V+TqecAGxkiwbl1JCrj4pyx7qp+W6M9qtjHd6r7QetNJYlLkCWVto/fbWa8qFSix0w+D5NFSwqJr6OrOGliP5OQltwlURPub8RwkaF4Hr+L4FFnZjQrDtGT6OPLAws9LUphGzWeSg5RDd8EJ9S7WPAgXPH5U3ncCqu3guNffHeJ6VMAgVk0lZKI13J+ScZX8I8aIR2l71BKz6r+UFqNWDqfps+wybw82iNqI6fZt4uge2mKGSIt94f3vMJ3wOsvdCb3m+OkKBd+YM0S172xCZ3pmx5d2wNrzfwBTyhMn3owH0EX4XZZT1K1JrmC5dKazT26vSiWGH1kTyxT5PnmNaK5V9vjpKB7w1epr8o1SBHLNyOlM3fK7HHqkP+q+i2pVKWc9V/WNjIlRjaQb5nVCjWPFXWHXug43bodtLyIEFQm8+bXtrCfsAP0ouIQkVU6Ueznq12sPiI6z8ZfZ8keQkkpx65xtNMrUd6nsswimkNrYd08LMYRZ2Ypf6kUut2HXQ8nvbJZv1+3klqBvl8wfqdUz7QMe8lELNUq2/2drJocr0trMPVCuM5noWrdV27dMO7e8yVndX1ctTWMqUxRBmunE1STjUObLnOcsh+s98kKxn7MmTVRtrSTXhm0+z9axFAbr487cBXg27gdYdTKBQg6pwNUBtsobYReoNAvqRFfm+E+OU2RG2iRFjSlwTW2BRylyH2GaElsNtgln7kwtFwnCk5/L1fAFFrIT8otr/jGr4NDp5CSNe4nrYjkyG7TQ2MAUg2DAM3yImc4jn76KTRfcn8JgrrjJIBk9CvgzuxNmA+p/Op5MJtJuIX3xak6doa9OjGMtF/tczpQ42vw+egKkZyMG/0OJii6au7xmYJJRg20gMHJkexSx2LWYQm5nEqmZsjdukWQVGfiGwW/0V13WYeDSGiOAo0Y8gZhZmphVh2/UBYtuxgTho+Q+gLBnhzhMAAA==",
+        },
+        [996] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1XTW/bOBD9KwLPYqAPSqJ8c900NeBkgyhFDsEeKHFkE5ZFl6KyyRb+7wUlK5b8lW2RBXrITR4O37wZPs7QP9C41nLCKl1N8jka/UCXJUsLGBcFGmlVg43M4kyUsFvk3dKUo5FHYxvdKiGV0C9o5NpoWl0+Z0XNge/Mxn/TYl1LmS0MWPPhma8GJ6Q2ulrfLxRUC1lwNHIdZ4B8HrrBiKPBDudNMpNFveoYENchb1DodsmigEz3Nrp9N+/tsFJxwYoTJXW9MIz3mJAhkyHRcSqfAI1yVlRdhC+iWly+QNXjGOxBBsEAMuzOhy0hWYhcf2KiSdEYqs6QaJYtKzQKthUP6SFuHzXeot4yLaDMoMcn3N8XDovtdVuV+BcmTLeqOSbBkB6AeXsn52/B7hesEGxZfWFPUhm8gaHLzreH9jvI5BMoNHJNzU5QIIOAXTk/ifkVWzV5j8t5Aarqgng2ehB6kRRs3UEdQfYjhxwkN4hENxsbXT5rxbZX2JzTvUz+YetpqWuhhSyvmCi70mPXRrNawTVUFZsDGiFko5uGI7qRJSC7RXhZAxqZuh3Bm8lK/zberYIKjjNEGJ1YbyM26zs+yRoyrVgxqZWCUr9Tlnuo75brUbYHGR+N3ni1+km0XJvbLcp5omHdtNwd963Gxup9KPfhGg7fSvG9BoOLAjdjHIIQh2meYkJpiGlAchyRNCZO7INDGdrYaCYq/VduYlRo9NjK0yTw2gqiMCanOSYaioIpK2HFSpbWnQQDeiPVihVfpVwamK67PABrfht7Bfr1OjWdsbte20WTXnfRtqa2BsSNTNfqMBOtZNkbjUe2X4vSWO/FqukR5CKw0TV77tm84MI5COP4vTAzmEPJmXp5B/4N8GdZp8V+RVoPL4xfHXbpnXQ5Rq3vda/E+lSkKPD8V5dTsQZOZ6Jt/cwNGOca1ITV84WeiZUZVG67sH81mudLrdpJaD56Pf5ouw2MGA9n78mJbt4eXZPq9HgH32uhgCea6dpMS/O4OSHSN0T3q5r50MCvaeDUoZ99PG4GjdDLUsqJx3EURAQTn8SYOiTF4GY5iXnII4egzd9dJ9w+gB9fDW0zfPyBhl0xIPGZrii5WEGprZnIlqAGTdw9V58ph1KLjBWmKCZY6zBeybocuKERCeL9l4c/fDNSE6lWOcugfcZsuQdx8MZ7LNjY6I/5J7Abn789NM1mY5mYMjYV7I/R7fA0n61553ZMrz1tMTejKXdS7HOfYEJ9H1POAOecR5SnlIQQo419oB1zTme0w3AhVmAlWgFb/Q/yOdJZP9T0jmoaW9Opha2vL2tQmIFegJKZLHmdafEE1jXToAQrqv8sOscjA905jEIWehTHLskxyV0XM/AcTFjEUxLnce6Zd9hhzwpPp/qt1EIXwK0HqZbWjbywYvrnNK7jkv1Q3u279LHIiyIW8AwzHjiYAE9xSiDCmZuGAafMj4nXzMgWd0txbGHrVkEmKiFLawZlZX2GJyjkupl9Sb1eS6WHf0t4HDOapSEmgWMihTlmKaXYDVLX83mWUnDR5iefFn1k+RIAAA==",
+        },
+        [997] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1X207jSBD9laif3ciX9i1vIcswWSUMIrA8oNWq7S4nLRx3pt0GMij/vmpfiB0cMiBGWmknT0511amLT1WXn9GoUGJMc5WPkwUaPqOzjEYpjNIUDZUswED6cMoz2B2y5mjC0NAOQgNdSi4kVxs0tAw0yc+e4rRgwHZirb+tsGZCxEsNVj7Y+qnE8QIDna+vlxLypUgZGlqm2UF+G7rECP2OhXk0mPGyWDUREMskR0JorESaQqxahlZbzT7uVkjGaXqgpJbteZ2iktrsC8+XZxvIW47dvYhdtxOx1xSd3sN8yRN1SnkZtxbkjWCuaHyfo6Fbl9ELXuO2UcMa9ZIqDlkMrXi8fTuvW0G7MZX8B4ypqqjQeN23tvfq79TW10uacnqff6EPQmqAjqBJxzG68iuIxQNINLR0kfq47AWaAi2HTf1O+eKcrspER9kiBZk3TvTLZmjo+CZ5FX0HKthuDXT2pCTtdNpLAPpFXIv5I11PMlVwxUV2TnnWlAdbBpoWEmaQ53QBaIiQgS7KmNCFyADVCJs1oKGuUw/eVOTqw3iXEnLojxBhdOC88lie7+KZryFWkqbjQkrI1CdluYf6abn2Rvsq417vpdaVVhqLIlMgKwut37z1ik1zJda6uXm2mCtYl2N0l1nNuJH8nITacGWENxn/XoDGRabpxaHrRTg0WYSJ6wAOw9jEdhInQUiD2CQm2hpoynP1LdE+cjS8ey696QReJoHvhfbhGE/TAgZzRSUrcqXxLoRc0fSrEPcaoZkrt0DL/1qeg3ppmISmOTQdXB+2i1qLqvSJ5et51WDOlRRZq/8OmF/zFci9Dp3x7OVIz4YT00Az+tSS2faJY7Z/5FUwptMKZgoLyBiVm0/IsgS+yeEPUdT6jWIlOVLMDprt6ZJVdruCHaxLpwZVXb5l6eZ2CdkoVvwB5umBsNuOfqYYPcY3OVxLvu6mXEnelbLv2rqCleWvTbrj6v1p1+Z6aIwSBXJMi8VSTflKX+1WdbA/TcotrpDV7qAfWpdkz03o+G74ehl6Y6/RG1gz9Js2voLvBZfA5oqqQq8XesU70NtHevW9TdRR7OX/MaL/NEXbWr20O86vdzDjF1Hgo++8dXWA50XMBQ9HJDQxiVwTh0EUYN9yacKsKA6Ih7Z/N3dH/Rlw9yKoro+7Z9S9R1z/jXvkJlNcpcAGt0LeDy7EycD33M7lZ71VpQmDTPGYpro02mWlMFrp23qn1tMfxA33tz2nu3kH2nEhExrXg6BOyA3dI0uuuzXQf+YjabeFfHj30MZaUu5AFTsf6braSPKmqO0FBQ0RzUT2z2gwmQzw4OtmDRJTUEuQIhYZK8rxOphRBZLTNB/M9E7Whm256mmEFmltQi2bmSE2LdPChHkBpoQCtihxnIj6ceIztDVay3o9kbskJYF3uChadTP4E9J0k2irz6bnh/nYz+vf9NzjIv4YtTxCbIc5CQ58RjCBJMRBZNmYgBv5fkBN0/JLau3PuzcSGK3XKURSPP4m0f9txv1FJaeZGlgfYyMLIKZh7OLYD2JMXDvGgRn6OGTUpn7C4siLytu5wm349t7o7O7nZOAmkR+7JrbCKMLE1p+TJAkwgOdGIQtYZFlo+y+H0PtBhRQAAA==",
+            "AH4_H4sIAAAAAAAACu1X227bOBD9FYPPYiBRJCX5zfWmbRZJWsTJ9qFYLChxbBNRRJei2rqB/31BXWLJseMmSIEFtn6SyZkzF5256B5NKqunorTldL5A43t0Wog0h0meo7E1FXjIXZ6rAraXsrs6k2hM4sRDH43SRtk1GgceOitPv2d5JUFuj538psG60DpbOrD6gbinGofHHnq3ul4aKJc6l2gc+P4A+WnoGiOJBhr+UWemy+qu84AGPj3iQqel8xwy21MM+mLkuFltpBL5gZQGhPNBUmmr9laVy9M1lD3DbMdjxgYe8y7p4hZmSzW3b4Sq/XYHZXcwsyK7LdGYtWnk8WPcPmrSon4UVkGRQc8fvqvHhxkknapRP2AqbEOFzuquNtnJf9hqXy9FrsRt+VZ81cYBDA66cEJveH4Fmf4KBo0Dl6R9XOaxo0DPYJe/N2rxTtzVgU6KRQ6m7Iy4ly3ROIx8+sj7AVS82Xjo9Ls1YlBpDw64F3GtZ9/E6qywlbJKF++EKrr04MBD55WBCyhLsQA0RshDl7VP6FIXgFqE9QrQ2OVpD965Lu2L8T4aKGG/hwijA/eNxfp+689sBZk1Ip9WxkBhXynKHdRXi3Wvt48i3mu9lrpyQlNdFRZMo+Hku7fesGlm9coVtyoWMwuruo1uI2sZNzGvE1AfrvbwplBfKnC4iEeCUBYKzAjnmHIusZA8wwyCjIUsIIQKtPHQuSrth7mzUaLx5/vamgvgoRNEPCGHfXyTVzCaWWFkVVqHd6nNncjfa33rELq+8glE/d+dl2AfCmYu8hK6Cm4v+0ltj5rwaRC5ftVhzqzRRa/+DqhfqzswOxV6oYqHK9fKTiK//ws8dCG+9yQIOQkHEvSRa37Yc+0cFlBIYdavEHMNfFPCH7pq5TvB5uRIagdohLsENnrb9P1klviJ76EPRb7+tIRikln1FWb5Abf7hn4mGXuUb0q4Nmo1DLk5eVbIESMug43mrw16YOr5YbfqroVM5hbMVFSLpT1Xd27QB83Fbm+pd7rKNJuEe+iNzD1zMYxY8ng1emLLcftYNwK6or6CL5UyIGdW2MotG27hO1DpRyr3uUU0ENzL/2NE/2mK9qX20u44v57BjF9EgZe+894gmYu55L6MsaQiwdSPIpzMSYZTQklCUz8VbpD83U2S9qPg88NBM0w+36PhVGHRE1PlprDK5iBHn7S5HV3qk1HE2WAUBk9l6UxCYVUmcpcaZ7IRmNy52b0V21MflCW7u1843MNjZ7gyc5G1jaANiCXsyMrLNh76z3wybXeSF28iTtmd1BtRw85vYtXsJ2WX1P66gsZIFLr4ZzI6Oxvh0fv1CgwWYJdgdKYLWdXtdXQhLBgl8nJ04Ta0PmzP1J5C6JFWEOKDiGNMw8DHNAojnPAkwYxEASNxKIEA2ni91b3tyLskfSIpk9Uqh9Tob69OzBczcT+jfxNzh4X4ZaSCKEpZmlI8D5IAU+EHWPg8wiH1IY6jIJJRWJNqh0Quh4cCcKLr0Z+Q5+u50/pNpf9Zj/tLGCUKOyIv4ySlPM2Y8DGwIMA0Ax8nhFKcCWBpIv2Ep6yezg1u17qe610w/LhMMyIkEI79JJSYUilxkmQxjinnGWN+mLIUbf4FeTD5+5MUAAA=",
+            "AH4_H4sIAAAAAAAACu1X227bOBD9FYPPYqEbKclvrjdts0jSok63D8ViMZJGNhFFdCmqrTfwvy+oiy05it0YWWCBrf0iD2fOXHRmOH4gs0rLOZS6nGdLMn0gFwXEOc7ynEy1qtAi5vBKFLg/TLujy5RM3TCyyAclpBJ6Q6aORS7Lix9JXqWY7sVGf9tgXUuZrAxY/eCapxqHhxZ5u75dKSxXMk/J1LHtAfJx6BojCgYW9slg5qvqvovAd2z/RAidlcxzTHTP0OmruafdSpUKyJ8oqeNyPiiq35q9EeXqYoNlzzE7iJixQcS8Kzrc4WIlMv0aRB23EZSdYKEhuSvJlLVl5OFj3D5q1KJ+AC2wSLAXDz+048MKup2pEn/jHHRDhc7robV7UH+vtb5dQS7grnwD36QyAANBl45nDeUfMZHfUJGpY4o0xmUeGgr0HHb1ey2Wb+G+TnRWLHNUZefEvOyUTL3A9h9FP4AKt1uLXPzQCgadtgvAvIhbufgO68tCV0ILWbwFUXTloY5FriqF11iWsEQyJcQiN3VM5EYWSFqEzRrJ1NRpBO9KlvpsvA8KSxyPkFDyxHnjsT7fx7NYY6IV5PNKKSz0C2V5gPpiuY5G+yjjUe+11kejNJdVoVE1Fka/e+tvpEqw7sFDYWqkdVcFPHKtlncLLddmDIhiudC4rgfuvgYtN2fqZVLvw9W5fCrE1woNLklSm3MGEc38NKF+EKU09nhEYwa+z1wnTDKPbC1yJUr9PjM+SjL98lB7MwnsZkaT3VMxvs4rnCw0qLQqtcG7keoe8ndS3hmEbgJ9Rqh/G3mJetdaGeQldr3eHvYr3Yqa9H0nMJOtw1xoJYtepz5hfivuUR308rUodkdm6L0K7P7Hscg1/OhpuO4rb6DhPwrN9nqhXeESixTU5gVyroE/lfibrFr9TrGRnCjtAM3lpoCN3b5874t883mFxSzR4hteplhokZjbbySePsLPZDlifKvE+plhB8z1dpZnBj7AeH7orbnp71mmUc2hWq70lbg397XTHBw2fr2aVapZCMxD7+Ybud68gEWPN5wjy4pZq7pJ3nXcR/xaCYXpQoOuzM5g9rYn2vBEWz2X4QPFUXIeY+GzaHaST8eJ80xm/EsUOPed96a8w30ndnlEs4xn1A9ZRCOwOXVjD4IkDIIMA7L9sxvz7W7/ZSdoJv2XBzIc+Sw4MvI/FVroHNPJZ6nuJjfy1STgbHBPOceqtGtTUxrjslGY3ZsreK820h8+iw5XOG+4TofGcaUySHCRm4naJsQidmJzZVuL/Gf++ewXhrPXBGNsJPViUxe0vzi064J5bMR7tTES9wjHgIfgc5u6LLOp7wScAmOMplmI4EGEISDZWo8JdSSB2XqdY6zk9xcn0dmsGWffLxLtGVN2tTngFRSy+Gs2ubyc0Mm7zRoVBdQrVDKRRVrVF/XkGjQqAXk5+QOUgEJPnPPYyF0eIHge9VwnpD7YLgU/9agNQWy+iOEoG83LeKoSRnUz+R3zfJMZq1+c/J9y0j1zQvpuApA41MY0oj53IxojR5qxIAljn0OYhfWV3OB2M/Bno7s2/28HDiENHWQeo4huTH0OHo1Dl9GY+RnEvpNx3yPbfwCInF74ShQAAA==",
+        },
+        [998] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1XS2/jNhD+KwbP0lYv6nXzutk0hZMNLBdbIOiBkkY2EVl0SCobN/B/L6iHLdmSXQQ59NCclOHMNx+H8/I7mpaSzYiQYpatUPiObgoS5zDNcxRKXoKG1OGcFnA8TNujuxSFlh9o6JFTxqncodDU0J24eUvyMoX0KFb6+xrrnrFkrcCqD0t9VTiur6Hb7XLNQaxZnqLQNIwe8mXoCiPwehbGVTKzdblpGTim4Vyh0FqxPIdEdgzNrpp13S3jKSX5SEhNy3V7QXUas29UrG92IDqO8QljjHuM3Tbo5BmiNc3kV0Ir3kogWkEkSfIsUIibMLr+OW4XNWhQH4mkUCTQ4eOe2rn9CFqtKad/w4zIOhWG8sr1z8Csk+ewG7DlmuSUPItv5JVxhdcTtLeztb58AQl7BY5CU8VshILTc9iG8ytd3ZJNde9pscqBi9aJevsUhbZnOGfse1D+fq+hmzfJSVN46iGWLPpJtneFLKmkrLgltGhjq5sampcc7kEIsgIUIqShh4oEemAFIK1G2G0BhSowA3hzJuSH8R45CBhmiHQ0cl57rM6PfKItJJKTfFZyDoX8pFueoH7aXQfZnt140HulVSdIJNlWlS8tVpGEbdUoj9ybJJryz6Hchas4/FHQlxIULsKOFdgeSfQ4SDzdMTzQSUqITrCLDddIPc8z0V5Dcyrk90z5ECh8qtNTXeBQ654b2OMcF5BOZkxs2IasVkwKBfnA+IbkvzH2rEDa5vEDSPW/kguQhzrMSC6grcvmUF2urdBGVEfAMT3VlFrMSHJWdMbZiPmSboCfFP49eTscodD0vhga+l7kux9rKB6YnCaSvkKUj/Iw7A6POaygSAnfXaRyT4uOS8v94gTdP3vYx6+sjPPT6NUalhscFI6hGFXpsRzQWnK6HfPkYcs+qIz56ild8NboqVqZZhL4jJSrtZzTjZpZZn1wWkTVelLyeiiqj067n5EigXwqJWy2so220lkSvoIac6Dv2x4OzjeBC0NdrR9tx2vTewEvJeWQRpLIUs1Wtd+M5PyVHP7XGfZ/mnwoTT765p2umgTYII6T6Y4ZY91xfVuPsZfpVmwaJmSp7Qc+2v/VttVmB346COrO+vSO+i0WY2u8xSrV3eR3yPNdpqy6E8G8FJ+7FApJE5KroChntcJ0w8qip4ZCBwena4zd3zB95ankGUmarji4zTk4wFeWObzX0H/mt8FxNH94IEc/yVZJZiqqVUC7IxqF6ObPiT5ZEA6T6UtJJE0mCxCs5AmIifkLRjVEbXQEGUrubiK6sW9mONED7Ji6Y6S+TiBOdcMLMteJ48xI3SoRa9zmAhWVuWqK51z660NmBU4cZJZu+ODrTux6emzGth67ZurGdoaTJEH7fwA1PiZwVw4AAA==",
+        },
+        [999] = new()
+        {
+            "AH4_H4sIAAAAAAAACt1XyW7jOBD9FYNnKaN9uzmeJBPASQdWGj1A0BhQUskmQpMOSaWTDvzvA2qxJW+ZDnJojE9yserV41ORVXpD40rxCZZKTso5St7QBcMZhTGlKFGiAgPpxSlhsF0suqXrAiVOFBvoThAuiHpFiW2ga3nxktOqgGJr1v7rBuuG83yhweoHRz/VOEFkoKvV/UKAXHBaoMS2rAHyaegaIw4HEda7ZCaLatkx8GzLe4dCF8UphVz1Au2+m/N+Wi4KgukRSW0nCAaiem3YJZGLi1eQvcT+DmPfHzAOOtHxI6QLUqpzTGre2iA7Q6pw/ihR4rcyBtE+bh81blHvsCLAcujxCXbjgqGCThcqyE+YYNWUQpd1N9rZ0d9to+8XmBL8KC/xMxcaYGDotuMaQ/sMcv4MAiW2FulQLQeRLoFewk6/czK/wst6o2M2pyBkl0S/7AIlbmh5e+wHUNF6baCLFyXw4KRtCOgXcc/TH3h1zVRFFOHsChPWyWPaBppWAm5ASjwHlCBkoNuaE7rlDFCL8LoClGidDuBNuVQfxrsTIOEwQ3Tx98gczbCA0fipworkoxlIXokc5Mj/w0cG0lENwg6bZvMHwRuHk+BuDb7darqCXAlMJ5UQwNQnCbiD+mkyHmSLTHTSq1VFe82004RXTIFoIrR/p2lTqKniK31vEDZPFazqG3q7s7aYx+JzNtSHqxl+ZeSpAo2LQivzMhcXZh7mrumBV5qx5XimZfteEQZR6Wc2WhtoSqT6UuocEiUPb3U2vYHNJRMGsXecY6qAUixGKaZLzkYzDhr0loslpn9x/qhhunvrG+D6v7ZLUJsDWWIqobsh2sW+sq2p0cCzQ30fdpipEpzNP4J6Q5i23pNlc0edWXuZLLeXaQpzYAUWr5+QzD3z4v4vMtANful7RGe+1f+Fh8n9yauM7grbeDhBvHHYU2nf5dD2+l73gqyOZQp9x924HMs1cDqRrfMjS+CVusEvh9XQB21cKhATXM0XakqWutPazcLuCayHqko0rVw/9HrWF0Zfvy2A3XI1zhV5husCmCK5nheal3egdbmhH+9PLycGET0ydRdtdy5m8FQRAUWqsKr0PKBnst/zsPzng/FLCP/f6v2l6vwqYVJJxZdNITTl0fsaOFK4n1SWvZ6RO9iPs6gwsZ+VpudGuZllODDLEhdlEQcxRAFaf++aRvtp8bAxNH3j4Q0NG4gfhscbyGVFqZlR/oONzqsso8OOZ7+nZb2wbcxbMdozrAXUTJrY8VI7bRFqfn68O0m6w6k+0iQqUeIcUqorut2YH/vvDND+2kC/zQfYdgz58PChg7Wl1doejiMoQZhx9s9DHMem/X10apK0d8bULeL+CbEcb1CmnpU5mRVgE3zHMr0sKs3MCwLTdmIAy7LKMIrrMm2g2w3VrPzTrJrhuX8iIAtLBzIzxrFrerljmVHug4mdzA2j0MnDyEfrfwFg+oC21w8AAA==",
+            "AH4_H4sIAAAAAAAACtVX227jOAz9lUDP9qwv8vUtk+10C6SdIm4xCxSDhWLTiVBFSiW5M50i/76QL42dpEm36MNsnhyKPCSPSZF+RuNKiwlRWk3KBUqf0RkncwZjxlCqZQUWModTymF7WHRHFwVKvTix0LWkQlL9hFLXQhfq7GfOqgKKrdjobxqsSyHypQGrHzzzVOOEsYXO1zdLCWopWIFS13EGyMeha4wkGlg4J4OZLKtVFwF2HXwihM5KMAa57hm6fTXvtFshC0rYK5S6XhgOSMWt2ReqlmdPoHqOg52Ig2AQcdiRTu4hW9JSfya0jtsIVCfINMnvFUqDlsYw3sftoyYt6jXRFHgOvXjCXbtwyKDXmUr6CyZEN6XQed219nb491vrmyVhlNyrL+RRSAMwEHTp+NZQPoNcPIJEqWtIOlTLYWxKoOew4+8zXZyTVZ3omC8YSNU5MS+7QKkfOXgv+gFUvNlY6OynlqTtNMP8jch+kPUF1xXVVPBzQnnHh+1aaFpJuASlyAJQipCFruog0JXggKwG4WkNKDXEHMCbCqXfjXctQcHhCNHZ3yN7NCMSRuOHimiaj2agRCVzUKPgjwC9Yt3Eg+zOV32arSHXkrBJJSVw/UEc7KB+GBMHo60zOqLVy3tmlCai4hpkY2H0uypsiivTYm16nfJFpmFd36rbzNoCHMuPSagPV0d4y+lDBQYXlW6ZJ1Ewt4t57Nk4wsRO4qKwA1KWc1yUhQNztLHQlCr9tTQ+FErvmtI2CbxcDFGY4NdjzDQwRuQoI2wl+GgmwIBeCbki7C8h7g1Md9d8A1L/N3IF+qWLS8IUdF3dHvaZbUUNB9iNzB3WYWZaCr54D+ol5UZ6Q1fmXvGcT4HT+4V7bh2/53YKC+AFkU8fkE8NfKvgT1G1+p1iIzlB2wDNCw05jd2QmjrPnYtzhwL3E076P99CXzl7+rYEPs41fYSMvZJE3+1bqDlgfCPpei/XViEKPP9FZe+NH1I6FMRQzzTquNQgJ6RaLPWUrsx0dZuD3Q6uF6lKNuPbPPTmVEfRldANSxcFcE1zsyM0VB0YV34UJPsby5Hlw6xJ3VXc9dUMHioqocg00ZXZAcwe9ns225t76T8hHOyPU43w5qL931TnrYJJpbRYNYXQv0GOFe4HlWVv5hQEB6U/d23XIYWNC8+3ExwVdukSSOLYiUg8R5vv3dBpPyfuXgTN3Ll7RsMBFEThkQG0JIxxoUfZEhgbjEv3GJEvXWooMr4ahfHKzPe+GkpxkOzuh/5wV4+Np0qWJG/vyDb0IAlOrMXBxkK/zWfVdlF593pijI2kXpOaiv1B1s3SorpSu+7tMChFhAv+z12SJHbwfXR6Pd0Ctk68V9piW5h+4pOicLEdExzZ2PdCO8ZhbDu5S0JSBn6Uh3VhNrhtgnVI+HhIuA6p5yov/SAnJdhO4pY2LhPXnnvg2qGDHRfChMQhRpt/AUdNNWe9DwAA",
+            "AH4_H4sIAAAAAAAACs1X227jNhD9FYPP0laiqOub182mAZw0iLJogWBRUNLIJiKLDklt4gb+94K62JItx9s0aOsnecg5c+Z4RjN+RdNK8RmVSs7yBYpe0UVJkwKmRYEiJSowkD6csxL2h1l3dJWhCAehgW4F44KpDYpsA13Ji5e0qDLI9mZ9f9tgXXOeLjVY/YD1U43jBQa6XN8vBcglLzIU2ZY1QH4busYI/YGHdZbMbFmtOgbEtsgZCp0XLwpIVc/R7l/D58NykTFanJDUxp43EJW0bl+YXF5sQPYCuweMXXfA2OtEp48QL1muPlNW89YG2RliRdNHiSK3ldELjnH7qGGLeksVgzKFHh/v0M8bKog7V8H+hBlVTSl0UQ+98YH+Tut9v6QFo4/yC/3OhQYYGLp0HGNov4OUfweBIluLNFbLXqBLoBew0+8zW1zSVZ3otFwUIGQXRP/YGYoc3yJH7AdQwXZroIsXJWjbaVr5ex4/0/VVqSqmGC8vKSs7PUzbQPNKwDVISReAIoQMdFOTQDe8BGQ0CJs1oEgLM4I351K9G+9WgIRxhshEJ86biPX5nk+8hlQJWswqIaBUH5TlAeqH5TrK9ijj0ej1raZAYsXXul9ZuYgVrOs34557W0RT8TGU+3A1h68le6pA46KMAgnCxDM9m1CTWBibgY8TEycUey4Edp5ZaGugOZPq11zHkCh6aMpTJ7Brbt8LyWmOsYKioGIS02LFy8kdBw16w8WKFr9w/qhhuvfFb0Dr79ouQe06MaeFhK4z20OdXtejranRgNi+fg91mLESvOxNsBPu92wF4qD1r+nL7ghFtv/Jtfof/yiw5fQCz2EBZUbF5gMyqoF/5lVSnNNo4Ii9cOe31+FkuqzspYvxJ+tQAuxr28kQP5LxiPO9YOujvNoLvoud3ZVhCicujZE4uMdWwCt1TV/Gf1TdodNcgZjRarFUc7bSo9FuDg5bt96CKtHMXv3QGzIjk8Tx3fB4mXhjL9AbTPcO7drlDp4qJiCLFVWVHs96Rfp3eugj6ni0Qf55J5wr+R8u2f+yNv9W7X2VMKuk4qumEJry6C3nJ8ryvXXYmx2enSQpDRLTshPXJEkAZphkYGI/z70AuxhyirbfuuHRrvYPO0MzPx5e0XCQuP5bg+SRrdesXDzTzWDm2W/JdpVBqVhKCy2IDtRcmK54VQ6uoYi44eGi5gyX5kBHqkROU4gLXaGjWzpxQ/fMuupuDfS/+buzXz7evXJoZ22ZaVWbcn2m62YRkZ02t729BEWIlrz84yEMQ5N8m1z8PjEnd1TAZPpUUcXSyR1IXokU5IT85KI+YC/IWE/si9TGLiEEPDPL9IJDaWiGBHumHYY08Yjl0dSpi7TBbROsKTlvU3JqSr1QBLtgO+CbIRDfJEEYmIFrBWaQuDlNLS+wvQBt/wJZbl89VQ8AAA==",
+            "AH4_H4sIAAAAAAAACt1XW2/rNgz+K4Ge7S2WbfnylpP1dAXSrqg7bEBxMDA2kwh1rFSSz2lX5L8P8iW1Hfeytg/D3hyK/PiRIkXmkcxKLeagtJqv1iR+JCcFLHOc5TmJtSzRIuZwwQt8Oszao7OMxDSMLHIpuZBcP5DYsciZOrlP8zLD7Els9Pc11rkQ6caAVR/UfFU4LLTI6e56I1FtRJ6R2JlOe8gvQ1cYUdCzmL5KZr4pty0Dz5l6r1BorUSeY6o7hk5Xjb7uVsiMQ/5MSh3KWC+pXmP2lavNyQOqjmN/wNj3e4xZm3S4xWTDV/oL8Iq3EahWkGhIbxWJ/SaNLDzG7aJGDeolaI5Fih0+bGjH+hmkrankf+McdF0KrdehNR3k322srzeQc7hVX+G7kAagJ2jDca2+/ApT8R0liR2TpLFaZqEpgY7DNn9f+PoUtlWgs2Kdo1StE3PZGYndYOodse9Bhfu9RU7utYSm00zmr0XyA3ZnhS655qI4BV60+bAdiyxKieeoFKyRxIRY5KIiQS5EgcSqER52SGKTmBG8hVD63XiXEhWOMyQ2eea89lidP/FJdphqCfm8lBIL/UlRDlA/LdZRtkcRj3qvtOoCSbTYmX7lxTrRuKtexifuTRHN5OdQ7sJVHH4v+F2JBpek1HdDdFPb8ymzPRalNiyzwA7DIFqyzPOXNCN7iyy40r+tjA9F4pu6PE0Ah+YOWOQ9zzHRmOcgJwnkW1FMrgQa0Asht5D/KsStgWnfiz8Qqt91C5pThdrE0TajEV3zLcpBk57z4nBkXoefphY5h/uuLDSyBrJOlucE5sFqnSdaiqJqwEbr4GMFuULro6yiY1IOGyE1dTukFrjGIgP58F5eQ+BfRLnMD4l+BrFnSFl0sOvn6A03QUduIjgKuuviLRGPGF9LvjuKq1EIfOoeVI6ueUxpjERfz7TxbKVRzqFcb/SCb838dOqDYX9Xq1Ip6wFtPjqTaGTcuIEfDefsizuLWXPah7btqSu8K7nELNGgSzPDzR41bLQPVtQn9s+bGuDjlf5aSb+5JP8XtdcWm/cvi60zRZYsTCH1fNulfmR7NPBtyDzXXlFvFaSMrhzqkP23dow0S/7NQVBPkptH0h8pfuA/P1JOc1BqMhcS8t70c17KzVmGheYp5CYhxlGtMNuKsuipkdjzo+HK5vbX59B4KuUKUkxyU4YN7+O+HW6q/t4i/5l/Ok97x7u3DWNsJHOTxroIf8Cu3kFU256XnZWExAQKUfx1E0WR7X6bnPw5sSdXIHEyuytB83RyhUqUMkU1cX/2SRew42Sk0jtViRkL0nAZ2l4YurbHwtQGGqJNnaU7XU5DOg2wqsoatwmwokRfpkQrSh1XkQ8rDJhvpyyjtud5zA59oDYLM5dOIVxmAGT/D47Bq/xQDwAA",
+            "AH4_H4sIAAAAAAAACs1X227jNhD9FYPPUivqRklvXjebBnDSIMpiCwSLgpJGNhFZdEhqN9nA/15QF1uSlUuTFO2bTM6cOXM0oxk/onml+IJKJRf5CkWP6KSkSQHzokCREhUYSF8uWQmHy6y7OstQZAehgS4F44KpBxRhA53Jk/u0qDLIDsfaftdgnXOerjVY/WDrpxrHDwx0ur1eC5BrXmQowpY1QH4eusYIycDDepHMYl1tOgYuttwXKHRevCggVT1H3DezXw7LRcZo8YSk2Pb9gahu6/aZyfXJA8heYG/E2PMGjP1OdHoL8Zrl6hNlNW99ILuDWNH0VqLIa2X0g2PcPmrYol5SxaBMocfHH/v5QwXtzlWwn7CgqimFLurY2x7p77Te12taMHorP9PvXGiAwUGXjmMMz68g5d9BoAhrkaZq2Q90CfQCdvp9YqtTuqkTnZerAoTsguiXnaHIIZZ7xH4AFex2Bjq5V4K2naaVv+bxD7o9K1XFFOPlKWVlp4eJDbSsBJyDlHQFKELIQBc1CXTBS0BGg/CwBRRpYSbwllyqN+NdCpAwzRCZ6In7JmJ9f+ATbyFVghaLSggo1QdlOUL9sFwn2R5lPBm9tmoKJFZ8q/uVlatYwbb+Mh64t0U0Fx9DuQ9Xc/hSsrsKNC5Kk5wEmNgmkCQ33cQiJvVsbCau71k0B58ARjsDLZlUf+Q6hkTRTVOeOoF9cxM/dJ/mGCsoCipmMS02vJxdcdCgF1xsaPE757capvtefAVa/25aUN9KUDqPrhn10TXbgBg16Tkr91coCn6xDHRO73tH2NdnLWKjlYuJ/l51sWMleFn3X2u1D5HTQoLxXlLhK0lZTo/UElZQZlQ8vJXXGPg3XiXFXucnEAeOth/u/YYavZyzbR8nbZOjpPshXpPxhPO1YNujvFoD4tnO3uToNU8ZTZEY2bEN8Eqd0/vuNeq+nucKxIJWq7Vaso0eqLi5GDd8vTtVopnY+qE3mibmj0O8cDx4n11i9N7TfXm7JruCu4oJyGJFVaWHul6sxp33zhr7wI56VUu8v/ZfKvJXF+l/WY3/qPa+SFhUUvFNUwhNefRW+n+3LHsDyCFZAoHvmFYCoekS4plhCI5peTi3iJU5QWCj3bduArX/D272B80QunlEw2nkEefpafR1zRTMYkVFUgmpBsMTP6fkWQalYikttEY6WGMw3/CqHJihyPXC8cbnDLfvQEeqRE5TiAtdtJPrvnus7njv9XYG+t/8bzpsMW/eXbSzPlloVZsK/kG3zUYjO20uewsOihAtefnXTRiGpv1tdvLnzJxdUQGz+V1FFUtnVyB5JVKQM/tXD/UBe0Gm2uRQqK4FlDhWZtpgp6aburmZeEDMzEpTTHCCSeDUhdrgtgnWlPDzlHBNqRfK93Iv8ezM9K2Ami4NAzMheWg6xM0dij3qeSHa/Q0NZWdrng8AAA==",
+        },
+        [1000] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1XS2/jOAz+K4XO9sLv2L6l2bYTIH2gzmAOxWAh23QiRJZSSe5ji/z3gfxI7DRJd4oCu4e9GST18SNFUvQbGleKT7BUclIsUPyGLhhOKYwpRbESFRhIK2eEwU6Zd6ppjmInjAx0JwgXRL2i2DbQVF68ZLTKId+Jtf2mwbrmPFtqsPrD0V81ThAa6Go9XwqQS05zFNuWNUA+DV1jRKPBCetDMpNlVXYMPNvyPqDQneKUQqZ6B+2+mfOxWy5ygumRlNpOEAyS6rXHLolcXryC7Dn29xj7/oBx0CUdryBZkkKdY1Lz1gLZCRKFs5VEsd+mMQjf4/ZRoxb1DisCLDtWGp5tBfswwTChTockyN8wwaqpjI7E/mln7zrc9vR8iSnBK3mJn7jQAANBF51rDOX3kPEnECi2dc4OlXYQ6oroOezSeU4WV7is4x6zBQUhOyf67nMUuyPLe8d+ABVuNga6eFECDxpvS0Dfy5wnz3g9ZaoiinB2hQnr0mPaBppVAq5BSrwAFCNkoJuaE7rhDFCL8LoGFOs8HcCbcak+jXcnQMJhhshER/SNx1q/45OsIVMC00klBDD1RVHuoX5ZrAfZvov4oPfaqqmXRPG17mbCFomCdT03d9zbmhqLr6Hch3vP9JmUKSbqklAqT+jvKyZvqw7hOyOPFWhmyIfCGvkQmHnqRqYX2IWZukVq+s4oC/Og8N00RBsDzYhUt4VmKVH88Fbz1SnYDrNREDnHozynFZwlCou8kkrj3XBRYvqN85VG6EbRD8CrXTdprQSl4+j6SovmpASx12/XhG1VutP/sAx0jV96MsfSshayybRnO6NQZ7v1nijB2eIr/Ief8j+DBbAci9cPKfQgLF0vf/IqpdvsDSycINoa7AI8ajLgcMBqLsj6mKeR77hbk2O+BkYnvHV2pAReqWv8gmLH1inUzTcuFIgJrhZLNSOlfhPtRrHflfX6U4nm0dUfveekmfR+9H5tOLEB6F2lm4dd9d7DY0UE5InCqtIPsV6Gfquke/c5in6/IvfL4f+COl5Q/3r5dCN5wium+ucMdMvo63cJP5bAbni9YI+fMKH63rrL6o1uKw9dKwsiE3I/Mz1wLDO0LWzaTg5BgS0bRy7a/Oxmd7u5P2wFzfh+eEN7c9yOTszxKk0pYYuzabkGmSkuBm+XfSrB0xyYIhmmOqvaX2MwLnUi+mYo9vxof/9yh6uxnptJJQqcQUJ1Lbf0/cj/YO30Nwb6z/zFJGssoKjoN8zyjoXePv1DPAaV0ybMNerrm+ZzPllCttreYO+HxhqsVp9eSvTh88590zLPeN1sG7Krz/7ygWKEGWd/PdiWZZn2z7MLCiUwhakJ8rGCs3vyBOJMb1ukBCZRH7Hn5UBj9trAC6PC9T3bLFJcmF6YhSYeZYXpOsUoLPwwTAOo26DBbSPsEXP+CbGewyyyIEiLzMxssE0PR7mJwyI1vcAbZZZj+U6Ro80v8Ihm45wPAAA=",
+            "AH4_H4sIAAAAAAAACu1XS2/jOAz+K4XO9sLv2L6l2bYToI9Bk8EcisFCtuhEiCKlktzHFvnvC9lRYqdJOjtbYPewN4OkPn6kSIp+Q8NaixFWWo2qGcrf0AXHBYMhYyjXsgYHGeU15bBTEqsaE5QHaeagr5IKSfUryn0HjdXFS8lqAmQnNvbrFutGiHJuwJqPwHw1OEnqoKvVdC5BzQUjKPc9r4d8GrrByAa9E96HZEbzemkZRL4XfUDBnhKMQak7B/2uWfCxWyEJxexISv0gSXpJjTbHLqmaX7yC6jiO9xjHcY9xYpOOFzCZ00qfY9rwNgJlBRONy4VCebxJY5K+x+2iZhvUr1hT4OWx0oh8L9mHSfoJDSySpH/CCOu2MiyJ/dPB3nWEm9PTOWYUL9QlfhLSAPQENrrQ6cvvoRRPIFHum5wdKu0kNRXRcWjTeU5nV3jZxD3kMwZSWSfm7gnKw4EXvWPfg0rXawddvGiJe423JWDuZSomz3g15rqmmgp+hSm36XF9B13XEm5AKTwDlCPkoNuGE7oVHNAG4XUFKDd5OoB3LZT+ZbyvEhQcZohcdETfemz0Oz6TFZRaYjaqpQSuPynKPdRPi/Ug23cRH/TeWLX1MtFiZbqZ8tlEw6qZmzvum5oays+h3IV7z/SZLgtM9SVlTJ3Q39dc3dUW4RunjzUYZijOskEEBbgxZIkbZVnlpkHkuQVOSJREXkS8GK0ddE2VvqsMS4Xyh7eGr0nBdpgNkiw4HuU5q+FsorEktdIG71bIJWZfhFgYBDuKvgNe7LrJaBVoE4ftKyOa0iXIvX67oXyrQrk/+M1z0A1+6cgC38g2kG2mI39gZqF1PtFS8NlnuE8OuPcOuPfCjvtrmAEnWL5+yGAf4XdRF2ybu55FkGRbg118R016HA5YTSVdHfM0iINwa3LMV8/ohDdrR5cgan2DX+wFmtYbVhrkCNezub6mS/Mi+q1ivyeb5aeW7ZNrPjqPSTvn4+z90nDi/Tebip2Gtnbv4bGmEshEY12bZ9isQn+roP9hQf5fUD9fUP96+diBPBI1191zDrrj7PWbgu9z4LeiWa+HT5gyc2/2sjqDmxS4wFkSul5FMjdKA3CzQZi4CYmyMoGqCnGK1j/s5N7s7Q9bQTu8H97Q3hT3sxNTvC4KRvnsbLxcgSq1kL2Xyz+V4DEBrmmJmcmq8dcaDJcmETuzQ4tonO0vY2F/T06N41pWuIQJM6W9iSbO4g920HjtoP/ML81khSVUNfuCObEszCoaH+LRK6RN/kKnuc0xmYrRHMrF9kI7fzdeb8/65Q3FHD637tsOesardvVQ9va6mwjKEeaC//Hge57nBj/OLhgsgWvMXFCPNZzd0yeQZ2b1okvgCnURO14O9GmnKxKIo7hKY7coSOVGYVW5RQqRW2RBUGVJSaIwa7qixd1E2CHm/wyxjsMSE+KVELseeKUbDYrKTWPwXOIHSRhUnlGj9V9zYsptqQ8AAA==",
+        },
+        [1001] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1XyW7jOBD9FYNnMdC+3Rx3kgngpINWBjkEc6DIkk1EFt0UlY4n8L8PqMWWbNlpBDnMoW9ysfjqVbE2v6NppcSMlKqcZQsUv6OrgqQ5TPMcxUpWYCB9OOcF7A9Zd3TLUGyHkYEeJBeSqw2KLQPdlldvNK8YsL1Y628brDsh6FKD1R+2/qpx/NBAN+vHpYRyKXKGYss0B8jnoWuMKBjcMD8kM1tWqxOOuZbpHjDyvCGjDkTkOVB1Gsfq37I/JiUk4yQ/gWfZvh8dEPOHoRrynqbiFVCckbzsLFzzcnm1gbILvmuZ3nlf/e71yAskS56pS8Jrj7Wg7ASJIvSlRLHXvocfHuP2UaMW9YEoDgWFHh//8J4/jL3dXZX8X5gR1eTUWIL64RGYfZBaTgv2uCQ5Jy/lNXkVUuMNBJ13jjGU/wAqXkGi2NIxO0HBHRjswnnJFzdkVfs9LRY5yLIzYhvoiavlLYNCcUryWQc4gu8Epnvk4sBeuN0a6OpNSdKWuX6tR5H8IuvbQlVccVHcEF50D4AtA80rCXdQlmQBKEbIQPc1U3QvCkBGg7BZA4p19Ebw5qJUn8Z7kFDCOEOE0YnzxmJ9vueTrIEqSfJZJSUU6ou8PED9Ml9H2R55PGq91mqyKFFirWucF4tEwbpuy3vubaZN5ddQ7sPVHP4u+M8KNC4KnMgJAi/DhFoWdoPIwsQJPByEGTAIfUJThrYGmvNSfc+0jRLFz016agd2DSHwI/s0x8u8gkmiiGRVqTTevZArkv8lxItG6NrLE5D6d1NC+rQEpV3oikmLHvkK5EGR3fFid4Riy70wDXRH3noyu5bpcTJ2X8uHGOGF24oHMJar5d+LfPO0hOJeqClV/BWSfMhRx75+C9cKdA/tHEyUFMXiQxd7102nd30OCygYkZuzCENHbOtcMA4CZ1/4p70eY/ZNVGm+e7eBhu1HO4W93ydVBr6NaD1Kvj5lKfBsZ6dyytZA6Yy1Vk+X6DRTIGekWizVnK/0PLWag8ParXewSjYDW3/0RtFRsuxGxtmJ4UWH283ZdUlvWF2b7crqB/ysuASWKKIqPfX1CndYa7+Xrr+dlX+S5FNJ8tk377XyMKXMzcDBaWAH2KUOwWkEAQbq+5bJIHJtD23/6Xp5u+Y/7wRNO39+R8O+7oXu6b5+I/lqcrtaQ0mVkIMpZJ0Lz35rIs1cbhSmK1EVPbWxbd2LDjcpZ7gJh9pwJTNC27bceuJF3gdbprc10P/m389+Hfj0EqAva8lMR7UOaH8taJcB/dmI92pj2dvLNEYjNyVhhH0CDLtu6GBCmY190zdtCBkzwUdb4ziTzjlAXjeTmYCcUFKo5Zen0qdzZzwH/6TSw5ekkk1Ml5pOisOUZti1PRNHWUpwxlIfWEYjM4zqptXgthT1WsImeDIXv0BOEsEIzvkKJte5IGryjZdK8rTSo3CSVPIVNsOlNwwoc7wwwpSRELtW5uMotSmGlFrMzNLUCT20/Q+O+sPWexEAAA==",
+        },
+        [1002] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1XS2/jOAz+K4HO9sIPybF9SzOdboC0U9RZzALFHBSbToQqVirJnWaK/PeB/EjsPJpB0cMe9qaQ1MePNEUyb2hUajGmSqtxvkDxG7ou6JzDiHMUa1mChYxyygrYK7NWNclQ7IWRhe4lE5LpDYpdC03U9WvKywyyvdjYb2usWyHSpQGrDp45VThBaKGb9WwpQS0Fz1DsOk4P+X3oCiMa9m44F8mMl+WqZYBdB1+g0N4SnEOqOxfdrpl32a2QGaP8TEpdLwh6ScXNta9MLa83oDqOyQFjQnqMgzbp9AmSJcv1FWUVbyNQrSDRNH1SKCZNGoPwGLeLGjWo91QzKFLo8AkO7wX9DHrtVcl+wZjquhRO1VUQHoF5B5/Db8BmS8oZfVJf6YuQBq8naKPzrb78AVLxAhLFrsnZGQq457BN5xVb3NBVFfeoWHCQqnXinUTyhw4+CqaHHG63Frp+1ZI279B8l5lIftL1pNAl00wUN5QVbapt10LTUsItKEUXgGKELHRXcUJ3ogBk1QibNaDY5OkE3lQo/WG8ewkKTjNENjqjrz1W+j2fZA2plpSPSymh0J8U5QHqp8V6ku1RxCe9V1Z1vSRarM1rZsUi0bCu+uaee1NTI/k5lLtwFYd/CvZcgsFFQ/Bx6njEHpJ8buPQx3aYU8+OsiDDhLh+6FK0tdCUKf0tNz4Uih/r8jQB7J7+MIjweY6JBs6pHCSUr0QxeBBgQO+EXFH+txBPBqbtJt+BVr+NXIHePaeccgXt82qUJrz2oTWiOgfYHZou1WImWoqiM9/OXJ+xFciD93tLX3cq0wL+co5cOX7H1RQWUGRUbi56O0T4Iso5Pwy/tvCCaGewj+WsSY/DCauZZOtznobE83cm53z1jN7x1tiZch/lGuSYloulnrKVmUJurTh8B9XCUcp6zJlDp4GPaZECH2kNq7Vuc2lsZlQuoMb8VvDN9yUUd0KPUs1eYJJBoVlq5m194WSHJtHx9H9nkJuVo21rbQU/wHPJJGSJpro089TsNGfK+kKZ/nGF/V9IHyqkj37zTuuMiOs4QZDZ0TB3bezguU2JH9gReJRmjheGOUHbH23vbPbex52gbp+Pb+igj3rR+T56Vc7nHBb0F8hey3ffy82u/k1CjKPaYLQSZdEzQzEm0eGe4vc3ytB4KmVOU0i46WcntzdMInJheSNbC/1n/gvsZ++HJ27yk66NZGyyWiW0O4ObyWuOtXhvdqp0O2UWOCmN0jy1SYgdG2dkaIcBDWziRO7cd7AXwbwqsxq3HbjwXJpeMbj+dzCZDOxBXTmDq1IqDVINvjClJZuXpn8NklK+wKa/GYDn+MTFvp3RPLBxFHl2OA8zO02JkwY4IiTy0PY3A0AOekEOAAA=",
+        },
+        [1003] = new()
+        {
+        },
+        [1004] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1XS2/bOBD+Kwavay30oJ431+tmAzhpEKXoAkEPlDiyidCiQ1Jps4H/+4J62JIf8cLIoYfeZHL4fd8MhzPjNzSptJgSpdW0WKDkDc1KknGYcI4SLSsYI7M5ZyXsNmm3dU1R4kbxGN1JJiTTryhxxuhazX7mvKJAd8vGftNg3QiRLw1Y/eGarxoniMboav2wlKCWglOUOLY9QH4fusaIw8EJ+6yY6bJadQqwY+MzErpTgnPIde+g0zdzz9MKSRnhJ0LquEEwCCpuj31majl7BdUj9vcU+/5AcdAFnTxBumSF/kRYrdssqG4h1SR/Uijx2zAG0SFuHzVuUe+IZlDm0NMT7J8LhhF0u6OS/QtToptU+KrgS8lfvzG9nOSavUDKyboLybGkC6IDJnfvrryW6WFJOCNP6jN5EdKQDRY6173xcP0ecvECEiWOCegJCXhA2MX6E1tckVUdlEm54CBVR2ISg6LEC218oH4AFW02YzT7qSUZvMqtAHNpDyL9QdbXpa6YZqK8Iqzs7sFyxmheSbgBpcgCUILQGN3WmtCtKAG1CK9rQImJ0xG8uVD6Yrw7CQqOK0QWOrHfMNb7Oz3pGnItCZ9WUkKpP8jLPdQP8/Wo2gOPj7LXVvfGaCqqUoNsThj77tabbEq1WJtCwMpFqmFdl9ydZ23GTeTHONSHqxV+LdlzBQYXeTgKIMau5cQ4sjDNPSvKgtyK3YDYHlAbvAJtxmjOlP5SGA6Fkse3ms04sK0aYRBHpzVeCU5HqSaSVkobvFshV4T/LcSTQehq0Dcg9W+zrkBvH0xBuNoWkXazH9R2qXEfO6GpbR1mqqUoF5eiPrAVyL2He8PK7RZKHPynfaDA9noK5rCAkhL5uisC532oEf4SVcb3o9JYuEG8NThw8dBkoOGI1YNk61NMoe96W5NTXAOjd9haO/MAJoUGOSXVYqnnbGVamtNs7L+MenqpZNMzzUev4B+p6l7ox4dDwDv93EweXQHrUvIenismgaaa6Mq0VTPanMjT/5d353PjdwpclAKX3nmvDPpBETkZjqw4Cx0LBzSzssglVhTlEEaxjb2Aos33rg624+/jdqEphY9vaK8mhu/U7ZSUdMGJUqOUE7UEOSjiznsRuqZQapYTbsJi6BqDycp0nb4ZSrAf748p3nC8jAxTJQuStxPb0XkW+7F/ZljzN2P0y/wx2HXTi3uoOWxW6l7eZOYPsm46q+pi02+0KEGmKdDR7J8/RtZoxmEFpSbcAvVcwSglXK9BgxylSyFhZEYItoJSjR5N4L+jPkGP9Mhz6KUu9uwC24Vt5STAFo4cx4og8KwsinFGCzvIw7xO3Qa3dfhCnTeElUZnj59GeRZiQq2I2o6FXTe3stihVgwEbC/0cRFmaPMf7Vq59aQOAAA=",
+        },
+        [1005] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1XbW/jNgz+K4G+Ljr4RX79lsvSLkDaKy4pOqAYBkWmY6GOnUpy73JF/vsgvyR24iaHQ7HbhuWTQ5EPH9KkSL+iUaHyMZVKjuMVCl/RJKPLFEZpikIlChgifTjjGRwOo+ZoGqHQ8oMhuhM8F1xtUWgO0VROvrK0iCA6iLX+rsK6yXOWaLDywdJPJY7rD9H1ZpEIkEmeRig0DaODfB66xAi8joVxkcw4KdaawZ95lm7vJTxwlUwzVXDF86wJsydqYhrkAt3GQ56mwFQTJjENs61mXaaYi4jT9I30m5brdl4Aqc2uuEwmW5Atx84RY8fpMHabF0SfYJ7wWH2kvOStBbIRzBVlTxKFTp1y1z/FbaMGNeodVRwyBi0+7rGd282g1ZgK/g3GVFVl03g9traO8m/X1ouEppw+ySv6kgsN0BE04djDrvwzsPwFBApNnaS+und9XQIth03+PvLVNV2XgY6yVQpCNk70y45QaHsGOWHfgfJ3uyGafFWCdrpyT0C/iEU+/0I3+2K9pjxr0oPNIZoVAm5ASroCFCI0RLclJ3SbZ4BqhO0GUKjz1IM3y6X6Ybw7ARL6GSKM3jivPJbnBz7zDTAlaDouhIBMvVOUR6jvFmsv25OIe72XWlW9zFW+0e3Ls9Vcwaa8VA/c65oaifeh3IYrOdxn/LkAjYuCJY0JiWJs2pRiYtEA+6ZJsWG5nkEdEoFlot0QzbhUn2LtQ6Lw8bX0pgPY97rnBs7bHK90F3yhCsRgJFQi8rQQoHFvc7Gm6W95/qSRmhvkAWj5X8slqH1rxDSV+9u6PtQRNk1Ti6o0ENPTN1ODOVciz1qddtncsFvmM1hBFlGxfQdeJfC9hF/zotZvFCvJhfA7aJarg6zsDiFqlQVfgzi6VW54tj/SF98Ho/MjZ8C/JwE9xgvBNycR1QqeY9l7lS75N5T6SHT1dGeNYgViTItVomZ8rSecWR0ct1y5+BSiGqH6oTUregaC7TnB6U5wZrzrpaW5+5oa/wzPBRcQzRVVhZ6yeiv6yYWvd6S+ctHyo5LxPhhD9ClLtw8JZCOm+AvM05/UQr3dcqktvru4/zVVfC9hXEiVr6uSat8nf0OBt4ZJ7ASOwXwPB8yKMGFmjP14GeDY8wNCA4ta1EW7P5ppUn8mPO4F1UB5fEVHk8Xxzky/LVOcJSrZys4QNM9lcRpBpjijqc6PdlQpjNZ5kXXUUEic4HiRs7tLta89FSKmrO6E3i2eOHo+nl1nnd0Q/WM+nQ7byA/vINpYS8Y6q2VC21tJvYvox0p8UOst8kOZ2R4lxIxMbFm2j4kbMBwsDRcvA4stie3ZLNK7xWkZBW8HMKYbWaSgVDeM/6voP1tFsW2ZkWE72PDcGBN3aWJq+S62vIha4HuUsLi8rCrcmqIeg9Fg8vsvg+l0gAeTFNaQKZpikM8FDMYJleuB3v75GjJ9I7U8+p6xtD0vwMxwbExc4uOlByZmzGWGRRzmRAba/QWB3GBlsBEAAA==",
+        },
+        [1006] = new()
+        {
+        },
+        [1037] = new()
+        {
+            "AH4_H4sIAAAAAAAACs1WS2/iSBD+K6jPtmSbdvtxIyyTRWKyUcxoD9Ee2u4ytGLcTHc7M2zEf1+1H8EmECYRI+3NVFd99VVRrxc0qbSYUqXVNF+h+AXNSpoWMCkKFGtZgYXM44KXcHhk3dOcodgLIwvdSy4k1zsUuxaaq9nPrKgYsIPY6O8brK9CZGsDVn945qvGIaGFbrfLtQS1FgVDses4A+T3oWuMKBhYOBfJTNfV5kxg2HXwBUYdiCgKyHQXCXYdt6/mXWYhJOO06ACIiwcAuFX7wtV6tgPVc+QfMfT9AUPS5Zw+QbLmub6hvOZpBKoTJJpmTwrFfptFEr7F7aNGLeo91RzKDHp8vGM7MsyY15lK/i9MqW4qofNKjqy9o3yPW+vlmhacPqkv9FlIAzAQdOGMraH8ATLxDBLFrknSqVImofnLew67/N3w1S3d1IFOylUBUnVOzJ/LUDwOHPyG/QAq3O8tNPupJW0bzWR+KZIfdDsvdcU1F+Ut5WWXD9u10KKS8BWUoitAMUIWuqtJoDtRArIahN0WUGwScwJvIZT+NN69BAWnGSIbnXlvPNbvBz7JFjItaTGtpIRSXynKI9SrxXqS7ZuIT3qvtZoCSbTYmn7l5SrRsK0H44F7W0QTeR3Kfbiaw7eSf6/A4CISEuZ5eWqnxGE2dt3UphmJ7DClzjgLPUoYQXsLLbjSf+XGh0LxY1OeJoDX5g4C093nOM70GrjcqdENLQqDdyfkhhZ/CvFkELpR8TfQ+reRK9CvTZjTQkHXlO2jiaxrz1bUhI/dwIygDjPRUpS93XXZ3Bn3zBewgpJRubsCrxr4D1GlxaVIB4YeiV7tDtGcVfkVxieMvylYSr5t4ugCaCQfIhv4ngmzsTxHd6D0ccKtuemiSa5BTmm1WusF35j15TYPx+1VHyqVbPaj+egtghPTfhz40dsF/86uNkdGN+e6un6A7xWXwBJNdWVWqLlizhT7heL9aI1errmrFVdf62TBXLUyflMJfPY/781S7FGC09S3AyCejXGU2mkUeDbBjETg5wyAof0/3TBtL93HV0EzTx9f0HCwksA/P1jnJdecav4Mo6UUlR4sAve9BM0ZlJpntDBZMd4ahclGVOVADcXYj46vl/HwkgyNp0rmNIOkMPOvJe9H/oWjzd9b6H9z8x9W8KcXb/KDbo1katJYZ7C/itsFbD4b8UHtVMH2iotlhLEUh3aaYWxjjwR2yEhgZwH1cwzjCAdZXVwNbkvxAdhoUoDUI3uUiGo7upFCr0fzciWBcSi1Gp4DGaZj7AaOHfhhZGOXYJsGHrGpC06eBszx8gzt/wNxz0ugFw4AAA==",
+        },
+        [1038] = new()
+        {
+            "AH4_H4sIAAAAAAAACs1XS2/jNhD+KwbPEiDqLd0cN5sG8GaDyIsegh7G4sgmwogORe1uGvi/L6hHLDl23E1dtDdlOPPNN+N55YVMay1nUOlqVqxI+kIuS1gKnApBUq1qtIh5nPMSd4+sf7pmJHXjxCK3ikvF9TNJqUWuq8sfuagZsp3Y6G9brM9S5msD1ny45qvBCWOLXG0Wa4XVWgpGUuo4I+T3oRuMJBpZOCfJzNb145HAfOr4Jxj1IFIIzHUfiU8dOlRzT7OQinEQPUBI/RGA36l94tX68hmrgaNgj2EQjBiGfc7hAbM1L/QF8IanEVS9INOQP1QkDboshvFb3CFq0qHeguZY5jjg4+7bheOMub2p4n/hDHRbCb3XcM/a3cu311kv1iA4PFSf4JtUBmAk6MPxrLH8DnP5DRVJqUnSoVIOY/OTDxz2+bvgqyt4bAKdliuBquqdmB+XkdSLHP8N+xFUvN1a5PKHVtA1msn8QmbfYXNd6pprLssr4GWfD5taZF4r/IxVBSskKSEWuWlIkBtZIrFahOcNktQk5gDeXFb6w3i3Cis8zJDY5Mh767F53/HJNphrBWJWK4WlPlOUe6hni/Ug2zcRH/TeaLUFkmm5Mf3Ky1WmcdMMxh33roim6jyUh3ANh68lf6rR4BJ0IgbgF3aS54nt04TZSbiMbKfwGCR5gMEyIVuLzHmlvxTGR0XS+7Y8TQCvzR1FpruPcbzUa+TquZpcgBAG70aqRxC/S/lgEPpR8QdC87eRV6hfm7AAUWHflN2jiaxvz07Uhu/TyIygHjPTSpaD3XXa3PEG5nNcYclAPZ+BVwP8m6yX4lSkI0M3TF7tdtEcVfk7jA8Yf61wofimjaMPoJX8EtkocE2YreUxuiOlXyfcmZsumhYa1Qzq1VrP+aNZX7R92G+v5lCpVbsfzcdgERyY9l4UJG8X/Du72hwZ/Zzr6/oOn2qukGUadG1WqLli9ov9P6/qf16+Z6vTodbB2jtrkf1L1fTR8hmMZRY7UPhFbCcsRtv3qG8vWYg2UEBwgVIvKMj2z34ud0fz/augHc33L2Q8o8MoOj6jFwq44OVqkpXARWEMh1uFvpeia4al5jkIkxfjr1WYPsq6HKmR1A+S/VPIG5+lsfFUqwJyzISpxo5+kAQnLsBga5H/zT8Qu33+4S2efYeNkcxMGpsMDvd6t83NZyveqR0q2UF5geNBQYvYduIksf0kBhuc3LWpDzliHjP03aa8WtyO4h2yyVSg0hN78oULG825mmszPCbTpxo0zydzXpgwhhcGeCGlFG0XaG774Lt2wiC3XXCZ47DAd0NKtj8BmGFHYGoOAAA=",
+        },
+        [1039] = new()
+        {
+            "AH4_H4sIAAAAAAAACs1W227jOAz9lUDPNuCbfHtLs2m3QKZb1B3sQ7EPskQnQhU7leTpdIv8+0K+NHaaNNMiA+ybQ5GHh8wRqVc0rXU1I0qrWbFE6SualyQXMBUCpVrWYCFzuOAl7A5Zf3TNUOrFiYVuJa8k1y8odS10reY/qagZsJ3Z+G9brG9VRVcGrPnwzFeDE8YWutrcrySoVSUYSl3HGSF/DN1gJNEowjlJZraq10cKC1wnOMGoB6mEAKr7SgLXcYdu3mkWlWSciB4gdIMRQNC5XXK1mr+AGiTCewwxHjEM+56TR8hWvNAXhDc8jUH1hkwT+qhQirsuhvF73CFq0qHeEs2hpDDg4+3HheOOeX2o5P/CjOhWCX3WcC/a2+u330Xfr4jg5FFdkh+VNAAjQ1+Ob43td0CrHyBR6pomHZJyGJu/fJCw798FX16RdVPotFwKkKpPYv5chlI/coJ37EdQ8XZroflPLUl30Uzn76vsmWyuS11zzavyivCy74ftWmhRS/gGSpEloBQhC900JNBNVQKyWoSXDaDUNOYA3qJS+st4txIUHGaIbHTkvM3YnO/4ZBugWhIxq6WEUp+pyj3Us9V6kO27ig9mb7xagWS62pj7ystlpmHTDMYd905EU3keykO4hsP3kj/VYHAReIGDWcHsPGfYDkK3sOMQY9vBDIdhTikjAdpaaMGV/qswORRKH1p5mgLeLncUOf5xjpdG9s9Eg5xMpV7JStQSDO5NJddE/FlVjwapHxl/A2l+G7sC/XYZCyIU9JezOzQV9te0M7VtCNzIjKIeM9OyKgc77HS44w/CF7CEkhH5cgZeDfAfVZ2LU5WOAr0weYvbVXPU5VcYHwj+ruBe8k1bR19Aa/kU2Qh7psw28hjdkdPnCXfh5jZNCw1yRurlSi/42qwxtz3Yv2bNg6WW7Z40H4OFcGDq+xFO3i/6D3a2eWz0867X9R081VwCyzTRtVml5jVzROwnxPtZjZ7W3NnENfQ6KJizKuM3SeCr//lgpuYkD/wIYhs7cWAHIWV27sfUdgo/yos8AJcwtP2nH6rdi/fhzdDO1YdXNB6wYewcH7AXooZJponMa6n0aB24H7XnmkGpOSXC9MTkah2m66ouR24oDXCy/4bxx+/J2GSqZUEoZMJMv446TvCJpxveWuh/8/LfLeIvr9/smWyMZWba2HRwuJC7NWw+W/PO7ZBcB9LyEhbTIExsQiGyA88BO3YL16a5W5DAL3BIikZaLW5H8Q7YZCpA6ok9mQtYQ6mJsEE9Gc1sgPI1lJMpfaq5asbW+Ing4iBkLPHsiIZgBzGObZK4xI6pTx1chDnkPtr+Byfpt3wrDgAA",
+        },
+        [1320] = new()
+        {
+            "AH4_H4sIAAAAAAAACuVWyW7jOBD9FYNnCdC+3dzuJBPAnQRRgj4EfaCkskWYFh0u6fYE/vcBJdG2vKV7EGAOc6NqeXxVKj7yHY2VZBMspJjM5ih7R1cNLiiMKUWZ5AospJ1T0sDOWRnXbYUyL0kt9MAJ40SuUeZa6FZc/SqpqqDamXX8psP6xlhZa7B24elVixMlFrpZPdUcRM1ohTLXcQbIl6FbjDQeZDgfkpnUanmmsMB1gg8YGRBGKZTSVBK4jrsf5n3MgvGKYGoAIjcYAAR92DUR9dUaxN5G4QHDMBwwjEzP8QLymszkF0xantogjCGXuFwIlIV9F6PkGHcfNe1RH7Ak0JSwxyc6zIuGHfNMKid/wwTLbhLMrofZ3kG//T77qcaU4IW4xm+Ma4CBwZTjW0P7I5TsDTjKXN0ks2cw2ME07AuZ3+BlW9m4mVPgwqDqv1mhzI+d4IjuACoxvVdUkpqxxbZNnhOmh5N1YUY2Frr6JTnuD6j+Y08s/4lXt41URBLW3GDSGHTbtdBUcfgGQuA5oAwhC921taA71gCyOoT1ClCmG3oCb8qE/Nd4DxwEnGaIbHTG3+3Y+nd88hWUkmM6UZxDIz+pygPUT6v1JNujik/u3kZ1c5ZLttLnnDTzXMKqnYwd934Wx/xzKO/DHTP9SZYFJvKaUCou+B9VI+6VQXhuyKsCzQyFYeUF2E/tIi18OwiS0C6iKLb9yPUw4DhJZxXaWGhKhLyfaZYCZS/dgOsWmBJDx/Od81VOmFgyWY8e1ApruDvGl5j+1R84o1HfAS92Qq+9AqQuw0h+b+oaFbixFjmTnEvOmvmfpDv+XvoU5tBUmK//GOErUwXdch9EeFG6DdjxOxsy4HAi6lnAEyerjpmh1FlObx+HnmbYhZwjMAi6QKGP08M/nkngE6zmtZySpb6t3M5xeCrad4ni3XWoF3u63yl0mB5f4Jd1dqtHZnwe4VURDlUusVT6itSvlMOZ+r3R+e0J+W8H4X/3z/NexyZMNXJ4Jd83dP0s4HsNzR1rn6vjN0yoPsDmiOzpXQmzqEiSyE6qILED10nt1HFiG5d+4EYOdooIo80PI3j9O/hla+g0T393Mtvr24vre86P0bhhS0zXo9vlCpdyNH5VuFRUKg6jXPE3WI/ev26GAlxCCnHqVbaXFKEdRIVvJwFgOyyjwPXioMSzEm3+AUdtEtQDDAAA",
+        },
+        [1321] = new()
+        {
+            "AH4_H4sIAAAAAAAACuVWy27bOhD9FYOrXkAqRL0saee6SW4A54HIQRdBF7Q0tojQoktSad3A/35BSbQlP+K0yO7upHmcOTMczvAVjSrFx0QqOZ4vUPKKLkoyYzBiDCVKVGAhrZzQEnbK3Kiuc5S4UWyhe0G5oGqNEmyha3nxK2NVDvlOrO03DdYN51mhweoPV3/VOGFkoavVtBAgC85ylGDH6SG/DV1jxMOeh3OWzLioloaBjx3/DAXjxRmDTHUccdfMPR+Wi5wSdqKk2A3DXlH91u2SyuJiDbITONhjHAQ9xqEpOnmGtKBz9YXQmrcWSCNIFcmeJUqCtoxhdIjbRY1b1HuiKJQZdPiE+35hv4KucRX0N4yJalrBRN33dvfq77Xe04IwSp7lJXnhQgP0BCYdz+rLHyDjLyBQgnWRjvVyGOkW6AQ09ftCF1dkWSc6KhcMhDRB9GHnKPGGjn/AvgcVmaOomKIF58/bqrlOEO833hsttLHQxS8lSHth9QFOefqTrK5LVVFFeXlFaGnQbWyhSSXgBqQkC0AJQha6rXNBt7wEZDUI6xWgRNf3CN6ES/XXePcCJBxniGx0Qt9ErPU7PukKMiUIG1dCQKk+KMs91A/L9Sjbg4yPRq+tmj5LFV/pa0/LRapgVXfGjnvbiyPxMZS7cIdMf9LljFB1SRmTb+gfqlLeVQbhsaQ/KtDMEMnm+cwBsB1n5tp+HGF7FrmOnQXhLAjiyHe9CG0sNKFS3c01S4mSp6bBdQlMioHjes7pLMdcLrkqBvfVimi4Wy6WhP3bXjgzsr4Bqf+1XILaDoM5YRLMcGiVOjszJlpRUz8fD/UoNJipErzsLNET7lO6BLE3fW5ouVXpsfPZOQjleJ1QE1hAmROx/oAcauBHCV951dobw0ZyplQ9NDfUBWn8duV4Z9bRQdZduPekfMR5KujqIIfWYBi43takT/eE0TESfTt9YUdzBWJMqkWhJnSpFy5uFPs3uX5bVaLZ6Pqjs7qarRLEh2+St3fDdoaaln+AHxUVkKeKqEpvef3SOnEPzvT1n7Zkz/BoN51rm3e3wv/6zNN29o55Var+M+KuZOtHCd8KKG95/eQevRDK9L0x17Azo2MfYnCHge1gP7L92AvsGGLXjn0vCuc4jDCeo813M6Tbt/zTVtDMaf3frIZ2Jj9hz8XfBzewIIyqgq84o3Kgdx9dQjlIK/EC68Gnr//0NwZ2YxLj2LExuLntZ5jYJIvnthuTYTDEeQ7RDG3+AxEq4PPEDAAA",
+        },
+        [1322] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1Wy27jNhT9FYOrFpAAUS9b2jkeJw3gSYIog1kEs2CkK4sITXpIyjPuwP9eUBJty8+2CLrqTuK9PPfcBw/5C41rLSZEaTUp5yj9haacvDEYM4ZSLWtwkDHOKIedsbCm+wKl/ihx0JOkQlK9Ril20L2a/sxZXUCxWzb+mxbrsxB5ZcCaD998NTjxyEF3y5dKgqoEK1CKPa+HfBm6wUiGvR3eVTKTql6cSSzEXniFkQURjEGubSYh9vC+m3+dhZAFJewMEezHca/GYbftlqpquga1Fzg6YBxFPcax7QF5h6yipb4htOFtFpRdyDTJ3xVKo66q8egYdx816VCfiKbA83OTEmIvPoSJ+wX1LZKkf8KE6HZQLInD3f5BO4Ju90tFGCXv6pashDQAvQWbXeD0158hFyuQKMWmZqcmPR6ZidgLaMt5Q+d3ZNHkPeZzBlLZIKb3BUqDoRcese9BjWxnaqZpJcT7tqm+FyWHc3hhojYOmv7UknTH2fTzRWQ/yPKe65pqKvgdodyiu9hBs1rCZ1CKzAGlCDnoockFPQgOyGkR1ktAqanvCbyZUPpf4z1JUHCaIXLRGXsbsbHv+GRLyLUkbFJLCVx/UJYHqB+W60m2RxmfjN54tXOWabE0KkD5PNOwbCZjx72bxbH8GMr7cMdMf9DFG6H6ljKmLtifa64ea4vwhdPvNRhmKMlHERBcuEESgxuCF7gE3ogbJ6Qsi2RYAsZo46AZVfqxNCwVSl/bATclsClGnh9cyHIi1EIYIoMbwpgBfBByQdgf3ZGzGvYVSPNv1hXorRyUhCmw8tAZTX5WKLqltoIhHhpttJiZloLvXbLXt3vB3vYZzIEXRK7/McInUb+xw5RaDz9Otg47fmddehxOeL1IujwXaRj5wdblXKye04VonZ85AONSg5yQel7pGV2Y+wy3hsOT0bxkatlemOZj7ypoVTpKjq/8y1q71SQ7QM/wvaYSikwTXZtL1LxrzkzVlSn528Pwf8//055nnZZNRM11/1p+5Gz9RcHXCviDaB644xWhzJxVe0D3NC8M4xxIOXQjnBM39MLcTYqEuCWOhwUuQxx4BG2+WdHrXs6v24VW98x/K7Wdxr3iwPe/DW6FhLngMHgkiqrBlK+oFHwBXBM2yGq5gvXgt0+/92U4zsEbDaORi6OSuGEyKl1SBIUb5SWEZVgWoV+gzV+iW9bJNwwAAA==",
+        },
+        [1323] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1WS2/bOBD+KwFPu4AE6EHJkm6Om2QDuElgp+gh6IGWRhZhWnT5SOst/N8XlETb8ittEfS0N4kz8803w+FH/kBDrfiISCVH5RxlP9BNTWYMhoyhTAkNDjLGMa1hZyys6b5AWZCkDnoSlAuq1ijzHXQvb77nTBdQ7JaN/6bF+sh5Xhmw5iMwXw1OnDjobvVcCZAVZwXKfM/rIV+GbjDSQS/Ce5PMqNLLM4Vh38NvMLIgnDHIla0E+56/7xa8zYKLghJmAWIf9wBw53ZLZXWzBrmXKDpgGEU9hrHtOVnAtKKluia04WkWpF2YKpIvJMqirotxcoy7j5p2qE9EUahz2OMTH8bF/Y4FNlTQf2FEVDsJNuthdHDQ77CLfq4Io2Qhb8krFwagt2DLCZ3++gRy/goCZb5pks2Jexlsw67p/I4sm8qG9ZyBkBbV7GaBsnDg4SO6PajE9l4zRSvOF9s2BV6UHk7WhRnZOOjmuxKkO6Bmx5759BtZ3ddKU0V5fUdobdFd30FjLeAjSEnmgDKEHPTQ1IIeeA3IaRHWK0CZaegJvDGX6rfxngRIOM0QueiMvc3Y2Hd8pivIlSBspIWAWr1TlQeo71brSbZHFZ/M3ni1czZVfGXOOa3nUwWrZjJ23LtZHIr3obwPd8z0G13OCFW3lDF5wT7RtXzUFuFTTb9qMMxQPvD8WZ6HLuCCuDgPwE0giNwcBlCmg5AkHkYbB42pVI+lYSlR9tIOuGmBLTHygvBClSMul9wQubomjBnABy6WhP3THTmrUp+BLHZSb6wSlCnEin631LYK+wMjczZ4qgSv578S7oV74WOYQ10Qsf5lhA9cz9iWe88jiNOtw47fWZcehxNez4KuzmUaREG4dTmXq+d0IVvnZyZ9WCoQI6LnlRrTpbma/NZweASaR4gW7d1nPvZEvpXjKD2+rS+L6lZ87KRM4KumAoqpIkqb+9A8SQ7H5+em5KeH4f89/6N7Pu1Ea8R1rfr372PN1p8kfK6gfuDN23T4SigzZ9Ue0D1xKwdl4uE8dHGIsYuLkLhpjGcuKeLUSzGeJTNAmy9W3bpH78t2oRU4899qaidmL34YhF8mMNeMiKtrIuFqAlKvVmx99deHv/sCCxGUZeoRt8wJuHgQhW4SeMT1YjJLEuJFKfHR5j/1iF+z4wsAAA==",
+        },
+        [1324] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1WS2/bOBD+KwZPW0AC9H7dXDXJBnCTIE7RQ9ADLY0sIrTo8JHWW/i/F5RE2/Jztwh62ps0M/zmm+HwI3+isZIsx0KKvJqj7Ce6avCMwphSlEmuwELaOSENbJ2lcd2WKPOS1EIPnDBO5AplroVuxdWPgqoSyq1Zx687rM+MFbUGaz88/dXiRImFbpZPNQdRM1qizHWcAfJ56BYjjQcrnItk8lotThQWuE5wgZEBYZRCIU0lgeu4u2HeZRaMlwRTAxC5wQAg6MOuiaivViB2EoV7DMNwwDAyPccvMK1JJT9i0vLUBmEMU4mLF4GysO9ilBzi7qKmPeoDlgSaAnb4RPvromHHPLOUk38gx7KbhGNjFSUHYN5e+/0e7KnGlOAXcY3fGNd4A4OpzreG9kco2BtwlLm6ZyZnMMhg+veRzG/woi103MwpcGFQ9eaWKPNjJzigO4BKzFYoKknN2Muma54TpvuDdmZk1ha6+iE57s+r3sAnNv2Ol7eNVEQS1txg0hh027XQRHH4DELgOaAMIQvdtbWgO9YAsjqE1RJQpht6BG/ChPxtvAcOAo4zRDY64e8ytv4tn+kSCskxzRXn0Mh3qnIP9d1qPcr2oOKj2duobs6mki31sSfNfCph2U7Glns/i2P+PpR34Q6ZfieLGSbymlAqzvgfVSPulUH40pBXBZoZSjFOvNBzbT+A0A6SyLexMyvspJyViRsHQVBUaG2hCRHyvtIsBcqeuwHXLTAlho7ne6erzJlYkGKUc9zA6JquNOQd4wtM/+4PnZGtr4Dbf20XIDciVGEqwOpFqXfqCo089aauh4Ebazk0mFPJWbNzj15e7vg7yycwh6bEfPWfET4xNaP7JXURXpRuArb8ToYMOByJeuJkeSpTHHr+JuRUrkHQmWx9nD4C40oCz7Ga13JCFvoKczvH/tloHyuKd3ek/thR/06nw/TwVj+vthtVMgP0CK+KcCinEkul7039dDkxVRem5F8Pw/97/kf33KhZzlQjhxfzfUNXXwR8raG5Y+0bdvyGCdVn1RzQHdXDTuV6ySy1/cIN7MAtYzuN/NCucFE6KeDCKyO0/mZkr38cP28MnfLp/05se5V7dn0v+DaaYD6H0fhVYUmK0YRUYFeML0afiJCczJSe2tFU8TdYjf7KPwwFWef34zSx0wLADtwY2ziOC7uMYyhx5CUzJ0brX5CI1M8iDAAA",
+        },
+        [1325] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1WTW/bOBD9KwFPu4AESKJEfdxcb5IN4CZB7KKHIAdKoiwitOiSVFK38H9fUBJtyV9pinRPvkmcmTdvhsNH/gSjWvExlkqOizlIfoLLCqeMjBgDiRI1sYA2TmhFtsbcmG5ykHhRbIF7QbmgagUS1wI38vJ7xuqc5Ntl7b9usT5znpUarPnw9FeDgyILXC9npSCy5CwHies4A+TT0A1GHA4inDfJjMt6caQw33X8NxgZEM4YyZSpxHcdt+/mvc2Ci5xidoSI6yE06LHfhV1RWV6uiOwlDnYYB8GAMTJ7gJ/JtKSF+oRpw1svSLMwVTh7liAJuq6iaB+3jxp3qPdYUVJlpMcH7cahYQc9EyroDzLGqp0Mk3U32tvpP+yiZyVmFD/LK/zChQYYLJhyoDVcfyAZfyECJK5u0qHRRpEegV5C079PdH6NF02ho2rOiJAmid7sHCQwdPw99gOoyGxFzRQtOX/edM1zgnh38E6M0NoCl9+VwN351Rs449NXvLypVE0V5dU1ppVBt10LTGpBPhMp8ZyABAAL3Da1gFteEWC1CKslAYnu7wG8CZfqt/HuBZHkMENggyP2NmNj3/KZLkmmBGbjWghSqQ+qcgf1w2o9yHav4oPZG692zqaKL/Wxp9V8qsiymYwt924WR+JjKPfh9pm+0kWKqbqijMkT9oe6kne1QfhS0W810cwADEIvDTxiwxxlth9hz8Yp9O3QiV03g2EE4wKsLTChUt0VmqUEyWM74LoFpsTA8SA8XuWYywV/5WKhsW65WGD2b3fajF59Jbj5byVAWyVRugYjBt1S2yXfDbXgmeCpEryavyfcgb3wCZmTKsdi9W6Ef3idsg33gYeH4o3Dlt9RlwGHA14zQZfHMoWBBzcux3INnE5k6/z0kI8KRcQY1/NSTehCX1Jua9id/uZ5Uov2FtQfPblvlTiI9+/x03q60R0zKQ/kW00FyacKq1rfjPqxsjs+vzYlvzwM5z3/X/fc6NWY15UaXr13FVt9keRrSapb3rxaRy+YMn1WzQHt6Zrj5k5Y5IEdoyiz/bzw7DTF0MZx7hE3clMURGD9ZIStew4fELZ3a/dZ3c7qdla3842W/0F1CwvkQT8O7CB0kO1jx7Ex8lI7RFGRxXmcZQ7qqVurZ49P5m3YydejC73g6Y7+WMkLrWEX05oqnFJG1epiRqSi1fzir/HfwxdjVISwCLLchm4e2T50IjvNfWQj5GMUwAKmUQHW/wEA0geq0xAAAA==",
+        },
+        [1326] = new()
+        {
+            "AH4_H4sIAAAAAAAACtVWyW7jOBD9lYCnGUAaaN9ubo+TCeAsiB30IegDLZUsIrTocEna0/C/DyiJtuV1uhFgMDeplsdXxeIjf6CBkmyIhRTDco6yH2hU4xmFAaUok1yBhbRzTGrYOgvjui1Q5iWphR45YZzIFcpcC92K0fecqgKKrVnHr1usO8bySoM1H57+anCixEI3y2nFQVSMFihzHaeHfB66wUjjXoZzkcywUgvDIHCd4AIFk8UohVzuJLq7Yd7lZRkvCKYnWup6UdRratClXRNRjVYgdhYO9xiHYY9xZJqOX2FSkVJ+waThrQ3CGCYS568CZWHXxig5xN1FTTvURywJ1Dns8In286J+Bz2TysnfMMSyHYVjcxUlB2De3nb4Hdi0wpTgV3GN3xnXeD2Dqc63+vYnyNk7cJS5umcnKAS9BU07v5D5DV40dQ/qOQUuzCJ67wuU+bETHLDvQSVmZxSVpGLsddNEzwnT/Tk8M1FrC42+S46786v3c8omH3h5W0tFJGH1DSa1QbddC40VhzsQAs8BZQhZ6L6pBd2zGpDVIqyWgDLd3yN4YybkL+M9chBwnCGy0Ql/u2Lj3/KZLCGXHNOh4hxq+UlV7qF+Wq1H2R5UfHT1Jqqds4lkS60CpJ5PJCybydhy72ZxwD+H8i7cIdMPsphhIq8JpeKM/0nV4kEZhOeavCnQzFDh+jiP89jOIU7sIC5DOy2Swi7SIPGwB+Us9tHaQmMi5EOpWQqUvbQDrltgSgwdz/dPVzlkYsE+GF9orHvGF5j+1Z02I19fATf/2i5AbpSgxFSAUYbOqUszGtGZ2uYFbqxl0WBOJGf1zoV6Od3xd9LHMIe6wHz10wh/MjWj+yW1EV6UbgK2/E6G9DgciXoWMOVk2TIzlFrLhY72weLQ08TbzD6vKVkA31PmO1JvXChz0z+cs4Bnquji9JkalBL4EKt5Jcdkoa9It3XsH7bmNaR4ewfrj53bpRX+MD18RZyX743MmcF8gjdFOBQTiaXS97J+G52Y1gvT96+H7L+dpaNjc3k+/r97PunkcchULfs3/UNNV88CvlZQ37PmkTx4x4TqQ2DOQE9GZw6OPMeO/CC2A99x7FmYxrZXhKlfAPglJGj9zeho9/p+2RhaKdX/rXp3svni+l707WqM+RyuBm8KS5JfPYFgiudwNVoAn0Odr65+G/7el3WAHBdOMLNz1yvtoIywjcs8sD03ccDJg8gpZmj9D6K7/AZ4DAAA",
+        },
+        [1327] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1X227bOBD9lYBPu4C0ECXqQr053iQN4FwQp9uHoA+0NLKI0JJLUmnTwP++oC625Fu62WBRYPsmc4ZnzgyHh+MXNKp0OWZKq3E2R/ELOivYTMBICBRrWYGFjHHCC9gY0850maLYjaiFbiUvJdfPKMYWulRn3xJRpZBulo3/qsG6KsskN2D1h2u+apwgstDF8j6XoPJSpCjGjjNAPg5dY9BwsMN5lcw4rxYdA4Id8gqFblcpBCT6QEUIdnB/l/s6i1KmnIkDeNgNgkGNSbvtnKv87BlULwF/KwHfHyQQdGfAHmGa80yfMl6nYRZUtzDVLHlUKPbbqgbRLm4flbaot0xzKBLo8Qm29wXDgrrdVsm/w5jppjP2tVkQ7YC5W6fjtWD3OROcPapz9lRKgzdY6LLzrOH6HSTlE0gUY1OzAxTIIGBXzlM+v2CLOu9RMRcgVRfEnH2KYi90yA77AVTUnUwlNM/L8nFdRNfx6XZbHumolYXOvmnJ2utszvO+nH5ly8tCV1zzsrhgvOjQbWyhSSXhCpRic0AxQha6rnNB12UByGoQnpeAYlPfPXiTUuk3491KULCfIbLRAXsTsbZv+EyXkGjJxLiSEgr9Tlluob5brnvZ7mS8N3rt1fTZVJdLowK8mE81LOvO2HBve3Ek34dyH26X6Ve+mDGuz7kQ6oj9rirUTdUhfCz4lwoMM4QxZTNgng2MYZtE1LdnhDCbOg44M8dxsixCKwtNuNI3mWGpUPzQNLgpwZtTvC7lgokP7ZXrNOwTsPp3owPGqkCbRDpFMEv3fAFySymu2Le1CcXRH07jagpRhyQ4NHrZxZlqWRbzt0XiRS8S3hfK8XqhJjCHImXy2URrHdeQGRMKrOMktoH/LKuZWFdq4OEGdO2wSfGgyz5qfa97yZeHIoW+661dDsUaOB2J1vqZezXKNMgxq+a5nvCFeSZxY9i+cPWAVMnmHTYfvRemEX+f7g4WxyV8LXVdX97Bl4pLSKea6cq8zWZc2m7WH2u0f9ojv878vznzTiLHZVXo4Wt/U4jnjwo+5VBcl/XcPHpiXJi72l3QnpRSwrwIImK7EIQ28ahnMwdjGzAlJJlRj3g+Wn3utLQdyB/WC42cPrygvq76DsbBYWm9gjkTXOcnE67zUuUgxEBp8bFbdZlCoXnChCmrCdg4jBamEhu3fbO2T7fnKm848prBalrJjCUwFUbP2rHKp/4r46S/stBP82dlumQSskp8YEXasTBTpb+Px6CT2vp5Vn2cl+l9Oc4heVyfaO+PimMy/rcDaH8CefOjbDafdhnU8frDRDs9mM9meeO2T6D7VyMNsyQixKZkltrEp67NIi+wgyQJcYYz4mGKVtZu64c/0PqnPMm5/NX2P1nb/68a3HPSgKSM2k4QUZtEiWvTWcLszIlwmmIGWRDU2t/gthQfsOeGn/9iojIKe3IrGC/Uifn3wRdQqJPfxr8Pp3VKSRrSMLQz4js2SVLfjiB1bCdNZiH2kiR1Q7T6G3A0paNeEgAA",
+        },
+        [1328] = new()
+        {
+            "AH4_H4sIAAAAAAAACs1XyW7jOBD9FYOnGUACJGr3zfFkA5wFUYI+BH2gpZJNhCbdJJV0OvC/D6gllmzFbmSCmbnJxeKrV8XHYvkNTUotpkRpNS0WaPyGTjmZM5gwhsZalmAhszijHLaLebt0maMxjhML3UoqJNWvaOxa6FKd/sxYmUO+NRv/TY11JUS2NGDVBzZfFU4YW+h8fb+UoJaC5WjsOk4P+TB0hZFEvR3OUTLTZblqGfiu4x+h0O4SjEGmOxvdrhs+HlbInBL2QUldHIa9ovrNtjOqlqevoDqBgx3GQdBjHLZFJ0+QLmmhTwiteBuDag2pJtmTQuOgKWMY7+N2UZMG9ZZoCjyDDp9wd1/YryBut0r6C6ZE11IY0lUY74HhnePwGrD7JWGUPKkz8iykwesZ2uw8q2+/g0w8g0Rj19Ssjen3IrT1O6GLc7KqEp3wBQOpWlRz2Dkae5Hj79HtQcXtUZRM06UQT+9Vw06Q7ArvgIQ2Fjr9qSVpLqw5wHuRvpD1Jdcl1VTwc0J5i267FpqVEq5AKbIANEbIQtdVLuhacEBWjfC6BjQ2BR3AmwmlP413K0HBMENkow/W64jV+pZPuoZMS8KmpZTA9RdluYP6ZbkOst3LeDB65VXrLNViba495YtUw7pSxpZ7o8WJ/BrKXbh9pi90NSdUn1HG1IH1u5Krm7JFeOD0RwmGGYLI8aEgoQ1+RmwfJ2AnHvFsSOZ+FEPggZujjYVmVOmbwrBUaPxYC9yUoE0xcLAXfpzlVKgVzUazcvEi5MoAXgu5IuyiuXJt0/oGpPpt7Ar0ewsqCFNgNS2pWTT5tc2pMdUV9N3INMMWM9VS8MUXoDpeB3UGC+A5ka/bVnkcAUem4fwlyjnbTbV2wWHy7rDHe9+lR2LA60HBvaTrmlrLqbYcqXQfLAqwyb3eebSeB/YeINz4mbs1KTTIKSkXSz2jK/M2uvXC7qWrxqBS1o+v+eg8KwPPlxcFyf40cbirv3e/Vqp38KOkEvJUE12a99nMSB/o9/f0eFxfQ47/nooGBfNbyviPJfDZM2+75lSUXPcHgBvOXh8UfFsCvxbVsDx5JpQZqbVK63RXz/H9PHQdOwgItn3f8W3ieZkdz2OSu8SLMrdAm+9te22m8Md3Q91hH99Qv9W6GH/cai+l4KOZ4AsuVP9lcQ/V9jIHrmlGmCmoCVU7TFamBlu3gVvlB8nukOX1B17T9NJSFiSDlJnm2MxYQRIcGSaDjYX+N/9N0jWRUJTsgvC8ZWFGzGCIR09DTf283h8Sx+T2T+fO7uDx6XEjfSFrY6m4VvG6M0QzNJjP2rx1G7qQHflHeZDjwsd2gMPA9rE/txMoChtj4nu+F8ZhElbyr3Ebio+uh+Pvoyuy4KBpNroQkv4SfHTKn6kUfAVcEzZKS/kMr6M/Tv7sDzROjN0oTyLbIYlv+3nm2QSTxM7yOYQBjmNcELT5G/7uIPJjDwAA",
+        },
+        [1329] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1WyW7jOBD9lYCnGUAaaLelm+NJMgGcBbEbfQj6QEoliwgtukkq6XTD/z6gJNqSvDWCHPsmsapeLXx85C80qRSfYqnkNF+i5Be6KjFhMGEMJUpUYCFtnNESdsbMmG4zlHjj2EKPgnJB1TtKXAvdyqsfKasyyHbL2n/TYN1xnhYarP7w9FeNE40tdLNeFAJkwVmGEtdxesinoWuMeNSLcM4WMy2qlakgcJ3gTAkmijMGqToykcB13G6Ud74KLjKK2RE814ui3oyDNuyayuLqHWSngXDQQBj2GojMHuAXmBc0V5eY1m3oBWkW5gqnLxIlYTvVaLyP20WNW9RHrCiUKXTqiYZxUX+gngkV9CdMsWqYYbIOo73Bdvht9KLAjOIXeY1fudAAvQXTjm/1158g5a8gUOLqIR2idjTWjOgkNPO7pMsbvKobnZRLBkKaJHqzM5T4IyfYq74HNTZbUTFFC85ftlPznDAe8vAEhTYWuvqhBG7Pr97ABZ+/4fVtqSqqKC9vMC0Nuu1aaFYJuAMp8RJQgpCF7ute0D0vAVkNwvsaUKLnewBvxqX6MN6jAAmHK0Q2OmJvMtb2XT3zNaRKYDathIBSfVKXA9RP6/VgtXsdH8xeezU8myu+1seelsu5gnXNjF3tLRcn4nNK7sLtV/pGVwRTdU0ZkyfsT1UpHyqD8KWk3yvQlaFgHGb5KI5sMnbADrBH7JgQbLth5gZ+HqZRmqONhWZUqodcVylR8twQXI/AtBg6nh8e7/JaH6I3rEBcTIQqBGeVAI17z8UKs//ak2e06yvg+l+vS1BbVcgxk2BUojXqNo1etEvNIAN3pDXRYM6V4GXncj0SvqArEAMZuqPl1qRF4x9nL5Xjd1LNYAllhsX72WxDhH95Rdiw/cbDi+Ktw66Xoy69Gg54LQRdH8s0Cj1/63IsV8/pRLbWT5+ZSa5ATHG1LNSMrvSd5zaG4WGqXzuVaC5V/dG5PQ5cEf4ojPcfDafVeqtqhntP8L2iArK5wqrS965+Ch0h5BmC/TY3/lDgQxT46J7PWzWc8qpU/Yv9oWTvXyR8LaC85/WbePKKKdNUM0zrqGaceY4XEM+OiOPbAYlym4yyzI4yN3Tj0CeQe2jzzchm+9h+3i40yqn/G7FuVfLZ9b3420GtvFiAVLRcXvx1+XdfwbMsJz7xIzsiaW4HAfZsgkluE4cQD0bZeBymaPM/p187smMMAAA=",
+        },
+        [1330] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1Wy27bOhD9FYOrXkAC9KCeO8c3yQ3gJkGcoougC0oaWURo0SWppG7gfy8oibblV4ogy7ujZkZnzgwPh3xD40bxCZFKTso5St/QZU0yBmPGUKpEAxbSzimtYessjOumQKkXJxa6F5QLqlYodS10Iy9/5awpoNiadfy6w/rKeV5psHbh6VWLE8YWul4+VgJkxVmBUtdxBsjnoVuMJBr84bxLZlI1ixOFYdfB7zAyIJwxyJWpBLuOuxvmvc+Ci4ISZgBCFw8AcB92RWV1uQK5kyjYYxgEA4ah6Tl5hllFS3VBaMtTG6QxzBTJnyVKg76LYXyIu4ua9Kj3RFGoc9jhE+7/Fw475plfBf0NE6I6JRyTVRgfgHl77fd7sMeKMEqe5RV54ULjDQymOt8a2h8g5y8gUOrqnpmceJDB9O+Czq/Joi10XM8ZCGlQ9eYWKPUjBx/QHUDFZisapmjF+fOma54TJPtCOyOZtYUufylB+vOqN/CRz17J8qZWDVWU19eE1gbddi00bQR8BSnJHFCKkIVu21rQLa8BWR3Cagko1Q09gjflUn0Y716AhOMMkY1O+LuMrX/LZ7aEXAnCJo0QUKtPqnIP9dNqPcr2oOKj2duoTmczxZf62NN6PlOwbJWx5d5rcSw+h/Iu3CHTV7rICFVXlDF5xv/Q1PKuMQjfavqzAc0MkSgr/QCHdpZBaePYye0k82I7wXnogpd5kGC0ttCUSnVXapYSpU+dwHULTImB4/nx6SrvWbNYjiZcLvgrFwuNeMvFgrD/+jNnptZ3IO23tktQmxlUEibB6mdS79QFmunUm7oWYjfS09BgzpTg9fwTUB1/B3UKc6gLIlbbWfmXCP/yJmP7lXYRXphsAg5oH4YMOByJehR0eSpTFHj+JuRUrkHQmWx9nD4Y41KBmJBmXqkpXeiLze0c+yemfcI0ors59WLnTjhy9/hRkBxe/edH8mZ0GZk9wM+GCihmiqhGX676fXNCe3+npfe18b8EPiSBj+75rB95E97Uanh739Vs9U3C9wrqW94+dMcvhDItNaO0ndHox6RwPDezSydxbQwBsWM/ym1MMpdgUjgkKtD6h5mN/Qv6aWPoxqP+7iZyPwqfXN93fozuciA1zUc3iyXIXHExegAJROTV6MvFP8MhHSUFzjAUdhT5pY0Dt7ST0MN2UhKvhMQnTh6i9R9JnAMCNgwAAA==",
+        },
+        [1331] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1Wy27bOhD9lYCrXkAC9JatneObpAHcJIjSdhF0QUsjizBNunykdQv/e0FJtC0/L4os706aGZ45Mxwe8jcaacXHWCo5rmYo+41uGJ5SGFGKMiU0OMg4J4TB1lla132JsmAwdNCTIFwQtUKZ76B7efOzoLqEcms28esW6xPnRW3Amo/AfDU4ycBBd8uXWoCsOS1R5nteD/k8dIMxTHsrvItkxrVenCgs8r3oAiMLwimFQtlKIt/zd8OCyyy4KAmmJ4j4QZL0ehx1y26JrG9WIHcSx3uM47jHOLF7gOeQ16RS15g0vI1BWkOucDGXKIu7riaDQ9xd1GGH+oQVAVbADp9kf13S72BglwryC8ZYtZNxbMySwQFYsLcdYQf2UmNK8Fze4jcuDF7PYKsLnb79GQr+BgJlvumZzRn1Mtj+XZPZHV40hY7YjIKQFtVsdomyMPWiA7o9qIHdCk0VqTmfb7oWePFwf/DOjNDaQTc/lcDd+TUb+MLzH3h5z5QminB2hwmz6K7voIkW8AmkxDNAGUIOemhqQQ+cAXJahNUSUGYaegRvwqX6a7wnARKOM0QuOuFvMzb+LZ98CYUSmI61EMDUO1W5h/putR5le1Dx0exNVDtnueJLc+wJm+UKls1kbLl3szgS70N5F+6Q6Q+ymGKibgml8oz/WTP5qC3CZ0a+azDMEIRh5Q9DcAdVmbpRCeAOvDR2iyLwYr9MA4gCtHbQhEj1WBmWEmWv7YCbFtgSYy8Io9NV5ooU89XVBIs3bOAeuFhg+rE7cFayvgJu/o1dgtoIUIWpBKcTpM5pqrPS1Jna/kV+aqTQYuZKcDZ7B1Qv3EGdwAxYicVqK5SXEYLUyM2/XE/pfqltSJAMNwEHvA9DeiSORL0IsjyVKY2DcBNyKlcv6Ey2Ls4ci1GlQIyxntVqQhbmWvNbx/55aR40WrT3pvnYuRGO3DxhGg8PHwLnBXkjXHbOnuG7JgLKXGGlzdVqXjsnhu+/DdPl4TgW+P8IXByBv93zvBO8MddM9e/uR0ZXnyV8rYE98ObZO3rDhJpRs5O2I4xeifEAT1M3Sv3KjcKgcqexP3WL0IsriIep7yVo/c0qY/eeft0YWnE0/60ed0L46oeh/+0LptrkvXrWhF2Z64YsgMmrD9f/9OW5TGCaVDh106jw3CgIQxdHfuImXlCkeDiN4qpC6z/p2Jd1QAwAAA==",
+        },
+		[1332] = new()
+		{
+			"AH4_H4sIAAAAAAAACs1XyW7jOBD9FYOnGUACtFGyfFM8STqAO2lECfoQ9IGWShZhWnQoMmlP4H8fUIst2YqzIIOZm1ysenxVfCyWX1CkJJ+SUpbTbIEmL+i8IHMGEWNoIoUCA+nFGS1gv5i2S1cpmjjj0EA/BOWCyg2a2Aa6Ks9/J0ylkO7N2n9bY33nPMk1WPXh6K8Kxx8b6HJ9lwsoc85SNLEtq4d8GrrCCINehPUmmWmuVq8k5tmW9wajFoQzBolsM/Fsy+66OW+z4CKlhL1CxHZ8v1djrwm7oGV+voGyszE+YIxxj7HfngFZQpzTTJ4RWvHWhrI1xJIkyxJNcFNVf3yM20UNG9QfRFIoEujw8Q/j/H4FnTZU0L9hSmStjHbXw2jnoP5uE32XE0bJsrwgT1xogJ6hTcc1+vZbSPgTCDSxdZGGpO2PtQQ6G7b1O6OLS7KqEo2KBQNRtpvow07RxA0s74h9D2rcHoVikuacL3dVcywcHgrvhIS2Bjr/LQVp7q8+wDseP5P1VSEVlZQXl4QWLbppG2imBHyHsiQLQBOEDHRd5YKueQHIqBE2a0ATXd8BvBkv5afxfggoYZghMtEr6/WO1fqeT7yGRArCpkoIKOQXZXmA+mW5DrI9ynhw98qr1lks+Vpfe1osYgnrShl77o0WI/E1lLtwx0yf6WpOqLygjJUn1m9VUd6oFuG+oI8KNDOU4AxnmLimk+HA9DA4Zui5nmnNg3CMseNnCaCtgWa0lDeZZlmiyUMtcF2CNkVsOW7wepYxYfKZSBCjSMhccKZEBXvNxYqwb83Fa1vXTyDV77ob6NUSpE6n7QuNqS6YZwe697XBsRS8WHwk3HI74TNYQJESsfkwwl9czdmOe8/D8cOdw57fqy49DgNe9yXcCbqumbWUasvB9rt+mhFWHvJ2Auxo4nXkEa8PxPYI3xRs8zOHIkokfYKrFApJE/2uDpSuhdE3KsokiClRi1zO6Eq/iHa9cHjVqllIifrJ1R+dt2XgAXEDHB7PEKd7+a7ntdK8hUdFBaSxJFLpV1kPSod6fZ8s362+/1Zkg3p6l3DeVMi/K4HPnnnbK6dcFbL/7GtJ35egVX3Nq4k5eiKUaam1Suv01HHophbMPdNOcGZ6Y2dshgmZm0EGVpjBeA5go+2vtqk2o/jDzlD31YcX1G+wtnfiGbnlyXIzilWR6Zjue2Kfqu3uduqC6q1qh2ila7B3GxrMcXg4Wrn9MVfPVrESGUkgZrp1NpMVDvEbEyXeGuh/8wclXhMBmWLfSJG2LPRgiYd49DTU1M81qoO8Su/4NIdkuTvLzp8TS2fcnUGHKv7BkbQ7k3x6EomfyVpbqoSq/brjRTNP6M/avHcburWdO+K5TmD5dmBCmhHTw6Fnzl0bzIRkdhJ4tmtjXN2RGreh+GC7rvNrFBV8RdhmFKVkLYlu06PoUZFEMakEjGIlnmAz+uPsz/6sM04DDHPIzCCB1PRSxzaJPw/M1J2ndpCQIE1TtP0HnxLDvY0PAAA=",
+		},
+        [1333] = new()
+        {
+            "AH4_H4sIAAAAAAAACs1XS2/jOAz+K4FOu4C9sGP5lVsm23YKpA/UKeZQzEGx6USII2UkuZ1Mkf++kG0lduI2g6KL3ZtMUR8/UhRJv6JxqfiESCUn+QKNXpFeTykDvb5gZF5AhkZKlGCh6wyNhlFsoXtBuaBqi0auha7lxc+0KDPIDmKtv7MqrBvO06UGqxZDvapwgshCV5vZUoBc8iJDI9dxOsjvQ1cYcdg54ZwlM1mWa8MAuw4+Q8Gc4kUBqWoddNtqw/NmucgoKQxA4OIOAG7ULqlcXmxBtgz5Rwx9v8MwMEEmK0iWNFdfCK14aoE0gkSRdCXRyG/CFkSnuG3UuEG9J4oCS6HFJzg+F3QjNjRHBf0FE6LqqzdWj08Pj+LtNadnS1JQspKX5JkLDdARGHc8qyt/gJQ/g0AjVwfJ2MQdCyZgX+jiiqwrz8ZsUYCQBlXfZoZGXujgE7odqGi3s9DFTyVI83J0qGc8eSGba6ZKqihnV4QyEwDbtdC0FHADUpIFoBFCFrqtSKBbzgBZNcJ2A2ikI9GDN+VSfRjvXoCEfobIRm/s1xar/QOfZAOpEqSYlEIAU5/k5RHqp/nay/bE417rlVadIIniG/1AKVskCjZV6Ttwb5JoLD6HchvulOkLXc8JVZe0KOQ7+w8lk3elQXhk9EcJmhkKIi9wUpzZqRPFNnYxtqPUB3uOfS/CwziGcI52FppSqe5yzVKi0VOd4DoExkXfGWLnbS8TBUVBxCAhxZqzwQMHDXrLxZoUXzlfaRhTYr4Bqb61XILaN56cFBKsphE1m9pH05IaUR1F7Ia6dBnMRAnOFp+A6ngt1CksgGVEbA8N8g2EGV2DOGqhN5Ttt3TB+8vpt/Y3L+fFcVRqjWEQ7xVOXDxV6fDt0XqUMBN0U3thaNaSM5fSBQv9oSZenzwb+nfOdgjfsWL7bQlsnCr6DNcZMEVT3Ul7LsrA6Jc6zhWICSkXSzWla90T3Xrj+AlX404p6qarF63u0jP+eKEfn04N7wwAelQxtdQk/QP8KKmALFFElbov61nojZfwe5l9PlP/2yTrzaffSpyzGfLvpsBH79zU4AkvmWqfs6qUfpSgs/qWV0Px+JnQQqeaybR2rQ6wFw+jwA7cOLBx5Od2lIFnO3N/njtRCNiN0O67KdbNtP20F9T1+ukVdQu3i8O3C7eed8lGQjZIynQFotOq3PfCu3+gOqb134RWGK91GA5qPQ8L+/HxuOV1Z91IGy5FTlJICl1pm6HUj/0zY6W/s9D/5jck2RABeVl8JSwzLPSw6ffx6KRREz/Pqu7yOpvxyRLS1f46W38kTmew+vBIkryQjZZU5quba88ZzWChl7X4oNb3zFpJDSHETuSHduw5uY3TIbZj7Ed24ARkngVhTABXSV3jNhSfXM/zvh+Sc1YyBsVAD250DWyQlOIZtoM/xn92x50ozefpHDzbxU5o49QPbeJHYPsxZNjHme+SHO3+AT8HEa8KDwAA",
+        },
+        [1334] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1W227jNhD9lYBPLSAVulGW9OZ1kzSAc0HsxT4EeaCksUSEFr0klV13kX8vKImOJF/SdoMCBfImcYZnzgyHh/MDTWvFZ0QqOVsVKPmBziuSMpgyhhIlarCQNs5pBa/G3JiucpR4UWyhO0G5oGqLEtdCV/L8e8bqHPLXZe3/0mJdc56VGqz58PRXgxNGFrrcLEsBsuQsR4nrOAPk09CHqMWTAYDzJrdZWa8NocB1gjcYmV2cMcjUkQIFruP2d3lvs+Aip4QdwXO9MByUPOi2XVBZnm9B9hLAowQwHiQQmiMhT7Ao6Up9IrRJQy9Is7BQJHuSKMFdVcNoH7ePGneod0RRqLJjjRO4TjiGCYf19QySoH/CjKi2bwyJ8W5vdDp+t3tZEkbJk7wgz1xogMGCyc63huv3kPFnEChxdc0OdVcY6QbpBTTl/ESLS7Ju8p5WBQMhTRB99jlK/IkT7LEfQEXmZGqmaMn50+5QPQfH47Y80VH6ZnxXgnS3W5/nki++kc1VpWqqKK8uCa0Muu1aaF4LuAYpSQEoQchCN00u6IZXgKwWYbsBlOj6HsCbc6n+Nd6dAAmHGSIbHbG3ERv7K5/FBjIlCJvVQkCl3inLEeq75XqQ7V7GB6M3Xm2fLRTfaBWgVbFQsGk645V714tT8T6U+3D7TL/RdUqouqCMyRP2+7qSt7VB+FzRrzVoZsjzMXieS2zix74duBG2Y4hz28UY0jD0Iw+n6MVCcyrV7UqzlCh5aBtcl8CkiB3Pj49neQ/52YzLNV+TouBKasgbLtaE/dFdOqNiX4A0/60SaKsEpVMxmqCXlnQNYqQV17TambSa/Oa0vroWTWEDd6Il0wRaKMGr5rJ2Xju8FWESrNMMeqiO30OdQwFVTsT2vYB/53XKdlUZeHhhvHPYy2bf5RC1vtdS0M2xSBPs+TuXY7EGTieidX76Fk1XCsSM1EWp5nStH0W3NYyvVzMd1aJ9dfVH7z1ppR7H+2PEacHeCZvpwXv4WlMB+UIRVeuXWM9K48b8Rz31t3vk48z/mzM3gjjjdaWGb/ttxbafJXwpobrhzdA8fSaU6btqLmhPOHE+8f0MPNuPtXBOHNeO08Cx0ziNoizzAWMPvTwa5eym8YPK2Uw+x5TzmhQVKJqdLUpgbPBSuG+K6E8K0JHe/nlh/FDADwX8UMD/uQJOApI5QZTZaYADOwgmkR0TjO3IWZFwFYRe6JGeAraa9/BoBtRO3x5c3w8eR/Ph2RKkolVx9sv01+G86mMfR/nEsyOch3YQuxM7At+zSZSRzHXTLA4y9PIXFjgv4G8RAAA=",
+        },
+        [1335] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1X2W7bOBT9FYNPM4A00L74zfUkbQBnQZWiD0ExoKgrmwgtuiSV1C387wUlMZHkJZ0iQPvQN5u8PDz38i5H39CsVnyOpZLzcomm39BZhXMGM8bQVIkaLKQ3F7SC583CbF0UaOolqYVuBOWCqi2auha6kGdfCKsLKJ6Xtf2uxbrknKw0WPPD078anCix0NvN7UqAXHFWoKnrOAPk09ANRhoPTjgvkpmv6rVhELhOMKKQjiiYU5wxIKp30O2beS9fy0VBMTsSUteLokFQg+7YOZWrsy3I3sXhiHEYDhhHJuj4HrIVLdUbTBveekGahUxhci/RNOzCGCX7uH3UtEO9wYpCRaDHJxqfi4YR9MxRQb/CHKs2FQ7lVZTsgSXxEMzvwG5XmFF8L8/xAxcab7BgvPOt4fp7IPwBBJq6OmZHKASDC00439DlW7xu/J5VSwZCmkv02xdo6sdOMGbvDaAS8zI1U3TF+f2ROASeE6YjpFin5dEU21no7IsSuCto/cC3PHvEm4tK1VRRXr3FtDJvZrsWWtQCLkFKvAQ0RchCV41z6IpXgKwWYbsBNNUBP4C34FL9NN6NAAmHGSIbHdlvb2z2n/lkGyBKYDavhYBKvZKXI9RX8/Ug2z2PD97eWLWJlym+0W2BVstMwaZpwM/cu+Scideh3IfbZ/pI1zmm6pwyJk/sv68reV0bhA8V/VyDZoZwHESEFL5dRgm2gzB27NSJCzuGNE6KMgGS+GhnoQWV6rrULCWa3rUJrkNgXAwdL/CPe5lhph6xAjGZCbUSnNUCNOwVF2vM3nWVaFrbR8DNf70uQT0VaImZBNM1uk3tpSndbqmNY+DGumUazEwJXi1fAdXxe6gLWEJVYLF9LeB/eZ2zcQBaCy9Knwz2vNk3OUStb/VBwq2gm5aZodSuvBD/IVgcepp4e3LI65auQYza6yWtnrbQ1E3/cU4CnvCis9PFOCsViDmulyu1oGs9bN12Y1ylja6qRTvN9Y/enDowB/w4TIP/Owee+qVJ6/fwuaYCikxhVeuJr1XXkVz/sdz94Vz8Rbl1MI1ezpdfnwPHHv2kqtUEuj4753Wl+ucsdF2x7QcJH1dQXfFGfs8eMGU610yq9fpx5EPuE5LYaekQO4gA20mZ+3bqJ5EXJqQgnoN2n0xD7nT93dNC25PvvqFhc3bD6HhzvpFQF5wInA8GkXsqsBcFVIoSzHQ09T2twWytA/BsdkhbhelYpPlD/axVWlaLEhPImG6XndAN07FA9kafCuHOQr/Np062wQLKmr3DVWFYaIkaHuIxSKAufr7VvOJFccvnKyD3Tw/Z++pxtMd9NXtMvp727lm9/LRm0YffGA/a4nvEm1aMSJMAfW2i1UfFq//uXN8Pbe/T5KygOYPJJRa0gsmCljDJavEA28lfs79RH8/c4Ryu8F49xRgnoZeEthvGnh3gIrATzw/sPC3KwPFSAkDQztqvl/i4+7OKUKjU5Jp+3crJOZeSsj+V8/tXzoDCn8rJXqicGNzI9xPbzePIDpyc2BgngV06rgvYSWPAeTOJ2pLsaqMtZvflYu7PPC8hvuN6dhrnrh14CbHz2AE7JLET+mkRu2mIdt8Bkxh6DTYTAAA=",
+            "AH4_H4sIAAAAAAAACu1X227bOBD9FYNPu4C00IWSLL253qQN4FxQpehDUCwocWQToUWXpJK6hf+9oC6JJF/SLQK0D32zyeGZM8Mzw9E3NKu0mBOl1bxYouQbOitJxmHGOUq0rMBCZnPBSnjepN3WBUWJN40tdCOZkExvUeJa6EKdfcl5RYE+Lxv7XYN1KUS+MmD1D8/8qnHCqYXebm5XEtRKcIoS13EGyKeha4w4GpxwXiQzX1XrjgF2HTyiEI8odKcE55Dr3kG3b+a97FZIygg/klLXC8NBUnF77Jyp1dkWVM9xMGIcBAPGYZd0cg/pihX6DWE1b7OguoVUk/xeoSRo0xhO93H7qHGLekM0gzKHHp9wfC4cZtDrjkr2FeZEN1I4pKtwugc2jYZgfgt2uyKckXt1Th6ENHiDhS463xquv4dcPIBEiWtydoQCHjjs0vmGLd+SdR33rFxykKpzYu6eosSPHDxm7w2gpt3NVFyzlRD3R/KAPSeIR0iRkeVRie0sdPZFS9IWtLngW5E+ks1FqSummSjfElZ2d2a7FlpUEi5BKbIElCBkoas6OHQlSkBWg7DdAEpMwg/gLYTSP413I0HBYYbIRkf2G4/1/jOfdAO5loTPKymh1K8U5Qj11WI9yHYv4oPea6tGeKkWG9MWWLlMNWzqBvzMvRXnTL4O5T7cPtNHts4I0+eMc3Vi/31VquuqQ/hQss8VGGYozEPXBRrbEXYdG+d+aE8BXDuPPS+McRFgD6OdhRZM6evCsFQouWsEblLQhRg4HvaPR5kSrh+JBjmZSb2SglcSDOyVkGvC37WV2LW2j0Dq/2ZdgX4q0IJwBV3XaDdNlF3ptktNHrEbmZbZYaZainL5CqiO30NdwBJKSuT2tYD/FVXGxwloLLwwfjLYi2bf5BC1vtUHBbeSbRpmHaVm5YX8D8GiwDPEm5NDXrdsDXLUXi9Z+bSFEjf+xzkJeCKK1s4U46zQIOekWq70gq3NY+s2G+MqreeqSjavufnRe6cOvAN+FMT4/74DT/2yk/V7+FwxCTTVRFfmxTdT1xGt/5h2f1iLv0hbB2X0sl5+vQaOXfrJqdYQaPvsXFSl7p+z0HXJtx8UfFxBeSXq8Xv2QBg3Wuuk1uvHvpOBE0dgRwXENsYBtQnFjl24jk8DgsENCrT71DXkdq6/e1poevLdNzRszm4QHm/ONwoqKnJJssFD5J5K7AWFUrOccJNN46cxmK1NAp7NDs1WQTwe0vzh/GymtLSSBckh5aZdtoNuEI8HZG/0qRDsLPTbfOqkGyKhqPg7UtKOhRlRg0M8BgJq8+db9S1e0FsxX0F+/3SRva8ex0Tcn2aPja+no3ueXn56ZjGH33QRNMX3SDbNMKI6AfRnE5QgUoryvzvX9wPb/zQ5oyzjMLkkkpUwWbACJmklH2A7+Wv2N+rjdT6cwxXeqycSFUEW0MDOi8y1ceE4NsHYt33X93M8zTM/itDO2q+X6Hj4szJnUOrJNfu6VZNzoRTjfyrn96+cAYU/lZOerhygNA+nAbUdPyhs7ODYJnEIdlzQmHjONMymXv0SNSXZ1kZTzN7Lxdzz5NAiw1mR2dmUUBs7hWtnXhTYGJzMdaKQUIjQ7jtHA6ZaNhMAAA==",
+            "AH4_H4sIAAAAAAAACsVWyW7jOBD9FYOnGUACtFHbTe1xMgGcBVGCPgR9oKSSRYQR3STltKfhfx9Qi205tpNuZDA3qZbHV+RjFX+ipFF8SqSS03KB4p9oVpOMQcIYipVowEDaOac17JzF4LoqUOyEkYHuBOWCqjWKbQNdydmPnDUFFDuzjt90WNec55UGaz8c/dXi+KGBLpcPlQBZcVag2LasEfJ56BYjCkYZ1rtkplXzcqIwz7a89xgNKJwxyNVQimdb9n6c8z4NLgpK2AkmtuP74012+rwLKqvZGuTeyviAM8Zjzu5wDOQZ0oqW6guhLXNtkIMhVSR/lijG/cb64VvgEazXw94RRaHOYY+Rf5jojxnhIVXQf2BKVKeORwm3NVt/paq6KqBWNCdMR42054dv0MNgjO736A8VYZQ8ywuy4kIvMDIM9brG2H4POV+B0Cwt46j8/fBdmVgjf5LxFaC4JEwOx/+FLi7JS7tnSb1gIOTAR0unQLEbWN5hoc5ojXA41oYpWnH+fErVjoWjQ75n9Lkx0OyHEqTvDlobDzx9JcurWjVUUV5fEloPp23aBpo3Aq5BSrIAFCNkoJu2NHTDa0BGh7BeAoq1Eo/gzbk+5N/EuxMg4ThDZKIT/m7F1r/jky4hV4KwaSME1OqTqjxA/bRaj7J9U/HR1duoTnap4kvdUmi9SBUsW2XsuPfSTMTnUN6He8v0lb5khKoLypg8479vannbDAiPNf3egGaGQuy7HvYyE7wgN70oj8wwILlpZ1lWZKUb4JCgjYHmVKrbUrOUKH7qBK63YCgRW47nnq4yJUy9EgVikghVCc4aARr2hosXwv7u7+HQFL8C2buX2itB6XKGG9qbug3z7CDSe9Ynp0rwevEr6Za7lz6HBdQFEetfRviLNxnbch9FOH60DdjxOxky4nAk6lHCg6DLjtlAqbMcLL/tbG0bPeDtBNjRxLvMHa92nlRQJ7miK9hOlaO1jzFGxH8HRt+spFQgpqRZVGpOX/TQtTvH4ZVrX1yN6Ma6/tibTkdauhvg6HAEBXoEnWvq2+Y3aPQevjdUQJEqoho9+fV77FC4H9Pnh2X4/6rtqLDOK+ijEvlvNXDq0M++dzcGGprmlDe1Gs9/relHCVrWN7x9mCcrQpnW2iC1vebqeWUY4SI0yyIqTY9k2IywhU1cZDYJwsIl2EWbb0N37V/8T1tD12D1f9fT+2b6ZLsuNt1vk1lBMwaTayJoDZM5LWGSNmIF68kfyZ/jPg8BDnwnBBNnlmd6UAZmCFlhuiUpSuxmVuCXaPMvS2pTzecMAAA=",
+        },
+        [1336] = new()
+        {
+            "AH4_H4sIAAAAAAAACuVX227jNhD9FYNPLWAVutvym+PmBuSGKGkegkVBUSObCE16SSq73sD/XlASbcmXZDcN2i36JpMzZ84MD4fjFzQutZhgpdWkmKLRCzrmOGMwZgyNtCyhj8zmBeWw2czt1nmORv4w6aMbSYWkeolGXh+dq+OvhJU55JtlY7+qsS6FIDMDVn345qvCiYd9dLq4m0lQM8FyNPJct4P8OnSFkQw6Hu6bZCazcm4ZhJ4bvkHBegnGgOiWo9c2898OK2ROMTtQUs+P405Rw8bthKrZ8RJUK3C0xTiKOoxjW3T8BOmMFvoI04q3WVB2IdWYPCk0ipoyxsNd3DZq0qDeYE2BE2jxibf94m4Ffesq6TeYYF1LYZ+u4uEOmL91HEEDdjfDjOIndYKfhTR4nQWbXdDvrt8CEc8g0cgzNTtAIewEtOU8otNTPK/yHvMpA6lsEHP2ORoFAzfcYd+BGtqTKZmmMyGe1kX03SjZ1uErilr10fFXLXFzf8153on0C16cc11STQU/xZRbdMfro4tSwiUohaeARgj10VWVC7oSHFC/RlguAI1MfffgXQil3413I0HBfobIQQf264jV/oZPugCiJWaTUkrg+oOy3EL9sFz3st3JeG/0yqrWWarFwnQByqephkWljA33Rotj+TGU23C7TL/QeYapPqGMqVf2b0uurkuLcM/p5xIMMzSMM4JJFjsDHBVOGLuRg/OwcBLXdWPsD+PI9dCqjy6o0teFYanQ6LEWuCmBTTFyfXPVDmV5o6DMBZEAC5AG70rIOWZnzY2zLewBcPXbrCvQ625QYKbAdodm06Rn+4RZuqNzkFv945Ly9ZZpHL+5ta2pT1Xs0BuYNmrjp1oK3nqAD4RqubtBy/0CpsBzLJfvzaEF7A9Mb/pdlBnbLktt4sfJ2mDD+6DJPm5tq3sFd5IuamqWU73yxql0wQaRb0pSe+7w+gHfVwg3duYajgsNcoLL6Uxf0Ll5Vb16Y/t+VgNUKetn23y0HqQ9r04wiJLdOeT1B2DdKK2sb+FzSSXkqca6NC+7ma4OaP0NPf6o7DqG/5yK9grmu5TxL0vgvWduG+xElFx3Z4Vrzpb3Ch5mwK9ENWaPnzFlRmpWaa1GHGQkSEgSOH4RB05IosRJijBzSIELlwwicEmOVp9sJ27m98f1Qt2MH19Qtyt7ZvI71JXTp2Uv5bQoQHaeIO+1yp7nwDUlmJlymkC1wXhuKtA2Q6MwSrbHr6A7GZsel5aywARSZnrh3ik0jJLojSE0WvXRT/OfJl1gCUXJzjDPLQszi0b7eHQU1NQv6PyRcU1uf3dAbU8o755LjPOR5VrFaw8bzXRhPuvljdm+69gSvzvE4CV54nhDEjohzoiDk8J3cD50vUFSZAUJ0Kq/K27/cAKXQgrVOxOSQ977gy5+Jo3/X0Vtju88vxOTGZCn9Qn+R6S+0bWyzWlL/ZgL/uejFwTxp14tvwdgrHfMn6kUfA5cY9ZLS/kMy94v4197Ts9/330h7jDyc/AcL04KJwyigYNd13MyGGZhkvvBwAurx6LGbfL8fmbd/wihW+CgyAKHFPnACYs8cRICnpNg8H2viGIv89HqL9TDvarFEgAA",
+            "AH4_H4sIAAAAAAAACtVW227jNhD9FYNPLSAVut/evK6TBnAuiLzIQ7APtDS2idCkl6S861343wtKom3Jl3SLAEXfJM7MmTPD4SF/omGl+AhLJUfzBcp+ojHDMwpDSlGmRAUW0sYJYXAwlsZ0V6LMS1ILPQnCBVFblLkWupPj7wWtSigPy9p/12Ddc14sNVj94emvGidKLHS7ni4FyCWnJcpcx+kgX4euMdK4E+G8S2a0rFaGQeA6wTsUTBSnFAp1FOgeu3nvp+WiJJgaANeLok4Xg9bvhsjleAvyKFPYoxiGHYqR6TJ+g3xJ5uoTJjVRvSDNQq5w8SZRFrZ9i5JT3GPUtEV9wooAK+CIT9SPi7ot80yoID9ghFWz9+cGKUpOwLxe//0WbLrElOA3eYM3XGi8zoKpzre6689Q8A0IlLm6ZxcoBJ2Epp2fyOIWr+q6h2xBQUiTRG92iTI/doIT9h2oxOxMRRVZcv62b6LnhGl/8K6M0M5C4+9K4PbA6v2c8vwbXt8xVRFFOLvFhBl027XQpBJwD1LiBaAMIQs91LWgB84AWQ3Cdg0o0/09gzfhUv1rvCcBEs4zRDa6YG8y1vYDn3wNhRKYjiohgKkPqrKH+mG1nmV7UvHZ7LVXM2e54mutAoQtcgXrejIO3NtZHIqPoXwMd8r0G1nNMFE3hFJ5xf5cMflYGYTPjHytQDND4JWeE8xDu4QwtYNZkNgpnoc2hjTGaRmEYZSgnYUmRKrHuWYpUfbaDLhugSkxdDx91C5V+SShKnkhANYgNN4DFytM/2pPnJGwF8D1fyMD2ipB6TqMINwTplenZFVLRvSHY6HWrele4HqxPtQGMVeCs8VVzKvxE1gAK7HY/jrEn7ya0X1JHRcvSvcOB4YXXTokznhNBVmfZNpL6RxT2efoxaHn7yNPKPxC7BVurZ8+LcO5AjHC1WKpJmSlLz+3MfSPUf2wqURzu+qPo3ujkfQwPX0QXBfmvYCZcXuGrxURUOYKq0rfuPqZ05/B3p7G6dmp6nk5/qXZOef4H0/IPxqF/+me563wjXjFVPcOf2R0+1nCyxLYA6/fu8MNJlRPvDnPRwKZOKmD/bK049h37MAvIzuN3dBOvdDHGOLCDTHafTEK2T6kX/cLjUjq/0aXW0F8dX0/+jK454LLwQtQOhizDRGcrYApTAd5JTawHfw2/H1gD7yuZgfY8fAswHaMIbKDpAB7hmeJ7c3KME7mJcRpjHZ/A3s4VwBGDAAA",
+        },
+        [1337] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1XS2/jNhD+KwZPLWAV1NvyzetNsgGcbBB5u4dgD5Q0sonQpENSeTTwfy+ohy3Zsl2kOfTQmzwcfvPNcPhx/I4mhRZTorSa5gs0fkcXnCQMJoyhsZYFDJFZnFEOu8WsWbrO0NgZRUN0J6mQVL+hsT1E1+riNWVFBtnObPw3FdaNEOnSgJUfjvkqcYLREF2t50sJailYhsY2xh3k09AlRhR2duCzZKbLYtUw8GzsnaHQ7BKMQaqPVMSzsd3e5ZxnIWRGCTuCZztB0KmxV2+7pGp58QaqlYC/l4DvdxIImjMgjxAvaa6/EFqmYQyqMcSapI8Kjf26qsHoELeNGtWod0RT4Cm0+AT7+4JuQZ1mq6R/wZToqjP62iwYHYA5e6fj1mDzJWGUPKpL8iykwesYmuzcYdd+D6l4BonGtqnZEQpeJ2BTzi90cUVWZd4TvmAgVRPEnH2Gxm6IvQP2HahRczIF03QpxOO2iA72o/22PNFRmyG6eNWS1NfZnOdcxC9kfc11QTUV/IpQ3qBb9hDNCgk3oBRZABojNES3ZS7oVnBAwwrhbQ1obOrbgzcTSn8Y706Cgn6GyEJH1quI5fqOT7yGVEvCpoWUwPUnZbmH+mm59rI9yLg3eulV9VmsxdqoAOWLWMO67Iwd97oXJ/JzKLfhDpm+0FVCqL6kjKkT6/cFV9+LBuEHp08FGGYIklGE7cCxSJAmloed1EowsS0/iHKS5omPkxBthmhGlf6eG5YKjR+qBjclaFL0seP5x7P8SuTj4OJ1TbiCQfxU0GwQa0nXBvpWyBVh3+rL16jZTyDlb2NXoLfCkBOmoBGKetFk2khGbapq6dmhUckGM9ZS8NZz27P9hnJjndNVqUnBH/gAErstyBksgGdEvp1E3UNwQqM7X0WRsP08KxcniLYOO9JHXTokerzmkq6PRQp9x926HIvVcToRrfYz92OSa5BTUiyWekZX5rmzq4X9i1MOOoWs3lPz0Xopep4DN/Sjw3nhtDJvFaxpsnt4KqiELNZEF+bJNVPQkc4700n/uDn6HP9vgbMt8NEzb5RvKgquu4/4d87efij4uQR+K8pxePJMKDOt1nRaSyHtDAOGJLdwlmPLS9PUGjnYtWzXCbMkxAmOMrT51UhkPWc/bA2VSj68o65c2kF4XC5jDcAGM8EXXKju82Cful/XGXBNU8JMRU2symGyMkXYufVNz360Pym53SHWSFZcyJykEDMjbfWg5Ef+mQHR3wzRf+bvR7wmEvKCfSM8a1iYOdHv49Fporp+7rA8yetsLqZLSB+3h9n664FNxv92pGzPFB+eJOIXsjaWMoMyXns8qOcB81mZd259Ut26FV7ou0DSxEpsx7M8JxxZkR+ClRGwPXvkYz/3y1tR4dYUH2zXDX8N/iSsMB04uCGSchiYeYuugKvBb5Pfu/PJiLgpzsLQCnLXtrzQca2R7+SWl0IUJQn4Tk7Q5m/1P7HhUA8AAA==",
+        },
+        [1338] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1X227jNhD9FYNPLSAVulmW9OZ4kzSAc0HkYB+CRUFLI4sILXp5ycZd+N8LSqIt+RZ0YfSpbzJneObM8HCG/onGSrIJFlJMigVKfqLrCs8pjClFieQKLKSNU1LBzpgb012OEi+KLfTECeNErlHiWuhOXH9kVOWQ75a1/6bBumcsKzVY/eHprxonjCx0u5qVHETJaI4S13F6yOeha4x41NvhfEpmUqqlZvAXq+j6RcBXIsu7SioiCatMmkeyDlwn+ISuicAohUyaNAPXcbtu3ucUGc8JpifK73ph2DuAoN12Q0R5vQbRCTzcYzwc9hiH5oDwG6QlKeQVJjVvvSDMQipx9iZQMmxLHkaHuF3UuEV9wpJAlUGHT7i/L+xX0DNbOfkbJlg2sjmmwTA6APP2jsNvwWYlpgS/iRv8zrjG6y2Y7Hyrv/4MGXsHjhJX18zEDHoRTP2uyOIWL+tEx9WCAhcGVR92jhJ/5AQHdHtQkTkKRSUpGXvbVs1zhvG+8M5IaGOh6w/JcXu59QHOWPoDr7Yiv8WkMui2a6Gp4nAPQuAFoAQhCz3UuaAHVgGyGoT1ClCiC3oEb8qE/GW8Jw4CjjNENjphbyLW9h2fdAWZ5JhOFOdQyQtluYd6sVyPsj3I+Gj02qvRWSrZSl97Ui1SCataGTvurRbH/DKUu3CHTH+Q5RwTeUMoFWfsz6oSj8ogvFTkuwLNDHlehjPfye25k+V2MC8cGxcQ23lW4AgyXOCRjzYWmhIhHwvNUqDktRG4LoFJceh4gXc6yyvKWA75QG+bY0o15APjS0z/bC+daVtfAde/9boAuW1CBaZiOyJao87QtKd2qalh4I50OzSYqeSs6gzdE9tnZAl8r+vd44+tCSXxH85BJMfvRJrCAqoc8/UFUqiBvzA1p/tFaTy8MN467DI86XKMWtdrxsnqVKTR0PO3Lqdi9ZzORGv99CUaFxL4BKtFKadkqYeg2xj2b1f9NlK8mbL6ozM/mk4/jA/fCef79bavGQk+w3dFOOSpxFLpyatfSv+NLi8hlaMa/F9s/15sLwImSki2bITQyKPzRj+hwyPvpV+RZdq27AlTley/Ph7bt3MJ1QOrX/Xjd0yoDmuidlp77MS+B0Vh43jo2kHuj2wcFpHtOABxBL4TjOZo88309vbvwut2oWnv+nczUdpW/ur6fvRtcI85qWDwhQjJyVzpezRIFX+H9eC38e97QybyPIAosos4GNmBk8c29ovYDl3s5XkRQeHO0eYfk77sViMNAAA=",
+        },
+        [1339] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1WyW7jOBD9FYNnaaDdsm5ud5IJ4CyI3OgBgj5QUtkiQpNuLkl7Gv73BiXRtrxlEOQ4N6mq+OpV8bHI32isFZ9gqeRkvkDZb3TFcEFhTCnKlNDgIOOcEgY7Z2VdtxXKgnTkoEdBuCBqjTLfQbfy6ldJdQXVzmziNy3WHedlbcCaj8B8NThJ6qCb1awWIGtOK5T5ntdDvgzdYIyGvRXeu2QmtV5aBpHvRe9QsKs4pVCqvYX+fljwflouKoLpmZb6QZL0mhp1y66JrK/WIPcSxweM47jHOLFNxy+Q12SuvmDS8DYGaQ25wuWLRFnctTFJj3H3UUcd6iNWBFgJe3ySw3VJv4OBXSrIvzDBqpXCKV0l6RFYcLAdYQc2qzEl+EVe41cuDF7PYKsLnb79CUr+CgJlvumZzRn1Mtj+fSGLG7xsCh2zBQUhLarZ7Apl4dCLjuj2oFK7FZoqUnP+su1a4MWjQ+FdkNDGQVe/lMDdgTUbOOP5G17dMqWJIpzdYMIsuus7aKoF3IGUeAEoQ8hB900t6J4zQE6LsF4BykxDT+BNuVQfxnsUIOE0Q+SiM/42Y+Pf8clXUCqB6UQLAUx9UpUHqJ9W60m2RxWfzN5EtTrLFV+ZY0/YIlewapSx495pcSw+h/I+3DHTN7IsMFHXhFJ5wf+kmXzQFuEbIz81GGbIi6OkTCvfDX3w3KiMKjctYe56XlwUhV8UXlGijYOmRKqHuWEpUfbcCty0wJYYe0F0ocprc4jesAIxGAtVC061AIN7z8US07+7k2dn13fAzb+xS1DbSTTHVILTTabOacq0M6oztY2M/KGZiRYzV4KzxSegeuEe6hQWwCos1ruJeQZhRpYgDmbqHWFbl5mkf3mns33luqCHXWkjgmS0DTgq8Tikx/dE1EyQ1blMwzgItyHncvWCLmTr4sxRGs8ViAnWi1pNydJchX7rODxjzatHi/auNR97t8gEsxLoWClYrpTtr4mZYbGAFvPEjRYO49HxA+PyoN8ORCvbJ/ipiYAqV1hpc2WbZ9MZLf83bb6vtf9l8iGZfHTP826QTrhmqv8meGB0/U3C9xrYPW/ez+NXTKiRmlXa3sAN/BhXc6jcqBgO3SgKUzeNE3Bx5RdxMSqhjDy0+WEnbvcwf94a2qFr/ts53w3YZz8MRz8GV/9kg6kR/OBOK8zU4CuRSpBCG7kOci1eYd2/ANIqLZJ4OHSDOE7caO4nbpH6novTIonSYTSP/BJt/gAvoMGckwwAAA==",
+        },
+        [1340] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1Y227bOBD9FYNPu4C4EEVd/ea6aWvATYo4RRco+kCJI4sbWXQpKq1b5N8L6mJLvqVpuwsUmzebHJ45M5w5JPUVTSotp6zU5TRdovFXdFGwOIdJnqOxVhVYyEzORQG7Sd5NzTgaO2FkoTdKSCX0Bo2JhWblxeckrzjw3bCxv2+wXkuZZAas/uGYXzWOH1ro5fomU1BmMudoTGx7gHwe+hi1KBgA2A9ym2bVqiPkEtt9gFG3SuY5JLq3kPTNnIfdSsUFy09kmDi+P8ix2y57IcrsYgNlz7G3x9jzBoz9bg/YLSwykepnTNS8zUDZDSw0S25LNPbaNPrhIW4fNWpR3zAtoEhOVYpLbH8fxh8m1OmQlPgCU6abQulI7K929raDtqtvMpYLdlu+YHdSGYDBQBcdtYbj15DIO1BoTEzOjpWTH5qK6Dns0vlMLF+yVR33pFjmoMrOidl7jsY0sN0D9gOosNuZKtcik/J2u6mO7UX7dXimokwrfNaKte1s9vNGLj6x9azQldBCFi+ZKDp0TCw0rxS8hrJkS0BjhCx0WceCLmUByGoQNmtAY5PfI3hzWeofxnujoITjDBFGJ+Ybj/X8js9iDYlWLJ9WSkGhf1GUe6i/LNajbA8iPuq9tmrqbKHl2qiAKJYLDeu6Mnbc21qcqF9DuQ93yPSTWMVM6Bciz8sz89dVUV5VHcLbQnyswDBDNndoEDgM+4lHsOv5No5jHmCepIQG1IsdN0L3FpqLUl+lhmWJxu+bAjcp6EL0bMcNT0c5leVK/gPqdmPALqVasfxV226dfr0DVv9vNMDMlqBNEJ0amKEbsQK1pxKvRbGdMvLwl93YmizUKXVJYMSyc7TQShbLB131ltu0t3wOSyg4UxuD0BpuGaUsL8F6HPBzWcX5NvyBheNHW4Md7ZMmx6j1rW6UWJ/yFHgO3Zqc8jUwOuOttTONMkk1qCmrlpmei5U590gzsd9B9Y2nUs3Ban70joxGzb3o8GpwXpO32tUV2zV8rIQCvtBMV+awNfef/Qr8vuJ5bI087fl/s+ed5k1lVejh8X1V5Ju3JbzLoLiU9UV4csdEbnq1a9CeNvp+RBMSEJyyIMGunfg48gMHBwQS6gGPGePo/kMnju0N+6g4kvDMETAr7kBp4KNXUhUZ5KvBeUAeFMyf1KDz5f1Tyna0HX4nbdyP/jGS+Yi1B9y+45gLDo65J9V9Ut3fX3WZxwlEKcVxFKfYDTjHEZAARw6EAXMpDb24p7qNzr7/ivYFl54RXCWLkhV8NBdfmOIHcnvy2jLjUGiRsNxk0DhrDCYrE/TO7Ngr3Iv2X6J0+JHAPEUXlUpZAovciGL7EPUi74EHuHdvoX/p887jv+cs1kxBWuWvWME7FuYd7h3jMSiaNn/Uqrdyxm/kNIPkdrubvU87ton4Z5/s/TfbD7/UzOJnXQS1v/7zq31vmZ/N8M7sWF/2uiBgURhxj+Ao4gy7lCU4IhFgiGgYekEccBKie+uw7N3TAVxx/gnEMtOjpwb47RrA/Z81AOWcUkpT7MUpw64fBTgOQ4Z9xinhoRNwuzkGGtyW4ntCXfvD6HlVwOgaSlmpBEYXK1BLKJLNaDb64+LvP4dfQIAllNgpxw4EgF3HIThykhATL+VJEDrMBR/dfwPE5vU7shcAAA==",
+        },
+        [1342] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1WTW/bOBD9KwFPW0AC9C1LN9frZAO4SRC56AJBD5Q0sgjTokpSadPC/31BSbQt+asoctybNDN882b4OOQvNG0km2EhxaxYofgXmlc4pTClFMWSN2Ag5VyQCvbOXLvucxQ7k8hAT5wwTuQbim0D3Yv5j4w2OeR7s4rfdlifGMtKBdZ+OOqrxQkmBrqrlyUHUTKao9i2rAHyZegWIwoHK6yrZGZlszlTmGdb3oiRN2KkQRilkMnzOPbhKuc6KcZzgukZPNsJgkHLvX7ZLRHl/A2E7qhnW/6oAN8fFBDoLcFrSEpSyI+YtGUog9CGROJsLVDs900OJse4h6hRj/qEJYEqgwM+wXhdMGyoo5dy8hNmWHZCOaW6YHIE5ox2x+3BliWmBK/FLX5lXOENDLo61xjanyFjr8BRbKue6ZzeIIPu30eyusObttBptaLAhUZVm52j2A0t74juAGqit6KhkpSMrXddcyw/Gp+MCxLaGmj+Q3LcH2e1gUuWfMf1fSUbIgmr7jCpNLppG2jRcPgEQuAVoBghAz20taAHVgEyOoS3GlCsGnoCb8GE/GO8Jw4CTjNEJjrj7zK2/j2fpIZMckxnDedQyXeqcoT6brWeZHtU8cnsbVSns0SyWh17Uq0SCXWrjD33XotT/j6UD+GOmX4nmxQTeUsoFRf8z00lHhuN8Lki3xpQzJAbRdhy08xMiywyvSjEZhp6uWkDTi0/w9EkC9HWQAsi5GOhWAoUv3QCVy3QJfqW43nnq5wxsWFrTihVYA+MbzD9pz9uemB9Adz+K7sAuRs/BaYCjH4c9U5Vmx5MvanrnmeHahBqzERyVq3eAdVyD1AXsIIqx/xtPyavIzihGjZ/syal41K7ECeIdgFHvI9DBiRORC05qc9lCn3H3YWcyzUIupCtj1OHYlpI4DPcrEq5IBt1qdmdY3xa2tdNw7tbU30c3AczXGVAp1LCppa6mSpmifkKOswTd5Mb+tH45XDxKaJeL3q0aS0+w7eGcMgTiWWjLl/1PDoj0N8T3HUBnQr8XyZXZfKne570I3HGmkoOb/fHir59FvClhOqBte/k6SsmVElNK+1gdGZBkRZeiM0gx9j0/CA1I9svTM8OHc+1HNfOc7T9qmdn/wB/2Rm68an+u4ndj8oX2/Wcrzd3HL8SiZU4Mb1J6hI43NxvapzJm7/m/34YjnEIIbTsNDPtwp2YnjWJzImTFqYLgQe5i0McRGj7H/G/vON3DAAA",
+        },
+        [1343] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1XXW+rOBD9K5WfYcWXCeQtzW17K6UfuqTqQ7UPDgzBKsG5tmlvt8p/vzLgBAhN2m5XWmn3DeyZ4zPj4/H4FU1KyaZESDFNl2j8is4KsshhkudoLHkJBlKTM1rAbjLRU5cJGjtBaKBbThmn8gWNbQNdirNfcV4mkOyGlf2mxrpiLM4UWPXhqK8Kxw8MdLGeZxxExvIEjW3L6iAfhq4wwlHHwzpKZpqVK83Asy3vCAXtxfIcYtlytNtmzvFlGU8oyd9Iqe34fiepXuN2TkV29gKitTDuMca4w9jXSSePEGU0laeEVrzVgNADkSTxo0Bj3KTRD/Zx26hhg3pLJIUihhYfv+/ndzPoaFdO/4IpkbUU7gTcFPnLPZXZZQKFpDHJlZXOSmt+Ekv6BFFO1npySJR+sMfE6e2l2zCZZySn5FGckyfGFZnOgE6Na3THf0DMnoCjsa0SfifgPoOi2dbptyPUvA4RvUendHlBVlUyJ8UyBy704o6BuqnRgGr0SCrckeXtpaKzfqA1UuaSZow9brfTsXDYPxEHtL0x0NkvyUmnkmzJKKHNWfRM1peFLKmkrLggtNCLmbaBZiWHKxCCLAGNETLQdZUPdM0KQA3CyxrQWO3dAN6MKcl8Eu+Wg4BhhshEb8zXK1bzOz7RGmLJST4tOYdCflGUPdQvi3WQ7V7Eg6tXVrVWI8nWqjzRYhlJWFdC2XFv9DzhX0O5DbfP9JmuFoTKc5rn4sD8j7IQN6VGuCvozxIUMxS6o5jEI9d009g3PWJjkxCLmC627TBJ0zhxPLQx0IwKeZMqlgKNH14rvioFOkRsOV74dpRTJlY0PolIkZzMAOJMYV4zviL59+YQ6vp6D+Rxd6LUrACpYtFnqyqOGRTXTO7Xx8a+TqVnj1T11siR5KxYfhm25bawZ7CEIiH85SD8EMKdgG+sbOy1YT2iU9G4bWtMSnLRR3N8FWrttwv0o56dMK5ooQzndKVqv4P/sAY97wTMOV13A6hHPhTACDsqH7XnB0Po+HaC2EbQq9DHg2sw1WGfpBL4lJTLTM7oSjUVdj3RrwJV/1jyumtRH60rVf3OCV+CrC6lwesLh/td2eFLaFud9Tn6AT9LyiGJJJGl6nNUr9k/XO87Ju8W/JDhoITfodUjohywGtTau0T1LvX8c4r47J7rqj5lZSG7/YoqYE2Dds2qR8fkidBcSW3bX+6qv+PiABzbMVM3cUzPj7G58AMwU+JbMV5YbhAHaPOnLv/Na+ZhO1DfAA+vqHcVqO7zravginEmTiLy3Ln17EN57bXJr6g2mKxU/G0zNPZw2G8A3e4rQXWAUclTEjfFffBZ4uEQH+mp8cZA/5r3XbQmHNIy/06KRLNQ3TAe4tHRT5M/t/Oos1Rsf7dFbjdFn26FlPOp5lqt1+5vmoZGfdbDO7Ohw9hufLzQI27qmATSwPSICybBXmBix4IY297ITS20MfalbR+XdpE8M776cn0Py/Tjcv9f3/8BfVtO4AUxxqbj4cT0LM82Q+wSM/Z8f2QlgTdK7aq017gNRdUOJSe267ndZwKMFsRNsW0meDFSF0ViLnw3MZ1gAS4mxMEpoM1vIDPuRmETAAA=",
+        },
+        [1344] = new()
+        {
+            "AH4_H4sIAAAAAAAACu1Xy27bOBT9lYKrGYwE6EG9vHM8SRogSYPYRQYIuqCkK4swLboklTYN/O8DSqIt+ZUik0WB6U4mLw/vuTy8PH5B41rxCZFKToo5Gr2g84qkDMaMoZESNVhIT17TCraTuZm6ytHIixML3QnKBVXPaORa6Eqef89YnUO+Hdbx6xbrhvOs1GDNh6e/GpwwttDlalYKkCVnORq5jjNAPg3dYCTRYIXzajKTsl6aDLDr4FdSMKs4Y5CpIxXBruP2V3mvZ8FFTgk7gud6YTioMe6WXVBZnj+D7BEIdggEwYBAaM6ALGBa0kKdEdrQ0APSDEwVyRYSjYKuqmG8j9tHTTrUO6IoVBn08gl314XDgnpmqaA/YEJUq4xDMgvjPTBv53T8DmxWEkbJQl6QJy403mDAsPOt4fg9ZPwJBBq5umZmTzzYwdTvjM4vybIhOq7mDIQ0qJ6FHqgqr3KoFM0ImxgSBzj5kYP3OA32i8151UzRkvPFprSeEyS7Yj2hs7WFzr8rQbpLrk95xqffyOqqUjVVlFeXhFYG3XYtdF0LuAEpyRzQCCEL3TaE0S2vAFktwvMK0EhX/QDeNZfqzXh3AiQczhDZ6Mh8u2Mzv81nuoJMCcImtRBQqXdiuYP6blwPZrvH+ODuTVQrxqniK90baDWfKlg1ytjm3gl2LN4n5T7cfqbf6DIlVF1QxuSJ+fu6kp9qg/C5ol9r0JkhAmnoRj628yjzbZz5hU2cIrbBTYhf5DgKQ0BrC11TqT4VOkuJRo+twHUJDMXA8TA+znLC5ZIvBGVMg91ysSTsY3fdTFd7ANL81uMS1OY+F4TJzf3uJjU3c9O7obZ62I10tzSYUyV4NX8HVMfvoV7DHKqciOdtL/1JhL95nbJdpm2EFyabgL2090MGORyImgm6OrZTFHj+JuTYXoOgE7t1cfpOjAsFYkLqeamu6VI/fG47sXtZGstTi/Zl1R+9N+NgHw+SfedwuhtvupaR2T18ramAfKqIqvXjq/3QEe39nJZe18ZvCbxJAm89c9PtJryu1PDh/lSx588SHkqobnljjMdPhDItNaO0XlcsnCRJIXbtCENmY5wRm6RxbieOG3t5EcUeztD6i2mLneN+3Ay0nfHxBe20SCc63iLvJNQ5l6QWtRw8CO6p27X1QaR9ItuA8VKXYBt2yEUHya438odmVpujaS0KksGU6b7WWaMgCV4xisHaQr/M35DpiggoavaRVLnJQjvD4FAeAwl19fOt5hyv8hmflJAtNkfZ+wviaMb/1UT2XcSbvYNefGYYNPv1DUHnAPRnO7wNO3RLe3cCwMlD7BV2UhSFjVMI7TSJMjv0HT9Mk6iA3EFra1/z4XECN1QILmRJxOK35H99yYf/M8nj3MOQBsQOYohtnGPHTqIU7CKLMXg+Dr2kfQZa3C7FR9fH+MvW8X6YgVS0mn/44/yfv/4c2u8MEz8M09j2fM+1cZJldpp7mV04jpf6YZIFDkHrfwEJZTmERRIAAA==",
+        },
+        [1368] = new()
+        {
+            "AH4_H4sIAAAAAAAACs1W227bOBD9lYLPEiDJur+53iQN4CZBlKAPxT6MpLFFhBZdkkrrFv73BSUxlnyJdxcG2jdqLodnRsND/iLTRvEZSCVniyVJf5GrGnKGU8ZIqkSDFtHOOa1x5yyN67YkqRcnFnkQlAuqNiR1LXIrr34UrCmx3Jl1/LbD+sx5UWmwduHpVYsTxha5WT9VAmXFWUlS13FGyO9DtxhJNMpwzpKZVc3qRGG+6/hnGBkQzhgWylTiu447DPPOs+CipMAMQOj6IwC/D7umsrraoBxsFOwxDIIRw9D0HF4wq+hCfQTa8tQGaQyZguJFkjTouxjGh7hD1KRHfQBFsS5wwCfczwvHHfNMqqA/cQaqmwSz6362t9fvSZ/9VAGj8CKv4ZULDTAymHIm1tj+iAV/RUFSVzfJ7OmPdjAN+0iXN7BqK5vWS4ZCGlT9N0uSTiLHP6A7goq3W4tc/VAC+pOlW/3Es++wvq1VQxXl9Q3Q2jTAdi0ybwR+RilhiSQlxCJ3LQlyx2skVoewWSNJdSeO4M25VP8b70GgxOMMiU1O+LsdW/+OT7bGQglgs0YIrNWFqtxDvVitR9keVHx09zaqG5BM8bU+oLReZgrXrRLuuPdDNBWXoTyEO2T6na5yoOqaMibf8T82tbxvDMJzTb81qJkRL8wTwDK0PQdy28/zxAYnyO3QxShBz4fcWZCtReZUqvuFZilJ+rUbcN2CtxKT5HSNU8Y+dKn7hd5xsQL2ifMXDWRE5gtC+63tEtWbYC+ASbR6Ae+dukoj5b2pg/fdSIuXwcyU4PXg1juf7kwG6XNcYl2C2FyAVwv8F29ytl9pF+GFyVvAjvbJkGPUhlHPEp8EXXfMDKXOcqbRY7Ao8DTxLvMUr1HQv2na0XR9wKYLhWIGzbJSc7rSV5nbOfZPXvtoaUR3V+rF4FLo5DtIDm/3dy5q/cIwmmdG8xG/NVRgmSlQjb4/9RPmxLyemb//Oma/aWyOTshFR+EP++dZr5Uz3tRqmGeR+5ptniV+qbC+4+1bdvoKlOlJNgdqoKlO5EeR54d2WbqB7WNc2LCII9sJ8yQq8txFSMj2byOq/SP565uh01X93Ul5r6KPWH6YMhRqrOA5Jl4SBpEdx6Vn++jENkBR2h5AEKM7SQJ3Qrb/AF6zC639CwAA",
+        },
+        [1369] = new()
+        {
+            "AH4_H4sIAAAAAAAACt1Wy27bOhD9lYBrCRBlSba0c90kN4CbBHGCLIouaHFkEaZJl6SS+hb+94KSGEt+xG2Ru7k7ah6HZ0bz4E80roycEG30pFig7Ce6FGTOYcw5yoyqwENWOWUCdkrqVDcUZeEo9dC9YlIxs0EZ9tCNvvyR84oC3Ymt/bbB+iJlXlqw+hDaU42TjDx0vX4sFehScooyHAQ95Peha4x02PMIzpKZlNXKMYhwEJ2h4Lwk55CbjiPumoXnr5WKMsIdQIKjHkDUml0xXV5uQHcuivcYxnGPYeKSTJYwK1lhPhFW87QC7QQzQ/KlRlncpi0ZHeJ2UdMW9Z4YBiKHDp9k3y/pZyx0ror9CxNiml/vbt33DvfyPWi9H0vCGVnqK/IilQXoCVw4A68vf4BcvoBCGbZJcndGvRtcwj6xxTVZ1ZGNxYKD0g7V/k2KssEwiA7o9qBG262HLn8YRdpWsql+lLNXsr4RpmKGSXFNmHAJ8LGHppWCL6A1WQDKEPLQbU0C3UoByGsQNmtAmc3EEbyp1Oav8e4VaDjOEPnohL65sdbv+MzWkBtF+KRSCoT5oCj3UD8s1qNsDyI+entt1RTIzMi1bVAmFjMD63r07bi3RTRWH0O5C3fI9JWt5oSZK8a5fkf/UAl9VzmEJ8G+V2CZITwckiFN536IcepHQxr4oxDAH4YkwukgDwtK0dZDU6bNXWFZapR9bQrcpsCFGAeh7bRTUV7ZxnklBtTFWJlSSV4psLi3Uq0I/0fKpUVyU+YZSP1t5RrM2+4pCNfgtbuoVdow3VZqRU0iIzy008thzoySorPnzrsHg477FBYgKFGbP0b4LKs5PxdSzzFM0je/He2TJj1qR6yeNDwqtm4IO6aN5I9YDePQxtN4nuLVM3qHWWtnW2lcGFATUi1KM2Uru7Rwo9jvsfo9UqlmK9pDZ/w3gzpOD/f4OyvZPh7cdHM1+ADfK6aAzgwxld2U9nVyojDPFNpv19Nvl81/Uh9HS+H//M9n7VScyEqYrp+H7gTfPGl4LkHcyvqZOn4hjNu2cJ3TmZ4jSvIoDFJ/NAfqR0U+91M6wD5O4pjQ0YAOEoK239z4bN+/X98EzQS1383QbqelrsQSxIUCzvILTfiLHae9iyHNMU0K7M9pgP0oLnI/DULwcZJQOg/piGCCtr8ASHFGgeMLAAA=",
         },
 
-        #endregion
-
-        #region A Rank | Sequence | Timed | Weather
-
-        // Export for Mission [472] - Northward Ecological Survey
-        [472] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1XTW/bOBD9KwbPEiBKlCjp5njTbAA3DeoUOQQ9UNLIIkKLLkWl9Qb+7wX1EUv+iIMgi+1hb/Rw5vHN6HGGfkbTWssZq3Q1y5cofkaXJUsETIVAsVY1WMhsznkJu82s37rOUOyGkYVuFZeK6w2KsYWuq8tfqagzyHZm479tsT5LmRYGrFm4ZtXgBKGFrtZ3hYKqkCJDMXacEfLr0A1GREcRzlkys6JenUiMYIecYdSDSCEg1X0mBDt46OaeZyFVxpk4QQS7QTCqMenCPvGquNxANTjY32Ps+yPGQf8N2CMsCp7rC8Yb3sZQ9YaFZuljhWK/q2oQHuIOUaMO9ZZpDmUKAz7BflwwrqDbhyr+D8yYbpXRn7of7e7V3+ui7womOHusPrEnqQzAyNCn41lj+1dI5RMoFGNTpGPSDkIjgcGBff0u+PKKrZpEp+VSgKr6Q8zHzlDsUYccsB9BhduthS5/acW6i2cqfycXP9n6utQ111yWV4yXfT1sbKF5reAzVBVbAooRstBNQwLdyBKQ1SJs1oBiU5gjeHNZ6Xfj3Sqo4DhDZKMT++2Jzf6Oz2INqVZMzGqloNQflOUe6oflepTtQcZHT2+8WoEstFyb+8rL5ULDummUO+6diKbqYygP4RoO30r+owaDi3IaMuL5jg2UODYJKbGjhCS2yyAKM8ogcxjaWmjOK/0lN2dUKH5o5WkSeCEYRacZToWYtKH7NG+kWjHxt5SPBqjvGPfAmt/GXoF+uYs5ExX0d7PbNAn2t7QztfAEU9OJesyFVrJcfgCq4w1Q57CEMmNqs2vWb0T4S9aJ2M+09XCD6MXhgPahy4jDEa9vFdwpvm6Z9ZRay5lCj8Go7xribeTZcr4SOyL8pRSb+wLKG6mnqeZPsBAnCteDmLszzTWoGauXhZ7zlRlauN3Yv1TNc6VW7VQ0i0H7P9LjPepHh2P+lYltnhp9d+tl/BV+1FxBttBM12ZwmrfMCW2/TavntfffSuyomt4km7P6+Hcl8N5vPuigNMfYITiyo8TLbYKJZ0ep59vgUYgCBxInx2j7vW+h3Xv34cXQdtGHZzRsp8SnoXu6oc7rkqnJvRR5boKGXRW/Vp7rDErNUyZMTcxZrcN0Jety5GYYRPsvFm/8egzNSbXKWdrd2ePvZj/yz7zb/K2F/pi/Absp/O7Za4KNZWaq2hR0OI27GWyWrXnndky9A6WBGxLPdTLbcz0zqwPfDnEGNqWR77oOjpLQzOpDJXmnE7gVTPOyXk0ueFpw9edI6X/tlB+pHS8LApr4ge0zj9okibAdUurYDGOfhRl1c482XarF7Sg+EOp+n0zjyY1UuvjJVDa5TKWQS/PhJ4taPcFm/J5kKbh5kiQ2oYlnEydgduTl1CZOxCiDJMEQoO1v5TMqZmgQAAA=",
-            },
-            AmountRequired = 1,
-            UniqueFish = true,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-                ["Platinum Bichir"] = new List<uint>()
-                {
-                    45783,
-                },
-            },
-        },
-        // Export for Mission [473] - Rare Aquatic Specimens
-        [473] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1XTW/bOBD9KwbPJqAPUh++ud40G8DNBnGKPQQ9jMiRTUSWHIrqNlv4vy8oWbFkyzEaGNgecpPJ4Zs3w8eZ8U8yrUwxg9KUs3RJJj/JVQ5JhtMsIxOjKxwTuzlXOe43Zbt1I8nEi+IxudOq0Mq8kIk7Jjfl1Q+RVRLlftnabxusL0UhVhas/vDsV40TRGNyvXlYaSxXRSbJxHWcHvLb0DVGHPZOOGfJzFbV+kRgzHXYGUYtSJFlKMxpHLd7yjtPqtBSQXYCL3BZD4/tTn1W5erqBcs2ocx1+AF/znv8g/ZG4AkXK5WaT6DqKOxC2S4sDIinkkz4LsdBdIzbRY13qHdgFOYCO3yCw3NBP59ee1Srf3EGptHJkOiC6AjMO7gcfwf2sIJMwVP5Gb4X2uL1Ftro/HF//R5F8R01mbg2ZycosJ7DNp2f1PIa1nXc03yZoS5bJ/bqJZn4ocOO2Pegou12TK5+GA27V2kv4qFY/AObm9xUyqgivwaVt7ml7pjMK41fsCxhiWRCyJjc1iTIbZEjGTcILxskE5uYAbx5UZp3491pLHGYIaHkxH7jsd7f81lsUBgN2azSGnNzoSgPUC8W6yDbo4gHvddWjUAWptjY56vy5cLgpq6ie+47EU31ZSh34WoOX3P1XKHFJZ7vYcJlTFNHJpQ5EdA4ki4FBoHjSJFI4ZDtmMxVaf5KrY+STB4bedoAXgnG8WmG0ywbNUcPad4Weg3Zn0XxZIHaAvI3Qv3brpdoXt9iClmJ7dvcbdoA21e6W2rgmRvawtRiLowu8k6/O3/c8TvH57jEXIJ+uQCvGviPokqyw0gbCy+IXw32tE+aDFHrWj1otTnlKeSe/2pyylfP6A1vOzur7WlqUM+gWq7MXK1tj3GbjUPR17NGpZsmZj865XmgBvshj4979Bv91c4JbfVpZXaPz5XSKBcGTGX7nB1ETmjvjJZ+VTIfEvg1Cbz3zjsVDnjgcB461HNjjzLhJRSCxKMIvkQv9RkGAdl+a0vcblh9fF1oqtzjT9Itd4yHUXi64M2rHPRoKkDiWgkFea/wuW9l6EZibpSAzKbFumsMpuuiyntmlkR8OFT4/Xkvsp4qnYLARWbrUcs+5mdmKb4dk99mbt93xnf3Q3vYrsxsGusMdjvkri/az2Z5bzak2I66uIhd9CSnPECfMpcjjSSTNE3AZdIHJ0gDsh0fqyc6HcDiSW02Kl+OFgb0xZUz9IflQ0j/u5BciSC5K2ji8oSyKAUaecKjoRPFcSSDNAIYEpLN2Ntl6B4UrKH8fUrQsAI/hHQZIQkGDveTkMrQTvSYSprEUUJj6frM4RHErjNYkfiHkD6E9HUvJAeYK9xI0JQnjDLOJE2kQMqZkBIAHPSwHpwa3B3FRxb630bTyegeNI6mzxUYJUb2/7BaY27F03GR+kzEYRRT4bsxZT5ENEZgNOZJysETvogCsv0PwsUE2bMUAAA=",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
-        },
-        // Export for Mission [474] - Foodstuff Emergency
-        [474] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1WTW/bOBD9KwbPIiBRJPVxc7xJNoCbDeos9hAUC1oa2URk0qWottnA/72gZMWSYidNN4cFtjeJnHnzZvg4w0c0ra2eicpWs2KF0kd0rsSyhGlZotSaGjzkNudSwWEz77aucpSSOPHQjZHaSPuA0sBDV9X5t6ysc8gPy85+12J90DpbO7Dmg7ivBofHHrrc3q4NVGtd5igNfH+A/DJ0g5FEAw//VTKzdb05kRgNfPoKow5ElyVktsuEBn7QNyOvs9Aml6I8QSQgnA9qTPduF7Janz9A1QvMRowZGzDm3RmIe1isZWHPhGx4u4WqW1hYkd1XKGX7qvL4OW4fNdmj3ggrQWXQ48PHfnxYQdK5GvkPzIRtldFFHXuTUf3DvfftWpRS3FcX4os2DmCw0KUTesP1j5DpL2BQGrgiHZM2j50EegG7+p3J1aXYNIlO1aoEU3VB3GHnKA0jnz5jP4CKdzsPnX+zRuwvnqv8rV58FdsrZWtppVaXQqquHjjw0Lw28AGqSqwApQh56Lohga61AuS1CA9bQKkrzBG8ua7sT+PdGKjgOEOE0Yn9NmKzf+Cz2EJmjShntTGg7DtlOUJ9t1yPsn2W8dHojVUrkIXVW3dfpVotLGybRnngvhfR1LwP5T5cw+FPJT/X4HARZ4wUueA4XDLAlLMAizApcB6GOWOEFcJfop2H5rKyfxQuRoXSu1aeLoEngklymuG0LCet65jmtTYbUf6u9b0D6jrGXyCa//YSut0KrMuku477pRaHBpFrOZ3zwhqtVm9x98Oe+xxWoHJhHt6M8Juul+UT94EF4cmTwYHfSZMBhyNWt0ZuT0WKGAmfTE7FGhi9EG1v59Q6LSyYmahXazuXGzcmgnZjLOPmgVCbdg65j17DbXshS8bz48XR7KZ510A6pXyEz7U0kC+ssLWbTe65MJbPj6nkh8Xw68z/1ZnTN555r0nRwI+zgvk4AcEx5STHy4RHOBNJkfMkiCgFtPvUdan9k/LuaaFtVHePqN+xKIuS8HTPujRC5ZOZ0V+VFbKcnIG1YtC/gpeqdJWDsjITpSuNC9kaTDe6VgMzRyQZvw3C4TstdpFqU4gMFqVrQl0Gzy7S+EnEdh76z7ywDwPup8eac3YrM1fGpoL9QYdSJJRWf9/RiGLyaTJNJxda55Wti2JyvgGzApU9oBamdTwAHdN1T4MkDimhhOKlz5aYMiGwoDzHge8HLAiLhFE3KJ9rjJxOcV4rYSYLWVkwVSbKYb6/9PV/0ldWQESWUYJpVHBMA1LgmMUx5nkIWcziZSDCpse1uPskGibhC0x6EYQPBAj3cZAUMaYkITgu8gzTxKehEDynPkO7783hftMDEAAA",
-                "AH4_H4sIAAAAAAAACuVW227bOBD9FYPPEqALdX1zXCdrwE2DOsE+BMWCkkY2EVl0SSppNvC/FxTFWnJkpy2CYoF9k4YzZ86Mjmb4gqaNZDMipJiVa5S+oHlNsgqmVYVSyRuwkDpc0hoOh4U5WhQo9eLEQjecMk7lM0pdCy3E/FteNQUUB7Py32usj4zlGwXWPnjqqcUJYwtd7W43HMSGVQVKXccZIJ+HbjGSaBDhvElmtmm2hgF2HfwGBRPFqgpy2Qt0+27e22kZLyipFMC0qtjTp0fgOdktZqazI412vTActBp3YJdUbObPIHp0gqM6gmBQR2g+BXmA1YaW8oLQthplEMawkiR/ECgNuuaG8WvcPmrSod4QSaHOoccnPI4Lh331TCin/8KMSC0Qk/U42jv6Kn4XfbshFSUP4pI8Mq4ABgZTjm8N7Z8hZ4/AUeqqJo0pPIyVMHoJTf8u6PqKbNtCp/W6Ai5MEiWBAqV+5OBX7AdQ8X5vofk3yUn3/6nO37LVE9ktatlQSVl9RWht+mG7Flo2HD6CEGQNKEXIQtctCXTNakCWRnjeAUpVY0bwlkzI38a74SBgnCGy0YlznbE9P/BZ7SCXnFSzhnOo5TtVeYT6brWOsn1V8Wj21ksLZCXZTv2vtF6vJOzaeXng3oloyt+Hch+u5XBX068NKFwUxlFQYkjswssdGxO/sOMwSOzY8fwMHMfL8xDtLbSkQn4qVQ6B0nstT1XAD4JJcprhtKomOvSY5jXjW1L9xdiDAjIT428g7bv+CdWpAKkqMb9jZ9I42I3UyDHBK8lZvf6VcMfvhS9hDXVB+PMvI9wJ+MCazt84aospaBDmhYq2djiQPukyIDbidSfgltPdML22jKePAk/R1i6nCAyczlDo/JSup6UEPiPNeiOXdKsWiqsPjgXf3igarjeWeuiNZj01g+T1Jj6zVNX6N6PGaOozfG0oh2IliWzUFlP3i2Oh/Zyeflo2Y45/Tgj/u2/eG2fEiUnuYdd2wfFtXGaJTRw/t0PPD0McRGWWEbT/YuZZdwe9/2HQI+3+BfVnGw6ixD893a44qYvJjLOnWhJaTS5ASjKYdO65Li0KqCXNSaVao1Jqh+mWNfXATRFJjm8R/vBGF6tMDS9JDqtKjStTQRK8cXkK9hb6z1zJD6vwtxegClaWmWqjluMT2em1KMx47G9JpZ6a1f/c4wjb/pfJNJ1cMlYI2ZTlZL4FvoY6f0Z9nB72iNR7snQyz49wFtpeWICNYw/bSeZHth/FblwmcRBh3MpS43Z1tUy8M0x6GXwnLLw8xrbjuo6NS8+1YycEG2cZZDGOiyQp0P470FuRLucNAAA=",
-                "AH4_H4sIAAAAAAAACu1WTW/jNhD9KwbPEiDqW7o5rpMG8KbBOkUPwaKgxJFNRCa9FLVZN/B/LyiJtqTYzibIoYfeJHLmzZvh4wxf0LRWYkYqVc2KFUpf0JyTrIRpWaJUyRospDcXjMNxk5qtW4pSN04sdC+ZkEztUIotdFvNf+ZlTYEel7X9vsX6IkS+1mDNh6u/GpwwttDN9mEtoVqLkqIUO84A+TJ0g5FEAw/nTTKzdb0xDHzs+G9QMF6iLCFXPUfcN3PfDiskZaQ8U1LshuGgqH7nds2q9XwHVS9wMGIcBAPGoSk6eYLlmhXqirCGt16ozMJSkfypQmnQlTGMX+P2UZMO9Z4oBjw/Jw0fO+EYJhwW1DVIkv0DM6JaZRgSY293dBxe5/2wJiUjT9U1+SGkBhgsmOw8a7j+FXLxAyRKsa7ZKWmHsVZEL6Ap5xVb3ZBNk/eUr0qQlQmiz56i1Isc/xX7AVS831to/lNJ0l08fRAPYvlMtrdc1UwxwW8I46YeNrbQopbwBaqKrAClCFnoriGB7gQHZLUIuy2gVBfmBN5CVOrDePcSKjjNENnozH4bsdk/8lluIVeSlLNaSuDqk7IcoX5arifZvsr4ZPTGqhXIUomtvr6Mr5YKtk2jPHLvRDSVn0O5D9dw+JOz7zVoXBRg8LIk8mzAsW/71MV25tDM9r0cO4EX5zTHaG+hBavUH4WOUaH0sZWnTuBAMEnOM5yW5aR1HdO8E3JDyt+FeNJApoH8BaT5by+h3q1A6UzMdeyWWhwfR7oDGeelkoKv3uPueD33BayAUyJ370b4TdRZeeA+sHDD5GBw5HfWZMDhhNWDZNtzkaLA9Q4m52INjC5E6+y0WqeFAjkj9WqtFmyjpwZuN8Yybh4ItWzHkv7oNdwTXdWLgmQ8XS5Oaj3cTT8xwvkK32smgS4VUbWeXPr1MFbTr4nml7XxvwQ+JAFz5v47z7zXs6IsiUIfgx0mmWP7NA/tmOaO7ReQkTx2aZAEaP/NNK3uhfl4WGj71uML6jcwP4gS73wLu5GE08lMimeuCCsnV6AUGbQzfKlKtxS4YjkpdWl0yNZguhE175mdejUFyfjl4A0fdbEOXMuC5LAsdYsyCb26V+MHU7C30H/m/X0cfx8eetpZr8x0VVt1PpNtOworU9T+ZEQpIlzwvx/9yLfdb5NpOrkWglaqLorJfANyBTzfoT5OD/uE8nsqjYPIDQta2A4GsH0n9OwYZ7GdYew4XoQzkkWNSlvcLq+GCb7ApBcBUzcMo8Sz84T4tu+GgR1TiOwwK7LMw15BIET7fwGbARl41A0AAA==",
-            },
-            AmountRequired = 18,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-                ["Darkside Bass"] = new List<uint>()
-                {
-                    45791,
-                    45801,
-                    45879,
-                },
-                ["Grand Crowntail Betta"] = new List<uint>()
-                {
-                    45793,
-                },
-                ["Lunar Sisterscale"] = new List<uint>()
-                {
-                    45792,
-                },
-                ["Moongill"] = new List<uint>()
-                {
-                    45740,
-                    45750,
-                    45790,
-                    45800,
-                    45878,
-                    45930,
-                },
-                ["Moonrock Candy"] = new List<uint>()
-                {
-                    45739,
-                    45749,
-                    45789,
-                    45799,
-                    45871,
-                    45877,
-                    45929,
-                },
-            },
-        },
-        // Export for Mission [475] - Precise Water Survey
-        [475] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1Wz3ObOhD+Vzw6oxnAIBA31y9NM+OmnpI3PWR6ENJia0LAFSKtm/H//kb8iMGGZJrx4R16g9Xq07erT7v7jBaVLpas1OUy3aDoGV3lLMlgkWUo0qoCC5nFlczhuCi6pRuBIjekFlorWSip9yhyLHRTXv3iWSVAHM3G/9BgfS4KvjVg9YdrvmocElroene3VVBui0ygyLHtAfLr0DUGDQY77DfJLLfVY8fAc2zvDQrdriLLgOuJjHiO7fR3uW+zKJSQLJvAc1xCBjn22m0fZbm92kPZC8A/CcD3BwGQ7g7YA8RbmeoPTNZhGEPZGWLN+EOJIr/NKgnPcfuotEVdMy0h59DjQ073kWFC3W6rkr9hyXSjjDGZkfAMzD25nXkLdrdlmWQP5Uf2VCiDNzB00c2tof0r8OIJFIock7MJCt7gwC6dH+Tmmj3WcS/yTQaq7A4xdy9QNA9s74z9ACo8HCx09Usr1r5DcxF3RfyT7W5yXUkti/yaybzLLXYstKoUfIayZBtAEUIWuq1JoNsiB2Q1CPsdoMgkZgRvVZT63XhrBSWMM0QYTaw3J9brRz7xDrhWLFtWSkGuLxTlCerFYh1lexbx6Om1VyOQWBc783xlvok17Oq6eeTeimihLkO5D1dz+DeXPyowuChMGCSu42JGHYI9QjycCCpwEgYpCX2HOMRGBwutZKm/pOaMEkX3jTxNAC8EKZ1muMiyWbP1lOZtoR5Z9qkoHgxQV0C+Aav/jb0E/fIWU5aV0L3NdtEE2L3S1tTAe44bhCYTLWisVZH3Wtyf7l/BBnLB1P4CzGwT+z9FlWSnsTYeLqEvDkfeky5j1Pped0rupk4KfHf+4jJ11sDpldNaP6PuRapBLVm12eqVfDRdxmkWTmVfzxeVatqY+egV6JEqPA98et6mX2mxZjbo6k8ntK/wo5IKRKyZrkynM8PHhPq6OwvoqJjGbvY1yfyVwJ9J4L133qtxvkd95kCKgaeAPRAEMxI6mNkkDEM6Fy4AOnzvilw7oN6/GJo6d/+M+gXP8wMaTpe8a5YxriWffWK/h9XZeS07NwJyLTnLTErMUY3D4rGo8p7b2NTp09MJYz4c/kwxiyuVMg5xZkpTFwj13xis/IOF/jdj+7FNvrs5ms3GsjRZrRPab5dtkzSfjfnoNibentACzgn3Q4KBhSn23LmDQ09wHIJtBzwkNrVTdLDOhUSmA1gX2X5XlbOFKiGXXF5cS+8Wz7gI/2ppfREteTbzIaAUz5PEw14gXBwyEeBAMMLTRKQupXXRanBbivde4H+fLaLZWgGXJcy+MQ1qFlfqCfbDyc9PuO3ZJMXC8R3sCRcwJWmARZKEnm/TOU84OvwHPvCR4iEQAAA=",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
-        },
-        // Export for Mission [476] - Fine-grade Aquatic Processing Materials
-        [476] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1XS2/bOBD+K1pe9iIt9KApyTfHTbIB7GxQZ9FD0MNIGtmEZdGhqKZp4P++oB62JD+6LXLooTd5OPzmm+G8/EYmpRJTKFQxTZdk/Eauc4gynGQZGStZokn04YzneDhM2qO7hIzdIDTJg+RCcvVKxo5J7orrr3FWJpgcxFp/V2PNhYhXGqz6cPVXhcMCk9xuH1cSi5XIEjJ2bLuHfBm6wgj93g37u2Smq3LTMqCOTQcUwgGF9pbIMozVmYhQx3a6t9zvsxAy4ZCdwXNcxnoxps21G16srl+x6DgwGjgwGvUcYO0bwBoXK56qK+CVG1pQtIKFgnhdkPGoiSoLjnG7qGGD+gCKYx5jhw8b3mP9gLrtVcm/4RRUnRmn0owFR2Du4HW8BuxxBRmHdXEDX4TUeD1B651n9uUfMRZfUJKxo2N2hgLtGWzDecWXt7Cp/J7kywxl0RpxTfKJq9Uig20LdQLZ82165FzPUrDbmeT6q5LQlKl+p0exeIHtXa5KrrjIb4HnbegtxySzUuIciwKWSMaEmOS+4kjuRY7ErBFet0jGOm4n8GaiUD+N9yCxwNMMiUXOnNcWq/MDn8UWYyUhm5ZSYq7eycsB6rv5epLtkccnrVdadf4slNjq6ub5cqFwW7XVA/cmxybyfSh34SoO/+b8uUSNS9wgDilz0IoS8C3qpKkV2RFaHnVSN0KWQJyQnUlmvFD/pNpGQcZPdXpqB/YEw/A8w0mWGfXVIc17ITeQ/S3EWgO1/eUTQvW7riR9WqDSnrQ1Nee5lj7yja5nl/5lm2QOX7uyQMt09+/rOt5e3tN3Kv3GVM2POq4f6FA2rBZKiryqzUZtX+gpZMW+8E/QHcDaXgd1hkvME5Cv7wX8QZRRtg9hT8Nl4V7hyJtjlVPUulqPkm/PWfJHrrdXOWerp3TBWqOni2aSKpRTKJcrNeMbPduc+mBYTdVWU8p6eOqPzlg42aFH4XAGXlwv9EbStrU2fz/ic8klJgsFqtTzVa88w6QevJkfXkqx/50yv1Pgx1KgfXP6g2/eaZ3M9cMo9Bwr9m3Pon7KLGCQWm4Uh9SLvdDBiOw+t72zWYuf9oK6fT69kW4fpaPA9oaddGJsYJnzlMeYKyPluRFJhHiFhaFWaLyAQvlnYRSlTCHGPw6N9wPItTGV4iVXwDPjCpWCXg92LsX0LsFc8RgyHUhNsFaYbESZ99Q07XC433j9zVR30kVNsF6WWn+Pym649Y12Jvll/lMchvRPj2Z9WUumOoxVBLvDuhnR+rMWH9RO5XhvlEOAkAYWiwAsSmNmRaPAsTwKDvMg8Dw6IjtzmG/+pck9FyKXIl4bU8iT118ndU79K/udSeY7ZVISIfgRhFaMmFp0FPlW4HuRxZI0cRl1HYS46mw1bkPxifrsszEZGzc8R+tWQoLG5LkExWPjQYoYi4LnS2OuuxWHTC+DHZtBFMXMZp4VQZJYlNrUimLGLJuxMB2FqR3YCdn9BzzfoCjPEAAA",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
-        },
-        // Export for Mission [477] - EX: Large Aquatic Specimens
-        [477] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1WS2/jNhD+KwZPLSAWEkU9b16vNxvASYM43W0R7IEiRzYRWXIoaps08H8vqEcs+YkNcijQvVHDmW++GQ1n5gWNK11MWKnLSbpA8Qua5izJYJxlKNaqAguZy5nMYXspuqtLgWISRha6UbJQUj+j2LHQZTl94lklQGzFRn/TYF0VBV8asPpAzKnG8UMLXazvlgrKZZEJFDu2PUA+DV1jRMHAwj5LZrKsVh0D6tj0DIXOqsgy4Lpn6PTVyHm3hRKSZUdS6hDfHySVtmafZLmcPkPZc+ztMPa8AWO/Szp7gPlSpvoDkzVvIyg7wVwz/lCi2GvT6If7uH3UqEW9YVpCzqHHx9+184cZJJ2pkv/AhOmmFA7VlR/ugZGd3+G2YHdLlkn2UH5i3wtl8AaCLjrXGspvgRffQaHYMTk7QoEOHHbp/CAXF2xVxz3OFxmosnNi/r1AsRvYdI/9ACrcbCw0fdKKtQ/P/Ii7Yv43W1/mupJaFvkFk3mXW+xYaFYpuIKyZAtAMUIWuq5JoOsiB2Q1CM9rQLFJzAG8WVHqN+PdKCjhMEOE0ZH7xmN9v+UzXwPXimWTSinI9TtFuYP6brEeZLsX8UHvtVZTIHNdrM3zlflirmFdN8ot97aIxup9KPfhag5/5PKxAoOLnDDhLhcRdsLExZQkAifMITixCfG4F0WCA9pYaCZL/XtqfJQovm/K0wTwSjCKjjMcZ9moMd2leV2oFcs+F8WDAeoayFdg9beRl6Bf32LKshK6t9lemgC7V9qKGnjqBKYxdZhzrYq8N9IOmF/J3Ejv5Mq0Adf+zbbQFXvqywIj23Fjuz03M1hALph6fgf+NfDHokqy3Yw0GsSPXhW24R1VOUStr3Wn5PqYp8Aj7qvKMV8DpRPeWj3zBsapBjVh1WKpZ3JlZpHTXOw+jnrtqFQz7Myh18YP9Go38KL96X1iEJuVoetSXTnewmMlFYi5Zroy89DsJEdq9EzN/WjJ/CyBHyuBt/7zXidMXZumzAmx7UYBpqEvcMQJwTbnwmcRScME0OZb1wrbvfX+VdB0w/sX1G+L1AvJicb4kamH0YSp9aAxOqcycykg15KzzKTDuGkUxquiygdqxnm0u3S4w30wNJ4qlTIO88z0oYO7F/Ui78zq5W0s9J/Z5LeD9M3j0xgbycRktU5of6C2Y9QcG/FW7VDh9sctDXwhfA97zE4wdX2BmU19zFMe+pQ5vhc5aGPtF1FwPIC5ZoorCepnEf0/iojzJCLgBtiHhGPKicCJlwps88T3vYjwJE3qTtXgthTvaRB8G03/jEczphYwGj9WTEs+MquqXEFejn75PB1/+Wt0e33x63BJJG4KwFOBwU4opgl4OPQiF4eR54aE0sj2Q7T5F4QLwRM9EAAA",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
-        },
-        // Export for Mission [478] - EX: Assorted Alchemical Materials
-        [478] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1WS2/bOBD+KwZPu4AE6EFJlG6q100DONkgyr4Q9EBJI5uILLok1TQN/N8X1MOWFNtpgxz2sDeKHH7zzfDTzDyjuFZ8TqWS82KFome0qGhaQlyWKFKiBgPpwyWr4HCY90eXOYocEhroRjAumHpCkW2gS7n4lpV1DvlhW9vvWqwrzrO1BmsWjl41OD4x0MX2bi1ArnmZo8i2rBHyeegGIwxGN6xXyczX9eZEYNi28ISRM2HUg/CyhEz1kWDbsodmzussuMgZLU8QsR3fH+UYd9c+MrlePIEcOPYmjD1vxNjv34A+QLJmhfpAWcNbb8h+I1E0e5Ao8rqs+uQl7hA17FBvqGJQZaeUgm3Ln8L444Q6PZJg32FOVSuUnoT/ynO43e27NS0ZfZAf6VcuNMBoo4/ONcb7t5DxryBQZOucHVO6T7QiBg77dH5gqwu6aeKOq1UJQvZO9NvnKHIDC79gP4Iiu52BFt+UoN1/qB/ijiePdHtZqZopxqsLyqo+H6ZtoGUt4AqkpCtAEUIGum5IoGteATJahKctoEgn5gjekkv1ZrwbARKOM0QmOnHeemzOD3ySLWRK0HJeCwGVeqcoJ6jvFutRti8iPuq9sWoFkii+1b8vq1aJgm1TNw/cOxHF4n0oD+EaDn9U7EsNGhdlaWDTkPqmR1PPxJRmJnED2wQo0iL3fS/NLbQz0JJJ9XuhfUgU3bfy1AHsCYbhaYZxWc7aq1Oa11xsaPmJ8wcN1BeQv4A23+1PqE8lKB1J/zt2Wy0OtgNdgfrLiRK8Wv3MdcsdXF/CCqqciqefRviN12m55z6ycPxwb3Dgd9JkxOGI1Z1g21OeAs9x9yanfI2Mznjr7LRa40KBmNN6tVZLttFdw24PpjJu5oVatG1JLwYF90hVdQMvnPbZ8Fzj1r2+rye9cG7hS80E5ImiqtadSw8TUzX9mGh+WBv/S+BNEjj15meHtd2oZnmZhVMny0zwiG9i2yNmaGWh6eOcZB7FjgUB2n3ui1Y3cN7vN9q6df+MhgUMe8TBp0vYsq6okI9c5LOk0qobVjL7XIIuc6gUy2ips6K9tQbxhtfVwOzYwOSF06HBHc9zRDuuRUEzSEpdnfpYQu+VWcnbGeg/M4kfOt+b+13ySLd6Z66z2iR02AG7vqeX7fbB7Jh+B1qjxHedwMOmC0Vu4gICMwxS3ySFR/wisFOaFo3WWtyO4j0OyOfZ4u9oFkvJhYJ8FpfZGjZaB7MrqkAwWsrZL58W8Z//zG6vL34dt2VCCmz7hWUWAVATh8Q2Cckcs3DSIsDEczKw0O5fW+14Ib4NAAA=",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
-        },
-        [479] = new FishingTools
-        {
-            // Need Info on this one
-        },
-        // Export for Mission [480] - EX: Foodstuff Emergency
-        [480] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACs1X247iOBD9FeTnZJWLc3HeGJbubQl6WwOjXak1DyapgEWIGduZabbFv4+cCySBpmHUI+2bKbtOnarUjVc0LBQfUankKF2i6BWNc7rIYJhlKFKiAAPpywnL4XiZNFcPCYqckBjoSTAumNqhyDbQgxy/xFmRQHIU6/f7CmvKebzSYOXB0acSxw8NdL+drwTIFc8SFNmW1UG+DF1ikKCjYb1LZrQqNg0DbFv4HQqNFs8yiFVL0W4/c943y0XCaPZGSG3H9ztBxbXaHZOr8Q5ky7DXY+x5HcZ+E3S6htmKpeoTZSVvLZCNYKZovJYo8uow+uEpbhuV1KhPVDHIY2jx8ft6fjeCTqMq2H8woqpKhcZqX9vpxd+ttecrmjG6lnf0OxcaoCNo3HGNrvwzxPw7CBTZOkjnctkPdQq0DDbx+8SW93RTOjrMlxkI2RjRHztBkRtY+IR9Byrc7w00flGC1pWmIz/nsx90+5CrginG83vK8iYepm2gSSFgClLSJaAIIQM9liTQI88BGRXCbgso0oE5gzfhUv0y3pMACecZIhO9cV9ZLO+PfGZbiJWg2agQAnL1QV72UD/M17NsTzw+a718VSXITPGtrleWL2cKtmVnPHKvk2goPoZyG67k8CVn3wrQuCiObd+3PWJalheaGDA1aRjHZhJQxyY49T0CaG+gCZPq71TbkCh6rtJTO3AgSMjbDIdZNqhU+zQfudjQ7C/O1xqo6Rj/AC1/V0WobyUo7UlTjrWowsF2oFtOozxTgufLW9Qtt6U+gSXkCRW7mxH+5MUiO3DXL+ZsA6LXSaYsP1zpuv/DMtCUvrRkrq1lHQuOTw4Gjv7VTw4GUppJuKDZce165S8S5oJtqzg0blSS3+Ns4Dk6npWJG93t6N7ucK2uy3OYKhAjWixXasI2ei7a1UW/bssVqBDV4NWH1oQ5M0bcwCP9+XlxF9HrS9NAm0r5DN8KJiCZKaoKPZv1ftQvn+uq5OpiuC7nr8vZ65Kz/eo04a5NmGsz4zelQPPN8Y3fvNWkrYUV4sTFJo7BNnHsBiYhbmim4Ftx6i88qpv016ZL1zv080FQNernV9Tu2NgLwgs9e8p5Lni8Hoxonuw6jdu+FJ6HBHLFYprpmGhb1YPhhhd555lmQPpLkdtdUENtqRApjWGW6e57diPGpwXVXw29vYH+N38tjoP+l8f77AfdaslIR7UMaHvg12NeHyvx8dm57G1lWuASTDycms7CJyamLjFpbKUm9iwvxC4mgReXmVbh1hSfcWh9HYz/jQZ3nCdSFWk6GG9ALCGPdeq0DNgJ8VxMXdPCVmLihQ1muCDYdCzb9lwSegkO0P4n1PWsUnkOAAA=",
-            },
-            AmountRequired = 18,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-                ["Arsenic Axolotl"] = new List<uint>()
-                {
-                    45836,
-                    45883,
-                },
-                ["Etheirys Croppie"] = new List<uint>()
-                {
-                    45839,
-                },
-                ["Moon Mora"] = new List<uint>()
-                {
-                    45840,
-                },
-                ["Sunny Jellyfish"] = new List<uint>()
-                {
-                    45837,
-                    45884,
-                },
-                ["Universal Darkfin"] = new List<uint>()
-                {
-                    45838,
-                    45885,
-                },
-            },
-        },
-        [481] = new FishingTools { },
-        [482] = new FishingTools
-        {
-            // Need Info on this one
-        },
-        // Export for Mission [483] - Aquatic Inspection I
-        [483] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1XTW/bOBD9KwbPJiBKpET65nrTrAEnG9RZ9BAUC0oa2URk0aGottnA/72gZMWSv9IGAXYXm5tMzrx5M3qaGT+hcWX1RJa2nGQLNHpCF4WMcxjnORpZU8EQucuZKmB3mbZX0xSNfC6G6MYobZR9RCMyRNPy4nuSVymku2Nnv2mwrrROlg6sfvDdU40T8iG6XN8uDZRLnadoRDyvh3weusYQUc/De5HMZFmtTiRGiUdfYNSC6DyHxLaZUOKRrpn/MgttUiXzE0SIH4a9GtOt20dVLi8eoewEZnuMGesxDtt3IO9hvlSZ/SBVzdsdlO3B3MrkvkQjtq1qyA9xu6hii3ojrYIigQ6fcN8v7FfQb12N+hsm0jbKaKPue/t79Q+23rdLmSt5X36UX7VxAL2DNp1g2D//BIn+CgaNiCvSMWmH3EmgE7Ct3we1uJSrOtFxscjBlG0Q97JTNAoijx6w70HxzWaILr5bI7cfnqv8rZ5/k+tpYStllS4upSraemAyRLPKwBWUpVwAGiE0RNc1CXStC0DDBuFxDWjkCnMEb6ZL+2q8GwMlHGeIMDpx30Ss73d85mtIrJH5pDIGCvtGWe6hvlmuR9keZHw0em3VCGRu9dp9r6pYzC2s60a5474V0di8DeUuXM3hz0I9VOBwUeZJ4UcEMAAnmPIgwZwHAeaMhZCxEDwKaDNEM1XaPzIXo0Sju0aeLoFngkKcZjjO80Hjuk/zWpuVzH/X+t4BtR3jM8j6d/MRutsSrMuk/Ry3Rw0OJZFrOa3z3BpdLH7F3Qs67jNYQJFK8/jLCL/pKs6fufcs/FA8G+z4nTTpcThidWvU+lSkiPnBs8mpWD2jM9G2dk6t48yCmchqsbQztXJjgjQX+zKuF4TKNHPIPXQa7pGuGkRMHA7WMzPSDfe2n7TC+QQPlTKQzq20lRtVbnvYV9PPieantfEugVdJ4LXvvNOzIkFTmQqOPS+IMI1ogmOPZ5iKzONcstijEdp8aZvWdsO8ez5o+tbdE+o2MMoit4ycamFXWhfflmrd62DkXGGmKRRWJTJ31XBRGoPxSldFz8zFFvvbQdDf1LiLVJlMJjDPXRs6vqMywV7YkdhmiP41K/du4r16zjlndzJxVa0L2p1823nnHpvjndkx3XY0BgEnkDGGSRbHmDIZ4lgQhlkALGIyECxO0GZ4oCF2ZgzOqkKawTzRZq108a6k/4eSJJOM0DDBEY1DTCHiWLAwxSISCQ88xhLqHVFS/XfnvJLGBaz2M/lHhfRfVE772lv1HyrJlcI//S7mFvJcmsFnbVboqI52oinbKHvSkoUu/rqjPMDky2A8GowfKmlVMpgWpfsjoXQxmL5OfYQIwZI0wYxkKaaMRTgGn2AGaeLL1PfiWB5V35k+dqPzx3VVDuZVnlVG9bf6dwG+CxD1BmmWCc4llmlGMU0yhmUoGY5JxgNCgfNM1Mtag7vNqabin6PS7bCCM0ZYgn1CE0wFz7DkAJiIKBUhAZ/GEdr8AA7htI3cFAAA",
-                "AH4_H4sIAAAAAAAACu1XTW/jNhD9KwbPJiCJ1OfN62ZTA04axCl6CBYFSY1sIrLoUNTupoH/e0HJiiVbdnaDHLZobjI58+bN8HGGfkaTyqgpK005zZYoeUYXBeM5TPIcJUZXMEZ2cy4L2G+m7dYsRYkXxWN0o6XS0jyhxB2jWXnxXeRVCul+2dpvG6wrpcTKgtUfnv2qcYJojC43dysN5UrlKUpcx+khn4euMeKw5+G8Sma6qtYnEqOuQ19h1IKoPAdh2kyo67hdM+91FkqnkuUniLheEPRqTHdun2W5uniCshPYP2Ds+z3GQXsG7AEWK5mZT0zWvO1C2S4sDBMPJUr8XVWD6Bi3ixrvUG+YkVAI6PAJDv2CfgW91lXLf2DKTKOMNuqht3dQf7LzvluxXLKH8jP7qrQF6C206ZBxf/0WhPoKGiWuLdKQtIPISqATsK3fJ7m8ZOs60UmxzEGXbRB72ClKSOjQI/Y9qGi7HaOL70az3cWzlb9Ti29sMytMJY1UxSWTRVsP7I7RvNJwBWXJloAShMbouiaBrlUBaNwgPG0AJbYwA3hzVZo3491oKGGYIcLoxH4Tsd7f81lsQBjN8mmlNRTmnbI8QH23XAfZHmU8GL22agSyMGpj76sslgsDm7pR7rnvRDTR70O5C1dz+LOQjxVYXETCkJOURthJBcMUgOHISTkOY9/lWRwR4jloO0ZzWZo/MhujRMl9I0+bwAvBOD7NcJLno8b1kOa10muW/67UgwVqO8ZfwOrfzSW0uyUYm0l7HXdLDQ51Q9tyWueF0apY/oy7Qzruc1hCkTL99NMIv6mK5y/cexZeEL8Y7PmdNOlxGLC603JzKlLoe+TF5FSsntGZaDs7q9ZJZkBPWbVcmblc2zHhNhuHMq4fCJVu5pD96DTcga5KQj8+HqxnZqQd7m0/aYVzC4+V1JAuDDOVHVX29XCoph8TzQ9r40MCb5LAW8+807PCIGNeCB6OiRthChHHUcZTzDlljGcBESFD2y9t09q9MO9fFpq+df+Mug2M+qF9jJxqYVdKFd9WctPrYO65wsxSKIwULLfVsFEag8laVUXPzMaOD18HpP9Si2ykSmdMwCK3bWj4jerH/itvJH87Rr/Mk3s/8d4856yzXZnaqtYF7U6+3byzn83y3mxItx2N+VQQwoIAE0o4pq5HcJSmgP1QpL4TCQHMRdvxkYb8M2NwXhVMjxZC6Y1UxYeS/h9Kin3iCN+JMSPgY8qcELMgDDAn4IjAc1nq8gElRU54OoFplRvQo4kuoZBC/jpS+i9qpz34Vv/HWrKloGdOQ5VrKUZzALFCg0ray6ZsoxyIixWq+PueRgR7X0aTZDR5rJiRYjQrSvtXQqpiNHub/nhEwU5M7BPuYZpRjiPKHRxHns8dQokb0EH9RWc6GVtDYZSu1qNbWCqjZNm/UB8i/BAh6oiQAfjC5Sn2WSgwFVmAY8h8HFBOmRMLEUZu/WRrcHc51VTcc1S6EzvmnHCPYCBRjCkXHo49AJwSIUSa8Yz6Htr+C4GLjjLiFAAA",
-            },
-            AmountRequired = 4,
-            UniqueFish = true,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-                ["Culter Arsenici"] = new List<uint>()
-                {
-                    45807,
-                },
-                ["Lamentorum Regotoise"] = new List<uint>()
-                {
-                    45808,
-                },
-                ["Lunar Anemone"] = new List<uint>()
-                {
-                    45806,
-                },
-                ["Lunar Scorpion"] = new List<uint>()
-                {
-                    45759,
-                    45773,
-                    45794,
-                    45804,
-                    45815,
-                    45865,
-                    45895,
-                    45923,
-                },
-                ["Moonwhip"] = new List<uint>()
-                {
-                    45760,
-                    45774,
-                    45795,
-                    45805,
-                    45816,
-                    45866,
-                    45924,
-                },
-                ["Polypus Sulfuris"] = new List<uint>()
-                {
-                    45809,
-                },
-            },
-        },
-        [484] = new FishingTools
-        {
-            // Need Info on this one
-        },
-        // Export for Mission [485] - Fine-grade Water Filter Materials I
-        [485] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1WTW/bOBD9KwbPEiDqW7q53iQ14KRBnUUPQQ9jaSQTYUSXpLrNFv7vC0qibfkjKYIc9yRqZvjmDTl85G8ybbWYgdJqVtUk/02uGlhxnHJOci1bdIhxLliDe2dpXfOS5H6aOeReMiGZfiE5dchcXf0qeFtiuTeb+G2PdStEsTZg3cA3ow4nTh1ys3lYS1RrwUuSU88bIb8O3WFkyWiG9yaZ2bp9vlBYSL3wDUYWRHCOhbaVhNSjh2H+2yyELBnwC0SoH8ejNQ6HaddMra9eUB0kjo4YR9GIcWz3AJ5wuWaV/gSs420MyhqWGoonRfJoWNU4PcU9RM0G1HvQDJsCD/jEx/Pi8Qr6dqpk/+IMdN8Z59osTk/A/KPtCAawhzVwBk/qGn4KafBGBltd4IztX7EQP1GSnJo1u0AhHCW0y/mJ1Tfw3NU9bWqOUtkkZu9LkgeJF56wH0Gl261Drn5pCcM5NBvxIJb/wGbe6JZpJpobYI1dW5c6ZNFKvEWloEaSE+KQu44EuRMNEqdHeNkgyc3CnMFbCKXfjXcvUeF5hsQlF/x9xs6/57PcYKEl8FkrJTb6g6o8Qv2wWs+yPan4bPYuqm+QpRYbc3xZUy81bjrd3HMfmmgqP4byIVzH4e+G/WjR4JKy8gB9im4R08INYVW4K0jRharK4sz30ioJyNYhC6b0l8rkUCR/7NvTFLAjmGWXGU45n/RTj2neCfkM/LMQTwbICsg3hO7f2BXq3VmsgCu0Z3NwmgLtKR1MPXxIEyNMFnOppWjqD0D1ggPUBdbYlCBf9rL1hwh/iXbFjyvtI/w42wWc0D4NGXE4E/Ug2eZSpiTyg13IpVyjoFeyDXGmt6eVRjmDtl7rBXs2dwztHcdN370uWtlfYmZwIM9nNDhIouz0Vn7lgjUvA6s+ts2+4o+WSSyXGnRr7jnz9LjQe3/WS2/3xv8t8K4WmL9zzw8UjhYxLYuocjNagBuuMHRTHzPX9yEokjgJE5qR7XcrccPz9HFn6FXO/PeaOmjaY5hG3yfTfHLNGnRrCSVOvoFGOblm3HxuzQ8DribzseSmUeAX2SpwKa4CN/So50IZlG4aVckqDMMyrYBs/wPTujovmgsAAA==",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
-        },
-        [486] = new FishingTools { },
-        [487] = new FishingTools { },
-        // Export for Mission [488] - EX: Coexisting Species I
-        [488] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1XbW+jRhD+K9Z+aiU4sbALLN98rpOL5KTROb1rFd2HBQZ7FQy+Zbkmjfzfq+XFBgyJekqlSr1veHb2mWdm583PaF6qfMELVSySDQqe0TLjYQrzNEWBkiUYSB+uRAanw7g9uopRYPvMQLdS5FKoJxRgA10Vy8coLWOIT2Ktf6ixrvM82mqw6sPWXxWO6xvocn+3lVBs8zRGAbasHvLL0BUG83o3rFfJLLblbsIxgi0yYOTSPqMWJE9TiFTrCcEW7qrZr7PIZSx4OkEE267bizFprl2IYrt8gqJjmA4Y0z5jt30D/gDrrUjUey4q3lpQtIK14tFDgQLaRNX1z3G7qKxBveVKQBZBh487vOf2I2i3V6X4CxZc1ZkxlmaufwZmDxLEacDutjwV/KG44N9yqfF6gtY7x+jLP0KUfwOJAqxjNkGB9Ay24XwvNpd8V/k9zzYpyKI1ot8+RoHjWeSMfQ/KPxwMtHxUkjd1qB/iLl//yfdXmSqFEnl2yUXWxtbEBlqVEq6hKPgGUICQgW4qEugmzwAZNcLTHlCgAzOCt8oL9d14txIKGGeITDRxXluszk981nuIlOTpopQSMvVGXg5Q38zXUbZnHo9ar7TqBFmrfK/LV2SbtYJ91TdP3Jskmsu3odyFqzj8lomvJWhcxGhCkxA7ZhRGxCQec02OOZi2w3CSELCSOEYHA61EoX5NtI0CBfd1emoHjgQZm2Y4T9NZfXVI8yaXO55+yPMHDdQ2kM/Aq991EerTApT2pC1HLboTO5CDMr0W2fFI1+c7y0DX/LEjsy0t021/7L6W9zHYO7cR92CwrWEaZrU7BNueryPfOLFWMs82b+BGTXngBv1nbtR8R/ygr/qxgg1kMZdPr7pyBvFLXobp8TV7KrbLjgqnSE2q9EiMaN1JsZ+y5FHbOapM2eopvWCt0dP1O08UyAUvN1u1Ejs9R3F9MCzsaoMqZT2o9UdnBNXTgbLhqvHi7qLXnbaltrXzEb6WQkK8VlyVenjrfWpYUINX8thovg60LGcqG8YUf7z5v/bmnbYdxZELmLmmSwg3SYKZGZLQMhm2fJvaLlg4RIcvbd9udu77o6Bu3ffPqNvDCfWpP93FF3nIUzWrbnT7OH4pNlcxZEpEPNUB0YZqhfkuL7OO2tj+TdlwZXL626xuMetSJjyCdapbUesGo69sivRgoP/M/5DT3P/uaa8va8lCR7UKaHf+N1Nff9bik9pY6nbSDEPoEtvxTDv2mUmAWSbziGd6DvMJtyNwsYUOxnkaudMOXPKUR0pEs4uUS0h+ZNP/Jpsii3oWppbpQxibhNHEDD2KTQ7EtbDj+B71qqZV4zYU74nvf5ktfw9mixweRaFEtpnp/VpAMbua/fRhOf/0x0xmm5/7m63HwaWcENPjPDIJptxkCaEmZlYcWzEAxC46/A13tRnrAREAAA==",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
-        },
-        [489] = new FishingTools { },
-        [490] = new FishingTools { },
-        [491] = new FishingTools { },
-        [492] = new FishingTools { },
-        [493] = new FishingTools { },
-        [494] = new FishingTools { },
-        [495] = new FishingTools { },
-        // Export for Mission [508] - EX: Processed Aquatic Metals
-        [508] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACtVXXXObOBT9Kx49ww7CAgNvjpukmbHTTHFmHzr7IOCCNcHIkUQaN+P/viM+bMB2s+142u6budI9OudIV1d+Q9NS8RmVSs7SDAVv6LqgUQ7TPEeBEiUYSA/OWQF68C4ruIAF5/EKBSnNJRhNQtJOv0tQYHu+gR4E44KpLQqwge7k9Wuclwkkh7Cev6vxG8Q3VP2wq6U0jusZ6HazXAmQK54nKMCW1UP+PnSF4U96Gda7ZGarcn1woieMYIsMGHkDRi0Iz3OI1Xkc3M2y3yfFRcJofgYP267bs5w0aTdMrq63IFtHCbacgQDH6Qlw2y2hTxCuWKquKKtk6IBsA6Gi8ZNEgdOY7HrHuF1Uv0F9oIpBEUOHjzvMc/uG2m2qYN9gRlV9UE6dOtc7AvO8Pti4AVuuaM7ok7yhL1xovF6gVTc2+vHPEPMXECjA2rMzFEhvwdbOK5bd0nWle1pkOQjZLqL3PkHBeGKRIXu7B+Xtdga6flWC9kp1T0Dvy5KHX+nmrlAlU4wXt5QVrdUmNtC8FLAAKWkGKEDIQPcVJ3TPC0ANwnYDKNA+ncCbc6l+Gu9BgITTDJGJzozXK1bjBz7hBmIlaD4rhYBCXUjlAPViWk+yPVJ8cvVq1g0XMVRF95Vu2s2uD1Go+EaXOCuyUMGmumoPgpqDNhWX0dGFq4g9Fuy5BI2LiGUR4sXETBIHTOLB2PTiyDNh4tru2Ce+gwnaGWjOpPqU6jUkCr68VatpAXuCvn+e4TTPR3XqkOY9F2uaf+T8SQO1l8zfQKtvHZeg9uXSa1zNYNfbJlTDEzzRl1eLGSrBi+wCqNa4gzqHDIqEiu2hrM8gLNkaxKDwF6zYD+kL8y/LQLqJnZqr4/35rp5+itwHXkb5eyb2Em3X3+e9a9TZzJ4ZZ5IX9LUr+UhCjfcoYSnYpjazdaCO/JCsiWNrQ+rMHxTWyz2S9iu2s6WgL4tpqkDMaJmt1JytdWPH9cDwFqlefaWoXw76R6cn1u3K8YdPoe++rfRzrL3U20L9DM8lE5CEiqpSvyb0e+9/Xr2XAP6TK+9E8h9VUf81/bdXw+Ohe44jgiMX2yaJ49QkjhWZUWRhM3U8O47tyCZWgnb/tO2z+bf0ZR+oO6j+rvt10y+vwsXIHD0IHoOUkIymzyVVLB4tQNFcjszRR6Av29FU0VemdO/vUMIxjhI7dkyM08gkvodNL0rATCI7Sid4TFPsod2/sM5WQT8OAAA=",
-            },
-            AmountRequired = 0,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
-        },
-
-        // Export for Mission [509] - EX: Refined Moon Gel
-        [509] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1Xy27bOhD9FYNrERD1lneub5oEcNIiTtELBF2MxJFNhBZdimqbW/jfL6hHLDl2ggZZdJGdRA7PnBkdzox+k1lt1BwqU82LFZn+JmclZBJnUpKp0TU6xG4uRIn7Td5vXXIy9ZLUIZ+1UFqYBzJlDrmszn7lsubI98vWftdiXSmVry1Y8+DZpwYnShxyvr1da6zWSnIyZa47Qn4eusFI49EJ90Uy83W9ORFYwNzgBUY9iJISc9NHEjCXDc28l1kozQXIE0SYF0WjHAfdsY+iWp89YDVwHB4wDsMR46j/BnCPy7UozAcQDW+7UPULSwP5fUWmYZfVKHmKO0RNO9TPYASWOQ74RIfnonEGvf6oFv/hHEyrjN7r4WnvIP9+d/p2DVLAffURfihtAUYLfTi+M16/wVz9QE2mzCbpmLSjxEpg4LDP3wexOodNE+isXEnUVe/EfmxOpn7sBk/Yj6CS3c4hZ7+Mhu7i2czfquVP2F6WphZGqPIcRNnngzKHLGqNV1hVsEIyJcQh1w0Jcq1KJE6L8LBFMrWJOYK3UJV5Nd5njRUeZ0goObHfemz293yWW8yNBjmvtcbSvFGUB6hvFutRtk8iPuq9sWoFsjRqa++rKFdLg9umUO65dyKa6behPIR7yvSn2GQgzEchZfXM/k1dVp/qHuFLKb7XaJkR8HI3izGiSRJwGiSY0yTjjMZJxsKwCNENM7JzyEJU5lNhWVZketcK3KbgsTyEqa0Gp6JcGpQS9GQJcqPKyY1CC3qt9AbkhVL3FqavOF8Rmne7XqF5vMsFyAr7u91t2hj7W94ttVkMWGwrWY+5NFqVg5b48nHXHxxf4ApLDvrhDXg1wP+oOpOHkbYWXpQ+GuxpnzQ5Rm1odavF9pSnOPT8R5NTvkZGz3jr7OzdmBUG9Rzq1dosxMY2JdZuHF6aZhypddv17MOgvB+p4X4cpk/b+DMd2Y4SffXqZXaD32uhkS8NmNo2RjurnNDeC1r6U8m8S+DPJPDab95XvbmqSzM855BPpXz4UuHXNZbXqhlaZz9ASCu1XmmD6pj5jCc8cGmWcKBB7iJNwWeUFVkYgMtYxDOy+9aXx24avntcaCvk3W9yUCo973SpvFDbrShXk0Vdrgp7bNgc2HPpveRYGpGDtDm13lqD2camYW92bDwO08MBxx8Pm4l1XOsCclxKW9seYwlfmOvCnUP+mt+E5RY0FrW8gJL3LOx4Fx7jMZJRlz9/9DPgjoaWV7d7e/hD76j5RsMe3jVt+9gu782OXahhcy94EOYMqB9lAQ2yKKNZCh5F3+NpkHos4TnZOU/l+UwAV0qVUpjJHPT2zaX5ai0e1/S7NP9aaSYQhVBARCPwGA0C5tEs81xaJGmY+Mj83IVj0mTp6QAWdQl6cgMCNlC9a/Ndm/R12vT9NItzcGnkezENWBJTKPKculnKIQbuR2HUdP0Wt6N4F7rpt8nZv9PJDRaiRD6xpXJyjnL8x5WnmRdzXtDCTXIaMDeh4GYZRT/i4Gd5HGeM7P4Hk8nM9cwTAAA=",
-            },
-            AmountRequired = 0,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
-        },
-
-        [510] = new FishingTools { },
-        [511] = new FishingTools { },
-
-        #endregion
-
-        #region Critical
-
-        // Export for Mission [542] -  Edible Fish
-        [542] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1WS2/bOBD+KwbPEqD36+a4bjaAkw2qLPYQ9DCiRjYRWnQpqm028H8vqEcs23IqFOml2BtNDb/vm4dn5oXMayUWUKlqUaxJ8kKWJWQc55yTRMkaDfJBlGoBJUV+KwTdkKQAXqFB9KMVK/HwKO+f3OQkcaL48tt7yYRk6pkktkFuquV3yusc88O1xtm3HN3LF9IcHH1q8IPIINe7h43EaiN4ThLbso6Q34ZuMOJwkkbrpyIXm3rbK/NsyxuTNoGoRxOcI1UDQHvKc+fnMoXMGfAeOLC9ScBe9/wjqzbLZ6wGwvwTT31/kqdBn1x4wnTDCnUFrPFXX1T9RaqAPlUk8bt0BdE53xS2uGO7B8WwpDjQH5ziBdMy5fSQkv2HC1BtifYqT1Gdifl3O9SHDXAGT9VH+CqkBj666MPiGsf3n5CKryhJYusk9Fq8Scx9Qq7Y+hq2TYTm5ZqjrHo2XV05SdzQ8s7cm0QR7fcGWX5XErpWo1P8INJvsLspVc0UE+U1sLIPpGkbZFVLvMWqgjWShBCD3DXiyJ0okRgtwvMOSaIjN4K3EpX6Zbx7iRWOKyQmufC9ZWy+H/SkO6RKAl/UUmKp3snLE9R383VU7ZnHo+yNVVs4qRI73TBYuU4V7ppWf9DeFddcvo/kIVyj4Z+SfalR4xInzj2gRWBCUQSmFwXUzLzMNuPIdQs7zGxqAdkbZMUq9XehOSqSPLblqR147RZ+HASXNS7VBpl8rmZXwLnGuxNyC/wvIZ40Qt97/kVofut7Lb9xx7ND3aN6m1RJUa5HrCx3YLXCNZY5yOdLhh9EnfFxQieIXw0usA1NLlO1Vg+S7S4xhb7jvppc4joyeoOts9O1NS8UygXU641asa2eHnb74bTomkWllu3Y0odB/2w7mh+fD+w3ZqneHvq/e5/eT/ilZhLzVIGq9cjS68n/Of+Tcj5oKRiFNMgCNP0YQ9PLPceMrNwyoXAj6loY+XFM9p/7ntKNxMfXi7atPL6Qk/7ihpf7y60Q5eyK16iA8aNmaJ9Hp9/Ex4PWBAFLxShwHSmtoDWYb0VdDmI7stjrNngSOVfvG4eARVpPLQugmHLYDfzzx/aiwYrg7w3yu/f9yXv9YVj98ohKv8FO3yx0VJuADodWN6r0sb0+mJ3XtOV4RyVoO7lruzGYDi1s07Ms38wgDkwAihm1ItvL3aYEW+hO5aPvOTNztpCsSf7n2TJnGcdZU4fHJQ40yCInNy0v9E0vs0MTHIxMN6RB7BdZSKlD9j8AhrHG/EAOAAA=",
-            },
-            AmountRequired = 3,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-                ["Moon Bluetail"] = new List<uint>()
-                {
-                    45937,
-                },
-            },
-        },
-        [543] = new FishingTools { },
-        [544] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1WS2/jOAz+K4XONuD365Zm206B9IE6gzkUe1AsOhaqWBlJbidb5L8vZFuJnSYNdlAs9rA3m6Q+fqQoku9o0ig+xVLJablE2Tu6qvGCwYQxlCnRgIW0ckZr2CuJUd0SlHlJaqFHQbmgaoMy10K38upXwRoCZC/W9tsO647zotJg7Yenv1qcKLHQzXpeCZAVZwRlruOMkD+HbjHSeHTCOUtmWjWrE4EFrhOcYWRAOGNQKBNJ4Dru0Mw7z4ILQjEzAJEbjACC3uyayupqA3LgKDxgGIYjhpHJOX6BvKKlusS05akF0ghyhYsXibKwz2KUfMQdoqY96iNWFOoCBnyiw3PROGOeOSroXzDFqqsE4/XwtHeQb78/Pa8wo/hFXuNXLjTASGDC8a2x/AkK/goCZa5OkvEZjDyYhF3S5Q1etZFN6iUDIQ2qvk2CMj92gg90R1DJdmuhq19K4P5l6VTPef6G17e1aqiivL7BtDYJsF0LzRoBdyAlXgLKELLQfUsC3fMakNUhbNaAMp2JI3gzLtVv4z0KkHCcIbLRCX3nsdXv+eRrKJTAbNoIAbX6oigPUL8s1qNsP0R81Htr1RVIrvhaP1BaL3MF67YT7rn3RTQRX0N5CPeR6RtdLTBV15Qx+Yn+qanlQ2MQvtf0ZwOaGQrCNCj9yLNx5IV2EJDETtPYtf3S8RzPcZ3YSdDWQjMq1UOpWUqUPXcFrlOw6wdhGkWno7xSFVCxkReXmDGNd8/FCrNvnL9oBNNdfgBu/7Vcgtp16hIzCVbfuXulDs/08F7UJTBwY921DGauBK8H4+78cccfHJ/BEmqCxeYLeLXAf/BmwQ4j7Sy8KN0Z7GmfNDlGbWg1F3R9ylMcev7O5JSvkdEn3no7/SwmpQIxxc2yUjO60gPI7RSH76VdNRrRTTj9MWjlXdMN048z+ZPxqvcC06lMXT3Bz4YKILnCqtFTTy8eJ4rtTPH80xr5/87/nTs3HW7Km1oNz1nooWab7xJ+VFDf83YDnbxiyvRbNQ900AlxGHiR6yQ2JpDYASx8O40KYpeJ5xWJS4qSBGj7p2mF/Wr7vBN03fD5HR20xSA83RbvOK8ZXVbq4pFBwUdzwP0su7cEakULzHRKtbPOYLLSWRiadZ35IKf+eHNMtKdGlLiAnOnmteMenlnSwq2F/jM7fr7GAsqGfcM1MSz06hYe4zEqmz5hvtXe3S2Z82kFxcvu+gb7vTNaU357wOdveK0lrfv2qoZTux/T+rMT782OPathES88lyycxC7D0rGDwHXslMShDU6JiyQqMURuW8QdrinDRmEF5KKt3BGe74ZeUSbEToMitoPAj+3EA2yHZRxjl0DiFRht/wa46t9DWg4AAA==",
-            },
-            AmountRequired = 3,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-                ["Moonlight Pleco"] = new List<uint>()
-                {
-                    45945,
-                },
-            },
-        },
-
-        #endregion
-
-        #endregion
-
-        #region Phaenna
-
-        #region D Rank
-
-        // Export for Mission [965] -  Aquatic Foodstuffs
-        [965] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACrVWy27bOBT9lYJrCdCDomTtXDfJBHCTIE7QRdAFJV1ZRGTRIam0nsLrfsJg0M18Qfezmb/poJ8xoCTGku04zSDZSfdxeO7l5SG/oHGt+IRKJSf5HMVf0FFFkxLGZYliJWqwkHZOWQUbZ2ZcpxmKvWhkoQvBuGBqhWLXQqfy6HNa1hlkG7OOX7dY7zlPCw3WfHj6q8EhkYVOlleFAFnwMkOx6zgD5MPQDcYoHGQ4T5KZFPXikcKw6+AnGBkQXpaQKlMJdh23H+Y9zYKLjNHSABAXDwBwF3bMZHG0AtlbKNhiGAQDhsT0nN7CrGC5ektZw1MbpDHMFE1vJYqDrosk2sXto4461AuqGFQp9PiQ7Twy7JhnUgX7HSZUtZNgVt3O9rb67XfZVwUtGb2Vx/SeCw0wMJhyfGtov4SU34NAsaubtG+USaS3vLeg6d9bNj+hi6bQcTUvQUiziN7cDMV+6OAd9gOoaL220NFnJWh30HTnr/jsE12eVqpmivHqhLLK9MN2LTStBbwHKekcUIyQhc4aEujfP/5CVguwWgKKdV/2wE25VP8X7kKAhP38kI0e8bcLNv4NndkSUiVoOamFgEq9TI1boC9V6V6uO/XuXbyJaodjpvhSn1VWzWcKlo0obqh3AzQWL8K4j7ZL9BNbJJSpY1aW8oD/sq7keW0Qrit2V4MmhnCUBj5OE9t1nNTGNE/tJMSpHbokdUZhQkIMaG2hKZPqPNcsJYpv2tnWHXhQhpBEB4r88f3rj+9//vz2z89vf2u4My4WtPyN81sNYGTmA9Dmvz252itB6TLMGe5MbaOwG2qdMskzJXg1f0664/fSpzCHKqNipRG6wAcFyWkpwXoe8LWEd7zu4k1gazF1DtI8oqtpAza1PBryK3z3JF9LuBJsOWTVWvazCgNPV9OGPMZrEPR8Zl26PlXjXIGY0HpeqClb6KvMbR3bx615tNSivSv1R+9S2KP8fhiMdq/SA/e2fnAY1TNzegl3NROQzRRVtb5O9Ytme3h/bUafO4qDwNedon7U60/GK42A2fPdB97hPZ91gjnhdaX6eRY6r8rVtYQPBVRnvHnaju8pK/WomUnrCWuI88z1SWbnXoBt7NLAjiLftwlxKEkojPyAoPVHo6zdm/nmwdCKq/5v9bwT0psRCex3H9+M72qqWPrmmPNMqjrP5VDXfUzcKE9CO0qIZ+OAhnZEI89OKY0yH2PskwSt/wNQWc7MHQwAAA==",
-            },
-            AmountRequired = 5,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-                ["Eelsplorer"] = new List<uint>()
-                {
-                    47423,
-                    47432,
-                    47441,
-                    47449,
-                    47457,
-                    47520,
-                },
-                ["Lehr Brotula"] = new List<uint>()
-                {
-                    47424,
-                },
-                ["Macrobrachium Phaennense"] = new List<uint>()
-                {
-                    47422,
-                    47431,
-                    47440,
-                    47448,
-                    47456,
-                    47519,
-                },
-            },
-        },
-        // Export for Mission [966] -  Efficient Large Specimen Procurement
-        [966] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACuVWTXObMBD9Kx6doQMYMHBzXDfNjJN6Ymd6yOSwwGI0wciVRJs04//eESDbYCdxO7n1Bvvx9u1qd6UXMq4km4CQYpKtSPRCpiXEBY6LgkSSV2gQpZzREvfKVKuuUhI5QWiQOaeMU/lMItsgV2L6lBRViulerOy3DdY1Y0muwOoPR33VOH5gkMvNMucoclakJLItq4P8NnSNEY46Hta7ZCZ5tdYMXNty36GgvVhRYCIPHO1DM+f9sIynFAoN4NtuB8Btzb5QkU+fURwE8noMPa/D0NdFhkdc5DSTF0BrnkogtGAhIXkUJPLasvnBMe4hatiizkFSLBM84OP3/fxuxRztyulvnIBsjv5UH/nBEZjTK/+wBVvmUFB4FF/gJ+MKryPQ2Q2NrvwWE/YTOYlsVbNXKLidgLqcF3R1Ces673G5KpALHUSddUqi4chyj9h3oILt1iDTJ8mhHTR1EEu2+AWbq1JWVFJWXgItdW1N2yCziuM1CgErJBEhBrmpSZAbViIxGoTnDZJIFeYE3owJ+c94c44CTzMkJnlF30Ss9Xs+iw0mkkMxqTjHUn5Qlj3UD8v1JNujjE9Gr62aBllItlHjS8vVQuKmXox77m0TjfnHUD6EqznclfRHhQqXpMMkCDKITc8BNF10R2YMkJh+HDgjL3Ac9CyyNciMCvktUzEEie6b9lQJ7GZ95AdvcJwwsWYyH8yrDSi4G8bXUHxl7FEB6MXxHaH+b4ZPaQVKlYEew1bUpOnaI7V5tPNCclbWo9Na7UY4g0KgcTaqNTxAneEKyxT480cB3wn8zKrWXhs2Ep2+0izpGnlvCV3D006lducnqxfC8VVBGrB3y/Gq5zkpn3Becrrp5rA3GHnOcGdyxOyU0SkSXTs1QuNMIp9AtcrljK7VVWY3iv5s1a+Uijd3pfo4uAWaBe2Fx7f7Gxe1elLorabb+BZ/VJRjupAgK3V/qjdLv7f/qoXPbsmO4XE3ndch57XCf33md/vNCVlooxvHpmWnjun6VmyGoWebmecFWeiFACMk2we9Ott37f1O0GxP9d/s6nZT3oe+b35+GEyzjCYUSzmYAV/hQN0odI3lYM5ZUnFcYyl7qzyGoZ2GmRkP3cx0A8sxwUpC007ARwwh8xyLbP8AGPlnTtMLAAA=",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
-        },
-        // Export for Mission [967] -  Opalescent Crossing Specimen Survey
-        [967] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1XS2/jOAz+K4HO9sAP2bF8SzOdboH0gUmKHoo5KDadaOtIGUnuTrbIfx/Ij8ZO3GRb5LBY7M2lyE8fmU8k+4pGhRZjqrQaZwsUv6JLTuc5jPIcxVoWYCFzOGEcdodpc3SdotiLiIXuJROS6Q2KXQtdq8tfSV6kkO7Mxn9bYd0IkSwNWPnhma8SJ4wsdLWeLSWopchTFLuO00E+Dl1ikGEnwjlJZrwsVg0D7Dr4BIUmSuQ5JLoV6LbdvNPXCpkymr9TUtcLw05RcR32janl5QZU6+Jgj3EQdBiHTdHpM0yXLNMXlJW8jUE1hqmmybNCcVCXMYwOcduopEa9p5oBT6DFJ9yPC7sV9JpQyf6GMdWVFJpb96O9vfr7dfRsSXNGn9U3+iKkAegYmnR8q2v/Dol4AYli1xSpT8thZCTQurCp3wVbXNFVmeiIL3KQqrnE/Ngpiv2hgw/Yd6Ci7dZCl7+0pPVLM5WfielfdH3NdcE0E/yKMt7Uw3YtNCkk3IBSdAEoRshCtyUJdCs4IKtC2KwBxaYwPXgTofSn8e4lKOhniGz0znl1Y3m+4zNdQ6IlzceFlMD1mbLcQz1brr1sDzLuvb30qgQy1WJt3ivji6mGddkZd9xrEY3keSi34UoOD5z9LMDgIjdzMpJ5nh1FJLAxxtiehzS0XY+mfhZELnUjtLXQhCl9l5k7FIqfKnmaBN4e9zCMjnAcC7USejm4L9bUwN0KuaL5H0I8G4CmUzwCLf82dgX67Q1mNFfQvMn60CTWvM7aVGWP3aHpQA3mVEvBW7PrdLjjt8InsACeUrk5A68S+EHBV1HU/o1jZTmRfgfNC02SVdwuxRvGjdeMrcpGNvziWOiO55vHJfBRotkLTPN36LUB/0nSPcEzydYHWdQOw8Dz31x2hI849ZHo+plHNMo0yDEtFks9YSszvdzqYP91lYtKIavxaD5ac6Ap0a3QVZWuU+CaJWYGV6XqGQf+MCCHG8GR4W7WkKYRNsr/Dj8LJiGdaqoLM2PNnvPOczgh74+quOPYK8BjSvuQdv4TIvnsb95qtpkf+VGauLYLnmNjwNiOEpzZAaUkdIMgwCRA2x9Nt6134ac3Q9Vwn15Rt/NijxzrvHOa68EF+1MUnSnhHivO2wMwFTE3VQ6jlSh4xw3FOCD7q43fXTMjc1MhM5rU7ad3r8UBCU4seMHWQv+afxB24/rTQ9oEG8vYVLUsaHts18PafFbmnVufdls6I5lPyByIPQwdYuPIi+y5k/h2NJ97eJgEfjQ0U/hAR77zfgIPXDOdQzp4FPJ5cCu+DHz/7Hrql8XH5fW/nvg59ZSRIE291LUDCFMbEzq3IxJSe+5kaUgJ9aIEl32rwq0pPpFwaH/9Mbhb0xxUAlwPxlIoxfhiYPZjtgI+mBbyBTbdnZTgMPR837Fd4s5tjN3MjgB828HhPPUhAZoGaPsbZo+nW50QAAA=",
-            },
-            AmountRequired = 2,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-                ["Untitled Work No. 33"] = new List<uint>()
-                {
-                    47430,
-                },
-            },
-        },
-        // Export for Mission [968] -  Bulk Provision Procurement
-        [968] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1XS2/bOBD+KwHPImBREvW4OW6aDeCmQZygh6AHWhpZRGTRIalss4H/e0E9bMmW7XWQAnvYmzyc+fjNcF5+R+NSiwlTWk3SBYre0VXB5jmM8xxFWpZgIXM45QVsD5P26CZBEQlCC91JLiTXbyiyLXSjrn7FeZlAshUb/XWN9U2IODNg1QcxXxUODSx0vXrIJKhM5AmK7NGoh3wcusII/Z7F6CSZSVYuWwauPXJPUGitRJ5DrDuGdleNnL5WyISz/EBIbUJpuMOE+j0mbgP0lavs6g1Uh4q3Y+l5PUvaPgN7hlnGU33JeOWJEahWMNMsflYo8prA0mAft4saNqh3THMoYujwobt2tB9T0ppK/g9MmK6T41HB9yJ/+8F1dpNAoXnMcqPVxqlzPo41f4VZzlbt4VCa0mCPCdl5Xadh8pCxnLNn9ZW9CmnI9ARtaByrL7+HWLyCRJFtAn6Agtu7sH2LS764ZssqaONikYNU7SUmlRIUOf7I3WPfgwrWawtd/dKSNXVsXvFBzP5mq5tCl1xzUVwzXrQPg20LTUsJ30AptgAUIWSh24oEuhUFIKtGeFsBikxgBvCmwrzHB/HuJCgYZogwOnBe31idb/nMVhBryfJJKSUU+pO83EH9NF8H2e55PHh7pVUnyEyLlal9XixmGlZV391yb5JoLD+Hcheu4vBY8JcSDC6CgLlz4rsYHDvBLkldHBBK8QhIQmzi+CFJ0dpCU67099TcoVD0VKencWDTKHwakMMcJ0ItxZxxfXHJ8twA3gq5ZPlfQjwbiLbv/ABW/TZyBXpThSnL1aYxNIfGtbY+G1Htv2v7pp+1mDMtRdGZjafNR07HfAoLKBIm3z6BVwX8qOCLKBv9VrGWnHC/h0aocbK227q47cL38DLIomv3b3wbMH5U8CD5qu9BLTnLA98jJiC15Vk+9CzP96IxN1U4TjXICSsXmZ7ypRmldn2wW57VHlXKelabj84gqUZZBsWt0PU028y8IyPN8b1wf2E5snuYLantpG3h3MNLySUkM810aQa+WcMOVNOJ6ji3CHqKg/l7LFHPysmu1mCeHU+oM3PnDyXJR9+8062DuZ0woCl2wwCwawcxDryRgz1C05DFoTcKHbT+2bbrZlV/2gjqjv30jvqt23WOtO4ryNUqFxJkb8jYx0Kzs/K9o1phvBRl0VNDkeuFu5uR0994A3NTKVMWN0vi4NLteqF3Yj/01hb6z/x72U77D894Y2wkExPVKqDdqd/MevNZi7dqQ5nbyTKSsnA+imPsAyXYDcgcsyBIMfNtm9EkDEdOgtbWfhY5hx2YQiYvZixnS1YkfyCVhjPi/Mz6P5WKz0wl3yUhzImDWUBd7IbExiyFBNtJHFDPswPwkqph1bgNxaeQBvjLz4vLMn++uJPilSsuCvMVlxKWUOj+EkvdOaHpPMXETgLsxizBLGAutn1q+5D6MSUMrX8DJKztrSwRAAA=",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
-        },
-        // Export for Mission [969] -  Opalescent Crossing Distribution Survey
-        [969] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1XTW/bOBD9KwbPIkBJFPVxc5w0G8BNgzqLPQQ9UNLI5oYWXYpKmy383wvqw5YcO9kUwWKB5kaTM2/ejB5n6B9oWhs145WpZsUSJT/QRclTCVMpUWJ0DQ6yh3NRwv4w74+ucpR4UeygGy2UFuYRJa6DrqqL75msc8j329Z+22J9VCpbWbBm4dlVg8MiB11ublcaqpWSOUpcQkbIz0M3GHE48iAvkpmt6vWJxKhL6AuMehAlJWSmz4S6xB2aeS+zUDoXXJ4g4nqMjWpMO7cPolpdPEI1CBwcMA6CEWPWfwN+D4uVKMwZFw1vu1H1GwvDs/sKJUFXVRY9xR2ixh3qDTcCygwGfNihHxtX0OtdtfgHZty0yuijHnp7B/X3O+/bFZeC31cf+IPSFmC00afjO+P9z5CpB9AocW2RjkmbRVYCg4B9/c7E8pKvm0Sn5VKCrvog9mPnKPFDQp+wH0FF262DLr4bzbuLZyt/qxbf+OaqNLUwQpWXXJR9PbDroHmt4SNUFV8CShBy0HVDAl2rEpDTIjxuACW2MEfw5qoyv4x3o6GC4wwRRifO24jN+Z7PYgOZ0VzOaq2hNG+U5QHqm+V6lO2TjI9Gb6xagSyM2tj7KsrlwsCmaZR77p2IpvptKA/hGg5/luJrDRYXebHnh8RlmPmUYOqSDMdBlGPqR2HkQQ6uV6Ctg+aiMp8KG6NCyV0rT5vA7nKHLPJOc5ypaq1SLszkjEtpAa+VXnP5h1L3FqLvFX8Bb36318+eVmBsDv1F7LbaRKkb2mbTOy+MVuXyNe7EH7jPYQllzvWjRegMd22g4LIC53XA56pO5S6lkYXH4p3BnvZJk2PUhla3WmxORQoDz9+ZnIo1MnomWmdn5TstDOgZr5crMxdrOzfc9uBQ182LodbtYLKLQQdum2MQPx2tz0xJO977jtIL6DN8rYWGfGG4qe2wsu+HQ1X9O/G8ViPv3/y/+eaDrkXjDLI0DDBlPsM09V0cZVGM08iPaEEg9UiGtl/6ttW9Me92G23nuvuBxi2M+vR0C7sBruVksQIpR93Wfa42VzmURmRc2oLYQK3BdK3qcmSGEhrEh08Ef/xci2ykWhc8g4W0ref4QzWIgxceSsHWQf+bd/d+7P3ysLPOdmdmq9oUdDj+uqFnl+323uyYdAcyiyHzC5LnmEc8w7RICY5YluPC/k5JCDQO0NZ5KqPguUmYcmkmZ+JvVb/r6PfQkReFaeYDw0EYZ5i6QYG5FwCmfsjCEFyf+OFRHbHTCcz5evNN6fvJrM7qdQr6XUy/h5hyxiPmuQQTEseYxiHFKecepkB81yNxlNOgmX0tbkfxLmYxPv8y+bThEqoMSjOZaVVVolxOzkVltEhr+56aLGr9AI/jPwkpy30/8gn2wpBgyhjBPGYZ5nmUAuWcBWmKtj8BZj/ZPT0SAAA=",
-            },
-            AmountRequired = 2,
-            UniqueFish = true,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-                ["Cobalt Bijou"] = new List<uint>()
-                {
-                    47429,
-                    47435,
-                    47461,
-                    47465,
-                    47511,
-                    47531,
-                },
-                ["Lampwork Cucumber"] = new List<uint>()
-                {
-                    47436,
-                },
-                ["Pearl Shell"] = new List<uint>()
-                {
-                    47428,
-                    47434,
-                    47460,
-                    47464,
-                    47510,
-                    47530,
-                },
-            },
-        },
-        // Export for Mission [970] -  Large Mutant Cultivated Specimens
-        [970] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACrVWS0/jMBD+K8jnRHLej1spj0UqLKKgPSAObjxpLNK42A4Lu+p/XzmJadKWQldwS+bxzTfjmbH/olGt+JhIJcf5HKV/0WlFZiWMyhKlStRgIa2csArWSmpUFxSlbpxY6FowLph6RaljoQt5+pKVNQW6Fmv7VYt1yXlWaLDmw9VfDU4YW+h8eVsIkAUvKUodjAfI+6EbjCQaeOAPyYyLevFOYr6D/Q8YGRBelpApk4nvYKdv5n7MggvKSGkAQscfAPid2RmTxekryF6gYINhEAwYhqbm5BGmBcvVMWENTy2QRjBVJHuUKA26KobxNm4fNelQr4liUGXQ4xNu+oXDirnGVbA/MCaq7QQTddPb3ai313nfFqRk5FGekWcuNMBAYNLxrKH8BjL+DAKlji7SrlYOY33kvYCmfsdsfk4WTaKjal6CkCaIPlyKUi/C/hb7AVS8Wlno9EUJ0g2arvwtn/4my4tK1UwxXp0TVpl62I6FJrWAS5CSzAGlCFnoqiGBrngFyGoRXpeAUl2YHXgTLtV/410LkLCbIbLRO/o2YqNf85kuIVOClONaCKjUF2W5gfplue5ku5XxzuiNVdsgU8WXel5ZNZ8qWDaLcc29a6KR+BrKfbiGw13FnmrQuMihjhtjP7czbzaz/XyW2InvZTaJCc5CH+OIYLSy0IRJ9TPXMSRK79v21Am8DXcUxns4jrlccFUcXddLouGuuFiQ8gfnjxrAbIpfQJr/dvi0VoLSGZgx7ERtmr4T6VVjnKdK8Gp+iDv2eu4TmENFiXjVCJ3h2xLISSnBOgz4TsIJrzt7Y9hKTJ4DNzfU2bQG61zeNfkM3x3OdxJuBVsOWbWS3ayiwNXZtCbv8RoYHc6sc9dDMcoViDGp54WasIW+jZxWsTktzbujFu11pz96e33H8vaiINm+DfdcvfrNYNaW6dMbeKqZADpVRNX6RtSPks3m/VyPHtqKA8Pv7aK+1fd3xje1wEV35ttvtP1n3luNQY4joD62KdDE9sNwZscRzWzPhyCCbDbDToRWD2Y3dg/X+zdBux71f7uMu1V4n0TYPnk4Gj3VRLHs6IxzKlWd53K4mT1CvcgLYjvycWT7eQj2jGBiJ15CqZOT3PUoWv0DUL9M3KILAAA=",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
-        },
-
-        #endregion
-
-        #region C Rank
-
-        // Export for Mission [971] -  Efficient Aquatic Foodstuffs Procurement
-        [971] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACrVWS2/jNhD+KwbPEkC9Kd28rpMG8KbBOkEPix5oamQTkUWHpLbrLvzfC0piLNnyulm4N2ke33wznBnyB5rWWsyo0mpWrFH2A80ruiphWpYo07IGBxnlgldwVOZW9ZCjzCepg54kF5LrPco8Bz2o+XdW1jnkR7GxP7RYn4VgGwPWfPjmq8GJiYPud88bCWojyhxlHsYD5J9DNxhpMvDAV8nMNvXWMgg9HF6hYL1EWQLTPUevb+ZfDytkzml5oaSxFw7wws7rjqvNfA+qFzc6IRxFA8KxrTl9heWGF/oT5Q1tI1BWsNSUvSqURV0VY3KO20dNO9QnqjlUDHp84lO/eFhA37pK/g/MqG47YaytYnIG5p+cRtCBPW9oyemruqPfhDR4A4HNLnCG8i/AxDeQKPNMzS5QCAcBbTk/8fU93TZ5T6t1CVLZIOboc5QFCQ7P2A+gyOHgoPl3LWk3d+YgnsXyb7p7qHTNNRfVPeWVra3rOWhRS/gMStE1oAwhBz02JNCjqAA5LcJ+BygzhRnBWwilfxnvSYKCcYbIRRf0bcRGf+Sz3AHTkpazWkqo9I2yPEG9Wa6jbM8yHo3eWLUNstRiZ8aXV+ulhl2zJ4/cuyaayttQ7sM1HF4q/laDwUUMxxQIJi6BELshDplLYuq78YpFBaRA4hCjg4MWXOk/ChNDoexr254mgfdZT2ISXOY4E2rL2WQmaQWTu3JvIB+F3NLydyFeDYhdHn8Cbf6NXIF+n8OClgrsXHZKk5yd0E7UViD0ErOULOZSS1H1brPr7jjouS9gDVVO5f4GvBrgFwW/ibqzt4at5Er6AzQ/Nkm2fscUL5r8lzRGnF8UPEu+G5JtJR8im0S+yb31vER3YPRxwp27ma5poUHOaL3e6AXfmlvOaxWnY9e8Z2rZXqPmo3dBjNwCQRKl58+Cn9zw5i1i959t9i/wVnMJ+VJTXZub1jx2LkzAlY7+aOMODEd77mbN1bcabZibdsb/1AIPv3jmvR2beAGOVkHqkoR5bljgxF0Rr3ALnxR+TMNVGAM6/GWXbPcg/vouaPes+W+3ut2pE3cyLwrOOFR6Mn2rqeZscidErnRdFGryJAWrJWyh0sOlH+UEk5xgl6Q5c8MEQjfFCXXTyC8S5gUUE4oO/wIYNEvHDAwAAA==",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
-        },
-        // Export for Mission [972] -  West Beaconveil Distribution Survey
-        [972] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1Wy27bOhD9FYNrCVcP6rlz1CQ3gJsGVYougi4oamQTkUWXpNK6gf+9oB62JNtJU2RxF3cnD2fOnBkfzvAZzWvFEyKVTIolip/RZUWyEuZliWIlajCQPlywCg6HeX90k6PYCSMD3QnGBVNbFNsGupGXP2lZ55AfzNp/12J95JyuNFjz4eivBscPDXS9uV8JkCte5ii2LWuE/DJ0gxEFowjrVTLJql73DLBt4Vco9FG8LIGqQaA9dHNeT8tFzkh5pqW24/ujpuIu7IrJ1eUW5CCxN2HseSPGft908gjpihXqgrCGtzbI3pAqQh8lir2ujX54jDtEjTrUO6IYVBQGfPxpnD/uoNOHCvYLEqJaKfRZp9HOpP9uF32/IiUjj/KKPHGhAUaGvhzXGNs/A+VPIFBs6yad0rIfagkMEvb9u2DLa7JuCp1XyxKE7JPoPztHsRtY+Ij9CCrc7Qx0+VMJ0t003fl7nv4gm5tK1UwxXl0TVvX9MG0DLWoBH0FKsgQUI2Sg24YEuuUVIKNF2G4AxboxJ/AWXKq/xrsTIOE0Q2SiM+dtxub8wCfdAFWClEktBFTqnaqcoL5brSfZHlV8Mnvj1QokVXyj7yurlqmCTTMZD9w7Ec3F+1AewjUcvlTsew0aF9nUDcPcC007ynITZ0BN4kFmgus7rusFAXUttDPQgkn1qdA5JIofWnnqAvaXO/BD9zzHhMs1o7NEkApmV+VWQ95ysSblv5w/apB+WnwF0vxuL6A+laB0Ff1V7ExtqdgO9Ljpg1MleNVcn85rf40LUkow/hjVcgeoC1hClROxfS/gD7zOyn2lIw/Hj/YOR9Ucu5yiNvS6F2xzLlPgOe7e5VyukdML2To/ret5oUAkpF6u1IKt9UKx24Op4Ju3Qy3ajaU/BqP5xPx1Ay+aLp4Xl7je+/3k6WX2Gb7XTECeKqJqvdT0w2KqvTdJ7I8l878E3iaB/j/Hb/zPB9PNyzMLE+qYReS7JiY0NAl2iZkRyPzCCR0vw2j3rR9v3ePzYW9oJ9zDMxqPOozx+VF3XRIpZ6liiq5AjAaz/VJ7bnKoFKOk1D3RuVqH+ZrX1cgNxdiLpq8Jd/yyC3WmWhSEQlrqYXTyKYmPL9T0TeXtDPSfeZMfNuRf78X0B9loS6K72jR0uCm7/ag/W/PB7ZR6B0qzfIeCS4np0cw1sVfkZgSQmyF1gFqQg0PsRmktbkfxIQocM/k2+wpSzS6AUF49AStnH5hUgmW1nlyztBZPsJ05/zjj1R1YXp4FtDAzBxcm9iPPjKIMmxYOaIY9j4AW928FpR30xA0AAA==",
-                "AH4_H4sIAAAAAAAACu1WS2/bOBD+KwbPIlaUqOfNcZM0hZsN4ix6CIoFJY1sIrLoklS2buD/vqAetuRHjAQ59NCbPJz55pvxxxm+oHGlxYQprSb5HMUv6LJkSQHjokCxlhVYyBxOeQm7w6w7uslQ7ISRhe4kF5LrNYqJhW7U5c+0qDLIdmbjv2mwvgqRLgxY/eGYrxrHDy10vXpYSFALUWQoJrY9QH4dusaIgkGEfZbMZFEtOwaU2PQMhS5KFAWkuhdI+m7O+bRCZpwVJ1pKHN8fNJW2YVdcLS7XoHqJvT3Gnjdg7HdNZ08wW/BcXzBe8zYG1RlmmqVPCsVe20Y/PMTto0Yt6h3THMoUenz8/Th/2EGnC5X8F0yYbqTQZd2Pdvb677bRDwtWcPakrtizkAZgYOjKca2h/R5S8QwSxcQ06ZiW/dBIoJew698Fn1+zZV3ouJwXIFWXxPzZGYrdwKYH7AdQ4WZjocufWrL2ppnOP4jZf2x1U+qKay7Ka8bLrh+YWGhaSfgKSrE5oBghC93WJNCtKAFZDcJ6BSg2jTmCNxVKvxvvToKC4wwRRifOm4z1+Y7PbAWplqyYVFJCqT+oyj3UD6v1KNuDio9mr70agcy0WJn7ysv5TMOqnow77q2IxvJjKPfhag7/lPxHBQYXMd8GGgU59kOWYErSAIdAfJy6oc/swA2YTdDGQlOu9N+5yaFQ/NjI0xSwvdyBH7qnOU6EWvJ0NJGshNFVsTaQt0IuWfFZiCcD0k2Lb8Dq38auQG/vYc4KBd29bA9Ncd0NbU1NBygJzBTqMGdairK3v86H224vfApzKDMm1x/Aqwb+JKqk2K+08XD8aOuwo33S5Ri1vteD5KtTmQLPcbcup3INnF7J1voZXY9zDXLCqvlCT/nSLBTSHOwLvn47VLLZWOajN5qPzF838KLDFfzKNjV7v5s8nczu4UfFJWQzzXRllpp5WJzQ3hktvVUyfyTwNgm89z/vTTeIPDchro994lJMU8hxaLshhiBIbDsNac4StPnejbf28fm4NTQT7vEFDUcdpd7pUXddMKVGX6Ao1rmJ6k9m8lp/bjIoNU9ZYZpikjUO46WoyoEbiqkX7T8n3OHTLjSZKpmzFGaFmUZH35LUi7wzjypvY6Hf5lG+W5HvXowm2Fgmpqt1Q/ursl2Q5rMx79yOybcnNULdzEndAHsBtTF1vAgnSehhxyVAfSePAmajjXUopeCclO55kogSM7n8fbT0RzydKrZKUd3F2tMTK0X572MUOHjyffQNlB5dAEtF+Qy8GH3iSkueVGZFjWaVfIb1yPnLeZ8EwQdKSQY4Cx0PUzPoEj/LMQuClHlpmDupW0+7Brct9C3USE2tl9L1aJoRSLAXJh6mNPQxs+0Ik9wNWJpnIYEIbf4H/Z4YxkgQAAA=",
-            },
-            AmountRequired = 2,
-            UniqueFish = true,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-                ["Glass Ribbon-arm"] = new List<uint>()
-                {
-                    47447,
-                },
-                ["Untitled Work No. 11"] = new List<uint>()
-                {
-                    47446,
-                },
-            },
-        },
-        // Export for Mission [973] -  Fish Paste Ingredients
-        [973] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1XS2/bOBD+KwHP0kLUg3rcXG+aDeCkQZ2gh6AHShpZRGTSJam22cD/vaAesSTbiVOkwB72Js/jm4/D4cz4Cc1qLeZUaTUvVih5QuecphXMqgolWtZgIaNcMA47Zd6rLnOUuFFsoRvJhGT6ESXYQpfq/GdW1TnkO7Gx37ZYV0JkpQFrPlzz1eCQyEIXm9tSgipFlaMEO84I+WXoBiMORx7Oq2TmZb3uGfjY8V+h0HuJqoJMDxzx0Mx9PayQOaPVkZRil5BRUv3O7SNT5fkjqEHgYMI4CEaMSZ90+gDLkhX6A2UNbyNQvWCpafagUBJ0aSTRPu4QNe5Qb6hmwDMY8CFTPzLOoNu7SvYvzKluS+FOwSdePX5hurzMgWuW0cpY9VkZ6GeZZt9hWdFNrzxUlCTaY+JO7tLrmNyWtGL0QX2k34U0ZEaCPjWeNZZ/hkx8B4kSbBJ+hII/CtjfxQe2uqDrJmkzvqpAqj6IKZwcJV7o+HvsR1DRdmuh859a0u7Vmlu8FcsfdHPJdc00E/yCMt5fjI0ttKglXIFSdAUoQchC1w0JdC04IKtFeNwASkxiDuAthLmP38S7kaDgMENkoyP6NmKj3/FZbiDTklbzWkrg+p1OOUF9t7MeZLt34oPRG6u2QJZabMzbZ3y11LBpuuyOe1dEM/k+lIdwDYc7zr7VYHBRlGPwPOzYEQ5D24/z3I4KktpOlsVRHgQYQ462FlowpT8VJoZCyX1bnuYAz40iJJF/nONcqLX4IeTaYF0LuabVP0I8GO++5XwB2vxuX57RKtCGfv8GO1F7Rh+Hpmf1zkstBV+96N60mxL4tdD7HWeC7XgD7AWsgOdUPhr4zvC5PRS0Us8d63XSDfCdgr9F3dn3hq2kT4LR3LI1yEkfumL8WYUSHP7VdsCu8X6GbwfjusTkqo2wy9SRo5wYOjKhj0Y5JWcHnO8U3Eq2GWemlfyhzISBa66kjXFSbo74vv3EnbtpBbNCg5zTelXqBVubeY5bxbRHNKtbLduFwXwMptmBkeWFQTyd+y/uUGbt6pt1/0A/w7eaSciXmura7BRmr5u+2tMe51uf2chw/4WcVuCnVefQar/iTi2YUyvjD5VAf+f+G+98MBBCir0iS2M7LVxq+1Hh2LEfujaOijANUyhSiNH2az8Rut3//lnQDoX7JzSeDr4fHZ8OVzSTIpU0K1m9PrspKXAOXI2nGn4pUZMd8wm1BrO1qPnIDCV+EE9XMW+8YkcmUi0LmnUz4uBO7+8/relCGmwt9J/5c7RbL357qTDORjI3WW0SOlwzuuXCfLbindmhOh7UXBrgIA9javskcmzfT8FO3ZjaDsmcIsvilMQx2lp7NRW8cIAFlPJsTuXm3YvocC28vab+LyL+nkXkp1nk5hTsgAaZ7TuuZ1NCfDsPvAAXcexiQprG1eJ2FO/j0LPnX88M8NkNVRrOLvlKQs6AazXelVOnCIhDiV24HrH9AAd2HHvEzmkepJi6EQ4I2v4CAURz04ERAAA=",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
-        },
-        // Export for Mission [974] -  Multi-purpose Bait Test
-        [974] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1WS2/bOBD+KwbPIlYSqefNddNsACcbVF7sIeiBkkY2EVl0SaptNvB/L6iHLfmRR5EWBXZv1HDmm29Gw5l5RNNaixlTWs2KJYof0UXF0hKmZYliLWuwkLmc8wr2l3l/dZWj2A0jC91KLiTXDyh2LHSlLr5lZZ1Dvhcb/W2LdS1EtjJgzcE1pwbHDy10uVmsJKiVKHMUO7Y9Qn4ausGIgpGF/SyZ2apenwmMOjZ9hlEPIsoSMt1HQh3bGaq5z7MQMues7AF8h44AaKf2gavVxQOogSPvgKHnjRj6fc7ZPSQrXuh3jDc8jUD1gkSz7F6h2Ouy6IfHuEPUqEO9ZZpDlcGAj39o548z5vamkv8LM6bbSui9Hlq7B/kmnfVixUrO7tUH9kVIAzAS9OEQayz/CJn4AhLFjknSqVL2Q/PLBw77/L3jy0u2bgKdVssSpOqdmJ+bo5gENj1iP4IKt1sLXXzTknUPzWR+IZKvbHNV6ZprLqpLxqs+H9ix0LyWcA1KsSWgGCEL3TQk0I2oAFktwsMGUGwScwJvLpT+YbxbCQpOM0QYnblvPTb3ez7JBjItWTmrpYRKv1GUB6hvFutJtkcRn/TeaLUFkmixMe+VV8tEw6ZpjHvuXRFN5dtQHsI1HP6u+OcaDC4q/BAcCFLs256NKQlzHLrUxUFk55CmeWEXKdpaaM6V/qswPhSK79ryNAHsHnfgh/Q8x5lQa/FVyLXBuhFyzco/hbg31n2b+AdY892+PHOrQBv6/RvsRG2M1AlMn+mNEy1F1bybTmv3fgtWKrBejGqTAeocllDlTD68FfB7UaflLtKRhutHO4WjaI5VXkLthPFC8s05AoHnkp3KOQojpdeT6MxN+U8LDXLG6uVKz/nazB2nvTh8F82GUct2sJnDoIOfaNMk8KLD+fTkqDfbQd+g+qL8CJ9rLiFPNNO1mX1m/Tis1FcV5IsL7BcWzK+tjJ9UAv0/p6/854MmmOVFTlKXYJu5gKkDBIehH2LP9woHSOSzwkHbT30X7FbUu52gbYR3j2jcEalHznfEy5IpNXnPVVarUfd2nkrOVQ6V5hkrTUaMp1ZhuhZ1NVJDMfWiw5WDjNe/0HiqZcEySErTuE4vusfP6XDx8rYW+m329v0Y/eHhaYyNZGay2iR0OE67IWqOrXivdqp2h8MWCkZd18YUQoopjSIcZhHFxHNdQsIQqB2grXVcR+5zdZRorrMVyP8r6T9SST5hxM2JWdYopmngY5alFKdeTosiLQIKYdOxWtyO4l0UUDz7NLmuS83xppYboWBi+E0WoPSE/EHG22FOnNRnXoTtgBRmOwQcsczDHlDHCSGloe+h7Xci65QCJhAAAA==",
-                "AH4_H4sIAAAAAAAACs1W227jNhD9lYDPYitRlETpzXGzaQAnDdYu+hAsCloa2URk0UtSm2QD/3tBXWzJl7gbpIu+ycOZM2fGc3tFo8rIMddGj/MFSl7RVcnnBYyKAiVGVeAg+zgRJewes+7pJkMJYbGD7pWQSpgXlHgOutFXz2lRZZDtxFZ/02DdSpkuLVj9QexXjRMyB12vZ0sFeimLDCWe6w6Q34auMeJoYOGeJTNeVquOAfVceoZCZyWLAlLTM/T6auS8W6kywYsTKfVIGA6SSluzT0Ivr15A9xwHe4yDYMA47JLOH2G6FLm55KLmbQW6E0wNTx81SoI2jSE7xO2jxi3qPTcCyhR6fMJ9u3CYQdKZKvEdxtw0pdB53bcme/n3W+vZkheCP+pP/JtUFmAg6MLxnaH8M6TyGyiUeDZJx2o5ZLYEeg67/F2KxTVf1YGOykUBSndO7J+docSPXHrAfgDFNhsHXT0bxdtOs5mfyekTX9+UphJGyPKai7LLB/YcNKkU3ILWfAEoQchBdzUJdCdLQE6D8LIGlNjEHMGbSG3ejXevQMNxhgijE++Nx/p9x2e6htQoXowrpaA0HxTlHuqHxXqU7UHER73XWk2BTI1c234V5WJqYF1Pxh33tohG6mMo9+FqDn+W4msFFhcFUZSxMOM4j4iHaR6lmAEPcU4Z5LHLvDCbo42DJkKbP3LrQ6PkoSlPG8C2uaOQ0dMcx1Kv5JNUK4t1J9WKF79L+WituzHxF/D6t5VrMNsGzHmhoWvI9tFG1bVmK2pCp15kx0+HOTVKlr3FdcT8lj9b6Uysmt7/xT2AdP0e5AQWUGZcvXwA1xr4N1nNi/3oGw0SxluFXSgnVf4NtSPGMyXWpwhEAfG3KqcoDJR+nERrbltilBtQY14tlmYiVnYXec3Dfq/UZ0elmmVnP3pT/cjo9qMgPtzebyxiezJ0Q6sr1M/wtRIKsqnhprL70N4kJ6r3TDX+aIH9xIL5uZXxH5XAe//z3mBMYy/1IAgw8XiMKcznOGaM4piEXuT7NAtchjZfusnY3q0PW0EzHB9e0XBK0iA4PSUvpZIXl8CzwTj33srMTQalESkvbDqsm0ZhtJJVOVBDCQ3i/RvEH96DzHqqVM5TmBZ2arWsgzg4c3oFGwf9b0733SJ99/q0xlYytmlsSvCJr5ulqrvJ0t+xKEG8lOXfD3FE8fjLxW1VGIHXlVpLDRcW6mIG2lz4v/qoD9ZzcKTGe/VIaJ6zkFNMYhpgGucEszgmmNEwDjxOIt/16npscNvgztEhNZ2em5yEc5KyCPtk7mGauSFmUZBifx66jDE355SjzT8n4EKjGQ4AAA==",
-                "AH4_H4sIAAAAAAAACs1WWW/bRhD+K8a+9IVseSyP5ZuiOq4B2TUiFX0wgmBEDqWFKa6yu4ztGvrvxfKQSB1WYrhB36jZmW++Gc31QkaVFmNQWo3zBUleyGUJ8wJHRUESLSu0iHmc8BJ3j1n3dJ2RxIuZRe4kF5LrZ5K4FrlWl09pUWWY7cRGf9Ng3QiRLg1Y/eGZrxonjC1ytZ4tJaqlKDKSuI4zQH4dusZg0cDCOUtmvKxWHQPqOvQMhc5KFAWmumfo9tW8826FzDgUJ1LqemE4SCptzT5ytbx8RtVzHOwxDoIB47BLOjzgdMlz/QF4zdsIVCeYakgfFEmCNo1hfIjbR2Ut6h1ojmWKPT7hvl04zKDXmUr+D45BN6XQed239vby77fWsyUUHB7UR/gmpAEYCLpwfGso/4Sp+IaSJK5J0rFaDmNTAj2HXf4+8MUVrOpAR+WiQKk6J+bPzkjiRw49YD+Aijcbi1w+aQltp5nMz8T0EdbXpa645qK8Al52+bBdi0wqiTeoFCyQJIRY5LYmQW5FicRqEJ7XSBKTmCN4E6H0m/HuJCo8zpDY5MR747F+3/GZrjHVEopxJSWW+p2i3EN9t1iPsj2I+Kj3WqspkKkWa9OvvFxMNa7rybjj3hbRSL4P5T5czeGvkn+t0OASAD+DDDw7YH5gU5a6NoM4tgP0QieNnCzOHbKxyIQr/WdufCiS3DflaQLYNncUxvQ0x7FQK/Eo5Mpg3Qq5guIPIR6MdTcm/kaofxu5Qr1twBwKhV1Dto8mqq41W1ETOnUjM346zKmWouwtrhPmM75CudfxN/C0fSKJS3+NDlw5fs/VBBdYZiCf3yGGGvh3Uc2L/aw0Gl7Itgq7EE+qfA+1I8YzydenCESB529VTlEYKP04idbctMoo1yjHUC2WesJXZke5zcN+D9XnSCWbJWg+etP+yEj3o4AdbvVXFrQ5Jbph1hXwJ/xacYnZVIOuzJ40t8qJqj5TpT9aYD+xYH5uZfxHJfDW/7w3MLM5Yog+2AhRZNPYndvMdzPbgdhxwjwIIz8nm8/dxGzv2futoBma9y9kOD1p8Mr0vFsCliX8oi5GUorHwbB3X8vPdYal5ikUJinGWaMwWomqHKiRhAZs/0Lxh9dibDxVMocUp4WZXUfPUxqw4MydFmws8r+583db98271hgbydhktanLR1g3G1h1uekvZLN3S1F+uWcRtcefL26qQnN7Xcm1UHhhoC5mqPSF95tP+mA9B0cKv1ekc4wYYy7YcUSpTd0gsBmEuc3SEOIMYsrCpkgb3Da4c3Tcmk7PjetGLIqA2pBTx6ZR6tgQ+Lnt+RDOKUMWs5hs/gURRS9ORg4AAA==",
-            },
-            AmountRequired = 2,
-            UniqueFish = true,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-                ["Glass Stitcher"] = new List<uint>()
-                {
-                    47425,
-                    47437,
-                    47444,
-                    47452,
-                    47505,
-                },
-                ["boro bead"] = new List<uint>()
-                {
-                    47455,
-                },
-                ["Glass Discus"] = new List<uint>()
-                {
-                    47426,
-                    47453,
-                    47506,
-                },
-                ["Phaenna's arrow"] = new List<uint>()
-                {
-                    47454,
-                },
-            },
-        },
-        // Export for Mission [975] -  Emergency Bulk Provision Procurement
-        [975] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1X227jNhD9lYDPYqELqYvfHNebBnDSIE7Qh2AfKGpkE5FFL0Vl4y787wV1iSVbjjeBCxTovtFDzuGc0Znh+Acal1pOWKGLSbpAox9omrM4g3GWoZFWJVjIbM5EDrvNpN26TtDIDSML3SkhldAbNHIsdF1MX3lWJpDszOb8tsa6kZIvDVi1cM2qwvFDC12tH5YKiqXMEjRybLuH/D50hREFPQ/7ZDCTZblqIyCOTU6E0HrJLAOuO45O95h7+lqpEsGyIyl1XN/vJZU0bl9EsZxuoOhcTPciprQXsd8mnT3DfClSfclEFbcxFK1hrhl/LtCINmn0w0PcLmrUoN4xLSDn0InH3/fz+xl0W1cl/oYJ07UUhnTlhwdg7t7n8BqwhyXLBHsuvrAXqQxez9Cy86y+/R64fAGFRo7J2ZEQSO/CNp2XYnHFVhXvcb7IQBXtJebbJ2jkBTY5iL4HFW63Fpq+asWawjMf4kHOv7P1da5LoYXMr5jI29xix0KzUsENFAVbABohZKHbKgh0K3NAVo2wWQMamcQM4M1koT+Nd6eggOEIEUZH9usbq/1dPPM1cK1YNimVglyfieUe6tm4DkZ7wHjw9upULZC5lmtTviJfzDWsq0a5i70R0VidJ+QuXBXDYy6+lWBwEUl5FDqRjRkHigmEHIep52JOIuIQCqFnE7S10EwU+s/U3FGg0VMtT0PgrdYDP6THY7ySkiv2PQNlwG6lWrHsDymfjXvbNv4CVv029gL0WwWmLCugrchm09Bqa7Mx1dyJE5h21GLOtZJ55yEbcL9hr8b6IFZV8fu/2QeQtteBnMEC8oSpzRlirYAfC/hdls359mBtOZGSHprrG+K13472G7W9hnYj8j5r5x24n6E84PxYwIMS6z6x2vIhYgF1TZ5qz3NQ6wF+nFzjbmp4nGpQE1YulnomVuYtdeqN/eKuxqZS1Y+1WXSeoYG3xgtodDh9vDNImJGn7bJtYd3Dt1IoSOaa6dK852amOlJtJ6rnowXROzio5VOi/Wkhdk8Niuu0ij6gjH9JAp/95p1O7ru2zyCKsEu5h0kQpDiKPR9Dyojj8dClxEbbr20rb+bupzdD3c2ffqB+Wyc0fKetb1Y5U3xZFr0HyHkvNdcJ5Fpwlpl8mHvqA+OVLPPOsYGiIDTaH6K8/nwbmotLlTIO88x03YYFjeiJ2ZFuLfSf+SuymwQ+/f4bZ2OZmKxWCe1OBM0cYJa1eXdsSLndecH1oojwFHvAEkzsIMZhkgbY8ziJvTSMeZygrXWoouA4gSlkxTqTCtTZVfRp2QzL75eKzqOiBBxKXYixz9wYk8RPcZz6KYYA4pTbYehye1BF0XEC13nGNhf3bPOrFf0/RMQhtd0wSXBqezYmASM4SsDHzA5sCi54Lq0fvBq3CfEpCiiefL3AF9MVqAXki83FZZk9X9wp+SIKIXOz4qWCFeS6/2fJDtLEJQnFYFMPE/BcHMVRgDnzwPXsgHqcou0/alDVR0UTAAA=",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
-        },
-        // Export for Mission [976] -  Vitrified Freshwater Fish
-        [976] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1XTW/jNhD9KwbPYiFK1OfNcZM0QJIN1tnmEPRAUSObjSx6KSq7buD/XlAftmXLNjbIoUBzkznDN4/Dx5nxGxpXWk5YqctJNkPxG7osWJLDOM9RrFUFFjLGW1HA1ph2ppsUxU4YWehBCamEXqGYWOimvPzJ8yqFdLts/NcN1p2UfG7A6g/HfNU4fmih6+XjXEE5l3mKYmLbPeTT0DVGFPR22GfJTObVomNAiU3PUOh2yTwHro9khBKb7O5yzrOQKhUsP4JHHN/v5Zi2265EOb9cQblzAG/vAJ7XO4Df3QF7gelcZPqCifoYZqHsFqaa8ZcSxV6bVT88xN1FjVrUB6YFFBx2+Pj7+/x+Qp1uqxL/wITpRhnfSvhS5Ksnoec3KRRacJYbry4rO/Yx1+IVpjlbdsYhjfrhARNn72rdlsnjnOWCvZRX7FUqQ6a30KXGtfrrX4HLV1AoJibhRyjQXsDuLi7E7Jot6qSNi1kOquyCGOGkKHYDmx6w70GF67WFLn9qxdpHbG7xUU5/sOVNoSuhhSyumSi6i8HEQreVgjsoSzYDFCNkofuaBLqXBSCrQVgtAcUmMQN4t9LcxzvxHhSUMMwQYXTE3kSs7Vs+0yVwrVg+qZSCQn/QKfdQP+ysg2wPTjwYvfZqBDLVcmnevihmUw3LuuhuubciGquPobwLV3P4VojvFRhcxDPPy+w0wWGSMEx54uPIAxenAfPdkAfgJBlaW+hWlPpLZmKUKH5u5GkOsCkUgR+6xzlOZLkQfDRRrIDRVb4ykPdSLVj+h5QvBqSrPE/A6t/NAzTWErQ5RfcUzdKjWIDae6J3otiYUEzob3bja9JQp4USJwhNatpIU61kMTsb6+j+W5hBkTK1MhCt54ZTxvJyU8nOI9vmzn6XVZJvEtDzcPxo47DlfdRliNqu16MSy2ORAs9xNy7HYvWcTkRr/Yzcx5kGNWHVbK5vxcL0LNIY9t9BPa1UqmmK5mOnYtc9Yw7FvdRN29g0lxO9ww286HAsONHSzSzSlaxOn1/heyUUpFPNdGU6qxl29kW7d6tBNCi3obs/JapPkfyaSN5757tlkRCWhh7H4EYRpqFt44TSFBPPDYhLSORGPlr/1dXFdiB+3iw0pfH5DfVrJPVP1PGJTFiuRxfib1n16jk5lZy96eoNNQ7jhayKnhuKqRftDyFuf7g05W1aqYzxdh4bno69yDszinlrC/1n/iVsG+u726nZbFYmJqt1QncbbNtWzWezvHUb0u6OzigEwKPAx47rZZh6SYLDNAwwDV0WZjSlGfXR2jrU0Ylee7kAxfI0Yfzlw2U0rIZfV9WnjD5URsS2I5pBgombEEw938NhGmQ4oVHipg4AT7NBGTnHD3Ahi9XoSTGh55nZ9Sml/4WUuEMdn5EE0zThmFLi4SRLA5w4ruMAcYDbTedrcLveNcKjP4VWIhOQjq5MIn8wDWpUC64XIITQ9SmPMLNthmnkRZhxx8c2uLad+JQyJ0PrfwE9wWYb1hIAAA==",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
-        },
-        // Export for Mission [977] -  High-silica Environment Observation
-        [977] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1YTW/bOBD9KwHPYkFKlCjp5nrTNECaBnUWPRR7oMixzY0suhSVNlv4vy8oWbbl2G6zTYECm5tMDt988PFx6G9o1DgzFrWrx9MZyr+h80oUJYzKEuXONhAgP3mlK9hOqn7qUqE8TLMA3VhtrHYPKKcBuqzPv8qyUaC2w95+1WG9M0bOPVj7EfqvFidJA3SxvJ1bqOemVCinhAyQT0O3GBkfrCDfDWY8bxZHEmOUsO9E1IOYsgTp+kwYJXTXLPx+FMYqLcojgdAwSQY1Zutlb3Q9P3+AesdxvBdxHA8iTvo9EHcwmeupey10G7cfqPuBiRPyrkZ5vK5qkj7G3UXN1qg3wmmoJOzEk+yvS4YVDPulVv8DY+E6ZvRe91eHe/WP1qtv56LU4q5+I+6N9QCDgT6dKBiOfwBp7sGinPoiHaJ2knoK7Djs6/dazy7Eok10VM1KsHXvxG+2QnnECXsU/QAqXa0CdP7VWbE+eL7yt2byRSwvK9dop011IXTV1wPTAF01Ft5BXYsZoByhAF23QaBrUwEKOoSHJaDcF+YA3pWp3X/Gu7FQw+EIEUZH5juP7fw2nskSpLOiHDfWQuWeKcs91GfL9WC0jzI+6L216ggycWbpz6uuZhMHy1Yot7GvSTSyzxPyLlwbw5+V/tyAx0WMS8UjSnFcZClmnEssoqjAWRJTnlEZCg5oFaArXbv3U++jRvmnjp4+gc3h5knKjsc4NvXCfDF24bGujV2I8q0xd351LxMfQbS/u5PnZ2twPvz+DK6HuhwZ5V5n+sUTZ001O7n8fVU+fJxDNZJO38OkPApMoh3gK5hBpYR98Nhrw402TEVZQ/DDEbfAf5imKDfJDizCJNsYbBM6anIotF2rW6uXxzzxOIw2Jsd8DYxOeFvbeU6Ppg7sWDSzubvSC3+Z0G5in+xtG9HY7rbyHzuy3O/UtXGPN+uAMEc8zvZvpJOXve8PeknqafgBPjfagpo44Rp/2/kGZJ+bP0bBp/LphR9P40e/5+yJe74je7GMBAgiMctIjBkhCc5USLHiMZ0yTkAxilbBYZ2Lj+vchTHSii8l2J8Uulu9ALvH9Xe62kyhnLJXJEC+Yz1k68eH9ukr9tMa+qKUv9dJOCKGTz0YL2L4vxZDRbiaqizEvIgyzBgQLGLFMEiuJIQyZUSi1V99E7h+sX/aDHT6+OkbGgolS5LjQjkRlSpKUTuwg96VnqrNpYLKaSlKXxDvqDMYLUxTDcxQzuJs/8EVDR+/qffU2KmQ6/7i8LP/cWux/+yMVwH6bf7F2D4iNhsRZz7xH+rM/TqPMPYFbWu5+45Yvx78Zze8NTvE2h2GcZKGLCliTKkimMmpwlnBUiwpUxwoy1QUtdftPoNOXLVjU4jSnb3Wf5vmhULPSKGeBH0OByj1lCboV3EqjAgFTmIsKKWYhTLEBWEcq6igEEdExYIe5NSJZ+oNCFueTeZQli+U+rWq9DtQiMdRwjkhOKZTgllKQyyAJZhwxtJpxmUKvL34OtxeeM7w2Vs9m+Nal1qKs/PqXltTLaByojx7X9Rg74Xvpob/tMQqAloUKZbMPzkKpXBB0wxzEtEQwgRkqNDqX16LKAiCFwAA",
-            },
-            AmountRequired = 3,
-            UniqueFish = true,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-                ["Cobalt Bijou"] = new List<uint>()
-                {
-                    47429,
-                    47435,
-                    47461,
-                    47465,
-                    47511,
-                    47531,
-                },
-                ["Opal Shell"] = new List<uint>()
-                {
-                    47467,
-                },
-                ["Pearl Shell"] = new List<uint>()
-                {
-                    47428,
-                    47434,
-                    47460,
-                    47464,
-                    47510,
-                    47530,
-                },
-                ["Sandblaster"] = new List<uint>()
-                {
-                    47466,
-                },
-            },
-        },
-
-        #endregion
-
-        #region B Rank
-
-        // Export for Mission [978] -  Upper Soda-lime Float Distribution Survey
-        [978] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1Xy27rNhD9FYNrqdCLEqWd45ukAZw0uErQRdAFJY1sIrLoS1LpdQP/e0E9Ykm2Eyd1gS66o4czZx46Mxy/omml+IxKJWf5AkWv6LKkSQHTokCREhUYSF/OWQm7y6y7uslQ5JDQQPeCccHUBkW2gW7k5c+0qDLIdmKtv22wbjlPlxqsPjj6VOP4xEDX64elALnkRYYi27IGyO9D1xhhMLCwPgxmtqxWXQSebXkfhNBZ8aKAVPUM7b6a87FbLjJGiyMltR3fHxTVa82umFxebkD2HONRxBgPIva7otNniJcsVxeU1XFrgewEsaLps0QRbsvok33cPmrYot5TxaBMoRePP7bzhxV0OlPB/oIZVQ0VOq9ja2dUf7e1fljSgtFneUVfuNAAA0GXjmsM5d8h5S8gUGTrIh3isk80BXoOu/pdsMU1XdWJTstFAUJ2TvTHzlDkBpa3F/0Aimy3Brr8qQRtO01X/oHHf9L1Takqphgvrykru3qYtoHmlYBbkJIuAEUIGeiuDgLd8RKQ0SBs1oAiXZgDeHMu1Zfx7gVIOBwhMtGR+8Zjfb+LJ15DqgQtZpUQUKozZTlCPVuuB6Pdy/ig91qrIUis+Fr3KysXsYJ1PRl3sbckmorzhNyHq2N4LNmPCjQuwjh3cWaDSZI8NL0w8M0kdTOTpEFOg5yESYrR1kBzJtVvufYhUfTU0FMn8NbcgU/84zFecw6byZyKF6rR7rhY0eJXzp+1fTcofgda/256T99KUDqBrgtvWamlD2zV9OkvloFatSZzzw709OkAYyV4WXdTq/XW1TktJBjHPY1QLbeHOocFlBkVm3MBP0r4xqtWv1NsJF1J3tIezaUPK+L4uiAN2IflOGp5SsoHjB8lPAi2HibWSP55YgF2dPEauE+mNrD9fHKtuW7iaa5AzGi1WKo5W+nX024uxt1dL0qVaJ5nfei9QwceGzfA4fiVfXdj0UtON2a7xvoOPyomIIsVVZV+wfUWNe62TzXQyQ0xUNzn8mn8PI2Ifa19cp1KmFOZ8S9RoPvm3ie/eW+U536YYwy5SfzANr0wzEzqATFt8FNMiU2I56DtH90sbzftpzdBM86fXtFwrnvEOz7XbySXKRQgJzOe0EIN3iH7vQLdZFAqltJCV0V7axSmK16VPbUDreHhcLxLucO9lmjHlchpCnGhZ2+by35LjVdIvDXQf+YvyG4h+PIaoI21ZKarWhe0vxi064A+NuKd2iH+9riWhilNPMcyaYKp6dlBYiYJxmYQhNj1Uhy4WY62xj6XrOMJXAkuFWSTeAlFcXYifZk5hxn4P5Huz0IkANsijpua1HUy08u8wKSpRU0vJDTEvkUCnNRDq8FtQ7yYmJPH9RrEJOYZNQu2gslVwamafGNSCZZU+hmcxJV4gc1w4bUIAT+3c9PHgLUbywz1lIQkCEnoJolLMNr+DcJMSar6EAAA",
-            },
-            AmountRequired = 3,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-                ["Isosceles Cobalt"] = new List<uint>()
-                {
-                    47484,
-                },
-            },
-        },
-        // Export for Mission [979] -  Central Soda-lime Channel Distribution Survey
-        [979] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1XTW/bOBD9KwbP4kKUqM+b66bdLJI0qB30UOxhJI1sIrLoUlRaN/B/L6iP2HLkpCmy2AW2PsnD4eOb0ZsZ6p5May1nUOlqli9JfE/OSkgKnBYFibWq0SJm8UKUuF/M+qXzjMROGFnkWgmphN6SmFnkvDr7lhZ1htnebPx3LdallOnKgDUPjnlqcPzQIu83i5XCaiWLjMTMtgfIT0M3GFEw2GE/S2a2qtcnAuPM5keMgnDIyO5RZFFgqvtQOLPZoZ/zPA2pMgHFCSbM8f3omMowOcPlaSLvkMQ5FFV/wjtRrc62WB1w9I4gPe8o3/0Lg1ucr0Su34BoYjSGqjfMNaS3FYm97hX44WPgAazTwV6DFlimeMDIP97oDxm5/VYlvuMMdKujMVH64SMwZ5ixsMNarKAQcFu9gzupDNzA0EfnWkP7R0zlHSoSM5O0Ewz4gLzfHfhGLN/Dugl7Wi4LVFV/iNFJRmI3sPkj8gOocLezyNk3raArWvMiFnL+FTbnpa6FFrJ8D6LsU0uZRS5qhZdYVbBEEhNikauGBLmSJRKrRdhukMQmySN4F7LSv4x3rbDCcYaEkhPr7YnN+p7PfIOpVlDMaqWw1K8U5RHqq8U6yvZRxKOnN16tQOZabkz9inI517hpmuyeeyeiqXodyodwDYebUnyp0eASz/U8lvOMAmQ55V7EacQDoLbN7Ch0MnATRnYWuRCV/pCbMyoSf27laQJ4KPXAD4PTHC9hWWIB6g4M2JVUayj+lPLWbO+7xieE5r+xV6gfKrDpeX1FdosmrL42O1MbO2dBZMLvMOdayfJgCJ7YvhBrVEclfynKhyUSs+APbh/+fIt8KIvtpxWWV1JPUy3ucF78HKsLXGKZgdo+S+wAwQlMf7up8K2suw29Z2t5Jn8DOMc3fNp9+xy9dOcgjhGvmwoXSmyGZFvLi8gGnmM03e58Id3B3icId36mMKe5RjWDernSF2JtBiRrF44rtrlH1aodwebhYLaMDBA38KLj+8eTFxpzB+pbZ18tH/FLLRRmcw26NkPaXLJOlNAzJXHkZbunJDrmOKq5nxDXy1U0KpifUsa/LIFffecH7Tl33ZRlPlDX9YDyyA1okmJOnczJWeInEbOB7P7u+3N3Ef/8YGhb9Od7MuzVPAxP9+o3RY2TazgaKuypzJxnWGqRQmHSYY5pHaZrWZcDNxJzLzq+CbnDW6ppc/Na5ZB2DXX8Lu9F3tPXQebtLPKf+TTZT/dfnulms7HMTFabhB5O+W62m8fWvHcbE+6ByJwgSbjjAM0x55RHNqfgQ0pT5gK4XuZxOyU767GIotMBzNS20lAU4jtmk8VKya+Vlv+ApMaV8XKF/ZbUq0oqc30/iiKgLAo8yh3boxDZAfXDkCG4PAffHZWUfzoA47qd/IVFsc3Nrt/d6X8hJeSQo+9lFNwMKM/CgCa+jTTgmeuESRY6aDcjsMXth9iETmZYmm+wyVxmQAuxxslsBWWJxeStqLQSSW0uVpN5re5wO/wssj2GiZf4NEzBo5wzmyaR7VAv4CmzIbQ5OGT3A5FMMbFrEwAA",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
-        },
-        // Export for Mission [980] -  Arthrolure Field Test
-        [980] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1XS2/jNhD+KwbPImBKJCX65rhJGsCbBmsXPQQ90NLIJiJLWorabLrwfy+oRyzZst0GPuwhN3k4882DH2fGP9G0NNlMFqaYxWs0+YluU7lKYJokaGJ0CQ6yh3OVwv4wao8eIjRxA+GgJ60yrcwbmhAHPRS3P8KkjCDai63+rsb6kmXhxoJVH679qnB44KD7fLnRUGyyJEITMh73kM9DVxjC71mMLwYz25TbNgJKxvRCCK1VliQQmhMVoWRMulbu5SgyHSmZnMAjLue9GtPG7E4Vm9s3KDoJsIMEGOslwNs7kC+w2KjY3EhVpWEFRStYGBm+FGjCmqry4Bi3iyoa1CdpFKQhdOLhh3a8X1C3NdXqH5hJUzNjiGY8OAJzD27Ha8CWG5ko+VLcye+Ztng9QZud5/TlXyHMvoNGE2JrdiIE2nPYlvNGre/ltsp7mq4T0EXrxN59hCaeP6ZH0feggt3OQbc/jJbNO7QXscwWrzJ/SE2pjMrSe6nStraYOGheavgCRSHXgCYIOeixCgI9Zikgp0Z4ywFNbGEG8OZZYT6M96ShgOEIEUYnzmuP1fk+nkUOodEymZVaQ2qulOUB6tVyHYz2KONB75VWTZCFyXL7fFW6XhjIq765j70h0VRfJ+QuXBXDn6n6VoLFRb4LPATKsEelh6lPAQfxeIVZFHjCBUpdStHOQXNVmD9i66NAk+eanjaB97fuczsITsV4Z2n/Kg3o0VSbjc6SUoPFfcz0Via/Z9mLRWo7yF8gq99WXoB5f4yxTApoH2dzaDNsn2kjqstAiW87U4u5MDpLOyPusvnY65jPYQ1pJPXb/0b4LStXyWFKtYbLxbvCPr6TKr0YBrSWWuWnPPnM9d5VTvnqKZ3x1uhZFk9jA3omy/XGzNXWThNSHxzSu9ojSl2PK/vRacQD3dbzmTgex2dGqd0B2j7T8ukrfCuVhmhhpCntRLNLxgmSXSDNf+bGJwU+RIGP3nmnlwmX+j7QGEeEC0yFjLHwVgTHPADmi7HHPYJ2f7fNrFlEn98FdT97/on6jY3amE41trnawuhhm0MRmkz32jA5V56HCFKjQpnYmlhftcJ0m5VpR21ovWTicJXw+lteYB2XOpYhLBLbm5pMmGAXNii2c9Avs5/v5+GHp6A1tpKZrWpV0O5cbKah/azFe7Uh9naZFjHu+yLGMXcZpoz6WPJVgNkqXMWxBwKAo51zzKQzCSxeVJ6rdP0q365Oow/zZph/nzS6Do0CJoKxCCUWkQBMKXOxYB7HMad+4FMY08gbpJF3hkZlivNS5wlEo6XMoTD6+nz6bEu/JJ985kUrECGOSeBiuiKAJScB5hxi4hM3dGOvGoA1bhPizQh3lvLRnYIkGi2hMP1/CkCikPHAw5LHAlNCXCw8SrGMfcECP2CcuGj3L9Fyo3dREgAA",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
-        },
-        // Export for Mission [981] -  River Basin Large Aquatic Resources
-        [981] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1WTW/jNhD9KwbPEmBJFPVxc9xsGsDJBnGKPQQ9jKmRTUQRHZJKNw383wvqI5ZsOWmDHHrYGzUcvnkcPc7MK5lVRs5BGz3P1yR9JeclrAqcFQVJjarQIXZzIUrcb2bd1mVGUj9OHHKjhFTCvJDUc8ilPv/JiyrDbG+2/rsG60pKvrFg9cK3qxqHxQ652N5tFOqNLDKSetPpAPl96BojiQYnph+SmW+qx44B9ab0AwrdKVkUyE3voNd38z8OK1UmoDiRUs9nbJBU2h77JvTm/AV1L3B4wDgMB4xZl3R4wOVG5OYMRM3bGnRnWBrgD5qkYZtGFh/j9lGTFvUGjMCSY48POzzHhhn0u6NK/I1zMI0UxnTF4iMw/+B3BC3Y3QYKAQ/6GzxLZfEGhu52gTO03yKXz6hI6tmcnaBABwG7dJ6J9QU81veelesCle6C2H+fkTSIpvSI/QAq3u0ccv7TKGgfnv0Rd3L5F2wvS1MJI2R5AaLscut6DllUCq9Qa1gjSQlxyHVNglzLEonTILxskaQ2MSN4C6nNp/FuFGocZ0hccmK/iVjv7/kst8iNgmJeKYWl+aJbHqB+2V1H2R7deDR67dUIZGnk1j5fUa6XBrd1odxzb0U0U19DuQ9Xc/ijFE8VWlwSxAg0YFMXMVm51M+ZC5xSF/KYZ0kCQZ4xsnPIQmjzPbcxNEnvG3naC7y99YjF0WmOV7AusQD1DBbsWqpHKH6X8sEe78rGD4T629o1mrcXmEOhsXuR7aa9Vvc2W1Nzd+pFthx1mEujZNlrZCPHv5fFy48NltfSzLgRz7gsTmJPgx72AtdYZqBe3oUfQ/hNVqvi8L6Nh8+SN4c9+ZMuAw4jXndKbE9FikI/eHM5FWvg9E601s/qepYbVHOo1huzEI+2v3jNxqHg61GiUk0Ds4teaR6pv0EUJscd+Z3maseArvJ0YrvFp0oozJYGTGV7nJ0zTijwA0X9a238ksCnJPDZf96rblkeBQGj1EUWBS7F1dSFMOQuCzJOMYqTVc7I7s+uvLWz6P2boalw969kWOpoEp8udZcc1wVoPbkANSjL3nvJucywNIJDYTNiIzUOs0dZlQM3ktIwOZwlguGYF9tIlcqBt8VsdKSiYRJ+MFGFO4f8bwb0fX/8dFe0h61lbrNaJ7TfJ9vuaJeNee82pt2ezmIKCaerlZvEq8SlWYwu0Ahd7vN4ShmPYi8kO+dYR8k7LVPKUhtZ4uRKKvhyJY0L4r8L65eSyq9UUsKZxxIIXGQBdekKIxeCPHYzRoNkxXiENK4rVoPbUjybuJNb8YxqcgZalJMFqDVOZk8VGMEnt6hlpTjqg9EvgwCmEboBY5kVLXVXsR+71KecTSlHP/LJ7h/yrTMLExAAAA==",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
-        },
-        // Export for Mission [982] -  Saltpeter Shore Sunken Resources
-        [982] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1XS2/jNhD+KwZPLSACelDPm+PNpgGcbBBlsYegB1oaWYRl0UtS200D//eCetiSLdubIIei6E0mZz5+M/w4M35F00rxGZVKzrIlil7RdUkXBUyLAkVKVGAgvTlnJew3027rNkWRHYQGehCMC6ZeUGQZ6FZe/0yKKoV0v6zttw3WHedJrsHqD1t/1TheYKCbzVMuQOa8SFFkmeYA+Tx0jRH6Aw/zIplZXq07BsQyyQUKnRcvCkjUiYwQy7T6XvZlFlykjBYn8Czb8wY5Jq3bZybz6xeQvQDcgwBcdxCA190BXUGcs0xdUVaHoRdktxArmqwkitw2q15wjNtHDVvUB6oYlAn0+HiHft4woXbnKtjfMKOqUcZXCV/K4uUbU/ltCqViCS20VZeV3v40UewHxAXddJtjGvWCIyb2wdU6LZOnnBaMruRn+oMLTWaw0KXGMYbrj5DwHyBQZOmEn6BABgd2d3HFljd0XSdtWi4LELI7xDbQMAVnQnR8kxyFODgv2G4NdP1TCTp46TsUffNPPP6Lbm5LVTHFeHlDWdldJrYMNK8E3IGUdAkoQshA9zVxdM9LQC3CywZQpJM5gjfn+g7fifcgQMI4Q4TRif3mxHp/zyfeQKIELWaVEFCqD4ryAPXDYh1lexTx6Om11aM2mvGqVCAaD23f3XojuVjxja4mrFzGCjZ1Gd9H1spyKj4moD5czfBryb5XoHFRktLUz2wXBy44mPh2hhcudXDiOb5pOkniWT7aGmjOpPqS6TMkip5f69N0ALvS43vhGY6fqhKyJt7JVKhc8KISoIHvuVjT4g/OVxqqq2jfgNa/9boEtXs5GS3k7j22m/3stktNHojl60rZYcZK8LL3EC+7m07PfQ5LKFMqXj6AVw38iVeL4lKkA0fbC3d++2jqypxD2VTmXfEaPbqP8CsBjTg/CbY5ot0a+K7t7Ez2DM8YjZEY2umnMs0UiBmtlrmas7XuoFazcfiG6tmpEk2L1h+9/tHl6Z6rE6kaLfNueDyknBkw9GTUFcNO1Y/wvWIC0lhRVek+r0evE1K/IN23KvSy4s5J603a+U+I5L133iupBLLUJYGJvcBPMcnMBaY2DTGEmeVZXhpatoW2f3Y1tR3Pn3cLTVl9fkXD+urqceZUfX0QTK6pYsnkjgvKDhqCdS5DBwPfK2oMpmvdwfZmY3O3Gx5OQM5w/A30wZXIaNJOjG0wbuhemA7drYH+NX9c9p353f1YO+uVei6oE9rv0ChCVxM8iWmxAQViEudcwCSuyhWUk0eQvBIJyMlvOom/owat8d/jjSm9p8oMPDdwXBObabLAJCQmDjzbx07guIFDSOCYIdoax6qzT0d6w4s0K+gKJjEtU93fP1x279bZuF7/l91eOrLLzcPblVhn+V06DCCxKc1c7JOUYLLwbRx6HmDTyXzXSiCjVlBXxwa3De5XON3pQX1wlk984rmegwO6CDEJLQcvHMvCtkMzxw+ykIQUbf8BHyZpJZMRAAA=",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
-        },
-        // Export for Mission [983] -  Mutant Aquatic Specimen Observations
-        [983] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1WS2/jOAz+K4HOFtbv1y3NtN0CaacYd7GHYg60TSdCHSuV5Ha6Rf77Qn4kdpqk20EPA+zcBIr8+JGiSL6Saa34DKSSs2JB4ldyXkFa4rQsSaxEjQbRl3NW4e4y76+uchLbYWSQW8G4YOqFxJZBruT5j6ysc8x3Yq2/abGuOc+WGqw52PrU4PihQS7Xd0uBcsnLnMSWaY6QT0M3GFEwsjDfJTNb1quegWuZ7jsUeitelpipgaE1VLPfd8tFzqA8klLL9v1RUt3O7ILJ5fkLyoFjb4+x540Y+33S4QGTJSvUGbCGtxbIXpAoyB4kib0ujX74FneIGnWot6AYVhkO+Pj7dv44g3ZvKtg/OAPVlkLvdd/a3su/01nfLaFk8CAv4IkLDTAS9OE4xlj+DTP+hILElk7SoVr2Q10CA4d9/s7Y4hJWTaDTalGikL0T/dg5iZ3AdN+wH0GFm41Bzn8oAaOftiWgH+KOJ8+wvqpUzRTj1SWwqk8PtQwyrwVeo5SwQBITYpCbhhO54RWSDuFljSTWeTqAN+dS/TTerUCJhxkSSo7ctx6b+x2fZI2ZElDOaiGwUp8U5R7qp8V6kO2biA96b7QuuMiw+WXPsO4fuxHmWtr8Gy/yPKOrrETxtf7orFokCtdNS91F2VXfVHxOcEO4hu1fFXusUeOSKHfB8jOgkQ0OdUPLpAA2UCdzsLAz33eDlGwMMmdSfS20D0ni+9fGmw5g2xUCX8+IYxwv9H95BoViMhVqKXhZC9S4N1ysoPyT8weN1PeavxEedr9H30ocpbYTtfG6VqCbVW+cKMGrxUfMTWdgPscFVjmIF43QKW5/cQGlRONjwF94nZbbkEYath9tFXa0j6ocojbUuhNsfcxT4NnOVuWYr5HSCW+dnq7iaaFQzKBeLNWcrfTcsdqL/fJuVoxatINNHwYd/ECbdgIv2p9PJ2e9Xg/6jtTX0zd8rJnAPFGgaj379P6xX2T/rZY+WjK/S+BjJdC/ufvBNx/0MojyIgpNn5ppEVA3B4+CbyFNLddz0txE187I5nvfzLod9X4raPvZ/SsZNzbPPNHYknqNYpIoEGktpBr1YetUfq5yrBTLoNRJ0c5ahemK19VIrZkc+1uHM94AQ+2pFgVkmJS6Gx1cOfUEemf38jYG+WV2991A/OkxqI21ZKaz2iR0OBi7caiPrXindqh8B6XmWIUZ+kVBnSJKqZtHAQVApKmTeg64mR26AdkYb0spOB7AleQywxLlZLpCtXz5XU3/l2pKfbR8J/WoH7g2dQMrpGnhAYUwNNMgtyM7bxtXi9tRvI9Ch9rfJ2cTOrmuFVRqMn2sQbFsohdVtsJq8jWVKJ5Az0Q5sf+wx8ufG6AbpmZBLSfNqFtkGU2DIqN+YVmh56eFW6Rk8y8QmAvLPxAAAA==",
-                "AH4_H4sIAAAAAAAACu1WyW7jOBD9FYNnEaOVWm6OO8kEcBa0M+hD0BjQVMkmIosOSSXtCfzvA2qxJW9pN3LoAeYmkVWvHouPVfWOhqUWI6q0GmUzlLyjy4JOcxjmOUq0LMFCZnPMC9hupu3WTYoSN4ot9CC5kFyvUOJY6EZd/mB5mUK6XTb26xrrVgg2N2DVh2u+KhwSWeh6+TiXoOYiT1Hi2HYP+TR0hRGHPQ/7QzKjebloGfiO7X9AofUSeQ5Mdxydrpn7cVghU07zIyl1XEJ6SfUbtyuu5pcrUJ3AwQ7jIOgxJm3S6TNM5jzTF5RXvM2CahcmmrJnhZKgSSOJ9nG7qHGD+kA1h4JBhw/Z9SP9DLqtq+T/wIjqWgpt1F1vdyf/XuP9OKc5p8/qir4KaQB6C+1xPKu//hWYeAWJEsck6ZCWSWQk0AnY5u+Cz67pojrosJjlIFUbxFx2ihIvtP099j2oaL220OUPLWnz0kzmH8XkjS5vCl1yzUVxTXnR5gM7FhqXEm5BKToDlCBkobuKBLoTBSCrRlgtASUmMQfwxkLpX8Z7kKDgMEOE0ZH9OmK1v+UzWQLTkuajUkoo9Cedcgf10856kO3eiQ9Gr6xqgUy0WJr3yovZRMOyqoxb7o2IhvJzKHfhKg5/FfylBIOLbObYJHZSHDlejH2WupgGbIoDz6e258VTYAStLTTmSt9nJoZCyVMtT3OAzeMOSUSOc7wWAlaDMZWv1KDdCbmg+Z9CPBv/tlB8A1r912/P7CrQ5gDtK2yW6lP6TmgqTes80VIUs5Pu90W++jaHYsg0f4VJfhTY9jrAY5hBkVK5MtiN4aY6ZDRXYP004wr4iyin+eawPQuXxBuD7YGOmhyi1rV6lHx5LFIYuN7G5FisntGJaI2dUfUw0yBHtJzN9ZgvTDtx6o1duVeTQynrfmU+OoW5vak7ofcv60Bp9sIg3u1JJ/u7GQnaotTK8Cu8lFxCOtFUl6bfmZljV5s/J8Fz9fS/Ps7TR3vn/pl33i18oRekNmE48iKCfQhcTFOf4sBzfaBp6Dt+gNbf28rXzKVPm4W6+D29o34VDOzoeBW8YTDLqVKDq1z0S7ZzKjs3KRSaM5qblJhQtcFwIcqiZ4YSP4h35wyvP/NFJlIpM8qaR9Uw339Au+NVsLbQbzOemyJbT6t1Fdg2z25Hio/fxZWh+kY1yMFQ6rkUeSkBdZBHJru1Ot/osu6nqg3Xba8oQbQQxd9PceRh9/vgYoAHt6WmhR4MX0qqORuYcYAvoBjcTxXIV2rKjhq4f7ioi96JeOA9dLQbOTZ4fgoYYtfGfsYojlxmYx+mHnGcFDwSobW1r81THboS5heuWKl+H2keqPX/NaXuK/PsYW6yJ8kd/Zmh7hd0NJ2GmU2DGPvulGHfDTMcpQCYZdPIt4PMCyNS1cAat6FY6dw5Q+dOpfNu3IjRkKQxJlPiYD9yPEydOMJ+nJKMeDS2sxSt/wVNxQdRfhAAAA==",
-            },
-            AmountRequired = 4,
-            UniqueFish = true,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-                ["Glass Discus"] = new List<uint>()
-                {
-                    47426,
-                    47453,
-                    47506,
-                },
-                ["Glass Stitcher"] = new List<uint>()
-                {
-                    47425,
-                    47437,
-                    47444,
-                    47452,
-                    47505,
-                },
-                ["Iceglass Floe"] = new List<uint>()
-                {
-                    47508,
-                },
-                ["Isosceles Amethyst"] = new List<uint>()
-                {
-                    47507,
-                },
-                ["Super Starburst"] = new List<uint>()
-                {
-                    47509,
-                },
-            },
-        },
-        // Export for Mission [984] -  Vitrified Freshwater Fish Observations
-        [984] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1WS2/jNhD+KwbPIqAHRT1ujpukAbzJYp20h6AHShzbbGTRS1LZTQP/94J6xJKjxEkQoHvoTR7OfPPN+OMMH9G0MnLGtNGz5Qqlj+i0ZFkB06JAqVEVOMgezkUJ+0PeHV1wlPpx4qCvSkglzANKPQdd6NOfeVFx4Huz9d81WF+kzNcWrP7w7VeNQ2MHnW+v1wr0WhYcpZ7rDpBfh64xkmgQ4R4lM1tXm44B8VxyQME/oNBFyaKA3PQCvb6bfzytVFyw4oWWej6lg6aSNuxM6PXpA+he4vCAcRgOGNOu6ewOFmuxNCdM1LytQXeGhWH5nUZp2LaRxs9x+6hJi/qVGQFlDj0+9DCODjvod6FK/AMzZhopdFnpkf4HbfT1mhWC3ekzdi+VBRgYunICZ2j/Brm8B4VSzzZpTMs0thLoJez6dyJW52xTFzotVwUo3SWxfzZHaRC55Bn7AVS82zno9KdRrL1ptvPXcvGDbS9KUwkjZHnORNn1A3sOmlcKvoDWbAUoRchBlzUJdClLQE6D8LAFlNrGjODNpTYfxvuqQMM4Q4TRC+dNxvp8z2exhdwoVswqpaA0n1TlAeqn1TrK9lnFo9lrr0YgCyO39r6KcrUwsK0n4557K6Kp+hzKfbiaw00pvldgcZGfeQlPALAfAsfEpwQznnFMIHJ96lKXuznaOWgutLla2hwapbeNPG0BT5c7onH8MseZ1BuRT66ZYqWpCmYhL6XasOJ3Ke8sSDct/gRW/7Z2DebpHi5ZoaG7l+2hLa67oa2p6QDxIjuFOsyFUbLs7a/j4W7QC5/DCkrO1MO7EW40/Car1r9zbCxH6hyg+dRW08Tta3lv5KCMEa8bDddKbIdkG8u7yEahb2tvIt9JdxD7CuHWz16j6dKAmrFqtTZzsbH7y2sODu9X/VSpVLMg7UdvE4yM+yAKk8ON/+qbwT4zukHXqfobfK+EAr4wzFR2h9p3zAtSPyLdNyt0zHFUc28Q1/tVNCqYNynjP5bAR//z3jDNc88NgzzADBjBJGM5zsCOVWAkyfzcjxOCdn9107R9694+GZqBevuIhpM19IKXJ+vVlhWgcyjNZGFEudJrsR1sA++1Jl1wKI3IWWE7YzM2DtONrMqBG0pJmBw+YYLhczK2mSq1ZDksCjsY2wLCJDzycgt3DvplXv77Pfzh7WuDrWVm21h3sL+P2y1sPxvz3m1MtD2BJS5bEsJcHAeUYxJlHDPm5tgPA5otwedx5KKd81xArxQwkxkrzORE/C2rX1449H/hOB8RDneznEJIcOASign1chz7WYhJTMMAvCAKl1E9mRrcluLJBE/+EEaJpQA+ObON/MEMqInNNLnKNKh7ZtedHj4qKQ/CjHHAYcQyTJIoxlnGKc5iSLLQA4ggR7t/AescJCReEAAA",
-            },
-            AmountRequired = 17,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-                ["Cobalt Bijou"] = new List<uint>()
-                {
-                    47429,
-                    47435,
-                    47461,
-                    47465,
-                    47511,
-                    47531,
-                },
-                ["Kintsugi Chip"] = new List<uint>()
-                {
-                    47512,
-                },
-                ["Opalescent Stingship"] = new List<uint>()
-                {
-                    47513,
-                },
-                ["Pearl Shell"] = new List<uint>()
-                {
-                    47428,
-                    47434,
-                    47460,
-                    47464,
-                    47510,
-                    47530,
-                },
-            },
-        },
-        // Export for Mission [985] -  Saltpeter Shore Large Resources
-        [985] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1XS1PjOBD+Kymdoy1blmU7t5BlWKoCwxKoOVB7kK12osKxgiyzw1L571Pyg9jBgYXNVs1hbk6ru/V16+tHntG0NGrGC1PM0iWaPKPTnMcZTLMMTYwuYYzs4VzmsDsU7dG5QBMSRmN0paXS0jyhiTtG58Xp9yQrBYid2Opva18XSiUr66z6IPar8sPCMTrb3Kw0FCuVCTRxHafn+W3XlY8o6Fk474KZrcp1i4C6Dt2DQPw+hNZKZRkkpmPodtXI+9cqLSTPDqTUJYxFe0hY1EPSBzqN1SOgScqzor3hiyxWp09QdDD6ey79fnCsfR9+D4uVTM0Jl1WIVlC0goXhyX2BJn6TcRa+9tv1GjVer7iRkCfQwUP27Vg/2aQ11fIfmHFTs+a2gK959vRNmtW5gNzIhGdWq01g53yaGPkIi4xv2sMh/rLQYfvPvsc8r0Fys+KZ5PfFF/6otAXTE7Sp8cZ9+TUk6hE0mrg24Qcg0N6F7VucyOUZX1dJm+bLDHTRXmI5JtDECxz6Cn3PVbjdjtHpd6N5U+D2FW/U4m++Oc9NKY1U+RmXefsw2B2jeanhAoqCLwFNEBqjywoEulQ5oHHt4WkDaGITM+Bvrux7fNLflYYChhEijA6c1zdW5zs8iw0kRvNsVmoNuTlSlHtejxbrINpXEQ/eXmnVBFkYtbG1L/PlwsCmasg77A2Jpvo4kLvuKgy3uXwowfpF4IeMEJLiNE4ppjFzcEx8FzPgPHJch4SCo+0YzWVhvqb2jgJN7mp62gBeGkVQtb5DGC/4Moe4XFpXl0qvefaHUvfWuO0434BXv628APNSf1W3bOuxObRBtZXZiOrIqRvYTtb6XBit8s64fN/c8Trmc1hCLrh+OgKuyvFtAb+rstFvFWvJO+H3vBFmg6ztdiFeyNxq3ci1bWLE+c2rGkzTk6/hYRBZ19e/iXfA+LaAGy03/ahqyYeiCnxik1Rb/ue4et4+Hlljbut0mhrQM14uV2Yu13bYuvXBfgFXK1ip62luPzqjZmCeeIEf7W8yb+5Cdn1qO2lbPtfwUEoNYmG4Ke3At/vZgZp6p0Y+Wgo9xUEWv0XXD7GwqzXIrLcp9EFm/E8U+Oybd7o1p2nIPZJin5MEUwAfc5ECTgkIiCgPkzhA27/adt3s8Hcvgrpj3z2jfuv23fBw6/6zlMl9wXMxuuC54VpJ0Zs27ls52tv9nlGtMF2rMu+oDVQH9aP9jcnrb8KhvbjUKU+a5bEJx4/8dxZFfztGP83/m93Y//Swt8ZWMrNZrRLaHf/N0LeftXinNkThDt18oMwLicCBEBGmEU1xHFOGE0eQkEQBkJih7fg1ndjhAKbrtUpWWuUqU0tZmKNz6dPkGSbhLy4dh0sCQvBEwHGSsAjTIAlx5CYBZg4F4rFIBE48yKXgcABXKuN2ExCjU8h+HiL9Yk5+TObQFDjzXY5pQEJMacRwGHgRZm7gMU4SJ+GkGnq13wbiyQiPFjzbgAE9WqyUhtGc6yWMrqFQpU6g6P8REsIDh5EAs5hSTH1P4NhzfeyFMYeYEu5DgLY/AGpfSVeJEwAA",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
-        },
-
-        #endregion
-
-        #region A Rank
-
-        // Export for Mission [986] - Cultivated Specimen Survey
-        [986] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1XyXLbOBD9FRXOZIYbuN0UxfG4SnZcljw5uOYAgk0JZZJQANBjxaV/nwIXi9Qap1yZHMYnGeh+eHh6jW69oHGl+IRIJSfZAsUv6KIkSQ7jPEexEhUYSG9OWQnbzbTbukpR7ISRgW4F44KpNYptA13Ji2eaVymk22Udv2mwrjmnSw1Wf3D0pxrHDw10uZovBcglz1MU25Y1QD4NXWNEwSDDOktmsqyKjoFnW94ZCl0Wz3Ogqpdo98Oc88dykTKSH5HUdnx/IKrXpn1mcnmxBtk7GO8wxnjA2O9EJ48wW7JMfSSs5q0XZLcwU4Q+ShTjVkY/3Mfto0Yt6i1RDEoKPT7+bp4/VNDpUgX7DhOiGit0p+5mOzv6u232fElyRh7lZ/LEhQYYLHTXcY3h+h1Q/gQCxbYW6ZCX/VBboHdgp99HtrgkRX3RcbnIQcjuEP1lpyh2A8vbYz+ACjcbA108K0HaStPKz/nsH7K6KlXFFOPlJWFlp4dpG2haCbgGKckCUIyQgW5qEuiGl4CMBmG9AhRrYQ7gTblUP413K0DCYYZoPDJHo0mVK/ZEFKSj2QooK6AczSrxBOuR84eDjiA0nJDZnVfv6nwlSD6phIBSvZMOO6jvpsZBtvWNTkT17t1YaKb4Slc0KxczBav67dxyb202Fu9DuQ9Xc7gv2bcKNC5ygsjyXADTCqLI9BI7MkNMwQwxOJmT4cwNQrQx0JRJ9SXTZ0gUPzQG1hd4Lf/Aj9zjHO8gHU24LHhBFguupIa84aIg+Z+cP2qQ7j35CqT+X69LUK+VmpFcQle57aa+XFfD7VKjgGcH+p3qMGdK8LLX4Q6kfynz9dcllDdcjaliTzDLj2Jbbg97CgsoUyLW70C6Br6X8IlXbXwX2Kyc0WaA5vhagSZve/9rVuqoOSv0Wxh9iAZ//laHMyL00X9EgQPJc8FWe1dqAwLsuK8hW/Yngg6R2IljBfBKXZNn3QQ+WAbSRTjOFIgJqRZLNWWF7o92s7FbnfUoVImmAesPvU5zoJ24AY52JwrdeY4OB3qM6Z7Jribu4FvFBKQzRVSle7Sek35NobwV9X3q5yj80Le2rb++Q6gH6+RUQbzJ1f+lfd9k1nsJk0oqXjTO6b8kv8DHvfZig5X6YWSZQeQmpmdn2AyzxDUjSijGNk2SLEObv7v+0v4+eHhdaFrMwwsa9hrsnOg1nzgvIB39xddkAWLQGe1TQl6lUCpGSa4l0mc1AeOCV+UgDMUe1m/lQBR3OHyH+qRKZIS2ldBSxxE+M+fijYF+m99J25nkpycRnaxXJlrGWsH+bPLD86QObhJbIOeI9bfmo7adEp8QM/Ss1PTCgJoJJWBG2AkDJwq9xCVoY+yb68QVZ4qI0USQROnB77fx1oHK/d9q9p7V9PC7Z6Rjb+jWSJBEWRpkjolDapleSEIzotQxie162MsSGnhR/Yo1uC3FM74ezuEEY+zjNDRdmlmmh7PITDIXm65P3cyynYgmGG3+BQH9j32zEQAA",
-            },
-            AmountRequired = 2,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-                ["Bottom-layer"] = new List<uint>()
-                {
-                    47524,
-                },
-            },
-        },
-        // Export for Mission [987] - Stardust Bait Test
-        [987] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1XTXOjOBD9Ky6d0RQCBIib481kU+VkUoO35pDag4DGVgUjjxDZZFP+71sCY4O/MjvlQw7xSW41r183T63mDY1rLSe80tUkn6PoDV2XPClgXBQo0qoGC5nNqShht5l1W7cZipyQWehBCamEfkURsdBtdf2SFnUG2c5s/Nct1p2U6cKANQvHrBocP7TQzWq2UFAtZJGhiNj2APk8dIPBgsET9rtkJot6eSIxj9jeHiNKh4w6EFkUkOouE4/YpO/mvM9Cqkzw4gQR4vg+22PiD5kMiY4T+QwoynlRdRG+impx/QpVjyM9n5zfvS7+BPFC5PqKiyZFY6g6Q6x5+lShiG5egB8e4vZR2Qb1gWsBZXpKVB6x/X0Yf1h7t0NS4l+YcN1q6phA/fAAzNmTlrMBmy14IfhT9ZU/S2XwBoYuWdca2r9DKp9BoYiYEnYxvUGErpxXYn7Dl03e43JegKo6VCOTDEVuYHsHdAdQ4XptoesXrfjmyJoXMZPxP3x1W+paaCHLGy7K7l1jYqFpreAOqorPAUUIWei+IYHuZQnIahFeV4AiU9YjeFNZ6d/Ge1BQwXGGCKMT+23EZn/HJ15BqhUvJrVSUOoLZbmHerFcj7I9yPho9MarFUis5cocX1HOYw2rpsXuuG9ENFaXodyHazj8VYqfNRhcFBIW0iwJcAY0wR7zAxwG3MWu7UPo5ozaHkdrC01Fpb/lJkaFosdWniaBbe8JfOac5nhV1DCKNVdZXWmDdy/Vkhd/SvlkELrO8QN489/YK9Dbg990PWvTCDabJrOuJWxMbfoeCUxH6jBjrWTZuwVPPD4TS1B7neZOlNst052+ULv/cyx0x196Hq77xT4gY7s9MlOYQ5lx9XqBLBvgP2SdFPt1az0cn20ddkU46XKMWt9rpsTqVKSAOu7W5VSsgdOZaJ2fWIKs9R1/6QprDs0416AmvJ4v9FQszeVF2o3909RMOLVqb0ez6DX6IxeKG1B2MBmcGzXMdNK1tU7G3+FnLRRksea6NheoGX8+gLZ/SY2fsmv8Liayb2Xx+mMB5b3U41SLZ7jNoNQiNSNhW9hfleF7Ouy3c4cnxGYuZjYz7dyxccKpg3PCQ8ZYCmlO0Prvrp9vxvbHraFt6Y9vaNjbqeOf7u3jWknFR/ECimJwD5Fz5dxWw9TQRGodxktZlwM3FHmU7Q9P7nCuDU2kWuU8hbgwyj0+gFJG35kZ6dpCH+ZbZjcQ/PYYYB42lompalPQ/mCwGQfMsjXv3I6pvaezIMsCAi7DJCGAPU4oDlM3wJQmrsec3IXAQ2vrUEfh6QRul0Jz005H1+VccTN8X1pNx0Xx/8X1qaaLqsnzCac2pZgxj2HPdgGz0M+wnUIYBqlNUzs8qiZ2Rk2VrFIooBo9AFeXb0yfUvqQUiIUvNxxXOyHqY09CFIcMprhhCV2SHnmO7nXXIAtbneFjfD262RkaI1mUOnhlxJPeepBGmAv9UPsJZmPmeNwnHDuhyEnhFGG1v8BUQAx63wTAAA=",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
-        },
-        // Export for Mission [988] - Elemental-esque Aquaculture Specimens
-        [988] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1XyW7jOBD9FYNnsaGF1OKb40lnAjgL2gn6EMyBoko2J7LoUFQmmcD/PqCWWLLlbPAAA0z7JBdZr4pPr1ilFzQptZyyQhfTdIHGL+g0Z3EGkyxDY61KsJBZnIkctotJu3SeoLEbRha6VkIqoZ/R2LHQeXH6xLMygWRrNvs3NdaFlHxpwKoH1zxVOH5oobP1zVJBsZRZgsaObfeQ34auMKKg52G/m8x0Wa7aDIhjk3dSaL1klgHXHUenu819P6xUiWDZAUod1/d7pJLG7bsolqfPUHQC052MKe1l7Leks3uYL0WqT5io8jaGojXMNeP3BRrThkY/3MftokYN6jXTAnIOnXz8XT+/z6DbuirxN0yZrqXQRt31dnf49xrvmyXLBLsvvrNHqQxAz9Aex7P69h/A5SMoNHYMSUNa9kMjgU7Alr8TsThjq+qgk3yRgSraIOZlJ2jsBTbZy74HFW42Fjp90oo1lWaYv5Hzv9j6PNel0ELmZ0zkLR/YsdCsVHABRcEWgMYIWeiySgJdyhyQVSM8rwGNDTEDeDNZ6C/jXSsoYDhDhNGB9Tpitb7NZ74GrhXLpqVSkOsjnXIH9WhnHcx278SD0atdtUDmWq5NvYp8Mdewrm7Gbe6NiCbqOCl34aocbnPxUILBRTxNqJeEHIfE55iwOMaR6wc49AknwGMS8QRtLDQThb5KTYwCje9qeZoDvBZ34Efu4RxPshJGc81UUhba4F1KtWLZ71LeG4T2qvgJrPpfV59ZLUCbI7R1eCFyY70Rq6pSw2+2hS7YU8fmucbWuNZ8ECcwd1IbZK6VzBefCUP3w7j+QBjb64SZwQLyhKlnE6nZ+HqrpCwrwDqcwBDwbQG/ybLZ326sLS1vrwnuXF8754m+Ubv7C3YCur7hq4besvVB8OAT4B/haMD5toAbJdZ9JmrLsZkIqGu4r8GPz0UP/vNsNO7mNpmkGtSUlYulnomVaeNOvbB7zVQTW6nqOcE8dBriVZ49/1xCPuFaPMI82wpyoB96AY32R6I3phszh7WdoK38H/BQCgXJXDNdmiHDDHq718HHqvmzxdjbuF9HH6iGD2u6u2tfpx9S2yc08y+J46vvvNttPOICpRz7LHQwcW0Xx6EdYeZwSnwvYA4J0OaPtt00HwN3r4a649y9oH7roR453Hqu1iwTGkbnqzUUXEvV65XOWwydJ5BrwVlmaDHh6g2TlSzzzraB2iA02p33gv60GprApUoZb+qsOQyN6DtjLt1Y6D/zmbQdWr48qhhnY5kaVitCu8NLM7KYx9q83TYk4I7YEi+hQRpG2A5sFxOXhJgB9XHMaZzSiAEPYrSx9sXkHT7AVCYrmbNS/xLR/0NEHELHo8zBLKEMk8hOcBgQH7sJRCROfZ56ZFBEbxxgKmOW6dGJ+FOWR9fRAeF49D3hDAvwl46uj6IjloS27acuhpBRTNwoxGEYpTgOaUrBJSn1WNX5atwmxckIj04zWEGuWYaheChhNHkoGS8zXSoYmc9MsYK86H/UAQfb9r0Ee7YTYuLbKY5oHGDHi7lvO0kaexxt/gHTpl913hMAAA==",
-            },
-            AmountRequired = 15,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-                ["Cobalt Bijou"] = new List<uint>()
-                {
-                    47429,
-                    47435,
-                    47461,
-                    47465,
-                    47511,
-                    47531,
-                },
-                ["Codmonaut"] = new List<uint>()
-                {
-                    47533,
-                },
-                ["Opalite Impesctor"] = new List<uint>()
-                {
-                    47534,
-                },
-                ["Pearl Shell"] = new List<uint>()
-                {
-                    47428,
-                    47434,
-                    47460,
-                    47464,
-                    47510,
-                    47530,
-                },
-                ["Selenium Herring"] = new List<uint>()
-                {
-                    47532,
-                },
-            },
-        },
-        // Export for Mission [989] - Prismatic Pull Distribution Survey
-        [989] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1Y227jNhD9FYPP4kKUqOub42TToE4arBP0IegDJY1swrLopag0aeB/L6hLLNlyvAlcYLGNn+Th8HBmeHh4eUHjUokJK1QxSecofEEXOYsyGGcZCpUswUC6ccpz2DYmbdNVgkLLDwx0K7mQXD2jkBjoqrh4irMygWRr1v6bGutaiHihwaoPS39VOK5voMv13UJCsRBZgkJimj3kt6ErjMDr9TCPBjNZlKs2AkpMeiSEtpfIMojVgYpQYpJuL+t4FEImnGUH8IjlusFOYK7TC6wf9zgSj4DClGVFO8JXXiwunqHo5OrsQDp9SLedLraE2YKn6ozxKmNtKFrDTLF4WaDQaSbA9fdxu6hBg3rLFIc8hk487m6KVr/2VttV8n9gwlRNoiFGuv4emLUzkXYDdrdgGWfL4it7FFLj9QxtdrbRt3+DWDyCRCHRNTsQAu0N2JbzjM8v2arKe5zPM5BFO4imSYJC2zPpXvQ9KH+zMdDFk5KsWbJ6Iu7E7G+2vspVyRUX+SXjeVtbTAw0LSVcQ1GwOaAQIQPdVEGgG5EDMmqE5zWgUBdmAG8qCvVhvFsJBQxHiDA60F6PWLVv45mtIVaSZZNSSsjVibLcQT1ZroPR7mU8OHrlVRNkpsRaL1+ez2cK1pXEbmNvSDSWpwm5C1fFcJ/z7yVoXEQCK2LUcTC14xRTYgH2XdPFSWoB8b3IpHGMNgaa8kL9keoxChQ+1PTUCbyudc/VOn0oxvMyh7TOdzSWaiFFVkrQwDdCrlj2mxBLDdVKyJ/Aqv/aXoB6XY2V/LWrs2nUKbbrtDHVdaDE09LUYs6UFHlnOxzofs1zbb3jq0oIzC+mga7ZU8dmky9m90ftvUEtz++MOoU55AmTzydIx9Qze1/AuSgb/9axthypWg/NcnVt6n7byrxmuqN//cJYRBfmINyPpDzQ+b6AO8nX/cRqy7sS8xxL16nueYrUeoDvT67tzlcgSnXNnioW2V0WWQbSijBOFcgJK+cLNeUrvTOTumFXKqrjWynrrV9/dDa1gZ3L9pxg/xT0xglGH71azW6X5jf4XnIJyUwxVerTgT7bHVivR9bfEK3fWi89x0GqH+P0D/O06zXIveMkewdx+n4no8BH57y7L0S261kmxQ5xCKYuZdhPgwgTk7kBmD61TAttjF91I/iwWPzn8v8rKP3/Q9T1ZeFT1T9V/SdS9TSxE89lLo4j4mLquDYO0sDEUer7MYuSyItTtPmrPe43rzoPr4Za6B9eUF/xHTs4rPizMl9CPvqdq/4thbxVm6sEcsVjlumC6IFqh/FKlHnHbeihxgl2b9p2/xFEy/OslCmLYZZpsW3ScALnyAODszHQT/PStb0ufviSqDtry0RXtSpo99rYXBb1Z23eug1Rt0MzyoCQyPdwYEcephYk2CdOhG3qpyyNk5i6UXV42KXRGweHS5ElozOpix6xeHlyKn2YO8Mc/KTS7UmoZDq2w1KSYteiFFNmE+z7iYmjwHYS2zYj8L1KsWrcJsTxCI9uJS9WTPF4dFtm2eicF0ryqNSb32hWykd47r+ERMQn4CcedjxNWmYzHNCAYRKDQ20/ImDHaPMvpxhiq1wXAAA=",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
-        },
-        // Export for Mission [990] - Aquatic Glass Resource Distribution Survey
-        [990] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACt1XW2+jOhD+K5Gf4QiDub6x2banUtqtSo/2oToPBobEKsGpbdrmVPnvK0NIICGpturD6ryR8fibb8ZzyzuKa8WnVCo5LeYoekcXFU1LiMsSRUrUYCB9OGMV6MMfVbluflMxh06hvZF3P69zFNlBaKA7wbhgao0ibKBrefGWlXUO+V6s9TetgRvOs4W20HzY+qvB8QIDXa0eFgLkgpc5irBlDZDPQzcYoT+4YX1IZrqolx0Dgi3yAYXuFi9LyNQ+hoOIEGzh/i37YxZc5IyWJ/Cw7XnhATHPHRAb8o5T/gIoKmgpOwuXTC4u1iB7vroHkO4Q0uueiz5BsmCF+kZZ47EWyE6QKJo9SRS52wfwgmPcPmq4Rb2jikGVQY+Pd3jPG8be7q4K9h9MqWqTaCwjveAIzD54SGcL9rCgJaNP8pK+cKHxBoLOO8cYyu8h4y8gUIR1zE5QIAODXTi/sfkVXTZ+x9W8BCE7IzpNchQ5vkWO2A+ggs3GQBdvStBtHeuHeODJK11dV6pmivHqirKqi62JDTSrBdyAlFTXMkIGum1IoFteATJahPUKUKQDM4I341J9Gu9OgIRxhshEJ85bi835nk+ygkwJWk5rIaBSX+TlAeqX+TrK9sjjUeuNVpsgieIrXb6smicKVk2L3XPfJlEsvoZyH67h8E/FnmvQuIj6LnWClJhF6rkmASs0AwK+aRM/c1Mvx5jYaGOgGZPqR6FtSBQ9tumpHdjVuu+F7mmOlzrtX6kCMYmFWghe1gI07i0XS1r+zfmTRuo6yE+gze+2CvWpBKVd6epRix7YEsRBnd7Qt90RirD/l2U0Q+/nAqpbruJMsRe4zqFSLNO9eY+mo9VEj2BfN7SOSqIEr5qK3GrtLDat2DjPsYdqOT3UGcyhyqlYn/VyzJsDVNsPNgb6zuu03EVtoGJ74U7hyJdjlQGxEa0HwVanLPmu7exUTtkaKJ2x1umxJfBa3dC3LgC6dOJCgZjSer5QM7bUIwy3B4c11Sw7tWhnpP7odf+P82JkCDi+Gx4vFGeWAb3FdO2vS/N7eK6ZgDxRVNV60Oo16TD3fyspP06yMcX/b9p8WZJ89s17LVbP/oymYAa2b5kkJ8QMwbbMrKBpEVIXwiJAm3+7HrtdpR93grbNPr6jYb91CTndb7VLk8uSv4KQg9mAzwVnVwD6urbUKsRLXlc9tbH12A2986unblNJLQqaQVLqFrf1w9Vj4+xa524M9Mf8v9gP6U+P5uSVrrRkqqPaBLQ/rLcjWn+24r3aWO7288wP/JC4vmnTHExiZ44ZUAImhtRKc5r6roObPGtxtxTjiTmJn2uqWDa5KqmUk3uQvBYZTL4zqQRLa926JkktXmA9XB7CwgUcEsvEGfZMQsLMTHMnMz1w0hB7BfVxgDa/ADXdD5qkDgAA",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
-        },
-        // Export for Mission [991] - EX: Red Cosmomaggot Field Test
-        [991] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1XW2+rOBD+K5WfYYW5GMNbTrbtVkp7qpLVWanaBweGxCrBHGPaZqv895W5JEBCK1Vd7T7smxmPv/lmPDMe3tCsUmLOSlXO0zUK39BlzlYZzLIMhUpWYCC9ueA56M3vebarv5lcQ6fQnEi6z5sEhTYNDHQvuZBc7VCIDXRTXr7GWZVAchRr/X1j4FaIeKMt1Atbr2ocQg10XSw3EsqNyBIUYssaIL8PXWME/uCE9SGZ+abaHkMxcMzFljti5IwYdSAiyyBWnScutnBfzf6YhZAJZ9kEEWwTEoyYEG/AZEh0thLPgMKUZWVn4YqXm8sdlD2O3gjSG0KS7rrYE0QbnqpvjNcuakHZCSLF4qcShV57AYSe4vZRgxb1nikOeQw9PmR8jgyDbXdHJf8L5kw1SXQuIwk9AbNHN+e0YMsNyzh7Kq/Ys5AabyDovHOMofwBYvEMEoVYx2yCgjsw2IXzG19fs23t9yxfZyDLzohOE51jvuWesB9A0f3eQJevSrK2jvVFLEX0woqbXFVccZFfM553sTWxgRaVhFsoS6ZrGSED3dUk0J3IARkNwq4AFOrAnMFbiFJ9Gu9eQgnnGSITTew3Fuv9I5+ogFhJls0rKSFXX+TlCPXLfD3L9sTjs9ZrrSZBIiUKXb48X0cKirrFHrm3STSTX0O5D1dz+D3nPyvQuIjZsYVTFpjBiqWmS7FvBrAC0yKxZ1MKKzclaG+gBS/V91TbKFH42KSnduBQ6z4JnGmOD5BczEW5FVu2XgtVasg7Ibcs+02IJw3SNY8fwOpvLS9BHeqwbnxdXbab2rmuQltREwEX+7opdZiRkiLvvY4Tx5d8C3JU+Lc8P2yhMPjFMtAte+2JMNEy/eScO67lI31X6+uH+McG8juhZrHizxBlk65YTs+VBawhT5jcfejNGOFXUa2ycXgbDZsEB4VjrCZVBhzOaC0lL6Ys+Z7tHFSmbA2U3rHW6ulimqUK5JxV641a8K1+1HCzMa6yevypZPNq6kXvPZizPIZsphRsC9XFUuss9bzUYJ7c3E0CueKxfukn5ynH94Lx3PHuIKNnn65pdhXyAD8rLiGJFFOVfp71cDUum3+yPv7PyX8hJz+bPr0eH2CXuUkSmy6xHdNNAzApw8SkFraIl7iMpCu0/7Nr8u0s/3gQNH3+8Q0NG77n+dMNP3riRcHz9QvbDd4m/F5sDqWkA6INNQqzrajygRoKXS8YD1TOcNal2lIlUxa3zfX8D4EXeB+Mld7eQP+Z/5vjkPDp0SB6YYWWzHVU64D2h4V2RNDLRnxUO5e6vTTzGSQkSG3TdRLbdFPPMmnqMZM4fkBXXmLbgOs0a3Bbipd/XJgXo/Hg4opDllwsoVTDacWnYGGaWCZOKTVdGqzMgGBq2r67coAmfkIZ2v8NKN0q1xUPAAA=",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
-        },
-        // Export for Mission [992] - EX: Large River Resources
-        [992] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1XyW7jOBD9FYNncSBRu29uT5IJ4CyIE/QAwRwosmQTkSU3SaU7E/jfB9QSS7Ycd4I0MEDnZherXi18rCo9o0mpiylVWk3TBRo/o5OcJhlMsgyNtSzBQuZwJnLYHvL26JyjMYliC11LUUihn9DYsdC5OvnBspID34qN/qbGuigKtjRg1Q9iflU4QWShs/XtUoJaFhlHY8e2e8ivQ1cYcdizsI8GM12WqzYCz7G9IyG0VkWWAdMdQ6erRo67LSQXNDtQUocEQa+oXmN2KtTy5AlUx7G/E7Hv9yIO2qLTB5gvRaq/UFHFbQSqFcw1ZQ8Kjf2mjEG0j9tFjRvUa6oF5Aw68QS7dkG/gqQ1leJfmFJdU+FOwVWePX0VennOIdeC0cxotVXpnE+YFo8wz+i6PRwiZRDtRUJ27tJtIrld0kzQB3VKHwtpgukJ2tK4Vl9+A6x4BInGjin4gRC8nsP2Lr6IxRldVUWb5IsMpGqdGOJwNHZD29uLvgcVbTYWOvmhJW1erbnF22L+na7Pc10KLYr8jIq8vRjsWGhWSrgApegC0BghC11WQaDLIgdk1QhPa0BjU5gBvFlh7uOdeNcSFAxHiDA6cF57rM638czXwLSk2bSUEnL9QVnuoH5YroPR7mU86L3SujFK06LMNcjawui3PDstJANuvFevz49932o4NdfF2rQLkS/mGtZVY96m2/BuIj8myy5cFfZdLr6VYHCRHaYh9QjBKecR9lzuYgrUxzHELvGcgPoE0MZCM6H0VWp8KDS+rxltEnjpLWEQ+4djPDUv5TvVIEcTqZeyyEpZ4V4WckWzv4riwSC1Hesr0Oq/kSvQL+83pZl6aSnNYbfijagug+eEphO2mHMti7wzQwfML+gPI70Vq6p1BH/Ye5C224GcwQJyTuXTB8RaAd8p+LMoG/1WsZYcKUkPjQQm8dpum/ZLajvt8ELknayJbbLuV4JEe5XouviZMgwY3ym4lWLdT7aWvCnZ0CemdrXlr0q35+TtCTfm5tlPUg1ySsvFUs/Eyox7pz7Y7QfVZlfKep8wPzrDbmCiuaEf7y9Ir+w6Zitre3n7AG/gWykk8LmmujQrh1n7DrzKI6/srQ+npzjI+WPk/mlydrUGCXecWW9gxi+iwHvvvNP8SUgdL/QY9kPbxV7gJ5gSSHEQRCF3GXgOeGjzT9v9m0+D+xdBPQDun1F/EvhBcHgSXEuhVlQLNppmpdIge6PLea1CO7vnM6oVJiszgLdqA2/D8+Pdjc3tb+KRcVzKlLJmeW2S8c1Ue3VR9TcW+t98NG13iHdvDsbYSKq1pipod5doNgjzsxZv1YYI3CFbagcOiVIXO0HiY4+FBEece5g4TuQkSRrbPEUba59M3uEErhIluKD56KJUCrIPp9K7uTPMwU8qfQyVWOwmnhPFmMWpiz3bBhynlGOfM+6nEYuAxINUcl9JgD4+jaYFZJTRXC8/qfR7UCnisevEIcORH0XYAz/GlCch9pPEScGzqe06g1R65WPnLKNKjeaszNa6+JxvvwmTCIEgDn0bM5cy7FES4wSSFEd2SpzADcFLSbVM1bhNiCd/j/BoRuUCRjfiEeToBlRRSgaq/50OdsJZGLs4CNMAe3bk4NhNbGyHjFNCEk6CBG3+A5Xe9QswFgAA",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
-        },
-        // Export for Mission [996] - Precision Lens Development Support
-        [996] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1XTW/bOBD9KwLPYqAPSqJ8c900NeBkgyhFDsEeKHFkE5ZFl6KyyRb+7wUlK5b8lW2RBXrITR4O37wZPs7QP9C41nLCKl1N8jka/UCXJUsLGBcFGmlVg43M4kyUsFvk3dKUo5FHYxvdKiGV0C9o5NpoWl0+Z0XNge/Mxn/TYl1LmS0MWPPhma8GJ6Q2ulrfLxRUC1lwNHIdZ4B8HrrBiKPBDudNMpNFveoYENchb1DodsmigEz3Nrp9N+/tsFJxwYoTJXW9MIz3mJAhkyHRcSqfAI1yVlRdhC+iWly+QNXjGOxBBsEAMuzOhy0hWYhcf2KiSdEYqs6QaJYtKzQKthUP6SFuHzXeot4yLaDMoMcn3N8XDovtdVuV+BcmTLeqOSbBkB6AeXsn52/B7hesEGxZfWFPUhm8gaHLzreH9jvI5BMoNHJNzU5QIIOAXTk/ifkVWzV5j8t5Aarqgng2ehB6kRRs3UEdQfYjhxwkN4hENxsbXT5rxbZX2JzTvUz+YetpqWuhhSyvmCi70mPXRrNawTVUFZsDGiFko5uGI7qRJSC7RXhZAxqZuh3Bm8lK/zberYIKjjNEGJ1YbyM26zs+yRoyrVgxqZWCUr9Tlnuo75brUbYHGR+N3ni1+km0XJvbLcp5omHdtNwd963Gxup9KPfhGg7fSvG9BoOLAjdjHIIQh2meYkJpiGlAchyRNCZO7INDGdrYaCYq/VduYlRo9NjK0yTw2gqiMCanOSYaioIpK2HFSpbWnQQDeiPVihVfpVwamK67PABrfht7Bfr1OjWdsbte20WTXnfRtqa2BsSNTNfqMBOtZNkbjUe2X4vSWO/FqukR5CKw0TV77tm84MI5COP4vTAzmEPJmXp5B/4N8GdZp8V+RVoPL4xfHXbpnXQ5Rq3vda/E+lSkKPD8V5dTsQZOZ6Jt/cwNGOca1ITV84WeiZUZVG67sH81mudLrdpJaD56Pf5ouw2MGA9n78mJbt4eXZPq9HgH32uhgCea6dpMS/O4OSHSN0T3q5r50MCvaeDUoZ99PG4GjdDLUsqJx3EURAQTn8SYOiTF4GY5iXnII4egzd9dJ9w+gB9fDW0zfPyBhl0xIPGZrii5WEGprZnIlqAGTdw9V58ph1KLjBWmKCZY6zBeybocuKERCeL9l4c/fDNSE6lWOcugfcZsuQdx8MZ7LNjY6I/5J7Abn789NM1mY5mYMjYV7I/R7fA0n61553ZMrz1tMTejKXdS7HOfYEJ9H1POAOecR5SnlIQQo419oB1zTme0w3AhVmAlWgFb/Q/yOdJZP9T0jmoaW9Opha2vL2tQmIFegJKZLHmdafEE1jXToAQrqv8sOscjA905jEIWehTHLskxyV0XM/AcTFjEUxLnce6Zd9hhzwpPp/qt1EIXwK0HqZbWjbywYvrnNK7jkv1Q3u279LHIiyIW8AwzHjiYAE9xSiDCmZuGAafMj4nXzMgWd0txbGHrVkEmKiFLawZlZX2GJyjkupl9Sb1eS6WHf0t4HDOapSEmgWMihTlmKaXYDVLX83mWUnDR5iefFn1k+RIAAA==",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
-        },
-        // Export for Mission [998] - EX: Large Aquatic Resources
-        [998] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1XS2/jNhD+KwbP0lYv6nXzutk0hZMNLBdbIOiBkkY2EVl0SCobN/B/L6iHLdmSXQQ59NCclOHMNx+H8/I7mpaSzYiQYpatUPiObgoS5zDNcxRKXoKG1OGcFnA8TNujuxSFlh9o6JFTxqncodDU0J24eUvyMoX0KFb6+xrrnrFkrcCqD0t9VTiur6Hb7XLNQaxZnqLQNIwe8mXoCiPwehbGVTKzdblpGTim4Vyh0FqxPIdEdgzNrpp13S3jKSX5SEhNy3V7QXUas29UrG92IDqO8QljjHuM3Tbo5BmiNc3kV0Ir3kogWkEkSfIsUIibMLr+OW4XNWhQH4mkUCTQ4eOe2rn9CFqtKad/w4zIOhWG8sr1z8Csk+ewG7DlmuSUPItv5JVxhdcTtLeztb58AQl7BY5CU8VshILTc9iG8ytd3ZJNde9pscqBi9aJevsUhbZnOGfse1D+fq+hmzfJSVN46iGWLPpJtneFLKmkrLgltGhjq5sampcc7kEIsgIUIqShh4oEemAFIK1G2G0BhSowA3hzJuSH8R45CBhmiHQ0cl57rM6PfKItJJKTfFZyDoX8pFueoH7aXQfZnt140HulVSdIJNlWlS8tVpGEbdUoj9ybJJryz6Hchas4/FHQlxIULsKOFdgeSfQ4SDzdMTzQSUqITrCLDddIPc8z0V5Dcyrk90z5ECh8qtNTXeBQ654b2OMcF5BOZkxs2IasVkwKBfnA+IbkvzH2rEDa5vEDSPW/kguQhzrMSC6grcvmUF2urdBGVEfAMT3VlFrMSHJWdMbZiPmSboCfFP49eTscodD0vhga+l7kux9rKB6YnCaSvkKUj/Iw7A6POaygSAnfXaRyT4uOS8v94gTdP3vYx6+sjPPT6NUalhscFI6hGFXpsRzQWnK6HfPkYcs+qIz56ild8NboqVqZZhL4jJSrtZzTjZpZZn1wWkTVelLyeiiqj067n5EigXwqJWy2so220lkSvoIac6Dv2x4OzjeBC0NdrR9tx2vTewEvJeWQRpLIUs1Wtd+M5PyVHP7XGfZ/mnwoTT765p2umgTYII6T6Y4ZY91xfVuPsZfpVmwaJmSp7Qc+2v/VttVmB346COrO+vSO+i0WY2u8xSrV3eR3yPNdpqy6E8G8FJ+7FApJE5KroChntcJ0w8qip4ZCBwena4zd3zB95ankGUmarji4zTk4wFeWObzX0H/mt8FxNH94IEc/yVZJZiqqVUC7IxqF6ObPiT5ZEA6T6UtJJE0mCxCs5AmIifkLRjVEbXQEGUrubiK6sW9mONED7Ji6Y6S+TiBOdcMLMteJ48xI3SoRa9zmAhWVuWqK51z660NmBU4cZJZu+ODrTux6emzGth67ZurGdoaTJEH7fwA1PiZwVw4AAA==",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
-        },
-
-        #endregion
-
-        #region Weather-Restricted Rank
-
-        // Export for Mission [993] - EX: Capsule Pools Distribution Survey [10/21]
-        [993] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1X32+jOBD+VyI/YwmDAZO3bLbtVcp2q01PPam6BwNDsEpw1pju5qr87yfzI4H8lKo8nHR9I+Px52/Gn2cm72hSaTnlpS6n6QKN39FNwaMcJnmOxlpVYCGzOBMF7BaTbuk+QWOHhRZ6VEIqoddoTCx0X978jvMqgWRnNv6bBuublHFmwOoPx3zVOD6z0N3qKVNQZjJP0JjY9gD5PHSNEQaDHfZFMtOsWnYMKLHpBQrdLpnnEOsTGaHEJv1dzmUWUiWC5yfwiOP7gxzTdtutKLObNZS9ALy9ADxvEIDf3QF/hXkmUv2FizoMYyg7w1zz+LVEY6/Nqs8OcfuoYYv6yLWAIoYeH39/nz9MqNNtVeIfmHLdKOOYzHx2AObs3Y7bgj1lPBf8tbzlb1IZvIGhi861hvYfEMs3UGhMTM5OUKCDA7t0fhGLO76s454UixxU2R1i7j5BYzew6QH7ARTbbCx081sr3r5DcxFPcv6Lr+4LXQktZHHHRdHlFhMLzSoF36As+QLQGCELPdQk0IMsAFkNwnoFaGwScwRvJkv9YbxHBSUcZ4gwOrHenFiv7/jMVxBrxfNppRQU+kpR7qFeLdajbA8iPnp67dUIZK7lyjxfUSzmGlZ13dxxb0U0Udeh3IerOfxZiJ8VGFxEOUkDFno4jliAKY8dzDh3MQFOIxL6lHAfbSw0E6X+npozSjR+aeRpAti+9cAPvdMcb43sf3ENajRROlMyrxQY3Aepljz/Q8pXg9RVkGfg9W9jL0FvH2PK8xK6x9kumgi7Z9qamjRQEpjK1GHOtZJFr8Vd3u4ErLd/BgsoEq7WVyDWIH+VVZTvx9q4OH64ddgRP+lyjFvf60mJ1amTAs9xty6nzho4nTmt9TPynqQa1JRXi0zPxNK0GdIs7Ou+HjAq1fQx89Gr0N+LfP2cQfEg9STW4g3uEyi0iE2zbDJ7pFC7gRcedvIzXdiMD12J6qT4A35WQkEy11xXphma+eSEPi/obc/Ldi+oauD4KZKLIvnonffKoO07LktDF6eO42KauAEOY8/GSeB7rs9C7sQx2vzd1cF2hn3ZGppS+PKO9moicU/XxClflVUOo8kyAjUo4ORcdrYvwKTEHNU4TJayKnpuxwZTL9wfQtzhfGiq0rxSKY9hnpvq1Qbimdp+dvbyNhb6z0z2u0764f5pNhvL1GS1Tmi/o7Z91Hw25p3bMfH2hMaSgAZh7GObBhRTjwLmLnGxS/w48GnqJsxDG+tQSPaZANaxFnGms3V5dRl9WDfH9fcpo+vIKApZEjA7xLEbcUzdiOGIeSFmCbWZT4IU7PSojJzL9cgIQqbpZ0X6f0iJxzQmESc4ClIbU89nOLJdHzMScT90aEpSWre+Brel+AxcZ6BGN3+N8KhTzqOUeTn6KkqtRFSZaWo0r9QbrIf/OQLiRaHLAsyCyNRA5uGQEYKD2HGcxPGoE6Vo8y9+YvlkmxIAAA==",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
-        },
-        // Export for Mission [995] - EX+: Stardust Bait Test
-        [995] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1X227jNhD9FYOvNQvqLvrNcZM0gJNdxF6kQLAoKGlksZFFL0Vl4w387wV1sSX5FgR5KIq8yeTwzJnh4cz4FY0LJSYsV/kkXqDRK7rMWJDCOE3RSMkChkhvTnkGu82o2bqJ0Mj06RBdr+aJhDwRaYRGxhB9lVxIrtblj5v88iVMiwii3bI+v6mwb4UIEw1efpj6q8R1/T4uIR3k09AlBvU6J8hZMpOkWDYMbIPYZyg0p0SaQqiOZMg2SCcl5nkWQkacpUfwDNN1+zl3u8S6vMeBeAY0ilmaNx6ueJ5criFvxer0IB2nA+k218WeYJbwWF0wXkasF/JmYaZY+JSjkVNfgOvv47ZRaY36lSkOWQgtPm7/nNvNvdkclfwXTJiqRPQthy9Zun7gKrmJIFM8ZKm2ahLY2h+Hij/DLGWrZvOQvF1/j4nZU4FVM5knLOXsKb9iz0JqMp2FJjXWsLt+D6F4BolGhk74EQp2x6FfO7zgi2u2LJM2zhYpyLxxYg5RNwUnQrQ8Yu+F2PHnbTZDdPmiJOsUiS2Kvvm5mP1kq5tMFVxxkV0znjWXiY0hmhYSbiHP2QLQCKEhuiuJozuRAaoR1itAI53MA3hToe/wnXhfJeRwmCHC6Mh+5bHc3/GZrSBUkqWTQkrI1AdF2UP9sFgPst2L+KD30upeG01EkSmQ1Qlt39x6JbmZEitdTXi2mClYlRV/F1kty7H8mIDacCXDbxn/UYDGRY5txy6xXRw6BsF2QAmmoRNjg9DYjqkZWUGENkM05bn6EmsfORo9vpbedADb0uO51DzO8SItYDBTTEZFrjTenZBLlv4pxJNGaArZA7Dyt17PQW0fTFmEm2dYb7aTWi9V4duGpwtkgzlTUmSt93fk+JwvQfZe6C3Ptlu6gPxOhuiWvbTWTE+vlbUxgWy/NvaIEatFbAoLyCIm12e59RH+EEWQ9pNVWZgu3RrsIj9q0uFwwGou+eqYJ88xra3JMV8doxPeajv9LsaxAjlhxSJRU77U7dKoNvoPppyxCln1Y/3RahbNldwJVd3KtqifrOkO3R9eTgweemJqKl+j5Xv4UXAJ0UwxVeimrkeyIwI/I9g3q+dTJO8SyXvvvFU/qeG5tu1ZmEVugG0v8jDzIoIji1iWa8Qkjny0+d4U0Hpsf9wuVDX08RX1iql9opheSaGSWNu3q75xKjO9qe4VVQbjpW5TO7NDc7hD+2OO1Z1x9Vw1K2TMwrr01UE41DkzAjqbIfrP/JHZtd93N119WK+Uzb9S5E+2qlpx3iS13ZnRCLFMZH8/Uupg4/vgAZhKQA4u//ptgLf9cqAxB3PI1eBWDyNt2JarA+JvCTUOmAsuGNi2LB/bMYsxNWwD+65FzQiYGcQW2gz3hWgdT8JMRAwHurXfLFeQh0rIT0l+SvKtkmQGI8QyTBw4LsM2JSEOTOpj07H9yPGpz5z4oCRPJGG8BJWsNUH+jyg+XI2f8vv/yC9wY8cnHsE28y1sM2Jhaun+7RrEc0xCrCgoW3eFW4dZEjPfQKy8+Y5DO3Q96scxNn3f1A4ppiFQ7BoOBeIz6kce2vwLlC7AMF0UAAA=",
-                "AH4_H4sIAAAAAAAACu1XW0/rOBD+K5Vft0Zx7s5b6QKLBBxEilgJHa2cZNJapHGP47BwUP/7yrm0TXo7qlhpV+KtHc98c/HnmckHGpVKjFmhinE6RcEHushZlMEoy1CgZAlDpA9veA7rw6Q9uk5QYPp0iK4Wk5mEYiayBAVkiO4lF5Kr9+rPdXHxFmdlAslarO2XNfatEPFMg1c/TP2rwnX9Pq5hdJAPQ1cY1OtYGEeDGc/KeRuBTQz7SAitlcgyiNWeCtnE6JTEPB6FkAln2R48Yrpuv+ZuN7Bu3KNIvAIKUpYVrYdLXswu3qHYyNXpQTpOB9Jtr4u9QDjjqTpnvMpYC4pWECoWvxQocJoLcP1t3E1U2qDeM8Uhj2EjHrdv53Zrb7amkv+EMVM1iR4L+JZn709cza4TyBWPWaa12gLuYrDrbzkzexdtNc4mM5Zx9lJcslchtb+OoM3eGnblDxCLV5AoILqme0KwOw79xuE5n16xeVWXUT7NQBatE3OIulkeSNHyDHsrxY4/b7kcoos3JVmnD6xQ9OVORPg3W1znquSKi/yK8by9L0yG6KaUcAtFwaaAAoSG6K4KHN2JHFCD8L4AFOhi7sC7EfqaTsS7l1DA7ggRRnvOa4/V+TqecAGxkiwbl1JCrj4pyx7qp+W6M9qtjHd6r7QetNJYlLkCWVto/fbWa8qFSix0w+D5NFSwqJr6OrOGliP5OQltwlURPub8RwkaF4Hr+L4FFnZjQrDtGT6OPLAws9LUphGzWeSg5RDd8EJ9S7WPAgXPH5U3ncCqu3guNffHeJ6VMAgVk0lZKI13J+ScZX8I8aIR2l71BKz6r+UFqNWDqfps+wybw82iNqI6fZt4uge2mKGSIt94f3vMJ3wOsvdCb3m+OkKBd+YM0S172xCZ3pmx5d2wNrzfwBTyhMn3owH0EX4XZZT1K1JrmC5dKazT26vSiWGH1kTyxT5PnmNaK5V9vjpKB7w1epr8o1SBHLNyOlM3fK7HHqkP+q+i2pVKWc9V/WNjIlRjaQb5nVCjWPFXWHXug43bodtLyIEFQm8+bXtrCfsAP0ouIQkVU6Ueznq12sPiI6z8ZfZ8keQkkpx65xtNMrUd6nsswimkNrYd08LMYRZ2Ypf6kUut2HXQ8nvbJZv1+3klqBvl8wfqdUz7QMe8lELNUq2/2drJocr0trMPVCuM5noWrdV27dMO7e8yVndX1ctTWMqUxRBmunE1STjUObLnOcsh+s98kKxn7MmTVRtrSTXhm0+z9axFAbr487cBXg27gdYdTKBQg6pwNUBtsobYReoNAvqRFfm+E+OU2RG2iRFjSlwTW2BRylyH2GaElsNtgln7kwtFwnCk5/L1fAFFrIT8otr/jGr4NDp5CSNe4nrYjkyG7TQ2MAUg2DAM3yImc4jn76KTRfcn8JgrrjJIBk9CvgzuxNmA+p/Op5MJtJuIX3xak6doa9OjGMtF/tczpQ42vw+egKkZyMG/0OJii6au7xmYJJRg20gMHJkexSx2LWYQm5nEqmZsjdukWQVGfiGwW/0V13WYeDSGiOAo0Y8gZhZmphVh2/UBYtuxgTho+Q+gLBnhzhMAAA==",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
-        },
-
-        #endregion
-
-        #region Time-Restricted Rank
-
-        // Export for Mission [994] - EX+: Large Saltpeter Shore Resources
-        [994] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1X227bOBD9FYOvKwa6ULSkN9dJswGcNIiT7QLFPoylkc1GEV2KSpsG/vcFdYkvkR0lSLH7UD/JI/LMmeHhzOiRjEotx1DoYpzOSfRITnKYZTjKMhJpVaJFjmWux5DHmJ1LGS9IlEJWoEXMponIcb0pabecJSRyg3D/3kslpBL6gUSORc6Kkx9xViaYrM0GZ1X7aHY+kurBNU8VPg8scrq8XigsFjJLSOTY9hbyYegKIxz24mi/SHK8KO/2JII5NtthOjRMe/htwWWWYazbyJljO322uy+zlioRkO0h7richzvMeeD3cb0d8Ggm77FZ1Xj+KIrFyQMWGzH5O658v1eSeCsTuMXpQqT6A4gqVcZQtIaphvi2IJHfHDwPnvvr4y1svF2CFpjHuMGf7+LxfofstpBK/MQx6FrsNwV+yrOHz0IvzhLMtYghM6vaA+q6cTx4RsLtqTSvIXG9gEzAbfER7qUyPLYMbRY9a9t+hbG8R0Uix5zZHmqsF5H2OD+I+SncVfkd5fMMVdE6N7JOSOQNbfYs2l4ugtXKIic/tIKm5BmBXMvpd1ie5boUWsj8FETeni11LDIpFZ5jUcAcSUSIRS4qcuRC5kisGuFhiSQyiezAm0hzdG/Eu1RYYDdDQsme97XH6v2az3SJsVaQjUulMNfvFOUO6rvF2sn2WcSd3qtVtXCmWi5NuRH5fKpxWbWcNfdGXCP1PpQ34SoON7n4VqLBJb7jpuAnCY1DP6XMS0M6sznQIcSB77IZInKysshEFPpTanwUJPpSy9ME8FRrhtz0rX0cj8sc0zrewUjphZJZqdAAX0h1B9mfUt4aqLaEfUao/ht7gfrp9jYXp/7fvDQhtve6MdV5YM7QlMYWc6qVzDfGiY7t5/DDWK/FnSkcrnNkP4O0vQ3ICc4xT0A9vAPXCvimwGNZNuvXw46xvJCSLTSXm8Drfeuwn0LbKYbnIt+I2uFHzCJmduhaa+w76+0jFm7+ggNk+iSsY/NNgddKLLfTUltelZah75os1zt/eWL4kbeVF3aQzutT02w3tWSUalRjKOcLPRF3ZtZw6he7RaYakEtVDznmYaN9Vr19gfmF1KNYi3t8avIHGrw39MPdUdI03L1Tnhlz237QXvsr/FYKhclUgy7NRGTm6D214IW7/drrurWw86a9dKV6C31zVad4X1bpK7Tzi0Sy78wPfo+stnqOl7AEXJfRGXo2ZXEQ05CDR7k9c/gMQ8fxhmT1T9t0mpnpy5Oh7jtfHslOA/L8/Q3oCrMy1pDrwSUsUX1HMV/ora7pHMrSzrj7SOoFoztZ5lvLSMT8cHcE9MyFWKckMJ5KlUKM08z0g+5PND/0uwbnjaHRX1nkV3+J9v7iXI8vbx5azGZjGZusVgndHGNIRExlTQYnf/8xoIMJqDkOppDpJWpUg+lCKhxcYSFLFWMx+AuUMOftkBq4hlpDdwl/U6QzL7XBS6iX8CFlPB3SWeg4FPw0TRyeQug5ZGU9FyHfH/RpBoUh9lXBV/j+/1Hfb7l1y42+TTocbM9FN6Qc3ZSyGdg0dNyQxuAGnuuFSRywTukcGKDXOr+SBb67dLrrz28l/cdKCj035QEENLH9kDIAlwbMHVKWpHESBMxN3aDqlDVuQ/E1VfLcfL9u+UyDEBzm+dT3YkYZTxI6A9Ongxhse8YZA4+s/gX/CdRvpBUAAA==",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
-        },
-        // Export for Mission [1001] - Lower Soda-lime Float Distribution Survey [10/21]
-        [1001] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1XyW7jOBD9FYNnMdC+3Rx3kgngpINWBjkEc6DIkk1EFt0UlY4n8L8PqMWWbNlpBDnMoW9ysfjqVbE2v6NppcSMlKqcZQsUv6OrgqQ5TPMcxUpWYCB9OOcF7A9Zd3TLUGyHkYEeJBeSqw2KLQPdlldvNK8YsL1Y628brDsh6FKD1R+2/qpx/NBAN+vHpYRyKXKGYss0B8jnoWuMKBjcMD8kM1tWqxOOuZbpHjDyvCGjDkTkOVB1Gsfq37I/JiUk4yQ/gWfZvh8dEPOHoRrynqbiFVCckbzsLFzzcnm1gbILvmuZ3nlf/e71yAskS56pS8Jrj7Wg7ASJIvSlRLHXvocfHuP2UaMW9YEoDgWFHh//8J4/jL3dXZX8X5gR1eTUWIL64RGYfZBaTgv2uCQ5Jy/lNXkVUuMNBJ13jjGU/wAqXkGi2NIxO0HBHRjswnnJFzdkVfs9LRY5yLIzYhvoiavlLYNCcUryWQc4gu8Epnvk4sBeuN0a6OpNSdKWuX6tR5H8IuvbQlVccVHcEF50D4AtA80rCXdQlmQBKEbIQPc1U3QvCkBGg7BZA4p19Ebw5qJUn8Z7kFDCOEOE0YnzxmJ9vueTrIEqSfJZJSUU6ou8PED9Ml9H2R55PGq91mqyKFFirWucF4tEwbpuy3vubaZN5ddQ7sPVHP4u+M8KNC4KnMgJAi/DhFoWdoPIwsQJPByEGTAIfUJThrYGmvNSfc+0jRLFz016agd2DSHwI/s0x8u8gkmiiGRVqTTevZArkv8lxItG6NrLE5D6d1NC+rQEpV3oikmLHvkK5EGR3fFid4Riy70wDXRH3noyu5bpcTJ2X8uHGOGF24oHMJar5d+LfPO0hOJeqClV/BWSfMhRx75+C9cKdA/tHEyUFMXiQxd7102nd30OCygYkZuzCENHbOtcMA4CZ1/4p70eY/ZNVGm+e7eBhu1HO4W93ydVBr6NaD1Kvj5lKfBsZ6dyytZA6Yy1Vk+X6DRTIGekWizVnK/0PLWag8ParXewSjYDW3/0RtFRsuxGxtmJ4UWH283ZdUlvWF2b7crqB/ysuASWKKIqPfX1CndYa7+Xrr+dlX+S5FNJ8tk377XyMKXMzcDBaWAH2KUOwWkEAQbq+5bJIHJtD23/6Xp5u+Y/7wRNO39+R8O+7oXu6b5+I/lqcrtaQ0mVkIMpZJ0Lz35rIs1cbhSmK1EVPbWxbd2LDjcpZ7gJh9pwJTNC27bceuJF3gdbprc10P/m389+Hfj0EqAva8lMR7UOaH8taJcB/dmI92pj2dvLNEYjNyVhhH0CDLtu6GBCmY190zdtCBkzwUdb4ziTzjlAXjeTmYCcUFKo5Zen0qdzZzwH/6TSw5ekkk1Ml5pOisOUZti1PRNHWUpwxlIfWEYjM4zqptXgthT1WsImeDIXv0BOEsEIzvkKJte5IGryjZdK8rTSo3CSVPIVNsOlNwwoc7wwwpSRELtW5uMotSmGlFrMzNLUCT20/Q+O+sPWexEAAA==",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
-        },
-        // Export for Mission [1004] - EX+: Elemental-esque Saltpeter Shore Specimens
-        [1004] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1XS2/bOBD+Kwavay30oJ431+tmAzhpEKXoAkEPlDiyidCiQ1Jps4H/+4J62JIf8cLIoYfeZHL4fd8MhzPjNzSptJgSpdW0WKDkDc1KknGYcI4SLSsYI7M5ZyXsNmm3dU1R4kbxGN1JJiTTryhxxuhazX7mvKJAd8vGftNg3QiRLw1Y/eGarxoniMboav2wlKCWglOUOLY9QH4fusaIw8EJ+6yY6bJadQqwY+MzErpTgnPIde+g0zdzz9MKSRnhJ0LquEEwCCpuj31majl7BdUj9vcU+/5AcdAFnTxBumSF/kRYrdssqG4h1SR/Uijx2zAG0SFuHzVuUe+IZlDm0NMT7J8LhhF0u6OS/QtToptU+KrgS8lfvzG9nOSavUDKyboLybGkC6IDJnfvrryW6WFJOCNP6jN5EdKQDRY6173xcP0ecvECEiWOCegJCXhA2MX6E1tckVUdlEm54CBVR2ISg6LEC218oH4AFW02YzT7qSUZvMqtAHNpDyL9QdbXpa6YZqK8Iqzs7sFyxmheSbgBpcgCUILQGN3WmtCtKAG1CK9rQImJ0xG8uVD6Yrw7CQqOK0QWOrHfMNb7Oz3pGnItCZ9WUkKpP8jLPdQP8/Wo2gOPj7LXVvfGaCqqUoNsThj77tabbEq1WJtCwMpFqmFdl9ydZ23GTeTHONSHqxV+LdlzBQYXeTgKIMau5cQ4sjDNPSvKgtyK3YDYHlAbvAJtxmjOlP5SGA6Fkse3ms04sK0aYRBHpzVeCU5HqSaSVkobvFshV4T/LcSTQehq0Dcg9W+zrkBvH0xBuNoWkXazH9R2qXEfO6GpbR1mqqUoF5eiPrAVyL2He8PK7RZKHPynfaDA9noK5rCAkhL5uisC532oEf4SVcb3o9JYuEG8NThw8dBkoOGI1YNk61NMoe96W5NTXAOjd9haO/MAJoUGOSXVYqnnbGVamtNs7L+MenqpZNMzzUev4B+p6l7ox4dDwDv93EweXQHrUvIenismgaaa6Mq0VTPanMjT/5d353PjdwpclAKX3nmvDPpBETkZjqw4Cx0LBzSzssglVhTlEEaxjb2Aos33rg624+/jdqEphY9vaK8mhu/U7ZSUdMGJUqOUE7UEOSjiznsRuqZQapYTbsJi6BqDycp0nb4ZSrAf748p3nC8jAxTJQuStxPb0XkW+7F/ZljzN2P0y/wx2HXTi3uoOWxW6l7eZOYPsm46q+pi02+0KEGmKdDR7J8/RtZoxmEFpSbcAvVcwSglXK9BgxylSyFhZEYItoJSjR5N4L+jPkGP9Mhz6KUu9uwC24Vt5STAFo4cx4og8KwsinFGCzvIw7xO3Qa3dfhCnTeElUZnj59GeRZiQq2I2o6FXTe3stihVgwEbC/0cRFmaPMf7Vq59aQOAAA=",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
-        },
-
-        #endregion
-
-        #region Sequence Rank
-
-        // Export for Mission [997] - Hyper-aetheroconductive Materials
-        [997] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1X207jSBD9laif3ciX9i1vIcswWSUMIrA8oNWq7S4nLRx3pt0GMij/vmpfiB0cMiBGWmknT0511amLT1WXn9GoUGJMc5WPkwUaPqOzjEYpjNIUDZUswED6cMoz2B2y5mjC0NAOQgNdSi4kVxs0tAw0yc+e4rRgwHZirb+tsGZCxEsNVj7Y+qnE8QIDna+vlxLypUgZGlqm2UF+G7rECP2OhXk0mPGyWDUREMskR0JorESaQqxahlZbzT7uVkjGaXqgpJbteZ2iktrsC8+XZxvIW47dvYhdtxOx1xSd3sN8yRN1SnkZtxbkjWCuaHyfo6Fbl9ELXuO2UcMa9ZIqDlkMrXi8fTuvW0G7MZX8B4ypqqjQeN23tvfq79TW10uacnqff6EPQmqAjqBJxzG68iuIxQNINLR0kfq47AWaAi2HTf1O+eKcrspER9kiBZk3TvTLZmjo+CZ5FX0HKthuDXT2pCTtdNpLAPpFXIv5I11PMlVwxUV2TnnWlAdbBpoWEmaQ53QBaIiQgS7KmNCFyADVCJs1oKGuUw/eVOTqw3iXEnLojxBhdOC88lie7+KZryFWkqbjQkrI1CdluYf6abn2Rvsq417vpdaVVhqLIlMgKwut37z1ik1zJda6uXm2mCtYl2N0l1nNuJH8nITacGWENxn/XoDGRabpxaHrRTg0WYSJ6wAOw9jEdhInQUiD2CQm2hpoynP1LdE+cjS8ey696QReJoHvhfbhGE/TAgZzRSUrcqXxLoRc0fSrEPcaoZkrt0DL/1qeg3ppmISmOTQdXB+2i1qLqvSJ5et51WDOlRRZq/8OmF/zFci9Dp3x7OVIz4YT00Az+tSS2faJY7Z/5FUwptMKZgoLyBiVm0/IsgS+yeEPUdT6jWIlOVLMDprt6ZJVdruCHaxLpwZVXb5l6eZ2CdkoVvwB5umBsNuOfqYYPcY3OVxLvu6mXEnelbLv2rqCleWvTbrj6v1p1+Z6aIwSBXJMi8VSTflKX+1WdbA/TcotrpDV7qAfWpdkz03o+G74ehl6Y6/RG1gz9Js2voLvBZfA5oqqQq8XesU70NtHevW9TdRR7OX/MaL/NEXbWr20O86vdzDjF1Hgo++8dXWA50XMBQ9HJDQxiVwTh0EUYN9yacKsKA6Ih7Z/N3dH/Rlw9yKoro+7Z9S9R1z/jXvkJlNcpcAGt0LeDy7EycD33M7lZ71VpQmDTPGYpro02mWlMFrp23qn1tMfxA33tz2nu3kH2nEhExrXg6BOyA3dI0uuuzXQf+YjabeFfHj30MZaUu5AFTsf6braSPKmqO0FBQ0RzUT2z2gwmQzw4OtmDRJTUEuQIhYZK8rxOphRBZLTNB/M9E7Whm256mmEFmltQi2bmSE2LdPChHkBpoQCtihxnIj6ceIztDVay3o9kbskJYF3uChadTP4E9J0k2irz6bnh/nYz+vf9NzjIv4YtTxCbIc5CQ58RjCBJMRBZNmYgBv5fkBN0/JLau3PuzcSGK3XKURSPP4m0f9txv1FJaeZGlgfYyMLIKZh7OLYD2JMXDvGgRn6OGTUpn7C4siLytu5wm349t7o7O7nZOAmkR+7JrbCKMLE1p+TJAkwgOdGIQtYZFlo+y+H0PtBhRQAAA==",
-                "AH4_H4sIAAAAAAAACu1X227bOBD9FYPPYiBRJCX5zfWmbRZJWsTJ9qFYLChxbBNRRJei2rqB/31BXWLJseMmSIEFtn6SyZkzF5256B5NKqunorTldL5A43t0Wog0h0meo7E1FXjIXZ6rAraXsrs6k2hM4sRDH43SRtk1GgceOitPv2d5JUFuj538psG60DpbOrD6gbinGofHHnq3ul4aKJc6l2gc+P4A+WnoGiOJBhr+UWemy+qu84AGPj3iQqel8xwy21MM+mLkuFltpBL5gZQGhPNBUmmr9laVy9M1lD3DbMdjxgYe8y7p4hZmSzW3b4Sq/XYHZXcwsyK7LdGYtWnk8WPcPmrSon4UVkGRQc8fvqvHhxkknapRP2AqbEOFzuquNtnJf9hqXy9FrsRt+VZ81cYBDA66cEJveH4Fmf4KBo0Dl6R9XOaxo0DPYJe/N2rxTtzVgU6KRQ6m7Iy4ly3ROIx8+sj7AVS82Xjo9Ls1YlBpDw64F3GtZ9/E6qywlbJKF++EKrr04MBD55WBCyhLsQA0RshDl7VP6FIXgFqE9QrQ2OVpD965Lu2L8T4aKGG/hwijA/eNxfp+689sBZk1Ip9WxkBhXynKHdRXi3Wvt48i3mu9lrpyQlNdFRZMo+Hku7fesGlm9coVtyoWMwuruo1uI2sZNzGvE1AfrvbwplBfKnC4iEeCUBYKzAjnmHIusZA8wwyCjIUsIIQKtPHQuSrth7mzUaLx5/vamgvgoRNEPCGHfXyTVzCaWWFkVVqHd6nNncjfa33rELq+8glE/d+dl2AfCmYu8hK6Cm4v+0ltj5rwaRC5ftVhzqzRRa/+DqhfqzswOxV6oYqHK9fKTiK//ws8dCG+9yQIOQkHEvSRa37Yc+0cFlBIYdavEHMNfFPCH7pq5TvB5uRIagdohLsENnrb9P1klviJ76EPRb7+tIRikln1FWb5Abf7hn4mGXuUb0q4Nmo1DLk5eVbIESMug43mrw16YOr5YbfqroVM5hbMVFSLpT1Xd27QB83Fbm+pd7rKNJuEe+iNzD1zMYxY8ng1emLLcftYNwK6or6CL5UyIGdW2MotG27hO1DpRyr3uUU0ENzL/2NE/2mK9qX20u44v57BjF9EgZe+894gmYu55L6MsaQiwdSPIpzMSYZTQklCUz8VbpD83U2S9qPg88NBM0w+36PhVGHRE1PlprDK5iBHn7S5HV3qk1HE2WAUBk9l6UxCYVUmcpcaZ7IRmNy52b0V21MflCW7u1843MNjZ7gyc5G1jaANiCXsyMrLNh76z3wybXeSF28iTtmd1BtRw85vYtXsJ2WX1P66gsZIFLr4ZzI6Oxvh0fv1CgwWYJdgdKYLWdXtdXQhLBgl8nJ04Ta0PmzP1J5C6JFWEOKDiGNMw8DHNAojnPAkwYxEASNxKIEA2ni91b3tyLskfSIpk9Uqh9Tob69OzBczcT+jfxNzh4X4ZaSCKEpZmlI8D5IAU+EHWPg8wiH1IY6jIJJRWJNqh0Quh4cCcKLr0Z+Q5+u50/pNpf9Zj/tLGCUKOyIv4ySlPM2Y8DGwIMA0Ax8nhFKcCWBpIv2Ep6yezg1u17qe610w/LhMMyIkEI79JJSYUilxkmQxjinnGWN+mLIUbf4FeTD5+5MUAAA=",
-                "AH4_H4sIAAAAAAAACu1X227bOBD9FYPPYqEbKclvrjdts0jSok63D8ViMZJGNhFFdCmqrTfwvy+oiy05it0YWWCBrf0iD2fOXHRmOH4gs0rLOZS6nGdLMn0gFwXEOc7ynEy1qtAi5vBKFLg/TLujy5RM3TCyyAclpBJ6Q6aORS7Lix9JXqWY7sVGf9tgXUuZrAxY/eCapxqHhxZ5u75dKSxXMk/J1LHtAfJx6BojCgYW9slg5qvqvovAd2z/RAidlcxzTHTP0OmruafdSpUKyJ8oqeNyPiiq35q9EeXqYoNlzzE7iJixQcS8Kzrc4WIlMv0aRB23EZSdYKEhuSvJlLVl5OFj3D5q1KJ+AC2wSLAXDz+048MKup2pEn/jHHRDhc7robV7UH+vtb5dQS7grnwD36QyAANBl45nDeUfMZHfUJGpY4o0xmUeGgr0HHb1ey2Wb+G+TnRWLHNUZefEvOyUTL3A9h9FP4AKt1uLXPzQCgadtgvAvIhbufgO68tCV0ILWbwFUXTloY5FriqF11iWsEQyJcQiN3VM5EYWSFqEzRrJ1NRpBO9KlvpsvA8KSxyPkFDyxHnjsT7fx7NYY6IV5PNKKSz0C2V5gPpiuY5G+yjjUe+11kejNJdVoVE1Fka/e+tvpEqw7sFDYWqkdVcFPHKtlncLLddmDIhiudC4rgfuvgYtN2fqZVLvw9W5fCrE1woNLklSm3MGEc38NKF+EKU09nhEYwa+z1wnTDKPbC1yJUr9PjM+SjL98lB7MwnsZkaT3VMxvs4rnCw0qLQqtcG7keoe8ndS3hmEbgJ9Rqh/G3mJetdaGeQldr3eHvYr3Yqa9H0nMJOtw1xoJYtepz5hfivuUR308rUodkdm6L0K7P7Hscg1/OhpuO4rb6DhPwrN9nqhXeESixTU5gVyroE/lfibrFr9TrGRnCjtAM3lpoCN3b5874t883mFxSzR4hteplhokZjbbySePsLPZDlifKvE+plhB8z1dpZnBj7AeH7orbnp71mmUc2hWq70lbg397XTHBw2fr2aVapZCMxD7+Ybud68gEWPN5wjy4pZq7pJ3nXcR/xaCYXpQoOuzM5g9rYn2vBEWz2X4QPFUXIeY+GzaHaST8eJ80xm/EsUOPed96a8w30ndnlEs4xn1A9ZRCOwOXVjD4IkDIIMA7L9sxvz7W7/ZSdoJv2XBzIc+Sw4MvI/FVroHNPJZ6nuJjfy1STgbHBPOceqtGtTUxrjslGY3ZsreK820h8+iw5XOG+4TofGcaUySHCRm4naJsQidmJzZVuL/Gf++ewXhrPXBGNsJPViUxe0vzi064J5bMR7tTES9wjHgIfgc5u6LLOp7wScAmOMplmI4EGEISDZWo8JdSSB2XqdY6zk9xcn0dmsGWffLxLtGVN2tTngFRSy+Gs2ubyc0Mm7zRoVBdQrVDKRRVrVF/XkGjQqAXk5+QOUgEJPnPPYyF0eIHge9VwnpD7YLgU/9agNQWy+iOEoG83LeKoSRnUz+R3zfJMZq1+c/J9y0j1zQvpuApA41MY0oj53IxojR5qxIAljn0OYhfWV3OB2M/Bno7s2/28HDiENHWQeo4huTH0OHo1Dl9GY+RnEvpNx3yPbfwCInF74ShQAAA==",
-            },
-            AmountRequired = 3,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-                ["Untitled Work No. 765"] = new List<uint>()
-                {
-                    47572,
-                },
-            },
-        },
-        // Export for Mission [999] - EX: Rare Aquatic Resources
-        [999] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACt1XyW7jOBD9FYNnKaN9uzmeJBPASQdWGj1A0BhQUskmQpMOSaWTDvzvA2qxJW+ZDnJojE9yserV41ORVXpD40rxCZZKTso5St7QBcMZhTGlKFGiAgPpxSlhsF0suqXrAiVOFBvoThAuiHpFiW2ga3nxktOqgGJr1v7rBuuG83yhweoHRz/VOEFkoKvV/UKAXHBaoMS2rAHyaegaIw4HEda7ZCaLatkx8GzLe4dCF8UphVz1Au2+m/N+Wi4KgukRSW0nCAaiem3YJZGLi1eQvcT+DmPfHzAOOtHxI6QLUqpzTGre2iA7Q6pw/ihR4rcyBtE+bh81blHvsCLAcujxCXbjgqGCThcqyE+YYNWUQpd1N9rZ0d9to+8XmBL8KC/xMxcaYGDotuMaQ/sMcv4MAiW2FulQLQeRLoFewk6/czK/wst6o2M2pyBkl0S/7AIlbmh5e+wHUNF6baCLFyXw4KRtCOgXcc/TH3h1zVRFFOHsChPWyWPaBppWAm5ASjwHlCBkoNuaE7rlDFCL8LoClGidDuBNuVQfxrsTIOEwQ3Tx98gczbCA0fipworkoxlIXokc5Mj/w0cG0lENwg6bZvMHwRuHk+BuDb7darqCXAlMJ5UQwNQnCbiD+mkyHmSLTHTSq1VFe82004RXTIFoIrR/p2lTqKniK31vEDZPFazqG3q7s7aYx+JzNtSHqxl+ZeSpAo2LQivzMhcXZh7mrumBV5qx5XimZfteEQZR6Wc2WhtoSqT6UuocEiUPb3U2vYHNJRMGsXecY6qAUixGKaZLzkYzDhr0loslpn9x/qhhunvrG+D6v7ZLUJsDWWIqobsh2sW+sq2p0cCzQ30fdpipEpzNP4J6Q5i23pNlc0edWXuZLLeXaQpzYAUWr5+QzD3z4v4vMtANful7RGe+1f+Fh8n9yauM7grbeDhBvHHYU2nf5dD2+l73gqyOZQp9x924HMs1cDqRrfMjS+CVusEvh9XQB21cKhATXM0XakqWutPazcLuCayHqko0rVw/9HrWF0Zfvy2A3XI1zhV5husCmCK5nheal3egdbmhH+9PLycGET0ydRdtdy5m8FQRAUWqsKr0PKBnst/zsPzng/FLCP/f6v2l6vwqYVJJxZdNITTl0fsaOFK4n1SWvZ6RO9iPs6gwsZ+VpudGuZllODDLEhdlEQcxRAFaf++aRvtp8bAxNH3j4Q0NG4gfhscbyGVFqZlR/oONzqsso8OOZ7+nZb2wbcxbMdozrAXUTJrY8VI7bRFqfn68O0m6w6k+0iQqUeIcUqorut2YH/vvDND+2kC/zQfYdgz58PChg7Wl1doejiMoQZhx9s9DHMem/X10apK0d8bULeL+CbEcb1CmnpU5mRVgE3zHMr0sKs3MCwLTdmIAy7LKMIrrMm2g2w3VrPzTrJrhuX8iIAtLBzIzxrFrerljmVHug4mdzA2j0MnDyEfrfwFg+oC21w8AAA==",
-                "AH4_H4sIAAAAAAAACtVX227jOAz9lUDP9qwv8vUtk+10C6SdIm4xCxSDhWLTiVBFSiW5M50i/76QL42dpEm36MNsnhyKPCSPSZF+RuNKiwlRWk3KBUqf0RkncwZjxlCqZQUWModTymF7WHRHFwVKvTix0LWkQlL9hFLXQhfq7GfOqgKKrdjobxqsSyHypQGrHzzzVOOEsYXO1zdLCWopWIFS13EGyMeha4wkGlg4J4OZLKtVFwF2HXwihM5KMAa57hm6fTXvtFshC0rYK5S6XhgOSMWt2ReqlmdPoHqOg52Ig2AQcdiRTu4hW9JSfya0jtsIVCfINMnvFUqDlsYw3sftoyYt6jXRFHgOvXjCXbtwyKDXmUr6CyZEN6XQed219nb491vrmyVhlNyrL+RRSAMwEHTp+NZQPoNcPIJEqWtIOlTLYWxKoOew4+8zXZyTVZ3omC8YSNU5MS+7QKkfOXgv+gFUvNlY6OynlqTtNMP8jch+kPUF1xXVVPBzQnnHh+1aaFpJuASlyAJQipCFruog0JXggKwG4WkNKDXEHMCbCqXfjXctQcHhCNHZ3yN7NCMSRuOHimiaj2agRCVzUKPgjwC9Yt3Eg+zOV32arSHXkrBJJSVw/UEc7KB+GBMHo60zOqLVy3tmlCai4hpkY2H0uypsiivTYm16nfJFpmFd36rbzNoCHMuPSagPV0d4y+lDBQYXlW6ZJ1Ewt4t57Nk4wsRO4qKwA1KWc1yUhQNztLHQlCr9tTQ+FErvmtI2CbxcDFGY4NdjzDQwRuQoI2wl+GgmwIBeCbki7C8h7g1Md9d8A1L/N3IF+qWLS8IUdF3dHvaZbUUNB9iNzB3WYWZaCr54D+ol5UZ6Q1fmXvGcT4HT+4V7bh2/53YKC+AFkU8fkE8NfKvgT1G1+p1iIzlB2wDNCw05jd2QmjrPnYtzhwL3E076P99CXzl7+rYEPs41fYSMvZJE3+1bqDlgfCPpei/XViEKPP9FZe+NH1I6FMRQzzTquNQgJ6RaLPWUrsx0dZuD3Q6uF6lKNuPbPPTmVEfRldANSxcFcE1zsyM0VB0YV34UJPsby5Hlw6xJ3VXc9dUMHioqocg00ZXZAcwe9ns225t76T8hHOyPU43w5qL931TnrYJJpbRYNYXQv0GOFe4HlWVv5hQEB6U/d23XIYWNC8+3ExwVdukSSOLYiUg8R5vv3dBpPyfuXgTN3Ll7RsMBFEThkQG0JIxxoUfZEhgbjEv3GJEvXWooMr4ahfHKzPe+GkpxkOzuh/5wV4+Np0qWJG/vyDb0IAlOrMXBxkK/zWfVdlF593pijI2kXpOaiv1B1s3SorpSu+7tMChFhAv+z12SJHbwfXR6Pd0Ctk68V9piW5h+4pOicLEdExzZ2PdCO8ZhbDu5S0JSBn6Uh3VhNrhtgnVI+HhIuA6p5yov/SAnJdhO4pY2LhPXnnvg2qGDHRfChMQhRpt/AUdNNWe9DwAA",
-                "AH4_H4sIAAAAAAAACs1X227jNhD9FYPP0laiqOub182mAZw0iLJogWBRUNLIJiKLDklt4gb+94K62JItx9s0aOsnecg5c+Z4RjN+RdNK8RmVSs7yBYpe0UVJkwKmRYEiJSowkD6csxL2h1l3dJWhCAehgW4F44KpDYpsA13Ji5e0qDLI9mZ9f9tgXXOeLjVY/YD1U43jBQa6XN8vBcglLzIU2ZY1QH4busYI/YGHdZbMbFmtOgbEtsgZCp0XLwpIVc/R7l/D58NykTFanJDUxp43EJW0bl+YXF5sQPYCuweMXXfA2OtEp48QL1muPlNW89YG2RliRdNHiSK3ldELjnH7qGGLeksVgzKFHh/v0M8bKog7V8H+hBlVTSl0UQ+98YH+Tut9v6QFo4/yC/3OhQYYGLp0HGNov4OUfweBIluLNFbLXqBLoBew0+8zW1zSVZ3otFwUIGQXRP/YGYoc3yJH7AdQwXZroIsXJWjbaVr5ex4/0/VVqSqmGC8vKSs7PUzbQPNKwDVISReAIoQMdFOTQDe8BGQ0CJs1oEgLM4I351K9G+9WgIRxhshEJ86biPX5nk+8hlQJWswqIaBUH5TlAeqH5TrK9ijj0ej1raZAYsXXul9ZuYgVrOs34557W0RT8TGU+3A1h68le6pA46KMAgnCxDM9m1CTWBibgY8TEycUey4Edp5ZaGugOZPq11zHkCh6aMpTJ7Brbt8LyWmOsYKioGIS02LFy8kdBw16w8WKFr9w/qhhuvfFb0Dr79ouQe06MaeFhK4z20OdXtejranRgNi+fg91mLESvOxNsBPu92wF4qD1r+nL7ghFtv/Jtfof/yiw5fQCz2EBZUbF5gMyqoF/5lVSnNNo4Ii9cOe31+FkuqzspYvxJ+tQAuxr28kQP5LxiPO9YOujvNoLvoud3ZVhCicujZE4uMdWwCt1TV/Gf1TdodNcgZjRarFUc7bSo9FuDg5bt96CKtHMXv3QGzIjk8Tx3fB4mXhjL9AbTPcO7drlDp4qJiCLFVWVHs96Rfp3eugj6ni0Qf55J5wr+R8u2f+yNv9W7X2VMKuk4qumEJry6C3nJ8ryvXXYmx2enSQpDRLTshPXJEkAZphkYGI/z70AuxhyirbfuuHRrvYPO0MzPx5e0XCQuP5bg+SRrdesXDzTzWDm2W/JdpVBqVhKCy2IDtRcmK54VQ6uoYi44eGi5gyX5kBHqkROU4gLXaGjWzpxQ/fMuupuDfS/+buzXz7evXJoZ22ZaVWbcn2m62YRkZ02t729BEWIlrz84yEMQ5N8m1z8PjEnd1TAZPpUUcXSyR1IXokU5IT85KI+YC/IWE/si9TGLiEEPDPL9IJDaWiGBHumHYY08Yjl0dSpi7TBbROsKTlvU3JqSr1QBLtgO+CbIRDfJEEYmIFrBWaQuDlNLS+wvQBt/wJZbl89VQ8AAA==",
-                "AH4_H4sIAAAAAAAACt1XW2/rNgz+K4Ge7S2WbfnylpP1dAXSrqg7bEBxMDA2kwh1rFSSz2lX5L8P8iW1Hfeytg/D3hyK/PiRIkXmkcxKLeagtJqv1iR+JCcFLHOc5TmJtSzRIuZwwQt8Oszao7OMxDSMLHIpuZBcP5DYsciZOrlP8zLD7Els9Pc11rkQ6caAVR/UfFU4LLTI6e56I1FtRJ6R2JlOe8gvQ1cYUdCzmL5KZr4pty0Dz5l6r1BorUSeY6o7hk5Xjb7uVsiMQ/5MSh3KWC+pXmP2lavNyQOqjmN/wNj3e4xZm3S4xWTDV/oL8Iq3EahWkGhIbxWJ/SaNLDzG7aJGDeolaI5Fih0+bGjH+hmkrankf+McdF0KrdehNR3k322srzeQc7hVX+G7kAagJ2jDca2+/ApT8R0liR2TpLFaZqEpgY7DNn9f+PoUtlWgs2Kdo1StE3PZGYndYOodse9Bhfu9RU7utYSm00zmr0XyA3ZnhS655qI4BV60+bAdiyxKieeoFKyRxIRY5KIiQS5EgcSqER52SGKTmBG8hVD63XiXEhWOMyQ2eea89lidP/FJdphqCfm8lBIL/UlRDlA/LdZRtkcRj3qvtOoCSbTYmX7lxTrRuKtexifuTRHN5OdQ7sJVHH4v+F2JBpek1HdDdFPb8ymzPRalNiyzwA7DIFqyzPOXNCN7iyy40r+tjA9F4pu6PE0Ah+YOWOQ9zzHRmOcgJwnkW1FMrgQa0Asht5D/KsStgWnfiz8Qqt91C5pThdrE0TajEV3zLcpBk57z4nBkXoefphY5h/uuLDSyBrJOlucE5sFqnSdaiqJqwEbr4GMFuULro6yiY1IOGyE1dTukFrjGIgP58F5eQ+BfRLnMD4l+BrFnSFl0sOvn6A03QUduIjgKuuviLRGPGF9LvjuKq1EIfOoeVI6ueUxpjERfz7TxbKVRzqFcb/SCb838dOqDYX9Xq1Ip6wFtPjqTaGTcuIEfDefsizuLWXPah7btqSu8K7nELNGgSzPDzR41bLQPVtQn9s+bGuDjlf5aSb+5JP8XtdcWm/cvi60zRZYsTCH1fNulfmR7NPBtyDzXXlFvFaSMrhzqkP23dow0S/7NQVBPkptH0h8pfuA/P1JOc1BqMhcS8t70c17KzVmGheYp5CYhxlGtMNuKsuipkdjzo+HK5vbX59B4KuUKUkxyU4YN7+O+HW6q/t4i/5l/Ok97x7u3DWNsJHOTxroIf8Cu3kFU256XnZWExAQKUfx1E0WR7X6bnPw5sSdXIHEyuytB83RyhUqUMkU1cX/2SRew42Sk0jtViRkL0nAZ2l4YurbHwtQGGqJNnaU7XU5DOg2wqsoatwmwokRfpkQrSh1XkQ8rDJhvpyyjtud5zA59oDYLM5dOIVxmAGT/D47Bq/xQDwAA",
-                "AH4_H4sIAAAAAAAACs1X227jNhD9FYPPUivqRklvXjebBnDSIMpiCwSLgpJGNhFZdEhqN9nA/15QF1uSlUuTFO2bTM6cOXM0oxk/onml+IJKJRf5CkWP6KSkSQHzokCREhUYSF8uWQmHy6y7OstQZAehgS4F44KpBxRhA53Jk/u0qDLIDsfaftdgnXOerjVY/WDrpxrHDwx0ur1eC5BrXmQowpY1QH4eusYIycDDepHMYl1tOgYuttwXKHRevCggVT1H3DezXw7LRcZo8YSk2Pb9gahu6/aZyfXJA8heYG/E2PMGjP1OdHoL8Zrl6hNlNW99ILuDWNH0VqLIa2X0g2PcPmrYol5SxaBMocfHH/v5QwXtzlWwn7CgqimFLurY2x7p77Te12taMHorP9PvXGiAwUGXjmMMz68g5d9BoAhrkaZq2Q90CfQCdvp9YqtTuqkTnZerAoTsguiXnaHIIZZ7xH4AFex2Bjq5V4K2naaVv+bxD7o9K1XFFOPlKWVlp4eJDbSsBJyDlHQFKELIQBc1CXTBS0BGg/CwBRRpYSbwllyqN+NdCpAwzRCZ6In7JmJ9f+ATbyFVghaLSggo1QdlOUL9sFwn2R5lPBm9tmoKJFZ8q/uVlatYwbb+Mh64t0U0Fx9DuQ9Xc/hSsrsKNC5Kk5wEmNgmkCQ33cQiJvVsbCau71k0B58ARjsDLZlUf+Q6hkTRTVOeOoF9cxM/dJ/mGCsoCipmMS02vJxdcdCgF1xsaPE757capvtefAVa/25aUN9KUDqPrhn10TXbgBg16Tkr91coCn6xDHRO73tH2NdnLWKjlYuJ/l51sWMleFn3X2u1D5HTQoLxXlLhK0lZTo/UElZQZlQ8vJXXGPg3XiXFXucnEAeOth/u/YYavZyzbR8nbZOjpPshXpPxhPO1YNujvFoD4tnO3uToNU8ZTZEY2bEN8Eqd0/vuNeq+nucKxIJWq7Vaso0eqLi5GDd8vTtVopnY+qE3mibmj0O8cDx4n11i9N7TfXm7JruCu4oJyGJFVaWHul6sxp33zhr7wI56VUu8v/ZfKvJXF+l/WY3/qPa+SFhUUvFNUwhNefRW+n+3LHsDyCFZAoHvmFYCoekS4plhCI5peTi3iJU5QWCj3bduArX/D272B80QunlEw2nkEefpafR1zRTMYkVFUgmpBsMTP6fkWQalYikttEY6WGMw3/CqHJihyPXC8cbnDLfvQEeqRE5TiAtdtJPrvnus7njv9XYG+t/8bzpsMW/eXbSzPlloVZsK/kG3zUYjO20uewsOihAtefnXTRiGpv1tdvLnzJxdUQGz+V1FFUtnVyB5JVKQM/tXD/UBe0Gm2uRQqK4FlDhWZtpgp6aburmZeEDMzEpTTHCCSeDUhdrgtgnWlPDzlHBNqRfK93Iv8ezM9K2Ami4NAzMheWg6xM0dij3qeSHa/Q0NZWdrng8AAA==",
-            },
-            AmountRequired = 5,
-            UniqueFish = true,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-                ["Full-blown Bubble"] = new List<uint>()
-                {
-                    47577,
-                },
-                ["Glass Coral"] = new List<uint>()
-                {
-                    47492,
-                    47558,
-                    47575,
-                },
-                ["Shallnot Shell"] = new List<uint>()
-                {
-                    47576,
-                },
-                ["Skippingway"] = new List<uint>()
-                {
-                    47491,
-                    47557,
-                    47574,
-                },
-                ["White Starburst"] = new List<uint>()
-                {
-                    47490,
-                    47556,
-                    47573,
-                },
-            },
-        },
-        // Export for Mission [1000] - EX: Elemental-esque River Specimens
-        [1000] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1XS2/jOAz+K4XO9sLv2L6l2bYTIH2gzmAOxWAh23QiRJZSSe5ji/z3gfxI7DRJd4oCu4e9GST18SNFUvQbGleKT7BUclIsUPyGLhhOKYwpRbESFRhIK2eEwU6Zd6ppjmInjAx0JwgXRL2i2DbQVF68ZLTKId+Jtf2mwbrmPFtqsPrD0V81ThAa6Go9XwqQS05zFNuWNUA+DV1jRKPBCetDMpNlVXYMPNvyPqDQneKUQqZ6B+2+mfOxWy5ygumRlNpOEAyS6rXHLolcXryC7Dn29xj7/oBx0CUdryBZkkKdY1Lz1gLZCRKFs5VEsd+mMQjf4/ZRoxb1DisCLDtWGp5tBfswwTChTockyN8wwaqpjI7E/mln7zrc9vR8iSnBK3mJn7jQAANBF51rDOX3kPEnECi2dc4OlXYQ6oroOezSeU4WV7is4x6zBQUhOyf67nMUuyPLe8d+ABVuNga6eFECDxpvS0Dfy5wnz3g9ZaoiinB2hQnr0mPaBppVAq5BSrwAFCNkoJuaE7rhDFCL8LoGFOs8HcCbcak+jXcnQMJhhshER/SNx1q/45OsIVMC00klBDD1RVHuoX5ZrAfZvov4oPfaqqmXRPG17mbCFomCdT03d9zbmhqLr6Hch3vP9JmUKSbqklAqT+jvKyZvqw7hOyOPFWhmyIfCGvkQmHnqRqYX2IWZukVq+s4oC/Og8N00RBsDzYhUt4VmKVH88Fbz1SnYDrNREDnHozynFZwlCou8kkrj3XBRYvqN85VG6EbRD8CrXTdprQSl4+j6SovmpASx12/XhG1VutP/sAx0jV96MsfSshayybRnO6NQZ7v1nijB2eIr/Ief8j+DBbAci9cPKfQgLF0vf/IqpdvsDSycINoa7AI8ajLgcMBqLsj6mKeR77hbk2O+BkYnvHV2pAReqWv8gmLH1inUzTcuFIgJrhZLNSOlfhPtRrHflfX6U4nm0dUfveekmfR+9H5tOLEB6F2lm4dd9d7DY0UE5InCqtIPsV6Gfquke/c5in6/IvfL4f+COl5Q/3r5dCN5wium+ucMdMvo63cJP5bAbni9YI+fMKH63rrL6o1uKw9dKwsiE3I/Mz1wLDO0LWzaTg5BgS0bRy7a/Oxmd7u5P2wFzfh+eEN7c9yOTszxKk0pYYuzabkGmSkuBm+XfSrB0xyYIhmmOqvaX2MwLnUi+mYo9vxof/9yh6uxnptJJQqcQUJ1Lbf0/cj/YO30Nwb6z/zFJGssoKjoN8zyjoXePv1DPAaV0ybMNerrm+ZzPllCttreYO+HxhqsVp9eSvTh88590zLPeN1sG7Krz/7ygWKEGWd/PdiWZZn2z7MLCiUwhakJ8rGCs3vyBOJMb1ukBCZRH7Hn5UBj9trAC6PC9T3bLFJcmF6YhSYeZYXpOsUoLPwwTAOo26DBbSPsEXP+CbGewyyyIEiLzMxssE0PR7mJwyI1vcAbZZZj+U6Ro80v8Ihm45wPAAA=",
-                "AH4_H4sIAAAAAAAACu1XS2/jOAz+K4XO9sLv2L6l2bYToI9Bk8EcisFCtuhEiCKlktzHFvnvC9lRYqdJOjtbYPewN4OkPn6kSIp+Q8NaixFWWo2qGcrf0AXHBYMhYyjXsgYHGeU15bBTEqsaE5QHaeagr5IKSfUryn0HjdXFS8lqAmQnNvbrFutGiHJuwJqPwHw1OEnqoKvVdC5BzQUjKPc9r4d8GrrByAa9E96HZEbzemkZRL4XfUDBnhKMQak7B/2uWfCxWyEJxexISv0gSXpJjTbHLqmaX7yC6jiO9xjHcY9xYpOOFzCZ00qfY9rwNgJlBRONy4VCebxJY5K+x+2iZhvUr1hT4OWx0oh8L9mHSfoJDSySpH/CCOu2MiyJ/dPB3nWEm9PTOWYUL9QlfhLSAPQENrrQ6cvvoRRPIFHum5wdKu0kNRXRcWjTeU5nV3jZxD3kMwZSWSfm7gnKw4EXvWPfg0rXawddvGiJe423JWDuZSomz3g15rqmmgp+hSm36XF9B13XEm5AKTwDlCPkoNuGE7oVHNAG4XUFKDd5OoB3LZT+ZbyvEhQcZohcdETfemz0Oz6TFZRaYjaqpQSuPynKPdRPi/Ug23cRH/TeWLX1MtFiZbqZ8tlEw6qZmzvum5oays+h3IV7z/SZLgtM9SVlTJ3Q39dc3dUW4RunjzUYZijOskEEBbgxZIkbZVnlpkHkuQVOSJREXkS8GK0ddE2VvqsMS4Xyh7eGr0nBdpgNkiw4HuU5q+FsorEktdIG71bIJWZfhFgYBDuKvgNe7LrJaBVoE4ftKyOa0iXIvX67oXyrQrk/+M1z0A1+6cgC38g2kG2mI39gZqF1PtFS8NlnuE8OuPcOuPfCjvtrmAEnWL5+yGAf4XdRF2ybu55FkGRbg118R016HA5YTSVdHfM0iINwa3LMV8/ohDdrR5cgan2DX+wFmtYbVhrkCNezub6mS/Mi+q1ivyeb5aeW7ZNrPjqPSTvn4+z90nDi/Tebip2Gtnbv4bGmEshEY12bZ9isQn+roP9hQf5fUD9fUP96+diBPBI1191zDrrj7PWbgu9z4LeiWa+HT5gyc2/2sjqDmxS4wFkSul5FMjdKA3CzQZi4CYmyMoGqCnGK1j/s5N7s7Q9bQTu8H97Q3hT3sxNTvC4KRvnsbLxcgSq1kL2Xyz+V4DEBrmmJmcmq8dcaDJcmETuzQ4tonO0vY2F/T06N41pWuIQJM6W9iSbO4g920HjtoP/ML81khSVUNfuCObEszCoaH+LRK6RN/kKnuc0xmYrRHMrF9kI7fzdeb8/65Q3FHD637tsOesardvVQ9va6mwjKEeaC//Hge57nBj/OLhgsgWvMXFCPNZzd0yeQZ2b1okvgCnURO14O9GmnKxKIo7hKY7coSOVGYVW5RQqRW2RBUGVJSaIwa7qixd1E2CHm/wyxjsMSE+KVELseeKUbDYrKTWPwXOIHSRhUnlGj9V9zYsptqQ8AAA==",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
-        },
-        // Export for Mission [1002] - EX: Bubble Bursters Distribution Survey [10/21]
-        [1002] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1XS2/jOAz+K4HO9sIPybF9SzOdboC0U9RZzALFHBSbToQqVirJnWaK/PeB/EjsPJpB0cMe9qaQ1MePNEUyb2hUajGmSqtxvkDxG7ou6JzDiHMUa1mChYxyygrYK7NWNclQ7IWRhe4lE5LpDYpdC03U9WvKywyyvdjYb2usWyHSpQGrDp45VThBaKGb9WwpQS0Fz1DsOk4P+X3oCiMa9m44F8mMl+WqZYBdB1+g0N4SnEOqOxfdrpl32a2QGaP8TEpdLwh6ScXNta9MLa83oDqOyQFjQnqMgzbp9AmSJcv1FWUVbyNQrSDRNH1SKCZNGoPwGLeLGjWo91QzKFLo8AkO7wX9DHrtVcl+wZjquhRO1VUQHoF5B5/Db8BmS8oZfVJf6YuQBq8naKPzrb78AVLxAhLFrsnZGQq457BN5xVb3NBVFfeoWHCQqnXinUTyhw4+CqaHHG63Frp+1ZI279B8l5lIftL1pNAl00wUN5QVbapt10LTUsItKEUXgGKELHRXcUJ3ogBk1QibNaDY5OkE3lQo/WG8ewkKTjNENjqjrz1W+j2fZA2plpSPSymh0J8U5QHqp8V6ku1RxCe9V1Z1vSRarM1rZsUi0bCu+uaee1NTI/k5lLtwFYd/CvZcgsFFQ/Bx6njEHpJ8buPQx3aYU8+OsiDDhLh+6FK0tdCUKf0tNz4Uih/r8jQB7J7+MIjweY6JBs6pHCSUr0QxeBBgQO+EXFH+txBPBqbtJt+BVr+NXIHePaeccgXt82qUJrz2oTWiOgfYHZou1WImWoqiM9/OXJ+xFciD93tLX3cq0wL+co5cOX7H1RQWUGRUbi56O0T4Iso5Pwy/tvCCaGewj+WsSY/DCauZZOtznobE83cm53z1jN7x1tiZch/lGuSYloulnrKVmUJurTh8B9XCUcp6zJlDp4GPaZECH2kNq7Vuc2lsZlQuoMb8VvDN9yUUd0KPUs1eYJJBoVlq5m194WSHJtHx9H9nkJuVo21rbQU/wHPJJGSJpro089TsNGfK+kKZ/nGF/V9IHyqkj37zTuuMiOs4QZDZ0TB3bezguU2JH9gReJRmjheGOUHbH23vbPbex52gbp+Pb+igj3rR+T56Vc7nHBb0F8hey3ffy82u/k1CjKPaYLQSZdEzQzEm0eGe4vc3ytB4KmVOU0i46WcntzdMInJheSNbC/1n/gvsZ++HJ27yk66NZGyyWiW0O4ObyWuOtXhvdqp0O2UWOCmN0jy1SYgdG2dkaIcBDWziRO7cd7AXwbwqsxq3HbjwXJpeMbj+dzCZDOxBXTmDq1IqDVINvjClJZuXpn8NklK+wKa/GYDn+MTFvp3RPLBxFHl2OA8zO02JkwY4IiTy0PY3A0AOekEOAAA=",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
-        },
-        // Export for Mission [1005] - EX+: Elemental-esque Chasm Specimens
-        [1005] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1XbW/jNgz+K4G+Ljr4RX79lsvSLkDaKy4pOqAYBkWmY6GOnUpy73JF/vsgvyR24iaHQ7HbhuWTQ5EPH9KkSL+iUaHyMZVKjuMVCl/RJKPLFEZpikIlChgifTjjGRwOo+ZoGqHQ8oMhuhM8F1xtUWgO0VROvrK0iCA6iLX+rsK6yXOWaLDywdJPJY7rD9H1ZpEIkEmeRig0DaODfB66xAi8joVxkcw4KdaawZ95lm7vJTxwlUwzVXDF86wJsydqYhrkAt3GQ56mwFQTJjENs61mXaaYi4jT9I30m5brdl4Aqc2uuEwmW5Atx84RY8fpMHabF0SfYJ7wWH2kvOStBbIRzBVlTxKFTp1y1z/FbaMGNeodVRwyBi0+7rGd282g1ZgK/g3GVFVl03g9traO8m/X1ouEppw+ySv6kgsN0BE04djDrvwzsPwFBApNnaS+und9XQIth03+PvLVNV2XgY6yVQpCNk70y45QaHsGOWHfgfJ3uyGafFWCdrpyT0C/iEU+/0I3+2K9pjxr0oPNIZoVAm5ASroCFCI0RLclJ3SbZ4BqhO0GUKjz1IM3y6X6Ybw7ARL6GSKM3jivPJbnBz7zDTAlaDouhIBMvVOUR6jvFmsv25OIe72XWlW9zFW+0e3Ls9Vcwaa8VA/c65oaifeh3IYrOdxn/LkAjYuCJY0JiWJs2pRiYtEA+6ZJsWG5nkEdEoFlot0QzbhUn2LtQ6Lw8bX0pgPY97rnBs7bHK90F3yhCsRgJFQi8rQQoHFvc7Gm6W95/qSRmhvkAWj5X8slqH1rxDSV+9u6PtQRNk1Ti6o0ENPTN1ODOVciz1qddtncsFvmM1hBFlGxfQdeJfC9hF/zotZvFCvJhfA7aJarg6zsDiFqlQVfgzi6VW54tj/SF98Ho/MjZ8C/JwE9xgvBNycR1QqeY9l7lS75N5T6SHT1dGeNYgViTItVomZ8rSecWR0ct1y5+BSiGqH6oTUregaC7TnB6U5wZrzrpaW5+5oa/wzPBRcQzRVVhZ6yeiv6yYWvd6S+ctHyo5LxPhhD9ClLtw8JZCOm+AvM05/UQr3dcqktvru4/zVVfC9hXEiVr6uSat8nf0OBt4ZJ7ASOwXwPB8yKMGFmjP14GeDY8wNCA4ta1EW7P5ppUn8mPO4F1UB5fEVHk8Xxzky/LVOcJSrZys4QNM9lcRpBpjijqc6PdlQpjNZ5kXXUUEic4HiRs7tLta89FSKmrO6E3i2eOHo+nl1nnd0Q/WM+nQ7byA/vINpYS8Y6q2VC21tJvYvox0p8UOst8kOZ2R4lxIxMbFm2j4kbMBwsDRcvA4stie3ZLNK7xWkZBW8HMKYbWaSgVDeM/6voP1tFsW2ZkWE72PDcGBN3aWJq+S62vIha4HuUsLi8rCrcmqIeg9Fg8vsvg+l0gAeTFNaQKZpikM8FDMYJleuB3v75GjJ9I7U8+p6xtD0vwMxwbExc4uOlByZmzGWGRRzmRAba/QWB3GBlsBEAAA==",
-            },
-            AmountRequired = 1,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-                ["Encapsulated Impesctor"] = new List<uint>()
-                {
-                    47661,
-                },
-            },
-        },
-
-        #endregion
-
-        #region Critical
-
-        // Export for Mission [1037] -  Soup Broth Ingredients [10/23]
-        [1037] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACs1WS2/iSBD+K6jPtmSbdvtxIyyTRWKyUcxoD9Ee2u4ytGLcTHc7M2zEf1+1H8EmECYRI+3NVFd99VVRrxc0qbSYUqXVNF+h+AXNSpoWMCkKFGtZgYXM44KXcHhk3dOcodgLIwvdSy4k1zsUuxaaq9nPrKgYsIPY6O8brK9CZGsDVn945qvGIaGFbrfLtQS1FgVDses4A+T3oWuMKBhYOBfJTNfV5kxg2HXwBUYdiCgKyHQXCXYdt6/mXWYhJOO06ACIiwcAuFX7wtV6tgPVc+QfMfT9AUPS5Zw+QbLmub6hvOZpBKoTJJpmTwrFfptFEr7F7aNGLeo91RzKDHp8vGM7MsyY15lK/i9MqW4qofNKjqy9o3yPW+vlmhacPqkv9FlIAzAQdOGMraH8ATLxDBLFrknSqVImofnLew67/N3w1S3d1IFOylUBUnVOzJ/LUDwOHPyG/QAq3O8tNPupJW0bzWR+KZIfdDsvdcU1F+Ut5WWXD9u10KKS8BWUoitAMUIWuqtJoDtRArIahN0WUGwScwJvIZT+NN69BAWnGSIbnXlvPNbvBz7JFjItaTGtpIRSXynKI9SrxXqS7ZuIT3qvtZoCSbTYmn7l5SrRsK0H44F7W0QTeR3Kfbiaw7eSf6/A4CISEuZ5eWqnxGE2dt3UphmJ7DClzjgLPUoYQXsLLbjSf+XGh0LxY1OeJoDX5g4C093nOM70GrjcqdENLQqDdyfkhhZ/CvFkELpR8TfQ+reRK9CvTZjTQkHXlO2jiaxrz1bUhI/dwIygDjPRUpS93XXZ3Bn3zBewgpJRubsCrxr4D1GlxaVIB4YeiV7tDtGcVfkVxieMvylYSr5t4ugCaCQfIhv4ngmzsTxHd6D0ccKtuemiSa5BTmm1WusF35j15TYPx+1VHyqVbPaj+egtghPTfhz40dsF/86uNkdGN+e6un6A7xWXwBJNdWVWqLlizhT7heL9aI1errmrFVdf62TBXLUyflMJfPY/781S7FGC09S3AyCejXGU2mkUeDbBjETg5wyAof0/3TBtL93HV0EzTx9f0HCwksA/P1jnJdecav4Mo6UUlR4sAve9BM0ZlJpntDBZMd4ahclGVOVADcXYj46vl/HwkgyNp0rmNIOkMPOvJe9H/oWjzd9b6H9z8x9W8KcXb/KDbo1katJYZ7C/itsFbD4b8UHtVMH2iotlhLEUh3aaYWxjjwR2yEhgZwH1cwzjCAdZXVwNbkvxAdhoUoDUI3uUiGo7upFCr0fzciWBcSi1Gp4DGaZj7AaOHfhhZGOXYJsGHrGpC06eBszx8gzt/wNxz0ugFw4AAA==",
-            },
-            AmountRequired = 4,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-                ["Initiative Trout"] = new List<uint>()
-                {
-                    47675,
-                },
-            },
-        },
-        // Export for Mission [1038] -  Oil-extractable Aquatic Life [10/21]
-        [1038] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACs1XS2/jNhD+KwbPEiDqLd0cN5sG8GaDyIsegh7G4sgmwogORe1uGvi/L6hHLDl23E1dtDdlOPPNN+N55YVMay1nUOlqVqxI+kIuS1gKnApBUq1qtIh5nPMSd4+sf7pmJHXjxCK3ikvF9TNJqUWuq8sfuagZsp3Y6G9brM9S5msD1ny45qvBCWOLXG0Wa4XVWgpGUuo4I+T3oRuMJBpZOCfJzNb145HAfOr4Jxj1IFIIzHUfiU8dOlRzT7OQinEQPUBI/RGA36l94tX68hmrgaNgj2EQjBiGfc7hAbM1L/QF8IanEVS9INOQP1QkDboshvFb3CFq0qHeguZY5jjg4+7bheOMub2p4n/hDHRbCb3XcM/a3cu311kv1iA4PFSf4JtUBmAk6MPxrLH8DnP5DRVJqUnSoVIOY/OTDxz2+bvgqyt4bAKdliuBquqdmB+XkdSLHP8N+xFUvN1a5PKHVtA1msn8QmbfYXNd6pprLssr4GWfD5taZF4r/IxVBSskKSEWuWlIkBtZIrFahOcNktQk5gDeXFb6w3i3Cis8zJDY5Mh767F53/HJNphrBWJWK4WlPlOUe6hni/Ug2zcRH/TeaLUFkmm5Mf3Ky1WmcdMMxh33roim6jyUh3ANh68lf6rR4BJ0IgbgF3aS54nt04TZSbiMbKfwGCR5gMEyIVuLzHmlvxTGR0XS+7Y8TQCvzR1FpruPcbzUa+TquZpcgBAG70aqRxC/S/lgEPpR8QdC87eRV6hfm7AAUWHflN2jiaxvz07Uhu/TyIygHjPTSpaD3XXa3PEG5nNcYclAPZ+BVwP8m6yX4lSkI0M3TF7tdtEcVfk7jA8Yf61wofimjaMPoJX8EtkocE2YreUxuiOlXyfcmZsumhYa1Qzq1VrP+aNZX7R92G+v5lCpVbsfzcdgERyY9l4UJG8X/Du72hwZ/Zzr6/oOn2qukGUadG1WqLli9ov9P6/qf16+Z6vTodbB2jtrkf1L1fTR8hmMZRY7UPhFbCcsRtv3qG8vWYg2UEBwgVIvKMj2z34ud0fz/augHc33L2Q8o8MoOj6jFwq44OVqkpXARWEMh1uFvpeia4al5jkIkxfjr1WYPsq6HKmR1A+S/VPIG5+lsfFUqwJyzISpxo5+kAQnLsBga5H/zT8Qu33+4S2efYeNkcxMGpsMDvd6t83NZyveqR0q2UF5geNBQYvYduIksf0kBhuc3LWpDzliHjP03aa8WtyO4h2yyVSg0hN78oULG825mmszPCbTpxo0zydzXpgwhhcGeCGlFG0XaG774Lt2wiC3XXCZ47DAd0NKtj8BmGFHYGoOAAA=",
-            },
-            AmountRequired = 4,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-                ["Trailing Snailfish"] = new List<uint>()
-                {
-                    47677,
-                },
-            },
-        },
-        // Export for Mission [1039] -  Elemental-esque Specimen Acquisition [10/22]
-        [1039] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACs1W227jOAz9lUDPNuCbfHtLs2m3QKZb1B3sQ7EPskQnQhU7leTpdIv8+0K+NHaaNNMiA+ybQ5GHh8wRqVc0rXU1I0qrWbFE6SualyQXMBUCpVrWYCFzuOAl7A5Zf3TNUOrFiYVuJa8k1y8odS10reY/qagZsJ3Z+G9brG9VRVcGrPnwzFeDE8YWutrcrySoVSUYSl3HGSF/DN1gJNEowjlJZraq10cKC1wnOMGoB6mEAKr7SgLXcYdu3mkWlWSciB4gdIMRQNC5XXK1mr+AGiTCewwxHjEM+56TR8hWvNAXhDc8jUH1hkwT+qhQirsuhvF73CFq0qHeEs2hpDDg4+3HheOOeX2o5P/CjOhWCX3WcC/a2+u330Xfr4jg5FFdkh+VNAAjQ1+Ob43td0CrHyBR6pomHZJyGJu/fJCw798FX16RdVPotFwKkKpPYv5chlI/coJ37EdQ8XZroflPLUl30Uzn76vsmWyuS11zzavyivCy74ftWmhRS/gGSpEloBQhC900JNBNVQKyWoSXDaDUNOYA3qJS+st4txIUHGaIbHTkvM3YnO/4ZBugWhIxq6WEUp+pyj3Us9V6kO27ig9mb7xagWS62pj7ystlpmHTDMYd905EU3keykO4hsP3kj/VYHAReIGDWcHsPGfYDkK3sOMQY9vBDIdhTikjAdpaaMGV/qswORRKH1p5mgLeLncUOf5xjpdG9s9Eg5xMpV7JStQSDO5NJddE/FlVjwapHxl/A2l+G7sC/XYZCyIU9JezOzQV9te0M7VtCNzIjKIeM9OyKgc77HS44w/CF7CEkhH5cgZeDfAfVZ2LU5WOAr0weYvbVXPU5VcYHwj+ruBe8k1bR19Aa/kU2Qh7psw28hjdkdPnCXfh5jZNCw1yRurlSi/42qwxtz3Yv2bNg6WW7Z40H4OFcGDq+xFO3i/6D3a2eWz0867X9R081VwCyzTRtVml5jVzROwnxPtZjZ7W3NnENfQ6KJizKuM3SeCr//lgpuYkD/wIYhs7cWAHIWV27sfUdgo/yos8AJcwtP2nH6rdi/fhzdDO1YdXNB6wYewcH7AXooZJponMa6n0aB24H7XnmkGpOSXC9MTkah2m66ouR24oDXCy/4bxx+/J2GSqZUEoZMJMv446TvCJpxveWuh/8/LfLeIvr9/smWyMZWba2HRwuJC7NWw+W/PO7ZBcB9LyEhbTIExsQiGyA88BO3YL16a5W5DAL3BIikZaLW5H8Q7YZCpA6ok9mQtYQ6mJsEE9Gc1sgPI1lJMpfaq5asbW+Ing4iBkLPHsiIZgBzGObZK4xI6pTx1chDnkPtr+Byfpt3wrDgAA",
-            },
-            AmountRequired = 4,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-                ["Blue Starburst"] = new List<uint>()
-                {
-                    47680,
-                },
-            },
-        },
-
-        #endregion
-
-        #endregion
-
-        #region Oizyn
-
-        #region D Rank
-
-        // Export for Mission [1320] -  Anomaly Impact Aquaculture Survey
-        [1320] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACuVWyW7jOBD9FYNnCdC+3dzuJBPAnQRRgj4EfaClkkWYFhUu6fYE/vcBJTG2vCTdgwBzmJtcy6tX5eIjX9FUSTbDQopZtUTZK7po8ILClFKUSa7AQto5Jw3snKVxXZco85LUQnecME7kBmWuha7Fxa+CqhLKnVnHb3usb4wVtQbrPjz91eFEiYWu2oeag6gZLVHmOs4I+X3oDiONRxnOh2RmtVqfaSxwneADRgaEUQqFNJ0EruPuh3kfs2C8JJgagMgNRgDBEHZJRH2xAbFXKDxgGIYjhpGZOV5BXpNKfsGk46kNwhhyiYuVQFk4TDFKjnH3UdMB9Q5LAk0Be3yiw7xoPDHPpHLyN8yw7DfBVD3M9g7m7Q/ZDzWmBK/EJX5hXAOMDKYd3xrb76FgL8BR5uohmZrBqIIZ2BeyvMLrrrNps6TAhUHV/2aJMj92giO6I6hku7XQxS/J8XCy9KgfWP4Tt9eNVEQS1lxh0pgB2K6F5orDNxACLwFlCFnopiOBblgDyOoRNi2gTE/iBN6cCfmv8e44CDjNENnojL+v2Pl3fPIWCskxnSnOoZGf1OUB6qf1epLtUccnq3dR/YLkkrX6gJJmmUtoOyXccR+WaMo/h/I+3DHTn2S9wEReEkrFO/571YhbZRAeG/KsQDNDieN7fhyWtlf6pR3gGNu4KrDtVK7npHFSuNhDWwvNiZC3lWYpUPbUL7gegWkxdDzfOd/ljIk1k/XkTrVYw90wvsb0L8ZWGsCIy3fAq51Ca68AqdswWj2Y+kEFbqzVySTnkrNm+Sfpjr+XPoclNCXmmz9G+MrUgr5xH0V4UfoWsON3NmTE4UTUo4AHTtqemaHUW06Xj0NPM+xDzhEYBb1DYYjTyz+tJPAZVstazslaXzNu7zg8Fd2DQvH+HtMfe4LdS2uYHt+871yi+vY3emTW5x6eFeFQ5hJLpe82/bw43KnfW53f3pD/dhH+d/95PujYjKlG7udZ6Lahm0cB32toblj3zpy+YEL1ATZHZE/v4rCsoipObPCD2A7ChW8vFm5pQ+p5LiRlCn6Ktj+M4A0P2Kc3Q695+ncvs4O+Pbm+5/yYTBu2xnQzuV63uJCT6bPChaJScZjkir/AZvL6dTsWYCcoisWiiu2F70V24LjYTqLAsd0ocpIiqKrKi9H2H1Mcim68CwAA",
-            },
-            AmountRequired = 5,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-                ["Inverted Trout"] = new List<uint>()
-                {
-                    50091,
-                    50097,
-                    50103,
-                    50111,
-                },
-                ["Inverted Whitefish"] = new List<uint>()
-                {
-                    50092,
-                },
-                ["Voyaging Loach"] = new List<uint>()
-                {
-                    50090,
-                    50096,
-                    50102,
-                    50110,
-                },
-            },
-        },
-        // Export for Mission [1321] -  Megalithopolis Specimen Survey
-        [1321] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACuVWS2/bOBD+KwZPu4C0kChZr5vrJtkAzgORgx6CHihpbBGhRZek0rqF//uCkhhLfsRpkdve5Hl88814HvyFJrXiUyKVnC6WKPmFLiqSMZgwhhIlarCQVs5oBTtlYVTXBUpwFFvoXlAuqNqgxLXQtbz4kbO6gGIn1vbbFuuG87zUYM0H1l8NThBZ6Go9LwXIkrMCJa7jDJDfhm4w4nDg4ZwlMy3rlWHgu45/hoLx4oxBrnqObt8Mnw/LRUEJO1FSFwfBoKh+53ZJZXmxAdkLPN5jPB4PGAem6OQZ0pIu1CdCG95aII0gVSR/ligZd2UMokPcPmrcod4TRaHKoccn2PcLhhXExlXQnzAlqm0FE3XfG+/V3+u85yVhlDzLS/LChQYYCEw6njWUP0DOX0CgxNVFOtbLQaRboBfQ1O8TXV6RVZPopFoyENIE0X92gRIvdPwD9gOoaLu10MUPJUg3abryc55+J+vrStVUUV5dEVqZetiuhWa1gBuQkiwBJQhZ6LYhgW55BchqETZrQIkuzBG8GZfqj/HuBUg4zhDZ6IS+jdjod3zSNeRKEDathYBKfVCWe6gflutRtgcZH43eWLUNkiq+1vNKq2WqYN1sxh33rokm4mMo9+EOmX6nq4xQdUkZk2/oH+pK3tUG4bGi32rQzFCwyHNMANuFgwPbz2LXjrBD7IWfF04WBz5xIrS10IxKdbfQLCVKntoG1yUwKY4d7Dmns5xyueKqHN3Xa6LhbrlYEfYv588awOyaL0Ca31ouQb1O8YIwCWaqO6XOzsx3J2rr57uh3mEGM1WCV73rd8J9Tlcg9tbGDa1eVXpf/OMchHK8XqgZLKEqiNh8QA4N8KOEz7zu7I1hKzlTqgEaDnRBWr9dOd6ZdXSQdR/uPSkfcZ4Luj7IoTMIx9h7NRnSPWF0jMTQTg/sZKFATEm9LNWMrvSldFvF/iQ3j6JatKdYf/RuTnsOxvHhY+KNd4F+wZgdalr+Ab7VVECRKqJqfZ71E+nEHJzp699tyYHh0W461zbvboX/9X+edrt3yutK9f0sdFexzaOELyVUt7x5K09eCGV6bswY9nZ0GMI488LYxnlObD8KiZ05UWgXru97OM/iIMvQ9qtZ0t0j/OlV0O5p/bs9Dd1OfnI97H4d3cCSMKpKvuaMypG+fXQF1SitxQtsRn99/nt4MXDsOmEU+nY0zpqL4diZn+e2uwhCHGdZUOAQbf8DRL60630MAAA=",
-            },
-            AmountRequired = 2,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-                ["Lithic Megaloach"] = new List<uint>()
-                {
-                    50095,
-                },
-            },
-        },
-        // Export for Mission [1322] -  Foregone Oasis Environmental Survey
-        [1322] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1WS2/jNhD+KwZPLSABelvSzfE6aQBvEkRZ7CHYAy2NLCI06SUp77oL//eCkhhLfrZF0FNv0jy++WY4M+QvNKkVn2Kp5LRcovQXmjG8oDChFKVK1GAhrZwTBntlYVT3BUq9OLHQkyBcELVFqWuhezn7mdO6gGIv1va7Fusz53mlwZoPT381OFFsobv1SyVAVpwWKHUdZ4B8GbrBSMYDD+cqmWlVr84kFrhOcIWRAeGUQq5MJoHruH0z7zoLLgqC6RkirhdFgxoHndstkdVsC7IXODxgHIYDxpE5A/wGWUVKdYNJw1sLpBFkCudvEqVhV9UoPsbtoyYd6hNWBFh+rlMC14kOYaJhQT2DJMifMMWqbRRD4tDbOzgOv/N+qTAl+E3e4g0XGmAgMNn51lD+DDnfgECpq2t2qtOjWHdEL6Ap5w1Z3uFVk/eELSkIaYLosy9Q6o+d4Ij9ACre7Sw0+6kE7uZQH8QLz37g9T1TNVGEsztMmKmH7VpoXgv4DFLiJaAUIQs9NCTQA2eArBZhuwaU6sKcwJtzqf413pMACacZIhud0bcRG/2eT7aGXAlMp7UQwNQHZXmA+mG5nmR7lPHJ6I1V2yCZ4ms9voQtMwXrZm/uuXdNNBEfQ7kPd8z0B1ktMFG3hFJ5Qf9cM/lYG4QvjHyvQTNDrpeUGCeFnYSQ2EHugp3kXmAncRG4UVAmseugnYXmRKrHUrOUKH1tG1yXwKQYOp5/IcsplyuuiYxuMKUa8IGLFaZ/cP6mIczy+Qq4+ddyCep9jktMJZi57pQ6PzPhnaitYOCO9VIzmJkSnPVux+vujt9zn8MSWIHF9h8jfOL1gh6m1Fp4UfJusOd31mTA4YTViyDrc5HGoee/m5yLNTC6EK2z0wMwKRWIKa6XlZqTlb6I3FZxOBnNE6QW7U2nP3o7vF2vYXJ8V1+4dvV7wewk00DP8L0mAopMYVXr208/SM501ZUu+dvN8P+Z/6dnnnW7bMprpvp+FnpkdPtFwtcK2ANvXqaTDSZUz6oZ0N7Oi/LIG+eBb5dQjO0gcRN74YwXtp/7zjgsFkUcOWj3zSy97sn7+i5o957+b1dtt+NeXd/zvo1uuYAlZzB6xJLI0YxtiOBsBUxhOspqsYHt6LdPvw/X8DiKIy+PPNsJcWgHflja2HcCOywct3TjJM7LEO3+Apr+/eDwCwAA",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
-        },
-        // Export for Mission [1323] -  Regular Base Resupply
-        [1323] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1Wy27bOhD9lYCrW0AC9KD12jlukgZwk8BO0UXQBS2NbMK0qPKR1rfwvxeUxNjyK20RdNUdxZk5c2Y0POQPNNSKj4hUclTOUfYDXVVkxmDIGMqU0OAgYxzTCrbGwppuC5QFSeqgB0G5oGqNMt9Bt/Lqe850AcV22/hvWqyPnOcLA9YsArNqcKLEQTf140KAXHBWoMz3vB7yeegGI417Ed6rZEYLvTpRGPY9/AojC8IZg1zZSrDv+btuwessuCgoYRYg8nEPAHdu11QurtYgdxIN9hgOBj2Gke05WcJ0QUt1SWjD02xIuzFVJF9KlA26LkbJIe4uatqhPhBFocphh0+0Hxf1OxbYUEH/hxFR7STYrPvRwV6/wy76cUEYJUt5TZ65MAC9DVtO6PT3J5DzZxAo802TbE7cy2AbdknnN2TVVDas5gyEtKjmbxYoC2MPH9DtQSWbjYOuvitBupNlWv3Ip99IfVspTRXl1Q2hlW2A6ztorAV8BCnJHFCGkIPuGhLojleAnBZhXQPKTCeO4I25VH+M9yBAwnGGyEUn7G3Gxr7lM60hV4KwkRYCKvVGVe6hvlmtR9keVHw0e+PVDshU8docUFrNpwrqRgm33LshGoq3obwLd8j0G13NCFXXlDF5xj7RlbzXFuFTRb9qMMwQmSVlGBLPTVNCXBzmpZsGSegmA0ggCsoCIEEbB42pVPelYSlR9tQOuGmBLXHgBeGZKkdcrrghcnFJGDOAd1ysCPvA+dJAWHn5DGS51WhjlaBMIVatu622VdiPjT7Z4KkSvJr/TrgX7oSPYQ5VQcT6txHecz1jL9x7HkGUvjhs+Z106XE44vUoaH0qUzwIwheXU7l6TmeydX5m0oelAjEier5QY7oyd4rfGvaPQPN60KK9tMxiR51bHR2kh9fsmRvTXPVWfOykTOCrpgKKqSJKm4vMvCX2x+fXpuSXh+HfP/+r/3zaidaI60rtxjnovmLrTxI+L6C6482jcvhMKDNn1R7QHXELIx/HBS7cKCWFi31curNZXLh+GRUYh2WS5DnafLHq1r1Wn142WoEz362mdmL25IdB+GUCc82IuLgkEi4mIHVds/XFf+/f7Qks9vx8FhA3xSRwMQBx09gr3SgGHMQh9gceQZufjjLrBpwLAAA=",
-            },
-            AmountRequired = 2,
-            UniqueFish = true,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-                ["Inverse-eye"] = new List<uint>()
-                {
-                    50101,
-                },
-                ["Inverted Skipper"] = new List<uint>()
-                {
-                    50093,
-                    50099,
-                    50106,
-                    50114,
-                    50228,
-                },
-                ["Site Sleeper"] = new List<uint>()
-                {
-                    50094,
-                    50100,
-                    50107,
-                    50115,
-                },
-            },
-        },
-
-        #endregion
-
-        #region C Rank
-
-        // Export for Mission [1324] -  Large Aquatic Life-form Distribution Survey
-        [1324] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1WTW/bOBD9KwZPW0ACRImWJd1cNckGcJMgTtFD0AMljWwitOiQVFpv4f9eUBJjyR/xbhH0tDdqZvjmzWj4yJ9oWmuRUqVVWi5Q8hNdVDTjMOUcJVrW4CDjnLEKds7Cuq4LlPhR7KA7yYRkeoMS7KBrdfEj53UBxc5s4rct1mch8qUBaxa+WTU4YeSgq/XDUoJaCl6gBHveAPlt6AYjngx2eGfJpMt6daIwgj1yhpEFEZxDrm0lBHu4H+afZyFkwSi3ACEmAwDShV0ytbzYgOolGu8xHI8HDEPbc/oE8yUr9UfKGp7GoKxhrmn+pFAy7roYRoe4fdS4Q72jmkGVQ49PuL8vHHbMt1sl+wdSqttJODZWYXQA5u+1P+jAHpaUM/qkLumLkAZvYLDVBc7Qfg+5eAGJEmx6ZnOSQQbbv49scUVXTaHTasFBKotqfm6BkmDikQO6A6hou3XQxQ8taXfQTOcfxPw7XV9XumaaieqKsso208UOmtUSPoNSdAEoQchBNw0JdCMqQE6LsFkDSkwnjuDNhNK/jXcnQcFxhshFJ/xtxsa/4zNfQ64l5WktJVT6narcQ323Wo+yPaj4aPYmqh2QuRZrc15ZtZhrWDfCuOPeDdFUvg/lPtwh0+9slVGmLxnn6g3/fV2p29oifKnYcw2GGcJhhAtSUDeceNQlJYncLIDMpVlBSI7xpCgytHXQjCl9WxqWCiWP7YCbFtgSx54f+KerTIVasXyUSlrB6JJvDOSNkCvK/xbiyYBYvfkKtPk2dgX6VT1KyhU4nZp0TlOh1ZXO1PaQ4InRMYs511JUvQvw/HYv6G2fwQKqgsrNf0b4JOqM75fURvhh/Bqw43cyZMDhSNSDZOtTmSZjP3gNOZVrEPRGti7OHIFpqUGmtF4s9YytzN2DW8f+2WheGbVsLzez6Ml2K7Dj+PA6fuNmNU8Cq0p2gO7huWYSirmmujYXnnlznJiqM1Pyr4fh/3/+R/+5VbNU1JXu73PQbcU3XxR8XUJ1I5rH5/SFMm7Oqj2gPdUrsef5hBA3zoC6BOPAjYMcXAjjvMRRkOGxj7bfrOx1r9rHV0OrfOa7FdtO5R5x4JNvoxmVCxhNn2uqWT6asRLcUsjV6BNTWrKsNlM7mtfyBTajv9IPQ0H2vZBGZBK6k8AbuyTycjcuvNgNQ+oRnOVBDARtfwEJjQiW2wsAAA==",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
-        },
-        // Export for Mission [1325] -  Oizys Bait Suitability Testing
-        [1325] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1WTW/bOBD9KwFPu4AESKJEfdxcb5IN4CZB7KKHIAdaHNlEZNElqaRu4f++oGTGkj+Spkj35JvEmXnzZjh85E80qLUYUqXVsJih7Cc6r+i0hEFZokzLGhxkjCNewdbIrOmKoSxIUgfdSi4k1yuU+Q66Uuff87JmwLbLxn/dYn0WIp8bsOYjMF8NDkkcdLmczCWouSgZynzP6yG/Dt1gpHEvwnuTzHBeL44UFvpe+AYjCyLKEnJtKwl9z++6BW+zEJJxWh4h4geE9HocbsIuuJqfr0B1Ekc7jKOox5jYPaCPMJ7zQn+ivOFtFpRdGGuaPyqURZuukmQft4uablBvqeZQ5dDhQ3bjSL+DgQ2V/AcMqW4nw2bdjQ52+o830ZM5LTl9VBf0SUgD0Fuw5WCnv34HuXgCiTLfNOnQaJPEjEAnoe3fJz67pIum0EE1K0Eqm8RsNkMZjr1wj30PKlmvHXT+XUu6OXim8xMxfqbLq0rXXHNRXVJe2X64voNGtYTPoBSdAcoQctB1QwJdiwqQ0yKsloAy05gDeCOh9G/j3UpQcJghctERe5uxsW/5jJeQa0nLYS0lVPqDqtxB/bBaD7Ldq/hg9sarHZCxFktzXnk1G2tYNkK55b4ZooH8GMpduH2mz3wxpVxf8LJUr9jv6krd1BbhS8W/1WCYoRTiNMGR5zLMmBtCHLtTD2O3SDBN45AQjAu0dtCIK31TGJYKZfftgJsW2BIjL8D4eJVDoRbiWciFwboWckHLf4V4NNFWaL4Cbf7bs2usCrSpwZ7izVLbpdCPjVLZ4LGWopq9J9zDnfARzKBiVK7ejfCPqKflC/eeR0DSF4ctv6MuPQ4HvCaSL49liqMAv7gcy9VzeiXbxs8M+aDQIIe0ns31iC/M7eK3ht3pb94VtWyvL/PR0elWQqN0/wJ+5S41jwCrO3ZS7uBbzSWwsaa6NleaeWXsjs+vTckvD8Npz//XPbd6NRR1pbtxDrqpytUXBV/nUF2L5rk5eKK8NGfVHtCOrgUpywkOmAsFI26YB+BOC/DdJCpCyFlMEpai9YMVts079oCwvVu7T+p2UreTup1uNPYH1S3BSQo5TtwkmZpXWxi7KSGJi4kHOcO5Fxeko26tnt0/2LfhRr7ufRxEDzf8x0qdGQ07G9dc0ykvuV6dTUBpXs3O/hr+3X8xFpixHEjqQuKDG4Y+uEkSBC4JoijPQ5xMaY7W/wGe0Zw2jBAAAA==",
-            },
-            AmountRequired = 2,
-            UniqueFish = true,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-                ["Inverted Aoide"] = new List<uint>()
-                {
-                    50108,
-                },
-                ["Inverted Skipper"] = new List<uint>()
-                {
-                    50093,
-                    50099,
-                    50106,
-                    50114,
-                    50228,
-                },
-                ["Megalith Axolotl"] = new List<uint>()
-                {
-                    50109,
-                },
-                ["Site Sleeper"] = new List<uint>()
-                {
-                    50094,
-                    50100,
-                    50107,
-                    50115,
-                },
-            },
-        },
-        // Export for Mission [1326] -  Large Aquatic Resource Emergency
-        [1326] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACtVWW2+jOBT+K5GfdiVYcSfwlsmm3UrpRSXVPFTzYOAErBI7tU072VH++8qAG8h1Z1RptW9wLp+/c3wu/oEmtWRTLKSYLgsU/0AzitMKJlWFYslrMJBSzgmFnTLXqpscxc44MtADJ4wTuUGxbaAbMfueVXUO+U6s7Lct1i1jWanAmg9HfTU4wdhA1+tFyUGUrMpRbFvWAPk8dIMRhQMP6yKZaVmvNAPPtrwLFLQXqyrIZM/R7ps5l49lPCe4OpFS2wmCQVK9zu2KiHK2AdE72N9j7PsDxoFOOn6BpCRL+QWThrcSCC1IJM5eBIr9Lo3B+BC3jxp1qA9YEqAZ9PgE+37BMIOOduXkb5hi2ZbCsboKxgdgzt51uB3YosQVwS/iCr8xrvAGAh2dawzlj5CxN+AotlXOTlDwBgfqdH4hxTVeNXFPaFEBF/oQdfc5it3Q8g7YD6DG262BZt8lx13jqYtYsOQdr2+orIkkjF5jQnVuTdtA85rDLQiBC0AxQga6a0igO0YBGS3CZg0oVok5gjdnQv4y3gMHAccZIhOd0LcnNvodn2QNmeS4mtacA5WfFOUe6qfFepTtQcRHT2+s2gJJJFur9iW0SCSsm0G5494V0YR/DuU+3CHTd7JKMZFXpKrEGf1jTcV9rRGeKHmtQTFDfpbBElu+uVx6tun5S8+MnDAzPRdwFDqpB5ChrYHmRMj7pWIpUPzcFrhKgQ7RtxzXPR3llIkVe2d8pbDuGF/h6i/GXpS3njtfATf/Si5AfrTwElcCdEt3ShWabu5O1CbPs0M1zzRmIjmjvU142d1ye+5zKIDmmG9+GuFPVqfVfkithRNEHwY7fidNBhyOWD0JWHCybplpSq3kQkaHYKHvKOKt55DXgqyA743UW0I/VCi2oz+ss4BnoujsVE9NlhL4FNdFKedkpXab3Sr2m615xtS8XZ7qo7cW2ontR4fr/8wmV28OPeZ0YT7Ca0045InEslYLVT1qTlTrher710X239bS0bK5XB//3ztPuvE4ZTWVfT8D3dNq8yTgawn0jjWv28kbJpVqAt0DvTEa4ch3bAdM7IW+6dluaKZ2FJhBbo0jyw/HqRug7Tc9R7tn8/OHoB2l6r+d3t3YfLZdJ/g2mmNewGjyWmNJstEjCFbzDEazFfACaLYZ/Tb9fTjWncB1rXGaml5kYdPDLphRFILpRGGO0zzwAado+w93jh5jMQwAAA==",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
-        },
-        // Export for Mission [1327] -  Valuable Plains Specimens
-        [1327] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1XWW/jNhD+KwGfWkAqRN3Sm+Mm2QDOgdjbfQj2gaJGFhFa8pJUNm7g/15Qhy35yjYIii2wbzJn+M03J8evaFSpckykkuNsjuJXdFGQhMOIcxQrUYGBtHDCCtgK0050naLYDiMD3QtWCqZWKMYGupYXL5RXKaTbY62/brBuypLmGqz+sPVXjeOHBrpaznIBMi95imJsWQPk09A1RhQMblhvkhnn1aJj4GLLfYNCd6vkHKg6EhEXW7h/y36bRSlSRvgRPGz7/iDGbnvtksn8YgWy54C344DnDRzwuxyQJ5jmLFPnhNVu6APZHUwVoU8SxV4bVT/cx+2jRi3qPVEMCgo9Pv7uPX8YULu7KtjfMCaqqYxDZeaHe2D2TnacFmyWE87Ik7wkz6XQeIODzjvHGJ4/AC2fQaAY65gdoeAODHbhPGfzK7Ko/R4Vcw5CdkZ07lMUO4Hl7rEfQIXrtYEuXpQgbR/qRMzK6XeyvC5UxRQriyvCii62JjbQpBJwA1KSOaAYIQPd1iTQbVkAMhqE1RJQrANzAG9SSvVuvHsBEg4zRCY6Im8s1vItn+kSqBKEjyshoFAf5OUO6of5epDtnscHrddaTYFMVbnU7cuK+VTBsp6bW+5tEY3Ex1Duw+0z/c4WCWHqknEuT8gfqkLeVR3C54J9q0AzQ5nvBpadhWYUOZbp+plvJl7mmEESRbaHHd/yXLQ20IRJdZdplhLFj02B6xC828XbUiwI/1SWTxqiGz5fgNS/mwbWUglKO9K1sj6asQWInRa/IS8bEYrDP6xGVQeiNuniQA+6zs5UibKYv88SK3qW8CFTltMzNYE5FCkRK22tVdxAZoRLME6T2AX+s6wSvonUQMP2o43C1sWjKoeo9bVmgi2PWQo829moHLM1UDphrdXTfTXKFIgxqea5mrCFft9wI9htuHqzqUTzgOqP3tPQTG0v2t8ITrzmeg3pRl1Xlw/wrWIC0qkiqtKPqt5zdov1xwrt39bIr5z/NznvRuS4rArVv2egu4KvPkv4kkNxW9YL7+iZMK57tWvQ3ii1nTDKiOWaYeJh040c3wwhjEyXJonl0cwhXorWX7tZ2m7Sj5uDZpw+vqL+XPUsjP3jo/UG5oQzlZ9NmMpLmQPng0mLT3XVdQqFYpRwHVZtsFEYLXQktmqHlmQv2l2InOGuGmrDlcgIhSnX86xdKr3Ie2MP9NYG+mn+ZUyXREBW8U+kSDsWeh30DvEYVFIbP8eo03mdzspxDvRpk9HePwxrsPq8+0XVl88783Xm+ptA+/Trz+Z4q3Zouvbq2g9whrPMNj07cE2XBolJXDcws8D2g4wSz9F1bezXbfADdXvOaM7Er5r9yWr2/1Odke0CDWhigmVbpuu6tkn8xDNxEmIrxGFmA62nboPbUnzEjh18/YvwSs+2s3tOWCHP9N7PFlDIs9/Gvw/35AScKPUtx6Q0tU3XsnwzxJSaNKQuTTCxARy0/ge5iZRdkREAAA==",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
-        },
-
-
-        #endregion
-
-        #region B Rank
-
-        // Export for Mission [1328] -  Magnetic Horizon Environmental Survey
-        [1328] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACs1XyW7jOBD9FYOnGUACtG83x5MNcBZECfoQ9IGWyjIRmXSTVNLuwP/eoCTGki3bjSCYmRtdrHp8VXoslt/RuJJsgoUUk3mBknd0TvGshHFZokTyCgykNqeEwnYz11vXOUqcKDbQPSeME7lGiW2ga3H+MyurHPKtWflvGqwbxrKFAqsXjlrVOEFkoMvV44KDWLAyR4ltWT3k49A1Rhz2IqyTZCaLaqkZeLblnaCgo1hZQiY7gXbXzTl9LOM5weWBktpOEPSK6rVhF0QsztcgOgf7O4x9v8c40EXHL5AuyFyeYVLzVgahDanE2YtAid+WMYj2cbuocYt6jyUBmkGHT7AbF/Qr6OhQTn7BBMtGCkO6CqI9MGfnc7gt2OMClwS/iAv8yrjC6xl0dq7Rtz9Axl6Bo8RWNdNner0TdP3OSHGJl3WiY1qUwIVGVR87R4kbWt4e3R5UtNkY6Pyn5Li9aaryjyx9w6trKisiCaOXmFBdTNM20LTicANC4AJQgpCBbmsS6JZRQEaDsF4BSlQlBvCmTMhP491zEDDMEJnowH5zYr2/5ZOuIJMcl5OKc6Dyi7LcQf2yXAfZ7mU8eHrt1QgklWyl7iuhRSphVXfGLfdWRGP+NZS7cPtM38hyhom8IGUpjuw/VFTcVRrhiZIfFShmyJ9bQeDYvgkRtkzPs0IzCt25mTtBnvsQxz720cZAUyLk3VyxFCh5bgSuSqBT9C3HDQ5nOWFiSbLRtCreGF8qwFvGl7i8YuxFQehu8w1w/VvZBciP3jHHpQCj7SXtpspPd5XW1FTQs0PVxTRmKjmjxRegWm4HdQoF0Bzz9bbHnUZwwmhjoH9YNSt3U21cnCD+cNjjve/SIzHg9STgkZNVQ01zaiwnKt0HC31H5d5EnqznkdgjhFs/dbfGcwl8gqtiIadkqR41u9nYvXT1/FLx5tVUi857MPDuuKEf748BR150NXvo7qel+gA/KsIhTyWWlXpY1XBzQL9/psfT+hpy/PdUNCiYP1LGfyyBz35z3TUnrKKyG2egO1qunwR8WwC9ZfWUO37FpFRS00rrdNfAdl0fB9iMcgdML8xyM85CbEYQzkM79sIgxGjzXbfXdnx+/jA0Hfb5HfVbre04h1vtNWd0NGW0oEz0Xxb7WG2vc6CSZLhUBVVHNQ7jparB1m3gVnl+vDsduf1JVTW9tOJznEFaqubYjpR+7J+YAv2Ngf43fyrSFeYwr8orTHPNQs2G/hCPnoba+rm9fxJWb+L59KyQvuGVstQH1d+oOwC0L75aNuat29Bt6mjXcmJsObltRmB7poczMGM7zswZeDPLsyEDmNXabXBbis+260TfRze4oCBJNrpinPxidHROXwlndAlU4nKUVvwV1qO/zv7uTyNOFgTYd2LTszPX9GLXN3GOsel7lpOFfoZj20Gb30VT1tXZDgAA",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
-        },
-        // Export for Mission [1329] -  Freshwater Arthrolure Testing
-        [1329] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1WyW7jOBD9lYCnGUAaaKHWm+NJMgGcBbEbfQj6QEsli4hMukkqaXfD/z6gJNqSl7gR5Ng3qZZXr4pVRf5Co1rxMZFKjosFSn+hK0bmFYyqCqVK1GAhrZxQBjtlblS3OUq9OLHQo6BcULVGqWuhW3n1I6vqHPKdWNtvWqw7zrNSgzUfnv5qcMLYQjerWSlAlrzKUeo6zgD5fegGI4kGHs5ZMuOyXhoG2HXwGQrGi1cVZOpERbDruH0v7zwLLnJKqhN4rheGgxrjzu2ayvJqDbKXQLCXQBAMEgjNGZAXmJa0UJeENmlogTSCqSLZi0Rp0FU1jA9x+6hJh/pIFAWWQY9PuO8XDgvqGVdBf8KYqLYzTNR9b2/vOPzOe1aSipIXeU1eudAAA4FJx7eG8ifI+CsIlLq6SMdaO4x1R/QCmvpd0sUNWTaJjtiiAiFNEH3YOUr9yMEH7AdQ8WZjoasfSpBu8HTlZ3z6Rla3TNVUUc5uCGWmHrZroUkt4A6kJAtAKUIWum9IoHvOAFktwnoFKNWFOYI34VJ9GO9RgITjDJGNTujbiI1+x2e6gkwJUo1rIYCpT8pyD/XTcj3K9iDjo9Ebq7ZBpoqv9LxStpgqWDWLcse9a6KR+BzKfbhDpm90OSdUXdOqku/on2omH2qD8IXR7zVoZmhexA725mA7ie/YOCGenQQxtgMfkzjxPTzHHtpYaEKleig0S4nS57bBdQlMioHj+cHpLK/14LwRBeJiJFQpeFUL0Lj3XCxJ9R/nLxrJLJ2vQJp/LZegtuNckEqCGe9OqdM0g96J2kJiN9LLzGBOleCsdyuecJ/RJYi9/XFH2Valp/0f5yCU4/dCTWABLCdifTbaPsK/vJ5X++m3Fl6YbA12uZw0GXA4YjUTdHUqUhR4/tbkVKyB0TvROjs9M6NCgRiTelGqCV3qy8ptFfvD1DxTatHehvqjt/aP7HY/CpLD2/6dm1o/McxWM733BN9rKiCfKqJqfWHqN8yJhjzTYL/dG39a4EMt8NEzn3bbcMxrpvp+Fnpg1fqLhK8lsHvePGZHr4RWutVMp/W2Zub6WRQRx/a9MLZx5oJNXBzZZE6yxAnzKPIAbb6Ztdm9kp+3gnZz6v92WXdb8tn1veTb0V15MQOpKFtc/HX593CDO4VfYNcvbIJzsLHngh27RWhnJHJxhMMgiudo8z8CjH/eHAwAAA==",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
-        },
-        // Export for Mission [1330] -  Oceanic Impesctor Research
-        [1330] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1Wy27bOhD9FYOrXkAC9H7tHN8kN4CbBFGKLoIuaGlkEaFElaSSuoH/vaAkxpIfSRFkeXfUzPDMmdHwkC9o3kq2wEKKRbFGyQs6r/GKwpxSlEjegoGUc0lq2Dlz7brKUeJEsYFuOWGcyA1KbANdifNfGW1zyHdmFb/tsb4ylpUKrFs4atXhBJGBLpv7koMoGc1RYlvWBPlt6A4jDic7rHfJLMq2OlGYZ1veO4w0CKMUMqkr8WzLHoc577NgPCeYaoDA9iYA3hB2QUR5vgExSuTvMfT9CcNA9xw/QlqSQp5h0vFUBqENqcTZo0CJP3QxiA5xx6jxgHqLJYE6gxGfYH9fMO2Yo7dy8hsWWPaTcGysgugAzNlrvzuA3ZeYEvwoLvAT4wpvYtDVucbUfgcZewKOElv1TOf0Jhl0/87I+hJXXaHzek2BC42qfm6OEje0vAO6E6houzXQ+S/J8XDQVOfvWfqMm6tatkQSVl9iUutmmraBli2HryAEXgNKEDLQdUcCXbMakNEjbBpAierEEbwlE/LDeLccBBxniEx0wt9n7Pw7PmkDmeSYLlrOoZafVOUe6qfVepTtQcVHs3dR/YCkkjXqvJJ6nUpoOmHccR+GaM4/h/IY7pDpM6lWmMgLQql4w3/X1uKm1QjfavKzBcUMYTf2vawITbsIfNNzs8xc4TwzvTgIQjcK7TCw0NZASyLkTaFYCpQ89AOuWqBL9C3HjU5XeUvbqpktmKjYM+OVQrxmvML0P8YeFYaWm++Au29lFyBfxaPAVIAxiMngVAVqWRlMfQs9O1QypjFTyVm9/gRUyx2hLmENdY75Zidyf4nwL2tXdL/SPsIJ4teAA9qHIRMOR6LuOWlOZQp9x30NOZVrEvRGtiFOHYx5IYEvcLsu5ZJU6kaye8f+ieneHi3vrzy1GIn5kUvDDf348M5+4/pV7wYtXXrM7uBnSzjkqcSyVbeiepicmL2/m6X3Z+P/EfjQCHz0n6eD5C1YW8vxPgPd1HTzTcD3Eupr1r1Q50+YUDVqetJG0mjlcbAKfWwGQYFNz7FWJraj3IxyCPxVZEGWR2j7Q2vj8PR9eDX08qi+e0UepPDBdl3rx+wmA1yTbHZVNSAyyfjsDgRgnpWzL2f/TEU6j23HsnPHdEMHTK9wsBlnYW5ath/4Wey5lpOj7R+5TOJp7wsAAA==",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
-        },
-        // Export for Mission [1331] -  Valuable Ruin Specimens
-        [1331] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1Wy27bOhD9lYCrXkACROqtneObpAHcJIjSdhF0QUljmzAtuiSV1i387wUlMbb8iC+KLO9OmhmeOTMcHvI3GjVajKnSajydoew3uqppwWHEOcq0bMBBxjlhNWydlXXdVigjSeqgB8mEZHqNMuygW3X1s+RNBdXWbOI3HdYnIcq5AWs/iPlqcaLEQTerp7kENRe8Qhn2vAHy29AtRhoPVnhnyYznzfJEYQH2gjOMLIjgHEptKwmwh3fDyHkWQlaM8hNEMImiQY+Dftk1U/OrNaidxOEe4zAcMI7sHtAF5HM21ZeUtbyNQVlDrmm5UCgL+65GySHuLmraoz5QzaAuYYdPtL8uGnaQ2KWS/YIx1d1kHBuzKDkAI3vb4fdgT3PKGV2oa/oipMEbGGx1vjO0P0IpXkCiDJue2ZzBIIPt3yWb3dBlW+ionnGQyqKaza5Q5sdecEB3AJVsNg66+qkl7Q+e6fyTyH/Q1W2tG6aZqG8oq20zXeygSSPhEyhFZ4AyhBx015JAd6IG5HQI6xWgzHTiCN5EKP3XeA8SFBxniFx0wt9lbP1bPvkKSi0pHzdSQq3fqco91Her9Sjbg4qPZm+jugHJtViZ88rqWa5h1Qrllns/RCP5PpR34Q6Z/mDLgjJ9zThXb/gfm1rdNxbhc82+N2CYoRjHJfGn1A0LL3KDKsVuEnqJG6deTLzABy/00MZBE6b0/dSwVCh77gbctMCWGHrED05XmWtWLtYXEypfqIG7E3JJ+UchFgbAas1XoO2/sSvQr8oxpVyB0ytJ7zTVWU3pTV3/AhwbDbOYuZainr0DqufvoE5gBnVF5XqrcOcRSJxsHPSvaAq+X2oXQqL0NeCA92HIgMSRqCfJVqcyxSHxX0NO5RoEvZGtjzPHYjTVIMe0mc31hC3NfYQ7x/55aV8ijewuPPOxI+VHrgw/DtPDG/yNy9i8Iqxw2Tl7hO8Nk1DlmurG3InmmXJi+P7bMJ0fjmOB/4/A2RH42z3Pe8Ebi6bWu+scdF/z9WcFX+dQ34n2vTp6oYybUbOTtiOMgIM4xGXo4ngau0GUgkuDInBxUYZVMY0DWmC0+WaVsX8IP78aOnE0/50e90L4jH0ff/tCeWPyXjw2rL4w1w1bQq0uPlz+M5TnKCBJVWLikiKkbhAmnptGQeICKbxpmgAhpESbP81Gw775CwAA",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
-        },
-        // Export for Mission [1332] -  Anomaly Adaptation Aquaculture Survey
-        [1332] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACs1XS2/jOAz+K4FOu4AN+P3Izc22nQKZtqhTzKGYg2LTsRDFSmWpnWyR/76QbSV2kr4GBXZuBkV+/EhRJP2CEinYBNeinhQLNH5B5xWeU0goRWPBJRhIHU5JBfvDXB9d5WjsRLGBbjlhnIgNGtsGuqrPf2VU5pDvxUp/22J9ZywrFVjz4aivBieIDHS5npUc6pLRHI1tyxogvw3dYMThwMJ6l8yklKtXAvNsy3uHkQZhlEImdCSebdl9Ned9FoznBFMNENjeAMDr1C5IXZ5voO458g8Y+v6AYaBzjpeQlqQQZ5g0PJWg1oJU4GxZo7HfZTGIjnH7qHGHeosFgSqDHp/g0C4YZszRppz8CxMs2krQXg+tnYN8u531rMSU4GV9gZ8YVwADgQ7HNYbyO8jYE3A0tlWStE9v4EEn7IwsLvGqiSypFhR4rVHVbeZo7IaWd0R3ABVttwY6/yU47l6WSvWMpc94fVUJSQRh1SUmlU6AaRtoKjl8h7rGC0BjhAx03ZBA16wCZLQImzWgscrECbwpq8Vv491yqOE0Q2SiV85bj835nk+6hkxwTCeSc6jEF0V5gPplsZ5kexTxSe+NVlsgqWBr9UBJtUgFrJtOuOfeFVHCv4ZyH+6Y6TNZzTERF4TS+o3zO1nVN1Ij3FfkUYJihizHKTwIQ9OZ+7bpFV5oxr6Xm1YYF5blYteKY7Q10JTU4qZQLGs0fmgLXKVAh+hbjhu+HmWKqXjGAvgo4aLkjEoOCvaa8RWm3xhbKiDdZH4AXu47tTqtQahwdM/uRG3CPDtUXUobp4KzavEZc8vtmU9hAVWO+ebTCP8wOac77gMNJ4h3Cnt+r6oMOJzQuq9hxsm6ZaYptZID97tZV2BaH/J2Qt9RxFvLI16fsB0Qvqno5kcJVZIJ8gRXOVSCZGrinUidhlEvKikE8AmWi1JMyUrNLrs9OHxqzZYieTsc1UdvCrT92o+Px/kbk1mtFLrJ6Vq8g0dJOOSpwEKqgal2lsMC/Vgdfrjc/t+qOllAH6qUd0viz7xz3RwnTFaib2c0NXxfgyrja9Ysr8kTJlQ9CF3HvSaK51bgetgxXbBC04v9wMRWZJsxOL6dOyGOwhxtf+ou2m3FDztB20gfXtCwozar4Wsd9Y5ly80olVWhbPoDxH4rt7vnqBKqXLUKyUrlYK92akf248MlyB1uoJFyLHmBM0ip6pXdqujH/jvLnr810B/zr5CuMYdC0m+4yjULtQL6p3gMaqjLn2s0F3mVz9ikhGy5u8vef4I1WHd+e1FIn/FaSRr3zc31p3837tVnK96rnXpj/YoOwZ9H88iMAuyZno9zM87d0LT9PPI8K4hwEDYV3eJ2FB9s13V+jpKKrTDdjJIcrwVWTXWUPEqcSSokh1Eq+RNsRn+d/X2witiWH80hMIN5Nje9zA/NOIojM3BdcDLfCV0rRtv/AAvjYOjGDgAA",
-            },
-            AmountRequired = 12,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
-        },
-
-        #endregion
-
-        #region A Rank
-
-        // Export for Mission [1333] - Collapsed Tunnel Specimen Survey
-        [1333] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACs1XS2/jOAz+K4FOu4C9sGP5lVsm23YKpA/UKeZQzEGx6USII2UkuZ1Mkf++kG0lduI2g6KL3ZtMUR8/UhRJv6JxqfiESCUn+QKNXpFeTykDvb5gZF5AhkZKlGCh6wyNhlFsoXtBuaBqi0auha7lxc+0KDPIDmKtv7MqrBvO06UGqxZDvapwgshCV5vZUoBc8iJDI9dxOsjvQ1cYcdg54ZwlM1mWa8MAuw4+Q8Gc4kUBqWoddNtqw/NmucgoKQxA4OIOAG7ULqlcXmxBtgz5Rwx9v8MwMEEmK0iWNFdfCK14aoE0gkSRdCXRyG/CFkSnuG3UuEG9J4oCS6HFJzg+F3QjNjRHBf0FE6LqqzdWj08Pj+LtNadnS1JQspKX5JkLDdARGHc8qyt/gJQ/g0AjVwfJ2MQdCyZgX+jiiqwrz8ZsUYCQBlXfZoZGXujgE7odqGi3s9DFTyVI83J0qGc8eSGba6ZKqihnV4QyEwDbtdC0FHADUpIFoBFCFrqtSKBbzgBZNcJ2A2ikI9GDN+VSfRjvXoCEfobIRm/s1xar/QOfZAOpEqSYlEIAU5/k5RHqp/nay/bE417rlVadIIniG/1AKVskCjZV6Ttwb5JoLD6HchvulOkLXc8JVZe0KOQ7+w8lk3elQXhk9EcJmhkKIi9wUpzZqRPFNnYxtqPUB3uOfS/CwziGcI52FppSqe5yzVKi0VOd4DoExkXfGWLnbS8TBUVBxCAhxZqzwQMHDXrLxZoUXzlfaRhTYr4Bqb61XILaN56cFBKsphE1m9pH05IaUR1F7Ia6dBnMRAnOFp+A6ngt1CksgGVEbA8N8g2EGV2DOGqhN5Ttt3TB+8vpt/Y3L+fFcVRqjWEQ7xVOXDxV6fDt0XqUMBN0U3thaNaSM5fSBQv9oSZenzwb+nfOdgjfsWL7bQlsnCr6DNcZMEVT3Ul7LsrA6Jc6zhWICSkXSzWla90T3Xrj+AlX404p6qarF63u0jP+eKEfn04N7wwAelQxtdQk/QP8KKmALFFElbov61nojZfwe5l9PlP/2yTrzaffSpyzGfLvpsBH79zU4AkvmWqfs6qUfpSgs/qWV0Px+JnQQqeaybR2rQ6wFw+jwA7cOLBx5Od2lIFnO3N/njtRCNiN0O67KdbNtP20F9T1+ukVdQu3i8O3C7eed8lGQjZIynQFotOq3PfCu3+gOqb134RWGK91GA5qPQ8L+/HxuOV1Z91IGy5FTlJICl1pm6HUj/0zY6W/s9D/5jck2RABeVl8JSwzLPSw6ffx6KRREz/Pqu7yOpvxyRLS1f46W38kTmew+vBIkryQjZZU5quba88ZzWChl7X4oNb3zFpJDSHETuSHduw5uY3TIbZj7Ed24ARkngVhTABXSV3jNhSfXM/zvh+Sc1YyBsVAD250DWyQlOIZtoM/xn92x50ozefpHDzbxU5o49QPbeJHYPsxZNjHme+SHO3+AT8HEa8KDwAA",
-            },
-            AmountRequired = 5,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-                ["崩溃平鲶"] = new List<uint>()
-                {
-                    50147,
-                },
-            },
-        },
-        // Export for Mission [1334] - Red Cosmomaggot Testing
-        [1334] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1W227jNhD9lYBPLSAVom6W9OZ1kzSAc0HsxT4EeaCkkUSEFr0kld104X8vKImO5FvablCgQN4kzvDMmeHMIX+gaaP4jEglZ0WJkh/ovCYpgyljKFGiAQtp45zW8GrMjekqR4kbxRa6E5QLql5Qgi10Jc+/Z6zJIX9d1v6bDuua86zSYO2Hq79anDCy0OV6WQmQFWc5SrDjjJBPQx+iFk9GAM6b3GZVszKEfOz4bzAyuzhjkKkjBfKxg4e73LdZcJFTwo7gYTcMRyX3+20XVFbnLyAHCQQ7CQTBKIHQHAl5gkVFC/WJ0DYNvSDNwkKR7EmiJOirGkb7uEPUuEe9I4pCnR1rHB874S5MOK6va5AE/RNmRHV9Y0js7nZ3Tsfrdy8rwih5khfkmQsNMFow2XnWeP0eMv4MAiVY1+xQd4WRbpBBQFPOT7S8JKs272ldMhDSBNFnn6PEmzj+HvsRVLTRLf1dCdKPpT6IJV98I+urWjVUUV5fElqbetjYQvNGwDVISUpACUIWumlJoBteA7I6hJc1oEQX5gDenEv1r/HuBEg4zBDZ6Ii9i9jaX/ks1pApQdisEQJq9U5Z7qC+W64H2e5lfDB669U1yELxtR5fWpcLBetWRl+59000Fe9DeQi3z/QbXaWEqgvKmDxhv29qedsYhM81/dqAZoYK34vDwCU2hL5j+3EU2ZEXB3YaEOx6cZHmTo42FppTqW4LzVKi5KFrcF0Ck2LguF58PMt7yM9mXK74ipQlV1JD3nCxIuwPzp80iJGfL0Da/26EtVWC0qmYYdZLS7oCsTPk17TemrQM/OZ0vroWbWF9PNFaZwItlOB1O6y91xavIEyCdZrBANXxBqhzKKHOiXh5L+DfeZOybVVGHm4Ybx32stl3OURt6LUUdH0s0iRwva3LsVgjpxPRej89RdNCgZiRpqzUnK70bYY7w+54tc+aRnTXpf4YXASdRgfx/v1/4u7eWGgrbKYH7+FrQwXkC0VUo69Q/cjZbcx/1FN/u0c+zvy/OXMjiDPe1Gq4z0K3NXv5LOFLBfUNb1+702dCmZ5VM6AD4Uz9tMBeEdhx5gS2PwmJTZw4tnEUBA4JMURxijaPRjn7Z/RB5WyfLMeU85qUNSianS0qYGx0U+A3RfQnBehIb/+8MH4o4IcCfijg/1wB/cyfeKEX2HkBE9vHoWtHWezaaeGGziTCvuNPBgrYad7Do3mg9vr2gD3Pf9x5H54tQSpal2e/TH8dv1cjNyUkCrHteBmx/cDJ7DSLc9sryMTxijhPCxdt/gK1QVPqKBEAAA==",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
-        },
-        // Export for Mission [1335] - Edible Marine Life Survey
-        [1335] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1XyW7jOBD9FYOnGUACRO3yzfEk6QDOgihBH4I+0GTJJiKLbpJKtzvwvzeoxZa8JOkgwGSAuclk1atXxcdi+RmNSi3GRGk1zmZo+IxOCzLNYZTnaKhlCRYymxNewHaTtVsXDA3dOLHQjeRCcr1CQ2yhC3X6k+YlA7ZdNvbrGutSCDo3YNWHa74qnDC20Pnybi5BzUXO0BA7Tg/5ZegKI4l6Hs6rZMbzcnEkMR87/iuMWhCR50B1m4mPHdw1c19nISTjJD9CBLth2Kux37idcTU/XYHqBA52GAdBj3HYngF5hHTOM31CeMXbLKh2IdWEPio0DJqqhvE+bhc1aVBviOZQUOjwCXf9wn4F3dZV8l8wJrpWRht119vdqb/XeN/NSc7JozojT0IagN5Cm45n9ddvgYonkGiITZEOSTuMjQQ6Adv6nfDZOVlUiY6KWQ5StUHMYTM09CLH32Pfg4rXawud/tSSNBfPVP5OpD/I8qLQJddcFOeEF209bGyhSSnhEpQiM0BDhCx0VZFAV6IAZNUIqyWgoSnMAbyJUPrdeDcSFBxmiGx0ZL+OWO1v+aRLoFqSfFxKCYX+oCx3UD8s14Ns9zI+GL2yqgWSarE095UXs1TDsmqUW+6NiEbyYyh34faZ/uCLKeH6jOe5emH/tizUddki3Bf8ewmGGZr6NPZin9k4oZntAzg2oZ5vZzHGGNOE4NBDawtNuNLXmWGp0PChFrgpQZti4Li+dzzLlOT6B9EgByOp51LkpQQDeyXkguRfhHg0QG3P+Qqk+l1fY7OrQJt02gvdLNUF83FkmlbrnGopitmfuDtex30CMygYkas/RvhHlNN8w71n4YbJxmDL76hJj8MBq3sFd5Iva2YtpXplJ/ymEWYkV7u83ShwDfHac8vrushXX+dQjKjmT3DBoNCcmhftQO59jB7x98CYmzXKNMgxKWdzPeEL86ThemP3ylXDTCnrN9N8dB6Hum8Hyf6r/8IDbiaPttm1mryF7yWXwFJNdGneUTPa7Ar1bXp8s+z+XXUdFNLLinmrJD7nmbdNcizKQnf9rErD9wqMjK9ENeOOngjPzaVqddxppgzAc5x4aoObxbYfe5k9JS61w2lAsswnpqWi9be2mzbD88NmoW6oD8+o31lxEB7vrDcKSiaoJNPeK4JfKuzmLppqmji1wWhhCrA1OzRHB8nuJOT1p9LYBC5lRiikuWmYzfgYJMErA2CwttCn+T+RLomErMy/kIK1LMwcGBzi0RNQUz/Pqk7xgt2J8Rzo4+YgO/8lnN7M8+5pwTiftOGrk+uOAM2bbz7r5a3ZoQvWkbNDsB8lU2xTJ3Bt3w2ZHVMX7DiLQ4pdEiRhiNbWvlyj4wmMCsqh0INr/mulBmdCKZ7/L9zPL9zovyTcyHcw8TLPZrHr2D5hiU0IZbaf0YR4jDJGnKoP17gNxQfsecG3wSnj0xwGl0TyAgYTnsEgLeUTrAZ/jf7uD8+MsYhQwuwoCRPbT2hkkyzBNoaEZRH2nGkSoPVv/0MOOpcRAAA=",
-            },
-            AmountRequired = 22,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-                ["Ancient Oizys Fossil"] = new List<uint>()
-                {
-                    50157,
-                },
-                ["Inverted Anchovy"] = new List<uint>()
-                {
-                    50118,
-                    50128,
-                    50138,
-                    50153,
-                    50163,
-                    50168,
-                    50202,
-                    50226,
-                },
-                ["Inverted Barracuda"] = new List<uint>()
-                {
-                    50119,
-                    50139,
-                    50154,
-                    50164,
-                    50169,
-                    50203,
-                },
-                ["Pseudocrab"] = new List<uint>()
-                {
-                    50156,
-                },
-                ["Vacuum Worm"] = new List<uint>()
-                {
-                    50155,
-                },
-            },
-        },
-        // Export for Mission [1336] - Moros Well Environmental Survey
-        [1336] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACs1XyW7jOBD9FYOnGUAaaKO2m9uTDXDSQeSeHII+UFLJJkKTbopK2hP43wfUYkteknQQoOcmk1WvHouviuUXNK6UmJBSlZNijuIXdMZJymDMGIqVrMBAenNKOew2827rKkexE0YGupVUSKrWKLYNdFWe/cxYlUO+W9b2mwbrWohsocHqD0d/1Th+aKCL1WwhoVwIlqPYtqwB8uvQNUYUDDysN8lMFtWyY+DZlvcGhc5LMAaZ6jnafTPn7bBC5pSwEym1Hd8fJNVr3c5puThbQ9kLjPcYYzxg7HdJJ4+QLGihvhBa89YLZbeQKJI9lijGbRr98BC3jxq1qLdEUeDZKWl4tuXvw/jDhDodkqT/woSoRhkdiX1vZ+863NZ7tiCMksfynDwJqQEGC93pXGO4fgeZeAKJYlvn7Ji0/VArohewS+cXOr8gy/rcYz5nIMsuiL77HMVuYHkH7AdQ4WZjoLOfSpK28PRFzETyTFZXXFVUUcEvCOVdPkzbQNNKwjWUJZkDihEy0E1NAt0IDshoENYrQLFOzBG8qSjVh/FuJZRwnCEy0Yn9JmK9v+OTrCBTkrBJJSVw9Umn3EP9tLMeZXtw4qPRa6tGIIkSK12+lM8TBau6Ue64tyIay8+h3Ic7ZPpMlymh6pwyVr6yf1fx8mvVIXzj9EcFmhnCRVHgPMtNyLzA9CJMzDALAjPwnCJ0ojSLohxtDDSlpfpaaJYlih8agesUdEfElqNr5NQpb0uocpFJgBVIjXcj5JKwSyEeNULXe+6B1L+b+tW7JSh9jq6S9dKMLkHuVfg15dstXdp/WY2tTkSdVc8OdKPrAiVKCj5/M1TP3XJ77lOYA8+JXP8KghOEGwP9LaqUbQ86MHH8aGuwI3jSZEDiiNVM0tVBpG3eCsLKfY5OgB1363lA4Rd8X+HW2ukaGhcK5IRU84Wa0qV+y+xmY7+46rGlks1jqT96z8CRXu8GODp8/V95yPXI0XW5TpN38KOiEvJEEVXp91TPNPtCfZ/G3i2lY4a/WTDvUsZvlsBH77zrjhNRcdX3M9BXztbfSrhfAL8R9XA7fiKUaal1Sut10RRHEATgmVaBselZrm9GRYrNAoMfOqnlpMRDm+9dG22n5oftQtNJH17QsKXavnO6pV4LKcrRpZAc8tE/VPfV/jNiv5bgqxy4ohlhOqs6XmMwXupE7MyOjYE42h+F3OGUqptcUsmCZJAw3Qzb8RZH+I0JEG8M9L/5Q5GsiISiYpeE5x0LPQjiYzwGQmrz5xr1bV7lMzFZQPa4vdDefwtrMPR8eFxInslKr9Th65vrzwDto68/m+Wd2bFC68kaUtv3Se6ZoeMR08MuNkOc5WbqO0Ga+vqfTVrLusFtKT7Yrut/HzX6vAfGRmf8iUrBl8AVYaOkkk+wHv0x/nM4iviQBhA4qWmRFEzP9gMzIiGYgCEkWR5mbuqjzX/IflJ35Q4AAA==",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
-        },
-        // Export for Mission [1337] - Valuable Marine Specimens
-        [1337] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1XS2/jOAz+K4FOu4C98FN+3DKZtlMg7RR1ZudQzEGx6USII6WS3McU+e8L+dHYiZMsih72sDeHpD5+pCiSeUPjUvEJkUpO8gWK39AFI/MCxkWBYiVKMJBWTimDnTJrVdcZip0wMtCdoFxQ9Ypi20DX8uIlLcoMsp1Y229rrBvO06UGqz4c/VXh4NBAV5vZUoBc8iJDsW1ZPeTT0BVGFPROWGfJTJblumXg2ZZ3hkJ7ihcFpOpIRjzbsrunnPMsuMgoKY7g2Q7GvRx7zbFLKpcXryA7Afh7Afh+LwDc3gFZQbKkufpCaBWGFshWkCiSriSK/SarODzE7aJGDeodURRYCh0+eP8c7ifUaY8K+hsmRNWVMVRmODwAc/Zux23AZktSULKSl+SJC43XE7TRuUZffg8pfwKBYlvn7AgFr+ewTecXurgi6yruMVsUIGTrRN99hmI3sLwD9j2ocLs10MWLEqR5h/oiZjx5JptrpkqqKGdXhLI2t6ZtoGkp4AakJAtAMUIGuq1IoFvOABk1wusGUKwTM4A35VJ9GO9OgIRhhshER/S1x0q/45NsIFWCFJNSCGDqk6LcQ/20WAfZHkQ86L2yqgskUXyjny9li0TBpuqbO+5NEY3F51Duwh0yfabrOaHqkhaFPKG/L5n8XrYIPxh9LEEzQwF250EU+iYhaWh6YOdmRHzPDMB3gsDBVubYaGugKZXqe65ZShQ/1AWuU9CG6FuO5x+P8isRq9HFy4YwCaPksaTZKFGCbjT0LRdrUnzjfKXB2jb0E0j1W8slqPcXnZNCQvvCG6WOtH3rjajOpWcHur21mIkSnHXm5MDxG8q0dEbXVTPBf1kHkJbbgZzCAlhGxOtJ1D0EJwi3BvrKy3mxH2dt4uDo3WBH+qhJj8SA1UzQzTFPge+47ybHfPWMTnhr7PT7GOcKxISUi6Wa0rWeU3at2H841YZSinoQ6o9Oix/o427gR4eD/sSQ1ttF28HaIruHx5IKyBJFVKlnpV5fjlTemUr618UxZPh/CZwtgY/eedv5JrxkqnvOQN9Z8fpDws8lsFte7bHjJ0ILXWptpXU6ZOgRnLmAzXkWRqbnZMSMItcys3A+x2DZ2MGAtr/aFtksyA/vgrpLPryhfru0cXC8XSYKoBhNOVswLvvjwT71vq4zYIqmpNAZ1b5qg/FaJ2FnNrT2+tH+iuP2t0/dspJS5CSFpNCtrVkT/cg/s9n5WwP9Z/43JBsiIC+Lb4RlLQu94PlDPHpF1OTPNaqbvM5mfLKEdPV+mZ3/DFZvmfnwGpA8k42WVO6rm+vO9maY689avDMb6rOdks4t7PtBiE17HqWmF+aBOceYmBYOs7kV+ZbvO1VJ17gNxQfbdYNfo79JUeryGd0QQRmM9LJE18Dk6I/xn/3lIidB5gB2zdTLQtPDQW7OfchNG6zMs8PQ90IHbf8BfS9sb8YOAAA=",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
-        },
-        // Export for Mission [1338] - Marine Distribution Survey
-        [1338] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1WS2/jOAz+K4VOu4C98NuRb2mm7RZIH6hTzKEYLGSbiYUqVkaSO80O8t8Xsq3EzqPFDoI97c0mqY8fKYrkTzSuFZ8QqeRkvkDJT3RVkYzBmDGUKFGDhbRySivYKQujui1Q4o2whR4F5YKqNUpcC93Kq/ec1QUUO7G237RYd5znpQZrPjz91eBEIwvdrGalAFlyVqDEdZwB8sfQDQaOByecT8lMynqpGfzFK7Z+lvCVqvK2UjVVlFcmzCNRB64TfELXeOCMQa5MmIHruH0z73OKXBSUsBPpd70oGlxA0B27prK8WoPsOQ73GIfhgHFkLoi8QlrSuboktOGtBdIIUkXyV4mSsEt5NDrE7aPiDvWRKApVDj0+0f65aJhBzxwV9G+YENWWzbEajEYHYN7edfgd2KwkjJJXeU3euNB4A4GJzreG8ifI+RsIlLg6Z8ZnMPBg8ndJFzdk2QQ6rhYMhDSo+rILlPixExzQHUCNNhsLXb0rQbpXqTM/4+kPstpW5w2hlUmm7VpoWgu4AynJAlCCkIXuGxLonleArBZhvQKU6EwcwZtyqX4Z71GAhOMMkY1O6FuPjX7HJ11BrgRhk1oIqNSZotxDPVusR9keRHzUe2PVFkiq+Eq/V1otUgWrpovuuHdFNBbnodyHO2T6gy4zQtU1ZUx+oH+qK/lQG4Tnin6vQTND8zD3XdeNbYwxsYPCG9mjuQs2xMSJMXEiP8NoY6EplephrllKlLy0Ba5TYEIMHS/wTkd5yTgvoLjQxzLCmIa852JJ2J+cv2oQ02++Amn+tVyC2naPOWFy29s7pY7Q9JVO1OYwcGPdxwxmqgSvetPyxPEZXYLYa1d35H2rQgn+wznw5Pg9T1NYQFUQsT5DCA3wF15nbD8prYUX4a3BLsKTJseo9a1mgq5OeYpDz9+anPI1MPrAW2enH9F4rkBMSL0o1ZQu9fRyW8X+62qWmlq041F/9Bp/26JDfDjgP5jVegMxfc2U4BN8r6mAIlVE1Xpk6hXnv6nLc5TK0Rr8v9j+fbE9S5jUUvFlWwhtefSW6xN1eGTR+ZWyTLuWPeF1pfrnLPTQLb0lVPe8WcfHb4Qy7dZ47bX2widRFDuFHRPXtYOMhDbG4NsQFtjPcB7GYYw230xv7/b8l62gbe/6v50oXSt/cX1/9O3ijghawcUXKpWgWa3f0UVaizdYX/w2/n04ZEYkz2Mnc20MxLWDPPNsEkSZ7UQYx16GfScM0OYfbmFHItwMAAA=",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
-        },
-        // Export for Mission [1339] - EX: Large Mutant Distribution Survey
-        [1339] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1W227bOBD9FYPP0kJ3S3pz3SQbwLkgdtEFgj5Q0sgiQpMuSSX1Fv73gpJoS75lEeRx36iZ4Zkzo+Ehf6NJrfgUSyWn5RKlv9EVwxmFCaUoVaIGC2nnjDDYOwvjui1Q6sWJhR4F4YKoDUpdC93Kq185rQso9mYdv22x7jjPKw3WLDy9anCi2EI360UlQFacFih1HWeAfBm6wUjGgx3Ou2SmVb0yDALXCd6hYHZxSiFXvY1uP8x7Py0XBcH0TEtdL4oGTQ26bddEVlcbkL3E4QHjMBwwjkzT8QvMK1KqL5g0vLVBGsNc4fxFojTs2hjFx7h91KRDfcSKAMuhxyc63BcNO+iZrYL8C1Os2lE4NVdRfATmHfwOvwNbVJgS/CKv8SsXGm9gMNX51tD+BDl/BYFSV/fM5AwGGUz/vpDlDV41hU7YkoKQBlX/7AKl/tgJjugOoOLt1kJXv5TA3UnTnV/w+Rte3zJVE0U4u8GEmWbaroVmtYA7kBIvAaUIWei+IYHuOQNktQibNaBUd+IE3oxL9WG8RwESTjNENjrjbzM2/j2f+RpyJTCd1kIAU59U5QHqp9V6ku1RxSezN1HtgMwVX+vzSthyrmDdKOOeezdEE/E5lPtwx0zfyCrDRF0TSuUF/1PN5ENtEL4x8rMGzQyFEOWO55R2VGaFHfhxZuPMiexynLlhGARFGWdoa6EZkeqh1CwlSp/bAdctMCWGjhdcqPJaH5w3rECMJkJVgtNagMa952KF6d+cv2gkIzrfATff2i5B7SSkxFSC1UlK59RlGnHpTG0jA3esxcxgzpXgbPkJqI7fQ53BEliBxWYvdWcQFmQF4kAM7wjbubQE/uWczvaV1xk97Eob4UXJLuCoxOOQAd8TUQtB1ucyjUPP34WcyzUIupCti9NHaVIqEFNcLys1Iyt9h7mt4/CMNc+VWrSXpF705H+KWQ50ohSs1sr0V8cssFhCi3niKvLHYXL8MrhwyevniBFEM7ZP8LMmAoq5wqrWd61+75yZ5f82m+/P2v9j8qEx+eg/n3dCOuU1U/19FnpgdPNNwvcK2D1vHr6TV0yoHjUzaX3BxcUYfMe3vQRiOxi7uR1nXmkHXpLFWeY5MQRo+8Mobveift4ZWtHV363OdwL77Pp+8mN09U86mumBH93VCjM1+kqkEiSr9biO5rV4hc3wAijjyE9KL7ODRF8AWQZ2AoVrx05SFDgIk6R00PYPGhl6LEwMAAA=",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
-        },
-        // Export for Mission [1340] - EX: Dune Resource Emergency I
-        [1340] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACu1Y227bOBD9FYNPu4C4kERKlvzmumlrwE2COEUXKPpAkSObiEy5FJU2LfzvBXWxJd+yabsLdJE3iRyeOTOcORT1DY1Lk09YYYpJukCjb+hCsSSDcZahkdElOMhOzqSC3aRop6YCjfwodtC1lrmW5gGNPAdNi4svPCsFiN2wtd/UWG/znC8tWPXg26cKJ4wc9Hp9u9RQLPNMoJHnuj3k89DHqMXDHoD7KLfJsly1hKjn0kcYtavyLANuOgu9rpn/uNtcC8myExn2/DDs5Zg2y17JYnnxAEXHcbDHOAh6jMN2D9gdzJcyNS+YrHjbgaIdmBvG7wo0Cpo0htEhbhc1blCvmZGg+KlKoZ4b7sOE/YT6LZKWX2HCTF0oLYn91f7edpBm9e2SZZLdFa/Yfa4tQG+gjY44/fEb4Pk9aDTybM6OlVMY2YroOGzT+UIuXrNVFfdYLTLQRevE7r1AIzJ06QH7HlS0sTX8xWjW9KHdiNt8/pmtp8qU0shcvWZStfnAnoNmpYa3UBRsAWiEkIMuKxLoMleAnBrhYQ1oZBNzBG+WF+aH8a41FHCcIcLoxHztsZrf8ZmvgRvNskmpNSjzi6LcQ/1lsR5lexDxUe+VVV0gc5OvbftKtZgbWFe6uePeFNFY/xrKXbhDpp/lKmHSvJJZVpyZvylVcVW2CO+U/FSCZYZCnqYpEwJTDwimHqGYeUMfD4eU+CyMgIQJ2jhoJgtzlVqWBRp9qAvcpmAbYhyfjnGcZYN66X6gl7lesexNnt9ZoFaC3gOr3us2trMFGBtO29B26FauQO81+luptlO2w/9ya1ubj8on9YZW71pHc6NztXjUVWe5SzrLZ7AAJZh+sAiN4ZZRyrICnKcBv8zLJNuG37Pww3hrsKN90uQYta7VrZbrU56GgU+2Jqd89YzOeGvsbMuMUwN6wsrF0szkyh5dXj2x30vVR0up67PRPnRUvxbkID483c8c1BsHbVWsLbYb+FRKDWJumCnteWk/YfYr8J8Vz1Nr5HnP/5s9b9VvkpfKdNc56EplD+8KeL8EdZlX37LjeyYz26ttg3ZUkoSCEz4MccLcCNMwCHASUR/7XpIEUexTEcdo87GVyeYj+YhMBq4XnTkMpuoetAExeJNrtYRs1RNM71HB/EkNOl/eP6VsR9vhd9LG/eifIplPWPuspM9K+n9W0piIxPXdADMRcExZxDHzU4bdFBKXuEBIFHSUtNbOD9/QvoiSMyKqc1UwJQYz+ZVpcSChJ5M5FaCM5CyzGbTOaoPxyga9Mzt2OQ7i/Qsi6d/dI+u41CnjMM+s0DWX/iAOHrkXBxsH/Ut/XZ7+m2W+ZhrSMnvDlGhZ2OtxcIxHr2ia/BGn2sqpuM0nS+B3293s/HFxe1fBH75E2cUvWvfVznVvRs1VyD7WwzuzY03V/RggJPVSj2HhU4JpzDiOhnSIGfGImwS+5wofbZzDmqWnA7gS4jPIxdIMnqv3t6te+jtVbxJxnqQ+YN+lgCkVMY45G+Ik4kAC4NwNokqAa9yG4gePUPfj4GWpYHADRV5qDoOLFegFKP4wmA7+uPj7z/6fBT8iNA1igocsJJimaYwjwTgOAy/gYRi6Qgi0+Q5pjZowwxYAAA==",
-            },
-            AmountRequired = 0,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-            },
-        },
-
-        #endregion
-
-        #region Red Alert
-
-        // Export for Mission [1368] -  Iron Coral Collection
-        [1368] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACs1W227bOBD9lYLPEiDJur+53iQN4CZBlKAPxT6MpLFFhBZdkkrrFv73BSUxlnyJdxcG2jdqLodnRsND/iLTRvEZSCVniyVJf5GrGnKGU8ZIqkSDFtHOOa1x5yyN67YkqRcnFnkQlAuqNiR1LXIrr34UrCmx3Jl1/LbD+sx5UWmwduHpVYsTxha5WT9VAmXFWUlS13FGyO9DtxhJNMpwzpKZVc3qRGG+6/hnGBkQzhgWylTiu447DPPOs+CipMAMQOj6IwC/D7umsrraoBxsFOwxDIIRw9D0HF4wq+hCfQTa8tQGaQyZguJFkjTouxjGh7hD1KRHfQBFsS5wwCfczwvHHfNMqqA/cQaqmwSz6362t9fvSZ/9VAGj8CKv4ZULDTAymHIm1tj+iAV/RUFSVzfJ7OmPdjAN+0iXN7BqK5vWS4ZCGlT9N0uSTiLHP6A7goq3W4tc/VAC+pOlW/3Es++wvq1VQxXl9Q3Q2jTAdi0ybwR+RilhiSQlxCJ3LQlyx2skVoewWSNJdSeO4M25VP8b70GgxOMMiU1O+LsdW/+OT7bGQglgs0YIrNWFqtxDvVitR9keVHx09zaqG5BM8bU+oLReZgrXrRLuuPdDNBWXoTyEO2T6na5yoOqaMibf8T82tbxvDMJzTb81qJkRL8wTwDK0PQdy28/zxAYnyO3QxShBz4fcWZCtReZUqvuFZilJ+rUbcN2CtxKT5HSNU8Y+dKn7hd5xsQL2ifMXDWRE5gtC+63tEtWbYC+ASbR6Ae+dukoj5b2pg/fdSIuXwcyU4PXg1juf7kwG6XNcYl2C2FyAVwv8F29ytl9pF+GFyVvAjvbJkGPUhlHPEp8EXXfMDKXOcqbRY7Ao8DTxLvMUr1HQv2na0XR9wKYLhWIGzbJSc7rSV5nbOfZPXvtoaUR3V+rF4FLo5DtIDm/3dy5q/cIwmmdG8xG/NVRgmSlQjb4/9RPmxLyemb//Oma/aWyOTshFR+EP++dZr5Uz3tRqmGeR+5ptniV+qbC+4+1bdvoKlOlJNgdqoKlO5EeR54d2WbqB7WNc2LCII9sJ8yQq8txFSMj2byOq/SP565uh01X93Ul5r6KPWH6YMhRqrOA5Jl4SBpEdx6Vn++jENkBR2h5AEKM7SQJ3Qrb/AF6zC639CwAA",
-            },
-            AmountRequired = 4,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-                ["Iron Coral"] = new List<uint>()
-                {
-                    50227,
-                },
-            },
-        },
-        // Export for Mission [1369] -  Sunken Relic Salvage
-        [1369] = new FishingTools()
-        {
-            FishingPreset = new List<string>()
-            {
-                "AH4_H4sIAAAAAAAACt1Wy27bOhD9lYBrCRBlSba0c90kN4CbBHGCLIouaHFkEaZJl6SS+hb+94KSGEt+xG2Ru7k7ah6HZ0bz4E80roycEG30pFig7Ce6FGTOYcw5yoyqwENWOWUCdkrqVDcUZeEo9dC9YlIxs0EZ9tCNvvyR84oC3Ymt/bbB+iJlXlqw+hDaU42TjDx0vX4sFehScooyHAQ95Peha4x02PMIzpKZlNXKMYhwEJ2h4Lwk55CbjiPumoXnr5WKMsIdQIKjHkDUml0xXV5uQHcuivcYxnGPYeKSTJYwK1lhPhFW87QC7QQzQ/KlRlncpi0ZHeJ2UdMW9Z4YBiKHDp9k3y/pZyx0ror9CxNiml/vbt33DvfyPWi9H0vCGVnqK/IilQXoCVw4A68vf4BcvoBCGbZJcndGvRtcwj6xxTVZ1ZGNxYKD0g7V/k2KssEwiA7o9qBG262HLn8YRdpWsql+lLNXsr4RpmKGSXFNmHAJ8LGHppWCL6A1WQDKEPLQbU0C3UoByGsQNmtAmc3EEbyp1Oav8e4VaDjOEPnohL65sdbv+MzWkBtF+KRSCoT5oCj3UD8s1qNsDyI+entt1RTIzMi1bVAmFjMD63r07bi3RTRWH0O5C3fI9JWt5oSZK8a5fkf/UAl9VzmEJ8G+V2CZITwckiFN536IcepHQxr4oxDAH4YkwukgDwtK0dZDU6bNXWFZapR9bQrcpsCFGAeh7bRTUV7ZxnklBtTFWJlSSV4psLi3Uq0I/0fKpUVyU+YZSP1t5RrM2+4pCNfgtbuoVdow3VZqRU0iIzy008thzoySorPnzrsHg477FBYgKFGbP0b4LKs5PxdSzzFM0je/He2TJj1qR6yeNDwqtm4IO6aN5I9YDePQxtN4nuLVM3qHWWtnW2lcGFATUi1KM2Uru7Rwo9jvsfo9UqlmK9pDZ/w3gzpOD/f4OyvZPh7cdHM1+ADfK6aAzgwxld2U9nVyojDPFNpv19Nvl81/Uh9HS+H//M9n7VScyEqYrp+H7gTfPGl4LkHcyvqZOn4hjNu2cJ3TmZ4jSvIoDFJ/NAfqR0U+91M6wD5O4pjQ0YAOEoK239z4bN+/X98EzQS1383QbqelrsQSxIUCzvILTfiLHae9iyHNMU0K7M9pgP0oLnI/DULwcZJQOg/piGCCtr8ASHFGgeMLAAA=",
-            },
-            AmountRequired = 4,
-            UniqueFish = false,
-            Baits = new Dictionary<string, List<uint>>()
-            {
-            },
-            RequiredFish = new Dictionary<string, List<uint>>()
-            {
-                ["Oizys Rock"] = new List<uint>()
-                {
-                    50229,
-                },
-            },
-        },
-
-        #endregion
-
-        #endregion
     };
 }

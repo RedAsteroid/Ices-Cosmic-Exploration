@@ -61,7 +61,7 @@ namespace ICE.Ui.DebugWindowTabs
                         ImGui.Text($"Current State");
 
                         ImGui.TableNextColumn();
-                        ImGui.Text($"{CurrentRank}");
+                        ImGui.Text($"{Task_CheckScore.CurrentRank()}");
 
 
                         /*
@@ -215,15 +215,6 @@ namespace ICE.Ui.DebugWindowTabs
 
             var manager = (WKSManagerCustom*)managerPtr;
             return manager->ReturnCurrentScore();
-        }
-
-        private static unsafe string CurrentRank()
-        {
-            var managerPtr = WKSManager.Instance();
-            if (managerPtr == null) return "???";
-
-            var manager = (WKSManagerCustom*)managerPtr;
-            return $"{manager->ReturnRank}";
         }
     }
 }

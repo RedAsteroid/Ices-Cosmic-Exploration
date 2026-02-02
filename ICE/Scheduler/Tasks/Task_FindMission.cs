@@ -1,4 +1,5 @@
-﻿using ECommons.GameHelpers;
+﻿using Dalamud.Game.ClientState.Conditions;
+using ECommons.GameHelpers;
 using FFXIVClientStructs.FFXIV.Client.Game.WKS;
 using ICE.Utilities.Cosmic;
 using ICE.Utilities.Cosmic_Helper;
@@ -1153,7 +1154,7 @@ namespace ICE.Scheduler.Tasks
             else
             {
                 IceLogging.Verbose($"Selecting the mission: {missionId}");
-                if (EzThrottler.Throttle("Selecting said mission (or attempting to)", 500))
+                if (EzThrottler.Throttle("Selecting said mission (or attempting to)", 1000))
                 {
                     InitiateMission(missionId);
                     timeoutAmount += 1;

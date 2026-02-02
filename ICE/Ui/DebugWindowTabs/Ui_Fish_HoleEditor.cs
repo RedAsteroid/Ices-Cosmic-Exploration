@@ -11,7 +11,7 @@ using static ICE.Utilities.GatheringHelper.GatheringUtil;
 
 namespace ICE.Ui.DebugWindowTabs
 {
-    internal class Ui_FishingEditor
+    internal class Ui_Fish_HoleEditor
     {
         private static uint selectedZone = 0;
         private static Vector2 selectedFlag = Vector2.Zero;

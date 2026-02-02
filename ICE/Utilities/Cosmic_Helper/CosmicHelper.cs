@@ -78,6 +78,11 @@ public static unsafe partial class CosmicHelper
         // - - - BTN | MIN Specific - - - //
         public Dictionary<uint, int> Gathering_Min { get; set; } = new();
 
+        // - - - FSH Specific - - - //
+        public int Fish_AmountRequired { get; set; } = 0;
+        public int Fish_VarietyAmount { get; set; } = 0;
+        public List<string> Fish_Presets { get; set; } = new();
+
         // - - - Map Related - - - // 
         public Vector2 MapPosition { get; set; } = new();
         public int Radius { get; set; } = 0;

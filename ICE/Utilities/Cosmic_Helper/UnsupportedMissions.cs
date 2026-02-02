@@ -30,11 +30,9 @@ namespace ICE.Utilities.Cosmic
             1281,
 
             // Fisher, the cursed lands
-            1341, 1342, 1343, 1344, 1345, 1346, 1347, 
-            
-            // Critical Missions
-            1364, 1365, 
-            1366, 1367, 
+            1341, 1345, 1346, 1347, 
+
+
         };
     }
 }
