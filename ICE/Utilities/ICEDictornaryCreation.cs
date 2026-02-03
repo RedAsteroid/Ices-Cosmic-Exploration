@@ -477,6 +477,7 @@ public sealed partial class ICE
             uint Lunar = ExpSheet.GetRow(keyId).PlanetCredits;
             uint rewardItemId = 0;
             uint rewardItemAmount = 0;
+            uint dronebitAmount = ExpSheet.GetRow(keyId).Unknown20;
 
             // Exp Modifiers
             uint expModifier_1 = 0;
@@ -532,6 +533,7 @@ public sealed partial class ICE
 
                     RewardItem = rewardItemId,
                     RewardItemAmount = rewardItemAmount,
+                    DronebitReward = dronebitAmount,
 
                     MapPosition = mapFlag,
                     Radius = radius,

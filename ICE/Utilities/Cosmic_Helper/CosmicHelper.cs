@@ -110,6 +110,7 @@ public static unsafe partial class CosmicHelper
         public uint LunarCredit { get; set; } = 0;
         public uint RewardItem { get; set; } = 0;
         public uint RewardItemAmount { get; set; } = 0;
+        public uint DronebitReward { get; set; } = 0;
         public HashSet<uint> PreviousMissions { get; set; } = new();
         public Dictionary<int, int> RelicXpInfo { get; set; } = new();
         public uint BronzeScore { get; set; } = 0;

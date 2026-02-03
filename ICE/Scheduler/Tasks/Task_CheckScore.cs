@@ -121,7 +121,7 @@ namespace ICE.Scheduler.Tasks
 
                     var rank = CurrentRank();
 
-                    if (rank != MissionRank.None)
+                    if (rank != MissionRank.None || sheetInfo.Attributes.HasFlag(MissionAttributes.Critical))
                     {
                         if (sheetInfo.Attributes.HasFlag(MissionAttributes.ScoreTimeRemaining))
                         {

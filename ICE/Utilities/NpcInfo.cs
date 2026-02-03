@@ -139,7 +139,7 @@ internal static class NpcData // Renamed the class to avoid conflict
             {
                 type = NpcType.Drone,
                 NpcId = 1052654,
-                Name = "枫",
+                Name = "Kaede",
                 Location_Npc = new Vector3(-206.38f, 0.50f, 131.09f),
                 Location_Circle = new Vector3(-203.40f, 0.78f, 132.28f),
             }

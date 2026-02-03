@@ -235,6 +235,26 @@ namespace ICE.Scheduler.Tasks
 
         public static bool? JobSwapCheck()
         {
+            if (CosmicHelper.SheetMissionDict[PreviousMissionId].Jobs.Count == 2)
+            {
+                if (Player.Job != Mission_Settings.StartJob && Mission_Settings.StartJob != 0)
+                {
+                    if (EzThrottler.Throttle("Swapping to crafter job", 1000))
+                        GearsetHandler.TaskClassChange((Job)Mission_Settings.StartJob);
+
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                return true;
+            }
+
+            /*
             if (Player.Job != Mission_Settings.StartJob && Mission_Settings.StartJob != 0)
             {
                 if (EzThrottler.Throttle("Swapping to crafter job", 1000))
@@ -246,6 +266,7 @@ namespace ICE.Scheduler.Tasks
             {
                 return true;
             }
+            */
         }
 
         public static unsafe bool? GoldCheck()

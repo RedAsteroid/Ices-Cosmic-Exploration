@@ -71,6 +71,22 @@ namespace ICE.Scheduler.Handlers
 
             return (currentWeather.Name, currentWeather.IconId, nextWeather.Name, nextWeather.IconId, FormatForecastTime(nextWeather.Time));
         }
+        internal static unsafe List<(string Name, uint IconId, string TimeUntil)> GetNextWeathers(int count = 5)
+        {
+            if (!PlayerHelper.IsInCosmicZone()) return new List<(string, uint, string)>();
+            if (weathers.Count == 0) return new List<(string, uint, string)>();
+
+            var result = new List<(string Name, uint IconId, string TimeUntil)>();
+
+            for (int i = 0; i < Math.Min(count, weathers.Count); i++)
+            {
+                var weather = weathers[i];
+                string timeUntil = i == 0 ? "Now" : FormatForecastTime(weather.Time);
+                result.Add((weather.Name, weather.IconId, timeUntil));
+            }
+
+            return result;
+        }
 
         internal static unsafe void GetForecast()
         {

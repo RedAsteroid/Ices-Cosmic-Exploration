@@ -1436,6 +1436,29 @@ namespace ICE.Ui.MainUi.ModeSelect
                     ImGui.TableNextColumn();
                     ImGui.Text($"{mission.LunarCredit}");
 
+                    if (mission.DronebitReward != 0)
+                    {
+                        ImGui.TableNextRow();
+                        ImGui.TableSetColumnIndex(0);
+                        if (Svc.Texture.TryGetFromGameIcon(65138, out var dronebitIcon))
+                        {
+                            ImGui.Image(dronebitIcon.GetWrapOrEmpty().Handle, new Vector2(24, 24));
+                            if (ImGui.IsItemHovered())
+                            {
+                                ImGui.BeginTooltip();
+                                ImGui.Image(dronebitIcon.GetWrapOrEmpty().Handle, new Vector2(40, 40));
+                                ImGui.EndTooltip();
+                            }
+                            ImGui.SameLine();
+                        }
+                        ImGui.AlignTextToFramePadding();
+                        ImGui.Text($"无人机晶片");
+
+                        ImGui.TableNextColumn();
+                        ImGui.AlignTextToFramePadding();
+                        ImGui.Text($"{mission.DronebitReward}");
+                    }
+
                     ImGui.TableNextRow();
                     ImGui.TableSetColumnIndex(0);
                     ImGui.Text($"职业技巧点");

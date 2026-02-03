@@ -721,8 +721,26 @@ namespace ICE.Ui.MainUi.ModeSelect
             {
                 var enabledTabs = ImGui_Tools.CategoryStates;
                 modeSelect_TableInfo.missionList["All Enabled"] = modeSelect_TableInfo.missionList["All Enabled"]
-                                                                 .OrderBy(x => C.JobPrio.IndexOf(CosmicHelper.SheetMissionDict[x.id].Jobs.First()))
-                                                                 .ToList();
+                    .OrderBy(x => {
+                        var missionInfo = CosmicHelper.SheetMissionDict[x.id];
+                        var attributes = missionInfo.Attributes;
+
+                        // Determine which provisional type this mission is
+                        if (attributes.HasFlag(MissionAttributes.ProvisionalWeather))
+                            return C.MissionPrio.IndexOf(ProvisionalTypes.ProvisionalWeather);
+                        else if (attributes.HasFlag(MissionAttributes.ProvisionalSequential))
+                            return C.MissionPrio.IndexOf(ProvisionalTypes.ProvisionalSequential);
+                        else if (attributes.HasFlag(MissionAttributes.ProvisionalTimed))
+                            return C.MissionPrio.IndexOf(ProvisionalTypes.ProvisionalTimed);
+                        else
+                            return int.MaxValue; // Non-provisional missions sort last
+                    })
+                    .ThenBy(x => {
+                        var firstJob = CosmicHelper.SheetMissionDict[x.id].Jobs.First();
+                        return C.JobPrio.IndexOf(firstJob);
+                    })
+                    .ThenByDescending(x => CosmicHelper.SheetMissionDict[x.id].Rank)
+                    .ToList();
 
                 modeSelect_TableInfo.missionList["Sequence"] = modeSelect_TableInfo.missionList["Sequence"]
                     .OrderBy(x => C.JobPrio.IndexOf(CosmicHelper.SheetMissionDict[x.id].Jobs.First()))

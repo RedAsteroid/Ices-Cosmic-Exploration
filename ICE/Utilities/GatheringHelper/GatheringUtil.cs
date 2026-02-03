@@ -1847,7 +1847,55 @@ public static unsafe partial class GatheringUtil
                     FishingSpot = new Vector3(332.34f, -154.56f, -658.08f),
                 },
             },
-
+            // Export for Fishing Zone 1310, Flag (639, 48)
+            [new Vector2(639f, 48f)] = new()
+            {
+                new FisherSpotInfo()
+                {
+                    FacePosition = new Vector3(614.55f, 160.22f, 63.39f),
+                    FishingSpot = new Vector3(615.35f, 160.22f, 65.23f),
+                },
+                new FisherSpotInfo()
+                {
+                    FacePosition = new Vector3(611.16f, 158.98f, 64.77f),
+                    FishingSpot = new Vector3(611.72f, 158.98f, 66.69f),
+                },
+                new FisherSpotInfo()
+                {
+                    FacePosition = new Vector3(605.80f, 156.92f, 65.59f),
+                    FishingSpot = new Vector3(605.54f, 156.92f, 67.57f),
+                },
+                new FisherSpotInfo()
+                {
+                    FacePosition = new Vector3(600.11f, 155.26f, 64.24f),
+                    FishingSpot = new Vector3(599.85f, 155.26f, 66.23f),
+                },
+                new FisherSpotInfo()
+                {
+                    FacePosition = new Vector3(595.27f, 152.97f, 60.86f),
+                    FishingSpot = new Vector3(594.09f, 152.97f, 62.47f),
+                },
+                new FisherSpotInfo()
+                {
+                    FacePosition = new Vector3(588.11f, 151.23f, 59.41f),
+                    FishingSpot = new Vector3(588.16f, 151.23f, 61.40f),
+                },
+                new FisherSpotInfo()
+                {
+                    FacePosition = new Vector3(584.33f, 150.32f, 59.80f),
+                    FishingSpot = new Vector3(584.58f, 150.32f, 61.79f),
+                },
+                new FisherSpotInfo()
+                {
+                    FacePosition = new Vector3(580.29f, 148.96f, 61.39f),
+                    FishingSpot = new Vector3(580.93f, 148.96f, 63.28f),
+                },
+                new FisherSpotInfo()
+                {
+                    FacePosition = new Vector3(576.68f, 147.61f, 63.01f),
+                    FishingSpot = new Vector3(577.33f, 147.61f, 64.90f),
+                },
+            },
         }
     };
 

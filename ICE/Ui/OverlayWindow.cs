@@ -3,9 +3,11 @@ using Dalamud.Interface;
 using Dalamud.Interface.Utility;
 using Dalamud.Interface.Utility.Raii;
 using ECommons.GameHelpers;
+using FFXIVClientStructs.FFXIV.Client.System.Framework;
 using Lumina.Excel.Sheets;
 using System.Collections.Generic;
 using System.Globalization;
+using static ICE.Utilities.CosmicHelper;
 
 namespace ICE.Ui
 {
@@ -26,6 +28,36 @@ namespace ICE.Ui
         {
             return C.ShowOverlay
                 && (PlayerHelper.IsInCosmicZone());
+        }
+        private bool IsAvailableAtHour(CosmicInfo mission, int hour)
+        {
+            if (mission.StartTime <= mission.EndTime)
+                return hour >= mission.StartTime && hour < mission.EndTime;
+            else
+                return hour >= mission.StartTime || hour < mission.EndTime;
+        }
+
+        private unsafe (List<KeyValuePair<uint, CosmicInfo>> current, List<KeyValuePair<uint, CosmicInfo>> next) GetMissionsForHour()
+        {
+            var eorzeaTime = DateTimeOffset.FromUnixTimeSeconds(
+                Framework.Instance()->ClientTime.EorzeaTime);
+
+            int currentHour = eorzeaTime.Hour;
+            int nextHour = (currentHour + 1) % 24;
+
+            var currentHourMissions = CosmicHelper.SheetMissionDict
+                .Where(kvp => IsAvailableAtHour(kvp.Value, currentHour))
+                .Where(kvp => kvp.Value.TerritoryId == Player.Territory.RowId)
+                .OrderBy(kvp => kvp.Value.Jobs.FirstOrDefault())
+                .ToList();
+
+            var nextHourMissions = CosmicHelper.SheetMissionDict
+                .Where(kvp => IsAvailableAtHour(kvp.Value, nextHour))
+                .Where(kvp => kvp.Value.TerritoryId == Player.Territory.RowId)
+                .OrderBy(kvp => kvp.Value.Jobs.FirstOrDefault())
+                .ToList();
+
+            return (currentHourMissions, nextHourMissions);
         }
 
         public override void Draw()
@@ -84,44 +116,42 @@ namespace ICE.Ui
                 ImGui.Text($"下一个: {nextWeatherTime}");
             }
 
+            var (currentList, nextList) = GetMissionsForHour();
             ImGui.AlignTextToFramePadding();
-            ImGui.Text($"限时任务: ");
-            var currentList = PlayerHandlers.GetMissionsForHour().currentMissions;
-            var nextList = PlayerHandlers.GetMissionsForHour().nextMissions;
+            ImGui.Text("限时任务: ");
+
             foreach (var mission in currentList)
             {
-                if (CosmicHelper.JobIconDict.TryGetValue(mission.ClassId, out var jobIcon))
+                var jobId = mission.Value.Jobs[0];
+                if (CosmicHelper.JobIconDict.TryGetValue(jobId, out var jobIcon))
                 {
                     ImGui.SameLine(0, 2);
-                    var imageSize = new Vector2(23, 23);
-                    ImGui.Image(jobIcon.GetWrapOrEmpty().Handle, imageSize);
+                    ImGui.Image(jobIcon.GetWrapOrEmpty().Handle, new Vector2(23, 23));
+
                     if (ImGui.IsItemHovered())
                     {
                         ImGui.BeginTooltip();
-                        ImGui.Text($"[{mission.MissionId}]");
-                        ImGui.SameLine(0, 2);
-                        ImGui.Text($"{CosmicHelper.SheetMissionDict[mission.MissionId].Name}");
+                        ImGui.Text($"[{mission.Key}] {mission.Value.Name}");
                         ImGui.EndTooltip();
                     }
                 }
             }
+
             ImGui.SameLine(0, 2);
-            ImGui.AlignTextToFramePadding();
             ImGuiEx.Icon(FontAwesomeIcon.LongArrowAltRight);
-            ImGui.SameLine();
+
             foreach (var mission in nextList)
             {
-                if (CosmicHelper.JobIconDict.TryGetValue(mission.ClassId, out var jobIcon))
+                var jobId = mission.Value.Jobs[0];
+                if (CosmicHelper.JobIconDict.TryGetValue(jobId, out var jobIcon))
                 {
                     ImGui.SameLine(0, 2);
-                    var imageSize = new Vector2(23, 23);
-                    ImGui.Image(jobIcon.GetWrapOrEmpty().Handle, imageSize);
+                    ImGui.Image(jobIcon.GetWrapOrEmpty().Handle, new Vector2(23, 23));
+
                     if (ImGui.IsItemHovered())
                     {
                         ImGui.BeginTooltip();
-                        ImGui.Text($"[{mission.MissionId}]");
-                        ImGui.SameLine(0, 2);
-                        ImGui.Text($"{CosmicHelper.SheetMissionDict[mission.MissionId].Name}");
+                        ImGui.Text($"[{mission.Key}] {mission.Value.Name}");
                         ImGui.EndTooltip();
                     }
                 }

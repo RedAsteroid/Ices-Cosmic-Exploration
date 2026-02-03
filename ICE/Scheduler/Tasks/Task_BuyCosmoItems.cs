@@ -140,20 +140,20 @@ namespace ICE.Scheduler.Tasks
             {
                 var currencyAmount = shopExchange.CurrencyAmount - (uint)C.CosmoKeepAmount;
 
-                // Try BuyAmount first
-                if (TryPurchaseItem(shopExchange, currencyAmount,
-                    (item, itemId) => item.BuyAmount,
-                    (amount) => BuyAmount = amount))
-                    return false;
-
                 // Then try KeepAmount (accounting for what player already has)
-                if (TryPurchaseItem(shopExchange, currencyAmount, 
+                if (TryPurchaseItem(shopExchange, currencyAmount,
                     (item, itemId) =>
                     {
                         PlayerHelper.GetItemCount(itemId, out int currentCount);
                         return Math.Max(0, item.KeepAmount - currentCount);
                     },
                     (amount) => KeepAmount = amount))
+                    return false;
+
+                // Try BuyAmount first
+                if (TryPurchaseItem(shopExchange, currencyAmount,
+                    (item, itemId) => item.BuyAmount,
+                    (amount) => BuyAmount = amount))
                     return false;
 
                 // Finally try KeepBuying (buy max affordable)

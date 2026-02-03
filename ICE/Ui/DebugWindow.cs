@@ -48,6 +48,7 @@ internal class DebugWindow : Window
         ["Ui: Fishing Preset Editor"] = () => Ui_FishPresets.Draw(),
         ["Ui: Gather Editor"] = () => Ui_GatherRoute_Editor.Draw(),
         ["Ui: Log Viewer"] = () => helpSelect_Logs.Draw_Debug(),
+        ["Ui: Player Gearsets"] = () => Ui_Gearsets.Draw(),
 
         // Non-labeled Elements
         ["Player Info"] = () => Ui_PlayerInfo.Draw(),

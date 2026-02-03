@@ -95,6 +95,8 @@ namespace ICE.Ui.DebugWindowTabs
             {
                 PictoManager.DrawPicto();
             }
+
+            ImGui.Text($"Drone Ready: {DroneReady()}");
         }
 
         private static unsafe void ClassInfo()
@@ -172,6 +174,29 @@ namespace ICE.Ui.DebugWindowTabs
                 {
                     ImGui.Text($"Name: {obect.Name} : {obect.BaseId}");
                 }
+            }
+        }
+
+        private static unsafe bool DroneReady()
+        {
+            var actionManager = ActionManager.Instance();
+
+            // For regular items
+            uint itemId = 50414; // your item ID
+            var actionStatus = actionManager->GetActionStatus(
+                ActionType.Item,
+                itemId
+            );
+
+            // actionStatus == 0 means the item is ready to use
+            // any other value indicates it's not ready (on cooldown, requirements not met, etc.)
+            if (actionStatus == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }

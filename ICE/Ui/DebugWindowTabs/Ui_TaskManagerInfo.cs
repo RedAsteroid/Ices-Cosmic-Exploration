@@ -87,6 +87,15 @@ namespace ICE.Ui.DebugWindowTabs
             {
                 Task_BuyCosmoItems.Enqueue();
             }
+
+            if (ImGui.Button("Test Drone Buy Item"))
+            {
+                Task_ArtifactSearch.EnqueueBuy();
+            }
+            if (ImGui.Button("Test Drone Pathing"))
+            {
+                P.TaskManager.Enqueue(() => Task_ArtifactSearch.CheckBoxStatus());
+            }
         }
 
         private static async Task<List<Vector3>> FindTask(Vector3 currentPos)
