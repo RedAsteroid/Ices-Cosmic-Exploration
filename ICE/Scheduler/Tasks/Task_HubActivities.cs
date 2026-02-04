@@ -15,7 +15,7 @@ namespace ICE.Scheduler
         public static bool RelicTurnin = false;
         public static bool CosmoBuy = false;
         public static bool CanGamba = false;
-        public static bool DronebitShopping = false;
+        public static bool CanBuyDrones = false;
         private static Vector3 craftingSpot = Vector3.Zero;
 
         public static void Enqueue()
@@ -43,15 +43,15 @@ namespace ICE.Scheduler
                 P.TaskManager.Enqueue(() => IceLogging.Info("Starting Relic Turnin task at the npc", "Task_HubActivities"));;
                 Task_BuyCosmoItems.Enqueue();
             }
-            if (DronebitShopping)
-            {
-                P.TaskManager.Enqueue(() => IceLogging.Info("Starting the Oizys Bags purchasing task at the npc", "Task_HubActivities"));
-                Task_BuyDronebitItems.Enqueue();
-            }
             if (CanGamba)
             {
                 P.TaskManager.Enqueue(() => IceLogging.Info("Starting Gamba task at the npc", "Task_HubActivities"));
                 Task_Gamba.Enqueue();
+            }
+            if (CanBuyDrones)
+            {
+                P.TaskManager.Enqueue(() => IceLogging.Info("Starting the drone buying", "Task_HubActivities"));
+                Task_ArtifactSearch.EnqueueBuy();
             }
             P.TaskManager.EnqueueMulti
             (
@@ -138,7 +138,7 @@ namespace ICE.Scheduler
             RelicTurnin = false;
             CosmoBuy = false;
             CanGamba = false;
-            DronebitShopping = false;
+            CanBuyDrones = false;
 
             return true;
         }

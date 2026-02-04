@@ -194,6 +194,10 @@ namespace ICE.Ui.DebugWindowTabs
             {
                 return true;
             }
+            else if (Task_ArtifactSearch.IsTreasureDetected())
+            {
+                return true;
+            }
             else
             {
                 return false;

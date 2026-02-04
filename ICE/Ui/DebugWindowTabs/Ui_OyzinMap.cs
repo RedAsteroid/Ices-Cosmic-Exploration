@@ -33,12 +33,38 @@ namespace ICE.Ui.DebugWindowTabs
 
             if (agentMap == null) return markers;
 
+            // Event markers (what you already have)
             foreach (var marker in agentMap->EventMarkers)
             {
                 markers.Add(new TempMapMarkerData
                 {
                     Position = marker.Position,
                     IconId = marker.IconId,
+                });
+            }
+
+            /*
+            // Temp markers (player-placed map markers)
+            foreach (var marker in agentMap->TempMapMarkers)
+            {
+                Vector3 pos = new(marker.MapMarker.X, 0, marker.MapMarker.Y);
+
+                markers.Add(new TempMapMarkerData
+                {
+                    Position = pos,
+                    IconId = marker.MapMarker.IconId,
+                });
+            }
+            */
+
+            // Mini map markers
+            foreach (var marker in agentMap->MiniMapMarkers)
+            {
+                Vector3 pos = new(marker.MapMarker.X, 0, marker.MapMarker.Y);
+                markers.Add(new TempMapMarkerData
+                {
+                    Position = pos,
+                    IconId = marker.MapMarker.IconId,
                 });
             }
 

@@ -399,4 +399,38 @@ public static partial class ImGui_Tools
             ImGui.EndTooltip();
         }
     }
+
+    public static void IconWithTooltip(Vector4 col, FontAwesomeIcon icon, string? tooltip = null)
+    {
+        ImGui.SameLine();
+        ImGui.PushStyleColor(ImGuiCol.Text, col);
+        ImGui.PushFont(UiBuilder.IconFont);
+        ImGui.TextUnformatted(icon.ToIconString());
+        ImGui.PopFont();
+        ImGui.PopStyleColor();
+
+        if (tooltip != null)
+        {
+            if (ImGui.IsItemHovered())
+            {
+                ImGui.SetTooltip(tooltip);
+            }
+        }
+    }
+
+    public static void IconWithTooltip(FontAwesomeIcon icon, string? tooltip = null)
+    {
+        ImGui.SameLine();
+        ImGui.PushFont(UiBuilder.IconFont);
+        ImGui.TextUnformatted(icon.ToIconString());
+        ImGui.PopFont();
+
+        if (tooltip != null)
+        {
+            if (ImGui.IsItemHovered())
+            {
+                ImGui.SetTooltip(tooltip);
+            }
+        }
+    }
 }

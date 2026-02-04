@@ -286,6 +286,31 @@ namespace ICE.Scheduler.Tasks
                 }
                 else
                 {
+                    if (PlayerHelper.IsInOizys() && C.Cosmodrone_Run)
+                    {
+                        IceLogging.Info("Checking to see if we can run cosmodrone hunting");
+                        if (C.Cosmodrone_FinishCurrent && Task_ArtifactSearch.IsTreasureDetected())
+                        {
+                            IceLogging.Debug("A drone was apperently still loaded on the map, so going to just do a double check into making sure it's valid -> finding it if it exist");
+                            P.TaskManager.Tasks.Clear();
+                            P.TaskManager.Enqueue(() => Task_ArtifactSearch.RefreshMapInfo(), "Refreshing map info for drone check");
+                            SchedulerMain.State = IceState.ArtifactSearch;
+                            return true;
+                        }
+                        
+                        if (PlayerHelper.GetItemCount(50414, out var count))
+                        {
+                            bool canRun = (C.Cosmodrone_RunAt == 0 && count > 0) || (count >= C.Cosmodrone_RunAt);
+                            if (canRun)
+                            {
+                                IceLogging.Debug("We have enough drones to consider start running! So we're just going to kick it off");
+                                P.TaskManager.Enqueue(() => Task_ArtifactSearch.RefreshMapInfo(), "Refreshing map info for drone check");
+                                SchedulerMain.State = IceState.ArtifactSearch;
+                                return true;
+                            }
+                        }
+                    }
+
                     var currentJob = (uint)Player.Job;
 
                     bool repairVendor = C.RepairAtVendor && PlayerHelper.NeedsRepair(C.RepairPercent);
@@ -293,10 +318,10 @@ namespace ICE.Scheduler.Tasks
                     bool selfRepairGather = C.SelfRepairGather && PlayerHelper.NeedsRepair(C.RepairPercent) && CosmicHelper.GatheringJobList.Contains(currentJob);
                     bool extractSpiritbond = C.SelfSpiritbondGather && Task_Spiritbond.IsSpiritbondReadyAny();
                     PlayerHelper.GetItemCount(45690, out var cosmoCreditAmount);
-                    PlayerHelper.GetItemCount(49170, out var DronebitAmount);
                     bool canBuyItems = C.BuyItems && Task_BuyCosmoItems.CanPurchaseAnyItem() && cosmoCreditAmount >= C.CosmoBuyAtAmount;
-                    bool canDronebitShopping = C.Tmp_OizysDronebitBuyItems && PlayerHelper.IsInOizys() && Task_BuyDronebitItems.CanPurchaseAnyItem() && DronebitAmount >= C.Tmp_OizysDronebitBuyAtAmount;
                     bool canGamba = false;
+
+                    bool canBuyDrones = PlayerHelper.IsInOizys() && C.Cosmodrone_Buy && Task_ArtifactSearch.CanBuyDroneBoxes();
 
                     var territory = Player.Territory.RowId;
                     var itemId = CosmicHelper.PlanetCreditInfo[territory];
@@ -308,42 +333,41 @@ namespace ICE.Scheduler.Tasks
                             if (C.GambaAtAmount <= lunarCredits)
                                 canGamba = true;
                             IceLogging.Debug($"Current Credit Setting: {C.GambaAtAmount} >= {lunarCredits} && AutoGamba: {C.GambaBetweenRuns}");
-
                         }
                     }
 
                     if (extractSpiritbond && CosmicHelper.GatheringJobList.Contains(currentJob))
                     {
-                        IceLogging.Info("Extracting spiritbond is enabled. And you have some to extract. Going to go do so now", "[Task: Check State]");
+                        IceLogging.Info("Extracting spiritbond is enabled. And you have some to extract. Going to go do so now", tag);
                         SchedulerMain.State = IceState.Spiritbond;
                     }
                     else if (!C.RepairAtVendor && (selfRepairCraft || selfRepairGather))
                     {
-                        IceLogging.Info("We need to repair! So going to go repair", "[Task: Check State]");
+                        IceLogging.Info("We need to repair! So going to go repair", tag);
                         SchedulerMain.State = IceState.Repair;
                     }
-                    else if (repairVendor || canTurnin || canBuyItems || canGamba || canDronebitShopping)
+                    else if (repairVendor || canTurnin || canBuyItems || canGamba || canBuyDrones)
                     {
                         SchedulerMain.State = IceState.HubReturn;
                         Task_HubActivities.RepairNpc = repairVendor;
                         Task_HubActivities.RelicTurnin = canTurnin;
                         Task_HubActivities.CosmoBuy = canBuyItems;
                         Task_HubActivities.CanGamba = canGamba;
-                        Task_HubActivities.DronebitShopping = canDronebitShopping;
+                        Task_HubActivities.CanBuyDrones = canBuyDrones;
                         IceLogging.Info("We have some reason to return back to the base so... we're doing so.\n" +
                                         $"Repairing at NPC: {repairVendor}\n" +
                                         $"Relic Turnin: {canTurnin}\n" +
                                         $"Buying Cosmocredit Items: {canBuyItems}\n" +
                                         $"Can Gamba: {canGamba}\n" +
-                                        $"Can DronebitShopping: {canDronebitShopping}");
+                                        $"Can buy drones: {canBuyDrones}");
                     }
                     else
                     {
-                        IceLogging.Info("Not in the middle of a mission, and don't need to repair/extract materia. So going to grab mission", "[Task: Check State]");
+                        IceLogging.Info("Not in the middle of a mission, and don't need to repair/extract materia. So going to grab mission", tag);
                         SchedulerMain.State = IceState.GrabMission;
                     }
 
-                    IceLogging.Info($"There is no physical possible way for you to not be in a different state here. . . So reporting back the current state upon exiting here: {SchedulerMain.State}");
+                    IceLogging.Info($"There is no physical possible way for you to not be in a different state here. . . So reporting back the current state upon exiting here: {SchedulerMain.State}", tag);
                     return true;
                 }
             }

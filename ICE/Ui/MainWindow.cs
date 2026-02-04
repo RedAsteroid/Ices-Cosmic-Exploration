@@ -110,8 +110,8 @@ namespace ICE.Ui
                 case "hubActivites_GambaSetting":
                     GambaWheel.Draw();
                     break;
-                case "hubActivites_DronebitShopping":
-                    DronebitShoppingTab.Draw();
+                case "hubActivies_DroneSetting":
+                    Shop_Dronebit.Draw();
                     break;
 
                 // Help Section

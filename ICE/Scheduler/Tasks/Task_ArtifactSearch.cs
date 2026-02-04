@@ -25,7 +25,6 @@ namespace ICE.Scheduler.Tasks
                     new(ExitDroneShop, "Drone NPC: Leaving Shop")
                 );
         }
-
         private static bool? Drone_PathToVendor()
         {
             string handle = "[Task_Artifact: PathTo]";
@@ -115,13 +114,27 @@ namespace ICE.Scheduler.Tasks
                 // There's only 1 item here. So we just need to make sure we have enough to buy it
                 var currency = shopExchange.CurrencyAmount;
                 var item = shopExchange.BasicShopItems[0];
+                var maxAmount = (int)(currency / item.CostAmount); // Maximum we could afford
+                PlayerHelper.GetItemCount(item.ItemId, out var currentAmount);
 
-                if (item.CostAmount <= currency)
+                if (C.Cosmodrone_MaxKeep != 0)
+                {
+                    var remainingSpace = C.Cosmodrone_MaxKeep - currentAmount;
+                    if (remainingSpace <= 0)
+                    {
+                        IceLogging.Debug($"Already at or above max keep limit ({currentAmount}/{C.Cosmodrone_MaxKeep}), skipping purchase", tag);
+                        return true;
+                    }
+
+                    maxAmount = Math.Min(maxAmount, remainingSpace);
+                }
+
+                if (maxAmount > 0 && item.CostAmount <= currency)
                 {
                     if (EzThrottler.Throttle("Selecting to buy this item", 1000))
                     {
-                        int amount = (int)(currency / item.CostAmount);
-                        item.Select(amount);
+                        item.Select(maxAmount);
+                        IceLogging.Debug($"Purchasing {maxAmount} items (current: {currentAmount}, max keep: {C.Cosmodrone_MaxKeep})", tag);
                     }
                 }
                 else
@@ -146,32 +159,56 @@ namespace ICE.Scheduler.Tasks
             }
             else
             {
+                if (PlayerHelper.GetItemCount(50414, out var droneBox))
+                {
+                    if (C.Cosmodrone_Run && droneBox >= C.Cosmodrone_RunAt)
+                    {
+                        P.TaskManager.Tasks.Clear();
+                        SchedulerMain.State = IceState.ArtifactSearch;
+                        P.TaskManager.Enqueue(() => RefreshMapInfo());
+                    }
+                }
+
                 return true;
             }
 
             return false;
         }
+        public static bool CanBuyDroneBoxes()
+        {
+            uint oizysDronebit = 49170;
+            uint oizysDroneBox = 50414;
+
+            bool shouldBuyItems = false;
+
+            if (PlayerHelper.GetItemCount(oizysDronebit, out var bitCount))
+            {
+                var buyAt = C.Cosmodrone_BuyAt;
+                if (buyAt <= bitCount)
+                {
+                    shouldBuyItems = true;
+                }
+            }
+
+            if (PlayerHelper.GetItemCount(oizysDroneBox, out var boxCount))
+            {
+                var maxBox = C.Cosmodrone_MaxKeep;
+                if (maxBox != 0 && boxCount >= maxBox)
+                {
+                    shouldBuyItems = false;
+                }
+            }
+
+            return shouldBuyItems;
+        }
 
         // Going to drone locations
-        private static unsafe bool DroneReady()
+        private static Vector3 droneLoc = Vector3.Zero;
+        public static void Enqueue_DroneCheck()
         {
-            var actionManager = ActionManager.Instance();
-
-            // For regular items
-            uint itemId = 50414; // your item ID
-            var actionStatus = actionManager->GetActionStatus(ActionType.Item, itemId);
-
-            // actionStatus == 0 means the item is ready to use
-            // any other value indicates it's not ready (on cooldown, requirements not met, etc.)
-            if (actionStatus == 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            P.TaskManager.Enqueue(() => RefreshMapInfo(), "Queueing Map Refresh Task");
         }
+
         public class TempMapMarkerData
         {
             public Vector3 Position { get; set; }
@@ -184,6 +221,7 @@ namespace ICE.Scheduler.Tasks
 
             if (agentMap == null) return markers;
 
+            // Event markers (what you already have)
             foreach (var marker in agentMap->EventMarkers)
             {
                 markers.Add(new TempMapMarkerData
@@ -195,7 +233,14 @@ namespace ICE.Scheduler.Tasks
 
             return markers;
         }
-        public static unsafe bool? RefreshMapInfo()
+        public static unsafe bool IsTreasureDetected()
+        {
+            var mapMarkers = GetAllEventMarkers();
+            var marker = mapMarkers.Where(x => x.IconId == 63989).FirstOrDefault();
+
+            return marker != null;
+        }
+        public static bool? RefreshMapInfo()
         {
             P.TaskManager.EnqueueMulti
                 (
@@ -206,100 +251,47 @@ namespace ICE.Scheduler.Tasks
                 );
             return true;
         }
+
+        private static int currentRefresh = 0;
+        private static readonly int maxRefresh = 1;
+
         public static unsafe bool? CheckBoxStatus()
         {
             droneLoc = Vector3.Zero;
             string tag = "[Task_Artifact: CheckBoxStatus]";
 
             var mapMarkers = GetAllEventMarkers();
-            if (mapMarkers.Count == 0)
+            var marker = mapMarkers.Where(x => x.IconId == 63989).FirstOrDefault();
+            if (marker != null)
             {
-                IceLogging.Info("No map markers were available... which isn't right.\n" +
-                    "Going to refresh the map to make sure it loads properly", tag);
-
-                if (GenericHelpers.TryGetAddonByName<AtkUnitBase>("AreaMap", out var mapAddon) && GenericHelpers.IsAddonReady(mapAddon))
-                {
-                    if (EzThrottler.Throttle("Closing map temp"))
-                    {
-                        GenericHandlers.FireCallback("AreaMap", true, -1);
-                    }
-                }
-                else
-                {
-                    if (EzThrottler.Throttle("Opening map again", 1000))
-                    {
-                        var map = Player.Territory.Value.Map.Value;
-                        var territoryid = Player.Territory.RowId;
-                        var agent = AgentMap.Instance();
-
-                        agent->OpenMap(map.RowId, territoryid);
-                    }
-                }
-            }
-            else
-            {
-                var marker = mapMarkers.Where(x => x.IconId == 63989).FirstOrDefault();
-                if (marker != null)
-                {
-                    IceLogging.Debug("We've found the map flag! Setting it for us to travel to", tag);
-                    droneLoc = marker.Position;
-                    P.TaskManager.EnqueueMulti
-                        (
-                            new(PathToDrone, "Pathing to drone"), 
-                            new(InteractWithDrone, "Interact with drone")
-                        );
-                    return true;
-                }
-                else
-                {
-                    if (PlayerHelper.GetItemCount(50414, out var count) && count > 0)
-                    {
-                        IceLogging.Debug("We have a crate to use! Initiating the task to start using it", tag);
-                        P.TaskManager.Enqueue(() => UseDroneBox(), "Use Drone Box");
-                        return true;
-                    }
-                    else
-                    {
-                        IceLogging.Debug($"We are out of boxes, and we have no markers. So we're continuing on with the normal task");
-                        SchedulerMain.State = IceState.Idle;
-                        return true;
-                    }
-                }
-            }
-
-            return false;
-        }
-        private static unsafe bool? UseDroneBox()
-        {
-            if (GenericHelpers.TryGetAddonByName<AtkUnitBase>("AreaMap", out var mapAddon) && GenericHelpers.IsAddonReady(mapAddon))
-            {
-                P.TaskManager.Enqueue(() => CheckBoxStatus(), "Task Artifact: Check Box Status", Utils.TaskConfig);
+                currentRefresh = 0;
+                IceLogging.Debug("We've found the map flag! Setting it for us to travel to", tag);
+                droneLoc = marker.Position;
+                P.TaskManager.EnqueueMulti
+                    (
+                        new(PathToDrone, "Pathing to drone"),
+                        new(InteractWithDrone, "Interact with drone")
+                    );
                 return true;
             }
             else
             {
-                if (Player.Mounted || Player.IsJumping)
+                currentRefresh = 0;
+                if (PlayerHelper.GetItemCount(50414, out var count) && count > 0)
                 {
-                    Utils.Dismount();
-                    return false;
+                    IceLogging.Debug("We have a crate to use! Initiating the task to start using it", tag);
+                    P.TaskManager.Enqueue(() => UseDroneBox(), "Use Drone Box");
+                    return true;
                 }
-
-                var actionManager = ActionManager.Instance();
-                uint itemId = 50414;
-
-                var status = actionManager->GetActionStatus(ActionType.Item, itemId);
-                // IceLogging.Info($"Action status: {status}");
-
-                if (status == 0)
+                else
                 {
-                    actionManager->UseAction(ActionType.Item, itemId, 0xE0000000);
+                    IceLogging.Debug($"We are out of boxes, and we have no markers. So we're continuing on with the normal task");
+                    SchedulerMain.State = IceState.Start;
+                    return true;
                 }
             }
-                
-            return false;
         }
-        private static Vector3 droneLoc = Vector3.Zero;
-        private static unsafe bool? PathToDrone()
+        private static bool? PathToDrone()
         {
             if (Task_NavmeshMove.Task_NavTo(droneLoc, distance: 3.5f, waitForBusy: false).Value)
             {
@@ -339,17 +331,44 @@ namespace ICE.Scheduler.Tasks
             }
             else
             {
-                P.TaskManager.EnqueueMulti
-                    (
-                        new(CloseMapInfo, "Making sure map is close"),
-                        new(OpenMapInfo, "Re-opening map to refresh"),
-                        new(CloseMapInfo, "Closing one more time cause we don't need it"),
-                        new(CheckBoxStatus, "Checking to see if we have more boxes")
-                    );
-
+                P.TaskManager.Enqueue(() => RefreshMapInfo(), "Queueing map refresh info");
                 return true;
             }
 
+            return false;
+        }
+        private static unsafe bool? UseDroneBox()
+        {
+            string tag = "[Task_ArtifactSearch: Use Drone Box]";
+
+            if (GenericHelpers.TryGetAddonByName<AtkUnitBase>("AreaMap", out var mapAddon) && GenericHelpers.IsAddonReady(mapAddon))
+            {
+                P.TaskManager.Enqueue(() => RefreshMapInfo(), "Task Artifact: Check Box Status", Utils.TaskConfig);
+                return true;
+            }
+            else
+            {
+                if (Player.Mounted || Player.IsJumping)
+                {
+                    Utils.Dismount();
+                    return false;
+                }
+
+                var actionManager = ActionManager.Instance();
+                uint itemId = 50414;
+
+                var status = actionManager->GetActionStatus(ActionType.Item, itemId);
+
+                if (status == 0)
+                {
+                    actionManager->UseAction(ActionType.Item, itemId, 0xE0000000);
+                }
+                else
+                {
+                    IceLogging.Verbose("We're waiting for the addon map to be visible. If it's not then there's a problem");
+                }
+            }
+                
             return false;
         }
         public static unsafe bool? OpenMapInfo()

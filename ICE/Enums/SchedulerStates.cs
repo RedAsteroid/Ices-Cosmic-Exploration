@@ -19,6 +19,7 @@ namespace ICE.Enums
         RelicTurnin = 13,
         Spiritbond = 14,
         Shopping = 15,
+        ArtifactSearch = 16,
 
         Craft = 20,
         Gather = 21,
