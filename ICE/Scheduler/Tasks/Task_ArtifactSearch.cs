@@ -346,6 +346,14 @@ namespace ICE.Scheduler.Tasks
                 P.TaskManager.Enqueue(() => RefreshMapInfo(), "Task Artifact: Check Box Status", Utils.TaskConfig);
                 return true;
             }
+            else if (GenericHelpers.TryGetAddonMaster<SelectYesno>("SelectYesno", out var YesNo) && YesNo.IsAddonReady)
+            {
+                if (EzThrottler.Throttle("Selecting yes"))
+                {
+                    IceLogging.Verbose($"Text: {YesNo.Text}");
+                    YesNo.Yes();
+                }
+            }
             else
             {
                 if (Player.Mounted || Player.IsJumping)
@@ -361,7 +369,8 @@ namespace ICE.Scheduler.Tasks
 
                 if (status == 0)
                 {
-                    actionManager->UseAction(ActionType.Item, itemId, 0xE0000000);
+                    if (EzThrottler.Throttle("Use Drone", 1000))
+                        UseDrone();
                 }
                 else
                 {
@@ -404,6 +413,40 @@ namespace ICE.Scheduler.Tasks
             {
                 return true;
             }
+        }
+        private static unsafe void UseDrone()
+        {
+            uint itemId = 50414;
+            var inventoryManager = InventoryManager.Instance();
+
+            // Array of inventory types to check
+            var inventoryTypes = new[]
+            {
+                InventoryType.Inventory1,
+                InventoryType.Inventory2,
+                InventoryType.Inventory3,
+                InventoryType.Inventory4
+            };
+
+            foreach (var invType in inventoryTypes)
+            {
+                var container = inventoryManager->GetInventoryContainer(invType);
+                if (container == null) continue;
+
+                for (int i = 0; i < container->Size; i++)
+                {
+                    var item = container->GetInventorySlot(i);
+                    if (item != null && item->ItemId == itemId)
+                    {
+                        // Use the item from inventory
+                        AgentInventoryContext.Instance()->UseItem(item->ItemId, invType, (uint)i, 0);
+                        return;
+                    }
+                }
+            }
+
+            // If we get here, item wasn't found
+            PluginLog.Warning($"Item {itemId} not found in any inventory container");
         }
     }
 }

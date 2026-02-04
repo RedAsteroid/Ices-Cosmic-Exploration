@@ -1,6 +1,7 @@
 ﻿using ECommons.GameHelpers;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.WKS;
+using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using System.Collections.Generic;
 using System.Reflection;
 using static ECommons.UIHelpers.AddonMasterImplementations.AddonMaster;
@@ -97,6 +98,11 @@ namespace ICE.Ui.DebugWindowTabs
             }
 
             ImGui.Text($"Drone Ready: {DroneReady()}");
+
+            if (ImGui.Button("Use Drone"))
+            {
+                UseDrone();
+            }
         }
 
         private static unsafe void ClassInfo()
@@ -202,6 +208,40 @@ namespace ICE.Ui.DebugWindowTabs
             {
                 return false;
             }
+        }
+        private static unsafe void UseDrone()
+        {
+            uint itemId = 50414;
+            var inventoryManager = InventoryManager.Instance();
+
+            // Array of inventory types to check
+            var inventoryTypes = new[]
+            {
+                InventoryType.Inventory1,
+                InventoryType.Inventory2,
+                InventoryType.Inventory3,
+                InventoryType.Inventory4
+            };
+
+            foreach (var invType in inventoryTypes)
+            {
+                var container = inventoryManager->GetInventoryContainer(invType);
+                if (container == null) continue;
+
+                for (int i = 0; i < container->Size; i++)
+                {
+                    var item = container->GetInventorySlot(i);
+                    if (item != null && item->ItemId == itemId)
+                    {
+                        // Use the item from inventory
+                        AgentInventoryContext.Instance()->UseItem(item->ItemId, invType, (uint)i, 0);
+                        return;
+                    }
+                }
+            }
+
+            // If we get here, item wasn't found
+            PluginLog.Warning($"Item {itemId} not found in any inventory container");
         }
     }
 }

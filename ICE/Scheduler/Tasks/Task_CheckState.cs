@@ -304,6 +304,7 @@ namespace ICE.Scheduler.Tasks
                             if (canRun)
                             {
                                 IceLogging.Debug("We have enough drones to consider start running! So we're just going to kick it off");
+                                P.TaskManager.Tasks.Clear();
                                 P.TaskManager.Enqueue(() => Task_ArtifactSearch.RefreshMapInfo(), "Refreshing map info for drone check");
                                 SchedulerMain.State = IceState.ArtifactSearch;
                                 return true;
