@@ -21,7 +21,6 @@ namespace ICE.Ui.MainUi.Settings
             DrawCategoryTab("采集配置", "settings_GatheringProfile", FontAwesomeIcon.Leaf);
             DrawCategoryTab("信用点购物", "settings_CosmoShopping", textureId: 65112);
             DrawCategoryTab("宇宙好运道", "settings_CosmoWheel", textureId: 65127);
-            DrawCategoryTab("无人机晶片", "settings_DronebitShopping", textureId: 65138);
             DrawCategoryTab("停止条件", "settings_StopWhen", FontAwesomeIcon.Stop);
             DrawCategoryTab("任务优先级", "settings_MissionPrio", FontAwesomeIcon.SortAmountUp);
             DrawCategoryTab("杂项", "settings_Misc", icon: FontAwesomeIcon.Cog);
@@ -40,10 +39,6 @@ namespace ICE.Ui.MainUi.Settings
             else if (settingsTabs["settings_CosmoWheel"])
             {
                 GambaWheel.Draw();
-            }
-            else if (settingsTabs["settings_DronebitShopping"])
-            {
-                DronebitShoppingTab.Draw();
             }
             else if (settingsTabs["settings_StopWhen"])
             {
