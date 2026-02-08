@@ -99,21 +99,36 @@ namespace ICE.Ui
                     ImGui.Text($"{currentWeather}");
                     ImGui.EndTooltip();
                 }
-                ImGui.SameLine(0, 2);
-                ImGui.AlignTextToFramePadding();
-                ImGuiEx.Icon(FontAwesomeIcon.LongArrowAltRight);
-                Svc.Texture.TryGetFromGameIcon(nextWeatherId, out var nextWeatherIcon);
-                ImGui.SameLine(0, 2);
-                ImGui.Image(nextWeatherIcon.GetWrapOrEmpty().Handle, new Vector2(23, 23));
-                if (ImGui.IsItemHovered())
+                // 如果 nextWeatherId == 0，天气将持续超过 24 周期(192ET、9小时20分)
+                if (nextWeatherId == 0)
                 {
-                    ImGui.BeginTooltip();
-                    ImGui.Text($"{nextWeather}");
-                    ImGui.EndTooltip();
+                    ImGui.SameLine(0, 2);
+                    ImGui.AlignTextToFramePadding();
+                    ImGuiEx.Icon(FontAwesomeIcon.LongArrowAltRight);
+
+                    ImGui.SameLine(0, 2);
+                    ImGui.AlignTextToFramePadding();
+                    ImGui.Text("下一个: 超过9小时20分(24个周期)");
                 }
-                ImGui.SameLine(0, 2);
-                ImGui.AlignTextToFramePadding();
-                ImGui.Text($"下一个: {nextWeatherTime}");
+                else
+                {
+                    // 正常显示下一个天气
+                    ImGui.SameLine(0, 2);
+                    ImGui.AlignTextToFramePadding();
+                    ImGuiEx.Icon(FontAwesomeIcon.LongArrowAltRight);
+                    Svc.Texture.TryGetFromGameIcon(nextWeatherId, out var nextWeatherIcon);
+                    ImGui.SameLine(0, 2);
+                    ImGui.Image(nextWeatherIcon.GetWrapOrEmpty().Handle, new Vector2(23, 23));
+                    if (ImGui.IsItemHovered())
+                    {
+                        ImGui.BeginTooltip();
+                        ImGui.Text($"{nextWeather}");
+                        ImGui.EndTooltip();
+                    }
+                    ImGui.SameLine(0, 2);
+                    ImGui.AlignTextToFramePadding();
+                    ImGui.Text($"下一个: {nextWeatherTime}");
+                }
             }
 
             var (currentList, nextList) = GetMissionsForHour();

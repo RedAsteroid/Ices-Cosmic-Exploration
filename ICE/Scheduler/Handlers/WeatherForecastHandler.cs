@@ -19,30 +19,45 @@ namespace ICE.Scheduler.Handlers
 
         internal static unsafe void Tick()
         {
-            if (!PlayerHelper.IsInCosmicZone()) return;
+            if (!PlayerHelper.IsInCosmicZone())
+                return;
+
+            if (weathers.Count == 0)
+            {
+                RefreshForecast();
+                return;
+            }
 
             Weather currWeather = GetCurrentWeather();
             var CorrectFirstWeather = true;
-            var NeedToRefreshBecauseRedAlert = true;
-            if (weathers.Count > 0)
+            var NeedToRefreshBecauseRedAlert = false;
+
+            if (weathers.Count >= 1)
             {
                 CorrectFirstWeather = weathers[0].Name == currWeather.Name;
-
-                if (weathers[1].Time - DateTime.UtcNow < TimeSpan.Zero) NeedToRefreshBecauseRedAlert = true;
             }
 
-            //Only allow refresh if territory changed
-            //Or weather is not in first spot (ex: Red Alert)
-            //Or already past 5 minutes since the last refresh
-            if (Svc.ClientState.TerritoryType == previousZoneForecast && CorrectFirstWeather && !NeedToRefreshBecauseRedAlert && DateTime.Now - _lastProcessed < _delay) return;
+            if (weathers.Count >= 2)
+            {
+                if (weathers[1].Time - DateTime.UtcNow < TimeSpan.Zero)
+                {
+                    NeedToRefreshBecauseRedAlert = true;
+                }
+            }
+
+            if (Svc.ClientState.TerritoryType == previousZoneForecast
+                && CorrectFirstWeather
+                && !NeedToRefreshBecauseRedAlert
+                && DateTime.UtcNow - _lastProcessed < _delay) return;
+
             RefreshForecast();
         }
 
         internal static void RefreshForecast()
         {
             if (!PlayerHelper.IsInCosmicZone()) return;
-            
-            _lastProcessed = DateTime.Now;
+
+            _lastProcessed = DateTime.UtcNow;
             GetForecast();
         }
 
@@ -63,13 +78,30 @@ namespace ICE.Scheduler.Handlers
 
         internal static unsafe (string, uint, string, uint, string) GetNextWeather()
         {
-            if (!PlayerHelper.IsInCosmicZone()) return default;
-            if (weathers.Count == 0) return default;
+            if (!PlayerHelper.IsInCosmicZone())
+                return default;
 
+            if (weathers.Count == 0)
+                return default;
+
+            // 只有一个天气时，返回当前天气，next 留空
+            if (weathers.Count == 1)
+            {
+                var current = weathers[0];
+                return (current.Name, current.IconId, "", 0, "");
+            }
+
+            // 获取当前和下一个天气信息
             var currentWeather = weathers[0];
             var nextWeather = weathers[1];
 
-            return (currentWeather.Name, currentWeather.IconId, nextWeather.Name, nextWeather.IconId, FormatForecastTime(nextWeather.Time));
+            return (
+                currentWeather.Name,
+                currentWeather.IconId,
+                nextWeather.Name,
+                nextWeather.IconId,
+                FormatForecastTime(nextWeather.Time)
+            );
         }
         internal static unsafe List<(string Name, uint IconId, string TimeUntil)> GetNextWeathers(int count = 5)
         {
@@ -161,15 +193,25 @@ namespace ICE.Scheduler.Handlers
             if (!AccurateTime)
             {
                 string format = C.ShowSeconds ? @"hh\:mm\:ss" : @"hh\:mm";
-                return timeDifference < TimeSpan.Zero ? "-" + timeDifference.Duration().ToString(format) : timeDifference.ToString(format);
+                return timeDifference < TimeSpan.Zero
+                    ? "-" + timeDifference.Duration().ToString(format)
+                    : timeDifference.ToString(format);
             }
             else
             {
-                int totalSeconds = Math.Abs((int)timeDifference.TotalSeconds);
-                int hours = totalSeconds / 10000;
-                int minutes = (totalSeconds % 10000) / 100;
-                string format = C.ShowSeconds ? $"{hours:D2}:{minutes:D2}:{totalSeconds % 100:D2}" : $"{hours:D2}:{minutes:D2}";
-                return timeDifference < TimeSpan.Zero ? "-" + format : format;
+                var ts = timeDifference;
+                bool negative = ts < TimeSpan.Zero;
+                ts = ts.Duration();
+
+                int hours = (int)ts.TotalHours;
+                int minutes = ts.Minutes;
+                int seconds = ts.Seconds;
+
+                string format = C.ShowSeconds
+                    ? $"{hours:D2}:{minutes:D2}:{seconds:D2}"
+                    : $"{hours:D2}:{minutes:D2}";
+
+                return negative ? "-" + format : format;
             }
         }
     }
