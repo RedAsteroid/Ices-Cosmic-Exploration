@@ -43,8 +43,8 @@ namespace ICE.Ui.MainUi.Settings.Settings_Table
                 C.SaveDebounced();
             }
             ImGui_Tools.IconWithTooltip(FontAwesomeIcon.QuestionCircle,
-                "您想持有的无人机数量上限是多少?\n" +
-                "0 = 将会持续购买\n" +
+                "您想持有的能源包数量上限是多少?\n" +
+                "0 = 持续购买\n" +
                 "任何大于 0 的值将作为硬上限, 持有数量达到此值时停止购买"
                 );
 

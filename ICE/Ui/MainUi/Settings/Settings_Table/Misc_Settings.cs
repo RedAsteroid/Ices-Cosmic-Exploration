@@ -330,7 +330,7 @@ namespace ICE.Ui.MainUi.Settings.Settings_Table
                 C.MountRadius = minMountRange;
                 C.Save();
             }
-            ImGui.Checkbox("可视化半径范围", ref visualizeRadius);
+            ImGui.Checkbox("可视化使用坐骑半径范围", ref visualizeRadius);
             ImGui.SetNextItemWidth(100);
             if (ImGui.DragFloat("下坐骑目标范围", ref dismountRange, 1))
             {
@@ -471,7 +471,7 @@ namespace ICE.Ui.MainUi.Settings.Settings_Table
             ImGui.Dummy(new Vector2(0, 5));
 
             bool usePersonalLocations = C.PersonalReturnSpot;
-            if (ImGui.Checkbox("使用个人返回点", ref usePersonalLocations))
+            if (ImGui.Checkbox("启用 制作返回点", ref usePersonalLocations))
             {
                 C.PersonalReturnSpot = usePersonalLocations;
                 C.Save();

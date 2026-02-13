@@ -78,7 +78,7 @@ namespace ICE.Ui.MainUi
                     {
                         DrawSelectableWithImage(65112, "信用点购物", "hubActivities_CreditShopping");
                         DrawSelectableWithImage(65127, "宇宙好运道设置", "hubActivites_GambaSetting");
-                        DrawSelectableWithImage(65138, "无人机晶片购物", "hubActivies_DroneSetting");
+                        DrawSelectableWithImage(65138, "无人机晶片设置", "hubActivies_DroneSetting");
                     }
                 }
                 var currentJob = C.SelectedJob;

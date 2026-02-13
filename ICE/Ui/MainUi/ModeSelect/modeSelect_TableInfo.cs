@@ -443,7 +443,7 @@ namespace ICE.Ui.MainUi.ModeSelect
                 if (ImGui.IsItemHovered())
                 {
                     ImGui.BeginTooltip();
-                    ImGui.Text("行星(憧憬湾/法恩娜)信用点奖励");
+                    ImGui.Text("行星(憧憬湾/法恩娜/俄匊斯)信用点奖励");
                     ImGui.EndTooltip();
                 }
                 columnIndexCount++;
